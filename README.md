@@ -15,6 +15,8 @@ The system includes two main roles:
 * **Admin**: manages users and all resumes in the system.
 * **User**: creates, edits, protects, and shares resumes.
 
+Public registration is disabled. Users are created and managed by the admin.
+
 ---
 
 ## Main Features
@@ -81,6 +83,7 @@ The system includes two main roles:
 * **Laravel Breeze**
 * **Blade Templates**
 * **Tailwind CSS**
+* **Alpine.js**
 * **MySQL**
 * **Vite**
 * **Composer**
@@ -168,9 +171,23 @@ php artisan key:generate
 Update the `.env` file with your local database information:
 
 ```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
 DB_DATABASE=your_database_name
 DB_USERNAME=your_database_username
 DB_PASSWORD=your_database_password
+```
+
+For a default local XAMPP setup, this may look like:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=resume_management_system
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
 ### 7. Run Migrations
@@ -219,6 +236,26 @@ http://resume.test
 
 ---
 
+## Windows / XAMPP Notes
+
+If the default terminal PHP does not include the required MySQL extension, use the XAMPP PHP path:
+
+```bash
+C:\xampp\php\php.exe artisan migrate
+C:\xampp\php\php.exe artisan test
+C:\xampp\php\php.exe artisan serve
+```
+
+If PowerShell blocks `npm`, use:
+
+```bash
+npm.cmd install
+npm.cmd run build
+npm.cmd run dev
+```
+
+---
+
 ## Local Virtual Host Example
 
 For XAMPP, the Apache virtual host can point to the Laravel `public` folder:
@@ -262,6 +299,92 @@ The following files and folders are ignored by Git:
 
 This means that after cloning the project, each developer must create their own `.env` file and install dependencies locally.
 
+Application security notes:
+
+* Resume passwords are not stored in plain text.
+* Resume passwords are stored only as hashed values.
+* The old plain-text `resume_password` database column was removed through a migration.
+* Public registration is disabled.
+* Users are created and managed by the admin.
+* Admin and user dashboards are separated by role-based access.
+* Public resume pages do not expose internal dashboard counters.
+* Guests who visit protected pages are redirected to the login page.
+
+---
+
+## Database Notes
+
+Important resume password field:
+
+* `resume_password_hash`
+
+The old field below was removed:
+
+* `resume_password`
+
+The application now uses only hashed resume password storage.
+
+---
+
+## Authentication Behavior
+
+Public registration is disabled.
+
+Users are created by the admin. Guests who visit protected pages are redirected to the login page.
+
+This behavior is also covered by automated tests.
+
+---
+
+## Testing
+
+This project includes automated feature and unit tests for the main authentication and user account behavior.
+
+To run the tests locally:
+
+```bash
+php artisan test
+```
+
+On Windows with XAMPP:
+
+```bash
+C:\xampp\php\php.exe artisan test
+```
+
+Current test coverage includes:
+
+* Login and logout behavior
+* Password reset
+* Password update
+* Email verification
+* Profile update and deletion
+* Disabled public registration
+* Guest redirection to the login page
+
+Current test result:
+
+```text
+25 tests passed
+61 assertions passed
+```
+
+---
+
+## Project Workflow
+
+This project follows a professional Git workflow:
+
+```text
+branch → change → test → commit → push → pull request → review → merge → pull latest main
+```
+
+Completed workflow examples:
+
+* Fixed resume password security.
+* Removed obsolete plain-text password database column.
+* Updated outdated tests to match real application behavior.
+
 ---
 
 ## Screenshots
@@ -297,6 +420,8 @@ Example Markdown format:
 
 The project currently includes the main user, admin, and public resume workflows. It is functional locally and has been pushed to a private GitHub repository.
 
+The project also includes security improvements, database cleanup, and automated tests that match the current application behavior.
+
 ---
 
 ## Future Improvements
@@ -310,14 +435,34 @@ Possible future improvements:
 * Add advanced resume analytics.
 * Add search and filtering for admin pages.
 * Add pagination for users and resumes.
-* Add automated tests.
 * Add deployment configuration.
+* Add GitHub Actions CI workflow.
 * Add multilingual support.
+* Add more tests for resume CRUD, admin workflows, and public resume access.
+
+---
+
+## Portfolio Purpose
+
+This project demonstrates:
+
+* Laravel full-stack development
+* Authentication and authorization
+* Admin and user dashboards
+* CRUD operations
+* Database migrations
+* Secure password handling
+* Public/private access control
+* Automated testing
+* Git and Pull Request workflow
+* Realistic software maintenance practices
 
 ---
 
 ## Author
 
 **Farhad Valizadegan**
+
+GitHub: [Farhad-Valizadegan](https://github.com/Farhad-Valizadegan)
 
 This project was developed as a personal web development portfolio project.
