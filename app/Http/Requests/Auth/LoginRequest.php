@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Lockout;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -27,10 +28,16 @@ class LoginRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
         ];
+
+        if (! app()->environment('testing')) {
+            $rules['cf-turnstile-response'] = ['required', 'string'];
+        }
+
+        return $rules;
     }
 
     /**
@@ -42,6 +49,8 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
+        $this->verifyTurnstile();
+
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
@@ -51,6 +60,41 @@ class LoginRequest extends FormRequest
         }
 
         RateLimiter::clear($this->throttleKey());
+    }
+
+    /**
+     * Verify the Cloudflare Turnstile CAPTCHA token.
+     *
+     * @throws ValidationException
+     */
+    protected function verifyTurnstile(): void
+    {
+        if (app()->environment('testing')) {
+            return;
+        }
+
+        $secretKey = config('services.turnstile.secret_key');
+        $turnstileResponse = $this->input('cf-turnstile-response');
+
+        if (empty($secretKey)) {
+            throw ValidationException::withMessages([
+                'cf-turnstile-response' => 'CAPTCHA is not configured correctly.',
+            ]);
+        }
+
+        $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+            'secret' => $secretKey,
+            'response' => $turnstileResponse,
+            'remoteip' => $this->ip(),
+        ]);
+
+        if (! $response->successful() || ! $response->json('success')) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'cf-turnstile-response' => 'CAPTCHA verification failed. Please try again.',
+            ]);
+        }
     }
 
     /**
