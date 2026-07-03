@@ -106,7 +106,6 @@ class ResumeController extends Controller
             'title' => $validated['title'],
             'job_position' => $validated['job_position'] ?? null,
             'public_link' => $this->generateUniquePublicLink(),
-            'resume_password' => $validated['resume_password'] ?? null,
             'resume_password_hash' => !empty($validated['resume_password'])
                 ? Hash::make($validated['resume_password'])
                 : null,
@@ -285,7 +284,6 @@ class ResumeController extends Controller
         ]);
 
         $resume->update([
-            'resume_password' => $validated['resume_password'],
             'resume_password_hash' => Hash::make($validated['resume_password']),
         ]);
 

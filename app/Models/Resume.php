@@ -11,7 +11,6 @@ class Resume extends Model
         'title',
         'job_position',
         'public_link',
-        'resume_password',
         'resume_password_hash',
         'uploaded_resume_file',
         'download_resume_type',
