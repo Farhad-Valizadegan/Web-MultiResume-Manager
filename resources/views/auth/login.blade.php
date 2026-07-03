@@ -75,18 +75,27 @@
                         </div>
 
                         <!-- Password -->
-                        <div>
+                        <div x-data="{ showPassword: false }">
                             <label for="password" class="block mb-2 font-bold text-slate-800">
                                 Password
                             </label>
 
-                            <input id="password"
-                                   type="password"
-                                   name="password"
-                                   required
-                                   autocomplete="current-password"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Enter your password">
+                            <div class="relative">
+                                <input id="password"
+                                       :type="showPassword ? 'text' : 'password'"
+                                       name="password"
+                                       required
+                                       autocomplete="current-password"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 pr-20 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       placeholder="Enter your password">
+
+                                <button type="button"
+                                        @click="showPassword = !showPassword"
+                                        class="absolute inset-y-0 right-3 flex items-center text-sm font-bold text-blue-600 hover:text-blue-800">
+                                    <span x-show="!showPassword">Show</span>
+                                    <span x-show="showPassword">Hide</span>
+                                </button>
+                            </div>
 
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
