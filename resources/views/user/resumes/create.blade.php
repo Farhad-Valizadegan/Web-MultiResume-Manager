@@ -3,7 +3,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    Create Resume
+                    Create New Resume
                 </h2>
 
                 <p class="text-sm text-gray-500 mt-1">
@@ -26,11 +26,11 @@
                 <!-- Page Intro -->
                 <div class="mb-6 bg-white border-2 border-slate-300 rounded-lg p-5">
                     <h3 class="text-lg font-extrabold text-slate-900">
-                        Resume Information
+                        Create Resume Information
                     </h3>
 
                     <p class="text-sm text-slate-600 mt-1">
-                        Complete the sections below. You can edit this resume later from your resume list.
+                        Fill in the sections below to create a new resume and generate a protected public link.
                     </p>
                 </div>
 
@@ -48,7 +48,7 @@
                             </h4>
 
                             <p class="text-sm text-slate-600 mt-1">
-                                Resume title, target position, public access, and download settings.
+                                Resume title, target position, password protection, and download settings.
                             </p>
                         </div>
 
@@ -176,7 +176,7 @@
                             </h4>
 
                             <p class="text-sm text-slate-600 mt-1">
-                                Optional interests that support your professional profile.
+                                Add optional interests that support your professional profile.
                             </p>
                         </div>
 
@@ -262,7 +262,7 @@
 
                         <button type="submit"
                                 class="w-full sm:w-auto inline-flex justify-center px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-semibold">
-                            Save Resume
+                            Create Resume
                         </button>
                     </div>
                 </form>
