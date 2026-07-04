@@ -14,154 +14,186 @@
         <div class="max-w-7xl mx-auto overflow-hidden rounded-xl bg-white shadow-2xl border border-slate-300">
 
             <!-- Header -->
-            <div class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-900 text-white">
-                <div class="absolute inset-0 opacity-20">
-                    <div class="absolute -top-24 -right-24 w-72 h-72 bg-blue-400 rounded-md blur-3xl"></div>
-                    <div class="absolute bottom-0 left-0 w-72 h-72 bg-indigo-500 rounded-md blur-3xl"></div>
-                </div>
+            <div class="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 text-white">
+                @php
+                    $profile = $resume->user->profile;
+                    $currentLocation = $profile?->address;
+                @endphp
 
-                <div class="relative px-5 sm:px-8 lg:px-12 py-7 sm:py-10">
-                    <div class="max-w-6xl">
+                <div class="px-6 sm:px-8 lg:px-12 py-8 sm:py-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 border border-white/20 text-blue-100 text-sm mb-6">
-                            <span class="w-2 h-2 rounded-sm bg-emerald-400"></span>
-                            Online Professional Resume
-                        </div>
-
-                        <!-- Name and Photo -->
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-5">
-                            @if ($resume->user->profile && $resume->user->profile->profile_photo)
-                                <div class="shrink-0">
-                                    <img src="{{ asset('storage/' . $resume->user->profile->profile_photo) }}"
-                                         alt="{{ $resume->user->name }}"
-                                         class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg object-cover border-4 border-white/30 shadow-2xl">
-                                </div>
+                        <!-- Left: Photo and Download -->
+                        <div class="lg:col-span-2 flex flex-col items-start gap-4">
+                            @if ($profile && $profile->profile_photo)
+                                <img src="{{ asset('storage/' . $profile->profile_photo) }}"
+                                     alt="{{ $resume->user->name }}"
+                                     class="w-36 h-36 sm:w-40 sm:h-40 rounded-lg object-cover border border-white/20 shadow-lg">
                             @else
-                                <div class="shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-lg bg-white/10 border-4 border-white/20 shadow-2xl flex items-center justify-center">
-                                    <span class="text-3xl font-extrabold text-white">
+                                <div class="w-36 h-36 sm:w-40 sm:h-40 rounded-lg bg-white/10 border border-white/20 shadow-lg flex items-center justify-center">
+                                    <span class="text-5xl font-extrabold text-white">
                                         {{ strtoupper(substr($resume->user->name, 0, 1)) }}
                                     </span>
                                 </div>
                             @endif
 
-                            <div class="min-w-0">
-                                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
-                                    {{ $resume->user->name }}
-                                </h1>
-
-                                <p class="text-base sm:text-lg lg:text-xl text-blue-100 mt-4 break-words font-medium">
-                                    {{ $resume->job_position ?? $resume->title }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Contact Information -->
-                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
-                            <div class="bg-white/10 border border-white/15 rounded-lg p-3 backdrop-blur">
-                                <p class="text-blue-100 text-xs uppercase tracking-wide">Email</p>
-                                <p class="break-all font-medium">{{ $resume->user->email }}</p>
-                            </div>
-
-                            @if ($resume->user->profile && $resume->user->profile->phone)
-                                <div class="bg-white/10 border border-white/15 rounded-lg p-3 backdrop-blur">
-                                    <p class="text-blue-100 text-xs uppercase tracking-wide">Phone</p>
-                                    <p class="break-words font-medium">{{ $resume->user->profile->phone }}</p>
-                                </div>
-                            @endif
-
-                            @if ($resume->user->profile && $resume->user->profile->address)
-                                <div class="bg-white/10 border border-white/15 rounded-lg p-3 backdrop-blur">
-                                    <p class="text-blue-100 text-xs uppercase tracking-wide">Location</p>
-                                    <p class="break-words font-medium">{{ $resume->user->profile->address }}</p>
-                                </div>
-                            @endif
-
-                            @if ($resume->user->profile && $resume->user->profile->website)
-                                <div class="bg-white/10 border border-white/15 rounded-lg p-3 backdrop-blur">
-                                    <p class="text-blue-100 text-xs uppercase tracking-wide">Website</p>
-                                    <a href="{{ $resume->user->profile->website }}"
-                                       target="_blank"
-                                       class="break-all font-medium text-white hover:text-blue-200 underline underline-offset-4">
-                                        {{ $resume->user->profile->website }}
-                                    </a>
-                                </div>
-                            @endif
-                        </div>
-
-                        <!-- Social Links -->
-                        @if (
-                            $resume->user->profile &&
-                            (
-                                $resume->user->profile->linkedin ||
-                                $resume->user->profile->github ||
-                                $resume->user->profile->portfolio ||
-                                $resume->user->profile->xing
+                            @if (
+                                $resume->download_resume_type === 'generated' ||
+                                $resume->download_resume_type === 'uploaded' ||
+                                $resume->download_resume_type === 'both'
                             )
-                        )
-                            <div class="mt-5 flex flex-wrap gap-3">
+                                <div class="flex flex-col gap-2 w-36 sm:w-40">
 
-                                @if ($resume->user->profile->linkedin)
-                                    <a href="{{ $resume->user->profile->linkedin }}"
-                                       target="_blank"
-                                       class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-blue-900 hover:bg-blue-50 border border-white/30 shadow-md text-sm font-bold transition">
-                                        LinkedIn
-                                    </a>
-                                @endif
+                                    @if ($resume->download_resume_type === 'generated' || $resume->download_resume_type === 'both')
+                                        <a href="{{ route('public.resume.download-generated-pdf', $resume->public_link) }}"
+                                           class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-white text-slate-950 hover:bg-slate-100 shadow text-sm font-bold transition">
+                                            Download PDF
+                                        </a>
+                                    @endif
 
-                                @if ($resume->user->profile->github)
-                                    <a href="{{ $resume->user->profile->github }}"
-                                       target="_blank"
-                                       class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-slate-900 hover:bg-slate-100 border border-white/30 shadow-md text-sm font-bold transition">
-                                        GitHub
-                                    </a>
-                                @endif
+                                    @if (
+                                        ($resume->download_resume_type === 'uploaded' || $resume->download_resume_type === 'both') &&
+                                        $resume->uploaded_resume_file
+                                    )
+                                        <a href="{{ route('public.resume.download-uploaded-pdf', $resume->public_link) }}"
+                                           class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-white text-slate-950 hover:bg-slate-100 shadow text-sm font-bold transition">
+                                            Download PDF
+                                        </a>
+                                    @endif
 
-                                @if ($resume->user->profile->portfolio)
-                                    <a href="{{ $resume->user->profile->portfolio }}"
-                                       target="_blank"
-                                       class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-indigo-900 hover:bg-indigo-50 border border-white/30 shadow-md text-sm font-bold transition">
-                                        Portfolio
-                                    </a>
-                                @endif
+                                </div>
+                            @endif
+                        </div>
 
-                                @if ($resume->user->profile->xing)
-                                    <a href="{{ $resume->user->profile->xing }}"
-                                       target="_blank"
-                                       class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-emerald-900 hover:bg-emerald-50 border border-white/30 shadow-md text-sm font-bold transition">
-                                        Xing
-                                    </a>
-                                @endif
-
+                        <!-- Middle: Name and Title -->
+                        <div class="lg:col-span-6 min-w-0 pt-2">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 border border-white/15 text-blue-100 text-sm mb-5">
+                                <span class="w-2 h-2 rounded-sm bg-emerald-400"></span>
+                                Online Professional Resume
                             </div>
-                        @endif
 
-                        <!-- Download Buttons -->
-                        @if (
-                            $resume->download_resume_type === 'generated' ||
-                            $resume->download_resume_type === 'uploaded' ||
-                            $resume->download_resume_type === 'both'
-                        )
-                            <div class="mt-6 flex flex-wrap gap-3">
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight break-words">
+                                {{ $resume->user->name }}
+                            </h1>
 
-                                @if ($resume->download_resume_type === 'generated' || $resume->download_resume_type === 'both')
-                                    <a href="{{ route('public.resume.download-generated-pdf', $resume->public_link) }}"
-                                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg text-sm font-extrabold transition">
-                                        Download Generated PDF
-                                    </a>
-                                @endif
+                            <p class="text-xl sm:text-2xl text-blue-100 mt-4 break-words font-medium">
+                                {{ $resume->job_position ?? $resume->title }}
+                            </p>
 
-                                @if (
-                                    ($resume->download_resume_type === 'uploaded' || $resume->download_resume_type === 'both') &&
-                                    $resume->uploaded_resume_file
+                            @if (
+                                $profile &&
+                                (
+                                    $profile->linkedin ||
+                                    $profile->github ||
+                                    $profile->portfolio ||
+                                    $profile->xing
                                 )
-                                    <a href="{{ route('public.resume.download-uploaded-pdf', $resume->public_link) }}"
-                                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-white text-slate-900 hover:bg-slate-100 shadow-lg text-sm font-extrabold transition">
-                                        Download Uploaded PDF
-                                    </a>
-                                @endif
+                            )
+                                <div class="mt-6 flex flex-wrap gap-3">
 
+                                    @if ($profile->linkedin)
+                                        <a href="{{ $profile->linkedin }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white/5 hover:bg-white/10 border border-white/15 text-white text-sm font-bold transition">
+                                            <span class="text-blue-200 font-extrabold">in</span>
+                                            LinkedIn
+                                        </a>
+                                    @endif
+
+                                    @if ($profile->github)
+                                        <a href="{{ $profile->github }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white/5 hover:bg-white/10 border border-white/15 text-white text-sm font-bold transition">
+                                            GitHub
+                                        </a>
+                                    @endif
+
+                                    @if ($profile->portfolio)
+                                        <a href="{{ $profile->portfolio }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white/5 hover:bg-white/10 border border-white/15 text-white text-sm font-bold transition">
+                                            Portfolio
+                                        </a>
+                                    @endif
+
+                                    @if ($profile->xing)
+                                        <a href="{{ $profile->xing }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white/5 hover:bg-white/10 border border-white/15 text-white text-sm font-bold transition">
+                                            Xing
+                                        </a>
+                                    @endif
+
+                                </div>
+                            @endif
+                        </div>
+
+                        <!-- Right: Contact Box -->
+                        <div class="lg:col-span-4">
+                            <div class="rounded-lg bg-white/10 border border-white/15 shadow-lg overflow-hidden">
+                                <div class="px-5 py-4 border-b border-white/10">
+                                    <h2 class="text-sm font-extrabold uppercase tracking-wide text-blue-100">
+                                        Contact Details
+                                    </h2>
+                                </div>
+
+                                <div class="divide-y divide-white/10">
+
+                                    <div class="px-5 py-4">
+                                        <p class="text-xs uppercase tracking-wide text-blue-100 font-bold">
+                                            Email
+                                        </p>
+                                        <p class="mt-1 text-white font-semibold break-all">
+                                            {{ $resume->user->email }}
+                                        </p>
+                                    </div>
+
+                                    @if ($profile && $profile->phone)
+                                        <div class="px-5 py-4">
+                                            <p class="text-xs uppercase tracking-wide text-blue-100 font-bold">
+                                                Phone
+                                            </p>
+                                            <p class="mt-1 text-white font-semibold break-words">
+                                                {{ $profile->phone }}
+                                            </p>
+                                        </div>
+                                    @endif
+
+                                    @if ($currentLocation)
+                                        <div class="px-5 py-4">
+                                            <p class="text-xs uppercase tracking-wide text-blue-100 font-bold">
+                                                Current Location
+                                            </p>
+                                            <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($currentLocation) }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               class="mt-1 inline-block text-white hover:text-blue-200 font-semibold break-words underline underline-offset-4">
+                                                {{ $currentLocation }}
+                                            </a>
+                                        </div>
+                                    @endif
+
+                                    @if ($profile && $profile->website)
+                                        <div class="px-5 py-4">
+                                            <p class="text-xs uppercase tracking-wide text-blue-100 font-bold">
+                                                Website
+                                            </p>
+                                            <a href="{{ $profile->website }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               class="mt-1 inline-block text-white hover:text-blue-200 font-semibold break-all underline underline-offset-4">
+                                                {{ $profile->website }}
+                                            </a>
+                                        </div>
+                                    @endif
+
+                                </div>
                             </div>
-                        @endif
+                        </div>
 
                     </div>
                 </div>
@@ -232,68 +264,6 @@
                                             </span>
                                         @endforeach
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </section>
-                @endif
-
-                <!-- Languages -->
-                @if ($resume->languages->count())
-                    <section class="rounded-lg border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
-                        <div class="mb-5">
-                            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
-                                Languages
-                            </h2>
-
-                            <p class="text-slate-500 text-sm mt-1">
-                                Language proficiency
-                            </p>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                            @foreach ($resume->languages as $language)
-                                <div class="rounded-md border border-purple-100 bg-gradient-to-br from-white to-purple-50 p-5 shadow-sm">
-                                    <h3 class="text-lg font-extrabold text-slate-900 break-words">
-                                        {{ $language->language_name }}
-                                    </h3>
-
-                                    @if ($language->proficiency_level)
-                                        <span class="inline-block mt-3 px-3 py-1 rounded-md bg-purple-100 text-purple-800 text-sm font-semibold">
-                                            {{ $language->proficiency_level }}
-                                        </span>
-                                    @endif
-                                </div>
-                            @endforeach
-                        </div>
-                    </section>
-                @endif
-
-                <!-- Hobbies & Interests -->
-                @if ($resume->interests->count())
-                    <section class="rounded-lg border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
-                        <div class="mb-5">
-                            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
-                                Hobbies & Interests
-                            </h2>
-
-                            <p class="text-slate-500 text-sm mt-1">
-                                Personal interests and professional motivation
-                            </p>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                            @foreach ($resume->interests as $interest)
-                                <div class="rounded-md border border-teal-100 bg-gradient-to-br from-white to-teal-50 p-5 shadow-sm hover:shadow-md transition">
-                                    <h3 class="text-lg font-extrabold text-slate-900 break-words">
-                                        {{ $interest->interest_name }}
-                                    </h3>
-
-                                    @if ($interest->description)
-                                        <p class="text-slate-700 mt-3 leading-relaxed break-words">
-                                            {{ $interest->description }}
-                                        </p>
-                                    @endif
                                 </div>
                             @endforeach
                         </div>
@@ -422,6 +392,47 @@
                     </section>
                 @endif
 
+                <!-- Projects -->
+                @if ($resume->projects->count())
+                    <section class="rounded-lg border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
+                        <div class="mb-5">
+                            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
+                                Projects
+                            </h2>
+
+                            <p class="text-slate-500 text-sm mt-1">
+                                Portfolio projects and practical work
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            @foreach ($resume->projects as $project)
+                                <div class="rounded-md border border-rose-100 bg-gradient-to-br from-white to-rose-50 p-5 shadow-sm hover:shadow-md transition">
+                                    <h3 class="text-lg font-extrabold text-slate-900 break-words">
+                                        {{ $project->project_title }}
+                                    </h3>
+
+                                    @if ($project->project_description)
+                                        <p class="text-slate-700 mt-3 leading-relaxed break-words">
+                                            {{ $project->project_description }}
+                                        </p>
+                                    @endif
+
+                                    @if ($project->project_link)
+                                        <p class="mt-4">
+                                            <a href="{{ $project->project_link }}"
+                                               class="inline-block px-4 py-2 bg-rose-600 text-white rounded-md hover:bg-rose-700 font-semibold break-all"
+                                               target="_blank">
+                                                View Project
+                                            </a>
+                                        </p>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    </section>
+                @endif
+
                 <!-- Licenses & Certifications -->
                 @if ($resume->certificates->count())
                     <section class="rounded-lg border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
@@ -524,39 +535,60 @@
                     </section>
                 @endif
 
-                <!-- Projects -->
-                @if ($resume->projects->count())
+                <!-- Languages -->
+                @if ($resume->languages->count())
                     <section class="rounded-lg border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
                         <div class="mb-5">
                             <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
-                                Projects
+                                Languages
                             </h2>
 
                             <p class="text-slate-500 text-sm mt-1">
-                                Portfolio projects and practical work
+                                Language proficiency
                             </p>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            @foreach ($resume->projects as $project)
-                                <div class="rounded-md border border-rose-100 bg-gradient-to-br from-white to-rose-50 p-5 shadow-sm hover:shadow-md transition">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                            @foreach ($resume->languages as $language)
+                                <div class="rounded-md border border-purple-100 bg-gradient-to-br from-white to-purple-50 p-5 shadow-sm">
                                     <h3 class="text-lg font-extrabold text-slate-900 break-words">
-                                        {{ $project->project_title }}
+                                        {{ $language->language_name }}
                                     </h3>
 
-                                    @if ($project->project_description)
-                                        <p class="text-slate-700 mt-3 leading-relaxed break-words">
-                                            {{ $project->project_description }}
-                                        </p>
+                                    @if ($language->proficiency_level)
+                                        <span class="inline-block mt-3 px-3 py-1 rounded-md bg-purple-100 text-purple-800 text-sm font-semibold">
+                                            {{ $language->proficiency_level }}
+                                        </span>
                                     @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    </section>
+                @endif
 
-                                    @if ($project->project_link)
-                                        <p class="mt-4">
-                                            <a href="{{ $project->project_link }}"
-                                               class="inline-block px-4 py-2 bg-rose-600 text-white rounded-md hover:bg-rose-700 font-semibold break-all"
-                                               target="_blank">
-                                                View Project
-                                            </a>
+                <!-- Hobbies & Interests -->
+                @if ($resume->interests->count())
+                    <section class="rounded-lg border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
+                        <div class="mb-5">
+                            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
+                                Hobbies & Interests
+                            </h2>
+
+                            <p class="text-slate-500 text-sm mt-1">
+                                Personal interests and professional motivation
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+                            @foreach ($resume->interests as $interest)
+                                <div class="rounded-md border border-teal-100 bg-gradient-to-br from-white to-teal-50 p-5 shadow-sm hover:shadow-md transition">
+                                    <h3 class="text-lg font-extrabold text-slate-900 break-words">
+                                        {{ $interest->interest_name }}
+                                    </h3>
+
+                                    @if ($interest->description)
+                                        <p class="text-slate-700 mt-3 leading-relaxed break-words">
+                                            {{ $interest->description }}
                                         </p>
                                     @endif
                                 </div>
