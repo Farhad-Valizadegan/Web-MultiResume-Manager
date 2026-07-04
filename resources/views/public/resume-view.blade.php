@@ -47,7 +47,7 @@
                                     @if ($resume->download_resume_type === 'generated' || $resume->download_resume_type === 'both')
                                         <a href="{{ route('public.resume.download-generated-pdf', $resume->public_link) }}"
                                            class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-white text-slate-950 hover:bg-slate-100 shadow text-sm font-bold transition">
-                                            Download PDF
+                                            Download Generated PDF
                                         </a>
                                     @endif
 
@@ -57,7 +57,7 @@
                                     )
                                         <a href="{{ route('public.resume.download-uploaded-pdf', $resume->public_link) }}"
                                            class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-white text-slate-950 hover:bg-slate-100 shadow text-sm font-bold transition">
-                                            Download PDF
+                                            Download Uploaded PDF
                                         </a>
                                     @endif
 
@@ -456,7 +456,8 @@
                                         <p class="mt-4">
                                             <a href="{{ $project->project_link }}"
                                                class="inline-block px-4 py-2 bg-rose-600 text-white rounded-md hover:bg-rose-700 font-semibold break-all"
-                                               target="_blank">
+                                               target="_blank"
+                                               rel="noopener noreferrer">
                                                 View Project
                                             </a>
                                         </p>
@@ -526,7 +527,10 @@
                                             </p>
 
                                             @if (in_array($extension, ['jpg', 'jpeg', 'png', 'webp']))
-                                                <a href="{{ $certificateFileUrl }}" target="_blank" class="block">
+                                                <a href="{{ $certificateFileUrl }}"
+                                                   target="_blank"
+                                                   rel="noopener noreferrer"
+                                                   class="block">
                                                     <div class="bg-white border border-amber-100 rounded-md p-2 hover:border-amber-300 transition">
                                                         <img src="{{ $certificateFileUrl }}"
                                                              alt="{{ $certificate->certificate_title }}"
@@ -548,6 +552,7 @@
                                             @if ($certificate->credential_url)
                                                 <a href="{{ $certificate->credential_url }}"
                                                    target="_blank"
+                                                   rel="noopener noreferrer"
                                                    class="inline-flex items-center justify-center px-3 py-2 bg-blue-600 text-white text-sm rounded-md hover:bg-blue-700 font-semibold transition">
                                                     View Credential
                                                 </a>
@@ -556,6 +561,7 @@
                                             @if ($certificate->certificate_file)
                                                 <a href="{{ asset('storage/' . $certificate->certificate_file) }}"
                                                    target="_blank"
+                                                   rel="noopener noreferrer"
                                                    class="inline-flex items-center justify-center px-3 py-2 bg-slate-900 text-white text-sm rounded-md hover:bg-slate-800 font-semibold transition">
                                                     View File
                                                 </a>

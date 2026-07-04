@@ -58,7 +58,7 @@
                                        name="experiences[{{ $index }}][company_name]"
                                        value="{{ old('experiences.' . $index . '.company_name', $experience->company_name) }}"
                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                       placeholder="Example: Zar Vision Rasta Co.">
+                                       placeholder="Example: Company Name">
                             </div>
 
                             <div>
@@ -70,7 +70,7 @@
                                        name="experiences[{{ $index }}][job_title]"
                                        value="{{ old('experiences.' . $index . '.job_title', $experience->job_title) }}"
                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                       placeholder="Example: Data Analyst and Web Developer">
+                                       placeholder="Example: Software Developer">
                             </div>
                         </div>
 
@@ -108,7 +108,7 @@
                             <textarea name="experiences[{{ $index }}][description]"
                                       rows="4"
                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                      placeholder="Describe your responsibilities, tools, tasks, and achievements.">{{ old('experiences.' . $index . '.description', $experience->description) }}</textarea>
+                                      placeholder="Describe responsibilities, tools, tasks, and achievements.">{{ old('experiences.' . $index . '.description', $experience->description) }}</textarea>
                         </div>
 
                     </div>
@@ -147,7 +147,7 @@
                             <input type="text"
                                    name="experiences[0][company_name]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: Zar Vision Rasta Co.">
+                                   placeholder="Example: Company Name">
                         </div>
 
                         <div>
@@ -158,7 +158,7 @@
                             <input type="text"
                                    name="experiences[0][job_title]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: Data Analyst and Web Developer">
+                                   placeholder="Example: Software Developer">
                         </div>
                     </div>
 
@@ -194,7 +194,7 @@
                         <textarea name="experiences[0][description]"
                                   rows="4"
                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                  placeholder="Describe your responsibilities, tools, tasks, and achievements."></textarea>
+                                  placeholder="Describe responsibilities, tools, tasks, and achievements."></textarea>
                     </div>
 
                 </div>

@@ -28,7 +28,7 @@
                                name="educations[{{ $index }}][institution_name]"
                                value="{{ old('educations.' . $index . '.institution_name', $education->institution_name) }}"
                                class="w-full border-gray-300 rounded"
-                               placeholder="Example: Friedrich-Alexander-Universität Erlangen-Nürnberg">
+                               placeholder="Example: University Name">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -47,7 +47,7 @@
                                    name="educations[{{ $index }}][field_of_study]"
                                    value="{{ old('educations.' . $index . '.field_of_study', $education->field_of_study) }}"
                                    class="w-full border-gray-300 rounded"
-                                   placeholder="Example: Computational Engineering">
+                                   placeholder="Example: Computer Science">
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                     <input type="text"
                            name="educations[0][institution_name]"
                            class="w-full border-gray-300 rounded"
-                           placeholder="Example: Friedrich-Alexander-Universität Erlangen-Nürnberg">
+                           placeholder="Example: University Name">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -102,7 +102,7 @@
                         <input type="text"
                                name="educations[0][field_of_study]"
                                class="w-full border-gray-300 rounded"
-                               placeholder="Example: Computational Engineering">
+                               placeholder="Example: Computer Science">
                     </div>
                 </div>
 
@@ -127,7 +127,7 @@
                     <textarea name="educations[0][description]"
                               rows="3"
                               class="w-full border-gray-300 rounded"
-                              placeholder="Example: Focused on machine learning, optimization, numerical methods, and software engineering."></textarea>
+                              placeholder="Example: Focused on software engineering, data analysis, databases, and web development."></textarea>
                 </div>
             </div>
         @endif

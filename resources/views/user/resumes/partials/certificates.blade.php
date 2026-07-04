@@ -61,7 +61,7 @@
                                    name="certificates[{{ $index }}][certificate_title]"
                                    value="{{ old('certificates.' . $index . '.certificate_title', $certificate->certificate_title) }}"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: Machine Learning Specialization">
+                                   placeholder="Example: Professional Certificate">
                         </div>
 
                         <!-- Issuer and Issue Date -->
@@ -75,7 +75,7 @@
                                        name="certificates[{{ $index }}][issuer]"
                                        value="{{ old('certificates.' . $index . '.issuer', $certificate->issuer) }}"
                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                       placeholder="Example: Coursera / Google / FAU">
+                                       placeholder="Example: Certificate Provider">
                             </div>
 
                             <div>
@@ -113,7 +113,7 @@
                                        name="certificates[{{ $index }}][credential_url]"
                                        value="{{ old('certificates.' . $index . '.credential_url', $certificate->credential_url) }}"
                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                       placeholder="https://coursera.org/verify/...">
+                                       placeholder="https://example.com/verify/...">
                             </div>
                         </div>
 
@@ -169,7 +169,7 @@
                                        name="certificates[{{ $index }}][related_project_title]"
                                        value="{{ old('certificates.' . $index . '.related_project_title', $certificate->related_project_title) }}"
                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                       placeholder="Example: ML Prediction Project">
+                                       placeholder="Example: Portfolio Project">
                             </div>
 
                             <div>
@@ -181,7 +181,7 @@
                                        name="certificates[{{ $index }}][related_project_link]"
                                        value="{{ old('certificates.' . $index . '.related_project_link', $certificate->related_project_link) }}"
                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                       placeholder="https://github.com/...">
+                                       placeholder="https://example.com/project">
                             </div>
                         </div>
 
@@ -220,7 +220,7 @@
                         <input type="text"
                                name="certificates[0][certificate_title]"
                                class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                               placeholder="Example: Machine Learning Specialization">
+                               placeholder="Example: Professional Certificate">
                     </div>
 
                     <!-- Issuer and Issue Date -->
@@ -233,7 +233,7 @@
                             <input type="text"
                                    name="certificates[0][issuer]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: Coursera / Google / FAU">
+                                   placeholder="Example: Certificate Provider">
                         </div>
 
                         <div>
@@ -268,7 +268,7 @@
                             <input type="url"
                                    name="certificates[0][credential_url]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="https://coursera.org/verify/...">
+                                   placeholder="https://example.com/verify/...">
                         </div>
                     </div>
 
@@ -310,7 +310,7 @@
                             <input type="text"
                                    name="certificates[0][related_project_title]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: ML Prediction Project">
+                                   placeholder="Example: Portfolio Project">
                         </div>
 
                         <div>
@@ -321,7 +321,7 @@
                             <input type="url"
                                    name="certificates[0][related_project_link]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="https://github.com/...">
+                                   placeholder="https://example.com/project">
                         </div>
                     </div>
 
