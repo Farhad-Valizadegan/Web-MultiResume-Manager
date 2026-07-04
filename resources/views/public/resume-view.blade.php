@@ -20,120 +20,166 @@
                     <div class="absolute bottom-0 left-0 w-72 h-72 bg-indigo-500 rounded-md blur-3xl"></div>
                 </div>
 
-                <div class="relative px-5 sm:px-8 lg:px-12 py-7 sm:py-10">
+                @php
+                    $profile = $resume->user->profile;
+                    $currentLocation = $profile?->address;
+                    $preferredLocations = [
+                        'Erlangen',
+                        'Nürnberg',
+                        'Fürth',
+                        'Munich',
+                        'Remote / Hybrid',
+                    ];
+                @endphp
+
+                <div class="relative px-5 sm:px-8 lg:px-12 py-8 sm:py-12">
                     <div class="max-w-6xl">
 
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 border border-white/20 text-blue-100 text-sm mb-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 border border-white/20 text-blue-100 text-sm mb-8">
                             <span class="w-2 h-2 rounded-sm bg-emerald-400"></span>
                             Online Professional Resume
                         </div>
 
                         <!-- Name and Photo -->
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-5">
-                            @if ($resume->user->profile && $resume->user->profile->profile_photo)
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-8">
+                            @if ($profile && $profile->profile_photo)
                                 <div class="shrink-0">
-                                    <img src="{{ asset('storage/' . $resume->user->profile->profile_photo) }}"
+                                    <img src="{{ asset('storage/' . $profile->profile_photo) }}"
                                          alt="{{ $resume->user->name }}"
-                                         class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg object-cover border-4 border-white/30 shadow-2xl">
+                                         class="w-40 h-40 sm:w-44 sm:h-44 rounded-2xl object-cover border-4 border-white/30 shadow-2xl">
                                 </div>
                             @else
-                                <div class="shrink-0 w-28 h-28 sm:w-32 sm:h-32 rounded-lg bg-white/10 border-4 border-white/20 shadow-2xl flex items-center justify-center">
-                                    <span class="text-3xl font-extrabold text-white">
+                                <div class="shrink-0 w-40 h-40 sm:w-44 sm:h-44 rounded-2xl bg-white/10 border-4 border-white/20 shadow-2xl flex items-center justify-center">
+                                    <span class="text-5xl font-extrabold text-white">
                                         {{ strtoupper(substr($resume->user->name, 0, 1)) }}
                                     </span>
                                 </div>
                             @endif
 
                             <div class="min-w-0">
-                                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight break-words">
                                     {{ $resume->user->name }}
                                 </h1>
 
-                                <p class="text-base sm:text-lg lg:text-xl text-blue-100 mt-4 break-words font-medium">
+                                <p class="text-xl sm:text-2xl text-blue-100 mt-4 break-words font-medium">
                                     {{ $resume->job_position ?? $resume->title }}
                                 </p>
+
+                                <!-- Social Links -->
+                                @if (
+                                    $profile &&
+                                    (
+                                        $profile->linkedin ||
+                                        $profile->github ||
+                                        $profile->portfolio ||
+                                        $profile->xing
+                                    )
+                                )
+                                    <div class="mt-6 flex flex-wrap gap-3">
+
+                                        @if ($profile->linkedin)
+                                            <a href="{{ $profile->linkedin }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-blue-800 hover:bg-blue-50 border border-white/30 shadow-md text-sm font-extrabold transition">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                                    <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.9-2.5 4-2.5 4.3 0 5.1 2.8 5.1 6.5V24h-4v-8.6c0-2.1 0-4.7-2.9-4.7s-3.3 2.2-3.3 4.5V24h-4V8z"/>
+                                                </svg>
+                                                LinkedIn
+                                            </a>
+                                        @endif
+
+                                        @if ($profile->github)
+                                            <a href="{{ $profile->github }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-slate-900 hover:bg-slate-100 border border-white/30 shadow-md text-sm font-extrabold transition">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56v-2.15c-3.2.7-3.87-1.38-3.87-1.38-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.18 1.18A11.1 11.1 0 0 1 12 6.05c.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.42-2.69 5.39-5.25 5.67.42.36.79 1.07.79 2.16v3.18c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
+                                                </svg>
+                                                GitHub
+                                            </a>
+                                        @endif
+
+                                        @if ($profile->portfolio)
+                                            <a href="{{ $profile->portfolio }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-indigo-900 hover:bg-indigo-50 border border-white/30 shadow-md text-sm font-extrabold transition">
+                                                Portfolio
+                                            </a>
+                                        @endif
+
+                                        @if ($profile->xing)
+                                            <a href="{{ $profile->xing }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-emerald-900 hover:bg-emerald-50 border border-white/30 shadow-md text-sm font-extrabold transition">
+                                                Xing
+                                            </a>
+                                        @endif
+
+                                    </div>
+                                @endif
                             </div>
                         </div>
 
                         <!-- Contact Information -->
-                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
-                            <div class="bg-white/10 border border-white/15 rounded-lg p-3 backdrop-blur">
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 text-sm">
+                            <div class="bg-white/10 border border-white/15 rounded-xl p-4 backdrop-blur">
                                 <p class="text-blue-100 text-xs uppercase tracking-wide">Email</p>
-                                <p class="break-all font-medium">{{ $resume->user->email }}</p>
+                                <p class="break-all font-bold mt-1">{{ $resume->user->email }}</p>
                             </div>
 
-                            @if ($resume->user->profile && $resume->user->profile->phone)
-                                <div class="bg-white/10 border border-white/15 rounded-lg p-3 backdrop-blur">
+                            @if ($profile && $profile->phone)
+                                <div class="bg-white/10 border border-white/15 rounded-xl p-4 backdrop-blur">
                                     <p class="text-blue-100 text-xs uppercase tracking-wide">Phone</p>
-                                    <p class="break-words font-medium">{{ $resume->user->profile->phone }}</p>
+                                    <p class="break-words font-bold mt-1">{{ $profile->phone }}</p>
                                 </div>
                             @endif
 
-                            @if ($resume->user->profile && $resume->user->profile->address)
-                                <div class="bg-white/10 border border-white/15 rounded-lg p-3 backdrop-blur">
-                                    <p class="text-blue-100 text-xs uppercase tracking-wide">Location</p>
-                                    <p class="break-words font-medium">{{ $resume->user->profile->address }}</p>
-                                </div>
-                            @endif
-
-                            @if ($resume->user->profile && $resume->user->profile->website)
-                                <div class="bg-white/10 border border-white/15 rounded-lg p-3 backdrop-blur">
-                                    <p class="text-blue-100 text-xs uppercase tracking-wide">Website</p>
-                                    <a href="{{ $resume->user->profile->website }}"
+                            @if ($currentLocation)
+                                <div class="bg-white/10 border border-white/15 rounded-xl p-4 backdrop-blur">
+                                    <p class="text-blue-100 text-xs uppercase tracking-wide">Current Location</p>
+                                    <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($currentLocation) }}"
                                        target="_blank"
-                                       class="break-all font-medium text-white hover:text-blue-200 underline underline-offset-4">
-                                        {{ $resume->user->profile->website }}
+                                       rel="noopener noreferrer"
+                                       class="inline-flex items-center gap-2 break-words font-bold mt-1 text-white hover:text-blue-200 underline underline-offset-4">
+                                        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+                                        </svg>
+                                        {{ $currentLocation }}
+                                    </a>
+                                </div>
+                            @endif
+
+                            @if ($profile && $profile->website)
+                                <div class="bg-white/10 border border-white/15 rounded-xl p-4 backdrop-blur">
+                                    <p class="text-blue-100 text-xs uppercase tracking-wide">Website</p>
+                                    <a href="{{ $profile->website }}"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="break-all font-bold mt-1 inline-block text-white hover:text-blue-200 underline underline-offset-4">
+                                        {{ $profile->website }}
                                     </a>
                                 </div>
                             @endif
                         </div>
 
-                        <!-- Social Links -->
-                        @if (
-                            $resume->user->profile &&
-                            (
-                                $resume->user->profile->linkedin ||
-                                $resume->user->profile->github ||
-                                $resume->user->profile->portfolio ||
-                                $resume->user->profile->xing
-                            )
-                        )
-                            <div class="mt-5 flex flex-wrap gap-3">
+                        <!-- Preferred Work Locations -->
+                        <div class="mt-6 bg-white/10 border border-white/15 rounded-xl p-4 backdrop-blur">
+                            <p class="text-blue-100 text-xs uppercase tracking-wide mb-3">
+                                Preferred Work Locations
+                            </p>
 
-                                @if ($resume->user->profile->linkedin)
-                                    <a href="{{ $resume->user->profile->linkedin }}"
-                                       target="_blank"
-                                       class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-blue-900 hover:bg-blue-50 border border-white/30 shadow-md text-sm font-bold transition">
-                                        LinkedIn
-                                    </a>
-                                @endif
-
-                                @if ($resume->user->profile->github)
-                                    <a href="{{ $resume->user->profile->github }}"
-                                       target="_blank"
-                                       class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-slate-900 hover:bg-slate-100 border border-white/30 shadow-md text-sm font-bold transition">
-                                        GitHub
-                                    </a>
-                                @endif
-
-                                @if ($resume->user->profile->portfolio)
-                                    <a href="{{ $resume->user->profile->portfolio }}"
-                                       target="_blank"
-                                       class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-indigo-900 hover:bg-indigo-50 border border-white/30 shadow-md text-sm font-bold transition">
-                                        Portfolio
-                                    </a>
-                                @endif
-
-                                @if ($resume->user->profile->xing)
-                                    <a href="{{ $resume->user->profile->xing }}"
-                                       target="_blank"
-                                       class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-emerald-900 hover:bg-emerald-50 border border-white/30 shadow-md text-sm font-bold transition">
-                                        Xing
-                                    </a>
-                                @endif
-
+                            <div class="flex flex-wrap gap-2">
+                                @foreach ($preferredLocations as $location)
+                                    <span class="inline-flex items-center rounded-md bg-white/15 border border-white/20 px-3 py-1.5 text-sm font-bold text-white">
+                                        {{ $location }}
+                                    </span>
+                                @endforeach
                             </div>
-                        @endif
+                        </div>
 
                         <!-- Download Buttons -->
                         @if (
@@ -145,7 +191,7 @@
 
                                 @if ($resume->download_resume_type === 'generated' || $resume->download_resume_type === 'both')
                                     <a href="{{ route('public.resume.download-generated-pdf', $resume->public_link) }}"
-                                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg text-sm font-extrabold transition">
+                                       class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg text-sm font-extrabold transition">
                                         Download Generated PDF
                                     </a>
                                 @endif
@@ -155,7 +201,7 @@
                                     $resume->uploaded_resume_file
                                 )
                                     <a href="{{ route('public.resume.download-uploaded-pdf', $resume->public_link) }}"
-                                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-white text-slate-900 hover:bg-slate-100 shadow-lg text-sm font-extrabold transition">
+                                       class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-slate-900 hover:bg-slate-100 shadow-lg text-sm font-extrabold transition">
                                         Download Uploaded PDF
                                     </a>
                                 @endif
