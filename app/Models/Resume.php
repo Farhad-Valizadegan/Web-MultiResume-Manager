@@ -14,6 +14,7 @@ class Resume extends Model
         'resume_password_hash',
         'uploaded_resume_file',
         'download_resume_type',
+        'skill_display_style',
         'view_count',
         'last_viewed_at',
         'status',
