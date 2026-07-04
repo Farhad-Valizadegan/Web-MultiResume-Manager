@@ -366,10 +366,6 @@ class ResumeController extends Controller
                 $certificateFilePath = $certificate['existing_certificate_file'] ?? null;
 
                 if ($request->hasFile("certificates.$index.certificate_file")) {
-                    if ($certificateFilePath) {
-                        Storage::disk('public')->delete($certificateFilePath);
-                    }
-
                     $certificateFilePath = $request
                         ->file("certificates.$index.certificate_file")
                         ->store('certificate-files', 'public');
@@ -398,6 +394,12 @@ class ResumeController extends Controller
         $resume->educations()->delete();
         $resume->experiences()->delete();
         $resume->projects()->delete();
+
+        foreach ($resume->certificates as $certificate) {
+            if ($certificate->certificate_file) {
+                Storage::disk('public')->delete($certificate->certificate_file);
+            }
+        }
 
         $resume->certificates()->delete();
     }
