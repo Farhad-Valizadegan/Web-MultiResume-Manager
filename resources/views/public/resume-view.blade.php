@@ -236,7 +236,7 @@
                             </h2>
 
                             <p class="text-slate-500 text-sm mt-1">
-                                Grouped technical and professional skills
+                                Technical skills grouped by category
                             </p>
                         </div>
 
@@ -246,27 +246,61 @@
                             });
                         @endphp
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                            @foreach ($groupedSkills as $category => $skills)
-                                <div class="rounded-md border border-slate-200 bg-slate-50 p-5 shadow-sm hover:shadow-md transition">
-                                    <h3 class="text-lg font-extrabold text-slate-900 mb-4 break-words">
-                                        {{ $category }}
-                                    </h3>
+                        @if ($resume->skill_display_style === 'compact')
+                            <!-- Compact List Style -->
+                            <div class="border border-slate-200 rounded-md overflow-hidden">
+                                @foreach ($groupedSkills as $category => $skills)
+                                    <div class="{{ $loop->odd ? 'bg-slate-100' : 'bg-white' }} px-4 py-2 text-sm sm:text-base leading-relaxed">
+                                        <span class="font-extrabold text-slate-950">
+                                            {{ $category }}:
+                                        </span>
 
-                                    <div class="flex flex-wrap gap-2">
-                                        @foreach ($skills as $skill)
-                                            <span class="inline-flex items-center gap-1 bg-blue-50 border border-blue-100 text-blue-900 px-3 py-2 rounded-md text-sm">
-                                                <span class="font-bold">{{ $skill->skill_name }}</span>
+                                        <span class="text-slate-900">
+                                            @foreach ($skills as $skill)
+                                                {{ $skill->skill_name }}
 
                                                 @if ($skill->skill_level)
-                                                    <span class="text-blue-600">• {{ $skill->skill_level }}</span>
+                                                    <span class="text-slate-500">
+                                                        ({{ $skill->skill_level }})
+                                                    </span>
                                                 @endif
-                                            </span>
-                                        @endforeach
+
+                                                @if (!$loop->last)
+                                                    ,
+                                                @endif
+                                            @endforeach
+                                        </span>
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <!-- Card Style -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                                @foreach ($groupedSkills as $category => $skills)
+                                    <div class="rounded-md border border-indigo-100 bg-gradient-to-br from-white to-indigo-50 p-5 shadow-sm hover:shadow-md transition">
+                                        <h3 class="text-base font-extrabold text-slate-900 break-words mb-4">
+                                            {{ $category }}
+                                        </h3>
+
+                                        <div class="flex flex-wrap gap-2">
+                                            @foreach ($skills as $skill)
+                                                <span class="inline-flex flex-col px-3 py-2 rounded-md bg-indigo-100 text-indigo-800 text-sm font-semibold">
+                                                    <span>
+                                                        {{ $skill->skill_name }}
+                                                    </span>
+
+                                                    @if ($skill->skill_level)
+                                                        <span class="text-xs text-indigo-600 font-medium mt-1">
+                                                            {{ $skill->skill_level }}
+                                                        </span>
+                                                    @endif
+                                                </span>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
                     </section>
                 @endif
 
