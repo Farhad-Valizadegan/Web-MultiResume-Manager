@@ -108,7 +108,7 @@
                           type="text"
                           class="mt-1 block w-full"
                           :value="old('phone', $user->profile->phone ?? '')"
-                          placeholder="Example: +49 176 12345678" />
+                          placeholder="Example: +49 XXX XXXXXXX" />
 
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
@@ -122,7 +122,7 @@
                           type="text"
                           class="mt-1 block w-full"
                           :value="old('address', $user->profile->address ?? '')"
-                          placeholder="Example: Erlangen, Germany" />
+                          placeholder="Example: City, Country" />
 
             <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>

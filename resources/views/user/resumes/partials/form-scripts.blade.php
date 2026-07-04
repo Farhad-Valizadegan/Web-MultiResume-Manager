@@ -92,7 +92,7 @@
                         <input type="text"
                                name="languages[${languageIndex}][language_name]"
                                class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                               placeholder="Example: German">
+                               placeholder="Example: Language Name">
                     </div>
 
                     <div>
@@ -100,7 +100,7 @@
                         <input type="text"
                                name="languages[${languageIndex}][proficiency_level]"
                                class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                               placeholder="Example: A2">
+                               placeholder="Example: Intermediate">
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                         <input type="text"
                                name="educations[${educationIndex}][institution_name]"
                                class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                               placeholder="Example: FAU Erlangen-Nürnberg">
+                               placeholder="Example: University Name">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -199,7 +199,7 @@
                             <input type="text"
                                    name="educations[${educationIndex}][field_of_study]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: Computational Engineering">
+                                   placeholder="Example: Computer Science">
                         </div>
                     </div>
 
@@ -262,7 +262,7 @@
                             <input type="text"
                                    name="experiences[${experienceIndex}][company_name]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: Zar Vision Rasta Co.">
+                                   placeholder="Example: Company Name">
                         </div>
 
                         <div>
@@ -332,7 +332,7 @@
                         <input type="text"
                                name="projects[${projectIndex}][project_title]"
                                class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                               placeholder="Example: Online Resume Management System">
+                               placeholder="Example: Portfolio Website">
                     </div>
 
                     <div>
@@ -386,7 +386,7 @@
                             <input type="text"
                                    name="certificates[${certificateIndex}][certificate_title]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: Machine Learning Specialization">
+                                   placeholder="Example: Professional Certificate">
                         </div>
 
                         <div>
@@ -394,7 +394,7 @@
                             <input type="text"
                                    name="certificates[${certificateIndex}][issuer]"
                                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: Coursera">
+                                   placeholder="Example: Certificate Provider">
                         </div>
                     </div>
 
@@ -420,7 +420,7 @@
                         <input type="url"
                                name="certificates[${certificateIndex}][credential_url]"
                                class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                               placeholder="https://...">
+                               placeholder="https://example.com/certificate">
                     </div>
 
                     <div>
