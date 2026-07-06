@@ -121,18 +121,20 @@
                             @endif
                         </div>
 
-                        <!-- Cloudflare Turnstile CAPTCHA -->
-                        <div class="pt-2">
-                            <label class="block mb-2 font-bold text-slate-800">
-                                Security Check
-                            </label>
+                        @if (config('services.turnstile.enabled'))
+                            <!-- Cloudflare Turnstile CAPTCHA -->
+                            <div class="pt-2">
+                                <label class="block mb-2 font-bold text-slate-800">
+                                    Security Check
+                                </label>
 
-                            <div class="cf-turnstile"
-                                 data-sitekey="{{ config('services.turnstile.site_key') }}">
+                                <div class="cf-turnstile"
+                                     data-sitekey="{{ config('services.turnstile.site_key') }}">
+                                </div>
+
+                                <x-input-error :messages="$errors->get('cf-turnstile-response')" class="mt-2" />
                             </div>
-
-                            <x-input-error :messages="$errors->get('cf-turnstile-response')" class="mt-2" />
-                        </div>
+                        @endif
 
                         <!-- Submit -->
                         <div class="pt-4 border-t-2 border-slate-200">
@@ -153,7 +155,9 @@
         </div>
     </div>
 
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    @if (config('services.turnstile.enabled'))
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    @endif
 
 </body>
 </html>
