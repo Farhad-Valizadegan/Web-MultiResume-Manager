@@ -10,7 +10,7 @@ return [
     | This file is for storing the credentials for third party services such
     | as Mailgun, Postmark, AWS and more. This file provides the de facto
     | location for this type of information, allowing packages to have
-    | a conventional file to locate the various service credentials.
+    | a conventional file to locate these service credentials.
     |
     */
 
@@ -36,7 +36,7 @@ return [
     ],
 
     'turnstile' => [
-        'enabled' => env('TURNSTILE_ENABLED', ! app()->environment('local')),
+        'enabled' => env('TURNSTILE_ENABLED', false),
         'site_key' => env('TURNSTILE_SITE_KEY'),
         'secret_key' => env('TURNSTILE_SECRET_KEY'),
     ],
