@@ -33,7 +33,7 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
 
-        if (! app()->environment('testing')) {
+        if ($this->turnstileIsEnabled()) {
             $rules['cf-turnstile-response'] = ['required', 'string'];
         }
 
@@ -63,13 +63,21 @@ class LoginRequest extends FormRequest
     }
 
     /**
+     * Check whether Cloudflare Turnstile should be enforced.
+     */
+    protected function turnstileIsEnabled(): bool
+    {
+        return (bool) config('services.turnstile.enabled');
+    }
+
+    /**
      * Verify the Cloudflare Turnstile CAPTCHA token.
      *
      * @throws ValidationException
      */
     protected function verifyTurnstile(): void
     {
-        if (app()->environment('testing')) {
+        if (! $this->turnstileIsEnabled()) {
             return;
         }
 
