@@ -69,72 +69,161 @@
                             </h4>
 
                             <p class="text-sm text-slate-600 mt-1">
-                                Choose how specific resume sections should appear on the public resume page.
+                                Choose how the public resume page should display skills and visual theme.
                             </p>
                         </div>
 
-                        <div class="bg-white border border-slate-200 rounded-md p-4">
-                            <label class="block text-sm font-bold text-slate-800 mb-3">
-                                Skills Display Style
-                            </label>
+                        <div class="space-y-6">
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <!-- Compact List Option -->
-                                <label class="flex items-start gap-3 rounded-lg border-2 border-slate-300 bg-slate-50 p-4 cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition">
-                                    <input
-                                        type="radio"
-                                        name="skill_display_style"
-                                        value="compact"
-                                        class="mt-1"
-                                        {{ old('skill_display_style', $resume->skill_display_style ?? 'compact') === 'compact' ? 'checked' : '' }}
-                                    >
-
-                                    <span>
-                                        <span class="block font-extrabold text-slate-900">
-                                            Compact List
-                                        </span>
-
-                                        <span class="block text-sm text-slate-600 mt-1">
-                                            Shows skills grouped by category in a clean line-based format.
-                                        </span>
-
-                                        <span class="block text-xs text-slate-500 mt-2">
-                                            Example: Programming Languages: PHP, JavaScript, Python
-                                        </span>
-                                    </span>
+                            <!-- Skills Display Style -->
+                            <div class="bg-white border border-slate-200 rounded-md p-4">
+                                <label class="block text-sm font-bold text-slate-800 mb-3">
+                                    Skills Display Style
                                 </label>
 
-                                <!-- Card View Option -->
-                                <label class="flex items-start gap-3 rounded-lg border-2 border-slate-300 bg-slate-50 p-4 cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition">
-                                    <input
-                                        type="radio"
-                                        name="skill_display_style"
-                                        value="cards"
-                                        class="mt-1"
-                                        {{ old('skill_display_style', $resume->skill_display_style ?? 'compact') === 'cards' ? 'checked' : '' }}
-                                    >
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <!-- Compact List Option -->
+                                    <label class="flex items-start gap-3 rounded-lg border-2 border-slate-300 bg-slate-50 p-4 cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition">
+                                        <input
+                                            type="radio"
+                                            name="skill_display_style"
+                                            value="compact"
+                                            class="mt-1"
+                                            {{ old('skill_display_style', $resume->skill_display_style ?? 'compact') === 'compact' ? 'checked' : '' }}
+                                        >
 
-                                    <span>
-                                        <span class="block font-extrabold text-slate-900">
-                                            Card View
-                                        </span>
+                                        <span>
+                                            <span class="block font-extrabold text-slate-900">
+                                                Compact List
+                                            </span>
 
-                                        <span class="block text-sm text-slate-600 mt-1">
-                                            Shows each skill category as a separate visual card.
-                                        </span>
+                                            <span class="block text-sm text-slate-600 mt-1">
+                                                Shows skills grouped by category in a clean line-based format.
+                                            </span>
 
-                                        <span class="block text-xs text-slate-500 mt-2">
-                                            Best for resumes with many grouped technical skills.
+                                            <span class="block text-xs text-slate-500 mt-2">
+                                                Example: Programming Languages: PHP, JavaScript, Python
+                                            </span>
                                         </span>
-                                    </span>
-                                </label>
+                                    </label>
+
+                                    <!-- Card View Option -->
+                                    <label class="flex items-start gap-3 rounded-lg border-2 border-slate-300 bg-slate-50 p-4 cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition">
+                                        <input
+                                            type="radio"
+                                            name="skill_display_style"
+                                            value="cards"
+                                            class="mt-1"
+                                            {{ old('skill_display_style', $resume->skill_display_style ?? 'compact') === 'cards' ? 'checked' : '' }}
+                                        >
+
+                                        <span>
+                                            <span class="block font-extrabold text-slate-900">
+                                                Card View
+                                            </span>
+
+                                            <span class="block text-sm text-slate-600 mt-1">
+                                                Shows each skill category as a separate visual card.
+                                            </span>
+
+                                            <span class="block text-xs text-slate-500 mt-2">
+                                                Best for resumes with many grouped technical skills.
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                @error('skill_display_style')
+                                    <p class="text-red-600 text-sm mt-3">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
                             </div>
 
-                            @error('skill_display_style')
-                                <p class="text-red-600 text-sm mt-3">
-                                    {{ $message }}
-                                </p>
-                            @enderror
+                            <!-- Resume Theme -->
+                            <div class="bg-white border border-slate-200 rounded-md p-4">
+                                <label class="block text-sm font-bold text-slate-800 mb-3">
+                                    Resume Theme
+                                </label>
+
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <!-- Professional Blue -->
+                                    <label class="flex items-start gap-3 rounded-lg border-2 border-slate-300 bg-slate-50 p-4 cursor-pointer hover:bg-blue-50 hover:border-blue-300 transition">
+                                        <input
+                                            type="radio"
+                                            name="theme"
+                                            value="professional_blue"
+                                            class="mt-1"
+                                            {{ old('theme', $resume->theme ?? 'professional_blue') === 'professional_blue' ? 'checked' : '' }}
+                                        >
+
+                                        <span>
+                                            <span class="block font-extrabold text-slate-900">
+                                                Professional Blue
+                                            </span>
+
+                                            <span class="block text-sm text-slate-600 mt-1">
+                                                A clean professional theme with blue accents.
+                                            </span>
+
+                                            <span class="block mt-3 h-2 rounded-full bg-gradient-to-r from-slate-900 via-blue-700 to-blue-400"></span>
+                                        </span>
+                                    </label>
+
+                                    <!-- Dark Modern -->
+                                    <label class="flex items-start gap-3 rounded-lg border-2 border-slate-300 bg-slate-50 p-4 cursor-pointer hover:bg-slate-100 hover:border-slate-500 transition">
+                                        <input
+                                            type="radio"
+                                            name="theme"
+                                            value="dark_modern"
+                                            class="mt-1"
+                                            {{ old('theme', $resume->theme ?? 'professional_blue') === 'dark_modern' ? 'checked' : '' }}
+                                        >
+
+                                        <span>
+                                            <span class="block font-extrabold text-slate-900">
+                                                Dark Modern
+                                            </span>
+
+                                            <span class="block text-sm text-slate-600 mt-1">
+                                                A strong dark theme for modern technical resumes.
+                                            </span>
+
+                                            <span class="block mt-3 h-2 rounded-full bg-gradient-to-r from-black via-slate-800 to-cyan-500"></span>
+                                        </span>
+                                    </label>
+
+                                    <!-- Minimal Light -->
+                                    <label class="flex items-start gap-3 rounded-lg border-2 border-slate-300 bg-slate-50 p-4 cursor-pointer hover:bg-gray-50 hover:border-gray-400 transition">
+                                        <input
+                                            type="radio"
+                                            name="theme"
+                                            value="minimal_light"
+                                            class="mt-1"
+                                            {{ old('theme', $resume->theme ?? 'professional_blue') === 'minimal_light' ? 'checked' : '' }}
+                                        >
+
+                                        <span>
+                                            <span class="block font-extrabold text-slate-900">
+                                                Minimal Light
+                                            </span>
+
+                                            <span class="block text-sm text-slate-600 mt-1">
+                                                A simple light theme for formal and academic resumes.
+                                            </span>
+
+                                            <span class="block mt-3 h-2 rounded-full bg-gradient-to-r from-white via-slate-200 to-slate-500 border border-slate-300"></span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                @error('theme')
+                                    <p class="text-red-600 text-sm mt-3">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+
                         </div>
                     </section>
 

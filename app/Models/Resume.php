@@ -15,6 +15,7 @@ class Resume extends Model
         'uploaded_resume_file',
         'download_resume_type',
         'skill_display_style',
+        'theme',
         'view_count',
         'last_viewed_at',
         'status',

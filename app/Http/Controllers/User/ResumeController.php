@@ -36,6 +36,7 @@ class ResumeController extends Controller
             'uploaded_resume_file' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
             'download_resume_type' => ['required', 'in:generated,uploaded,both'],
             'skill_display_style' => ['required', 'string', 'in:compact,cards'],
+            'theme' => ['required', 'string', 'in:professional_blue,dark_modern,minimal_light'],
 
             'skills' => ['nullable', 'array'],
             'skills.*.skill_category' => ['nullable', 'string', 'max:255'],
@@ -113,6 +114,7 @@ class ResumeController extends Controller
             'uploaded_resume_file' => $uploadedResumeFilePath,
             'download_resume_type' => $validated['download_resume_type'],
             'skill_display_style' => $validated['skill_display_style'],
+            'theme' => $validated['theme'],
             'status' => 'active',
         ]);
 
@@ -156,6 +158,7 @@ class ResumeController extends Controller
             'uploaded_resume_file' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
             'download_resume_type' => ['required', 'in:generated,uploaded,both'],
             'skill_display_style' => ['required', 'string', 'in:compact,cards'],
+            'theme' => ['required', 'string', 'in:professional_blue,dark_modern,minimal_light'],
 
             'skills' => ['nullable', 'array'],
             'skills.*.skill_category' => ['nullable', 'string', 'max:255'],
@@ -234,6 +237,7 @@ class ResumeController extends Controller
             'uploaded_resume_file' => $uploadedResumeFilePath,
             'download_resume_type' => $validated['download_resume_type'],
             'skill_display_style' => $validated['skill_display_style'],
+            'theme' => $validated['theme'],
         ]);
 
         $this->deleteResumeDetails($resume);
