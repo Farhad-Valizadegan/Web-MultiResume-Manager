@@ -46,8 +46,8 @@
                     </div>
 
                     <input type="hidden"
-                           name="certificates[{{ $index }}][existing_certificate_file]"
-                           value="{{ $certificate->certificate_file }}">
+                           name="certificates[{{ $index }}][id]"
+                           value="{{ $certificate->id }}">
 
                     <div class="space-y-4">
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ResumeController extends Controller
 {
@@ -33,64 +34,195 @@ class ResumeController extends Controller
             'job_position' => ['nullable', 'string', 'max:255'],
             'resume_password' => ['nullable', 'string', 'min:6'],
 
-            'uploaded_resume_file' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
-            'download_resume_type' => ['required', 'in:generated,uploaded,both'],
-            'skill_display_style' => ['required', 'string', 'in:compact,cards'],
-            'theme' => ['required', 'string', 'in:professional_blue,dark_modern,minimal_light'],
+            'uploaded_resume_file' => [
+                'nullable',
+                'file',
+                'mimes:pdf',
+                'max:5120',
+            ],
+            'download_resume_type' => [
+                'required',
+                'in:generated,uploaded,both',
+            ],
+            'skill_display_style' => [
+                'required',
+                'string',
+                'in:compact,cards',
+            ],
+            'theme' => [
+                'required',
+                'string',
+                'in:professional_blue,dark_modern,minimal_light',
+            ],
 
             'skills' => ['nullable', 'array'],
-            'skills.*.skill_category' => ['nullable', 'string', 'max:255'],
-            'skills.*.skill_name' => ['nullable', 'string', 'max:255'],
-            'skills.*.skill_level' => ['nullable', 'string', 'max:255'],
+            'skills.*.skill_category' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'skills.*.skill_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'skills.*.skill_level' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
 
             'languages' => ['nullable', 'array'],
-            'languages.*.language_name' => ['nullable', 'string', 'max:255'],
-            'languages.*.proficiency_level' => ['nullable', 'string', 'max:255'],
+            'languages.*.language_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'languages.*.proficiency_level' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
 
             'interests' => ['nullable', 'array'],
-            'interests.*.interest_name' => ['nullable', 'string', 'max:255'],
-            'interests.*.description' => ['nullable', 'string'],
+            'interests.*.interest_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'interests.*.description' => [
+                'nullable',
+                'string',
+            ],
 
             'educations' => ['nullable', 'array'],
-            'educations.*.institution_name' => ['nullable', 'string', 'max:255'],
-            'educations.*.degree' => ['nullable', 'string', 'max:255'],
-            'educations.*.field_of_study' => ['nullable', 'string', 'max:255'],
-            'educations.*.start_date' => ['nullable', 'date'],
-            'educations.*.end_date' => ['nullable', 'date'],
-            'educations.*.description' => ['nullable', 'string'],
+            'educations.*.institution_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'educations.*.degree' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'educations.*.field_of_study' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'educations.*.start_date' => [
+                'nullable',
+                'date',
+            ],
+            'educations.*.end_date' => [
+                'nullable',
+                'date',
+            ],
+            'educations.*.description' => [
+                'nullable',
+                'string',
+            ],
 
             'experiences' => ['nullable', 'array'],
-            'experiences.*.company_name' => ['nullable', 'string', 'max:255'],
-            'experiences.*.job_title' => ['nullable', 'string', 'max:255'],
-            'experiences.*.start_date' => ['nullable', 'date'],
-            'experiences.*.end_date' => ['nullable', 'date'],
-            'experiences.*.description' => ['nullable', 'string'],
+            'experiences.*.company_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'experiences.*.job_title' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'experiences.*.start_date' => [
+                'nullable',
+                'date',
+            ],
+            'experiences.*.end_date' => [
+                'nullable',
+                'date',
+            ],
+            'experiences.*.description' => [
+                'nullable',
+                'string',
+            ],
 
             'projects' => ['nullable', 'array'],
-            'projects.*.project_title' => ['nullable', 'string', 'max:255'],
-            'projects.*.project_description' => ['nullable', 'string'],
-            'projects.*.project_link' => ['nullable', 'url', 'max:255'],
+            'projects.*.project_title' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'projects.*.project_description' => [
+                'nullable',
+                'string',
+            ],
+            'projects.*.project_link' => [
+                'nullable',
+                'url',
+                'max:255',
+            ],
 
             'certificates' => ['nullable', 'array'],
-            'certificates.*.certificate_title' => ['nullable', 'string', 'max:255'],
-            'certificates.*.issuer' => ['nullable', 'string', 'max:255'],
-            'certificates.*.issue_date' => ['nullable', 'date'],
-            'certificates.*.credential_id' => ['nullable', 'string', 'max:255'],
-            'certificates.*.credential_url' => ['nullable', 'url', 'max:255'],
-            'certificates.*.certificate_file' => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:4096'],
-            'certificates.*.existing_certificate_file' => ['nullable', 'string', 'max:255'],
-            'certificates.*.description' => ['nullable', 'string'],
-            'certificates.*.related_project_title' => ['nullable', 'string', 'max:255'],
-            'certificates.*.related_project_link' => ['nullable', 'url', 'max:255'],
+            'certificates.*.certificate_title' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'certificates.*.issuer' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'certificates.*.issue_date' => [
+                'nullable',
+                'date',
+            ],
+            'certificates.*.credential_id' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'certificates.*.credential_url' => [
+                'nullable',
+                'url',
+                'max:255',
+            ],
+            'certificates.*.certificate_file' => [
+                'nullable',
+                'file',
+                'mimes:pdf,jpg,jpeg,png,webp',
+                'max:4096',
+            ],
+            'certificates.*.description' => [
+                'nullable',
+                'string',
+            ],
+            'certificates.*.related_project_title' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'certificates.*.related_project_link' => [
+                'nullable',
+                'url',
+                'max:255',
+            ],
         ]);
 
         if (
-            in_array($validated['download_resume_type'], ['uploaded', 'both'], true)
+            in_array(
+                $validated['download_resume_type'],
+                ['uploaded', 'both'],
+                true
+            )
             && !$request->hasFile('uploaded_resume_file')
         ) {
             return back()
                 ->withErrors([
-                    'uploaded_resume_file' => 'Please upload a PDF resume file or choose Generated Resume PDF only.',
+                    'uploaded_resume_file' =>
+                        'Please upload a PDF resume file or choose Generated Resume PDF only.',
                 ])
                 ->withInput();
         }
@@ -112,13 +244,19 @@ class ResumeController extends Controller
                 ? Hash::make($validated['resume_password'])
                 : null,
             'uploaded_resume_file' => $uploadedResumeFilePath,
-            'download_resume_type' => $validated['download_resume_type'],
-            'skill_display_style' => $validated['skill_display_style'],
+            'download_resume_type' =>
+                $validated['download_resume_type'],
+            'skill_display_style' =>
+                $validated['skill_display_style'],
             'theme' => $validated['theme'],
             'status' => 'active',
         ]);
 
-        $this->saveResumeDetails($request, $validated, $resume);
+        $this->saveResumeDetails(
+            $request,
+            $validated,
+            $resume
+        );
 
         return redirect()
             ->route('user.resumes.index')
@@ -155,65 +293,206 @@ class ResumeController extends Controller
             'job_position' => ['nullable', 'string', 'max:255'],
             'status' => ['required', 'in:active,inactive'],
 
-            'uploaded_resume_file' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
-            'download_resume_type' => ['required', 'in:generated,uploaded,both'],
-            'skill_display_style' => ['required', 'string', 'in:compact,cards'],
-            'theme' => ['required', 'string', 'in:professional_blue,dark_modern,minimal_light'],
+            'uploaded_resume_file' => [
+                'nullable',
+                'file',
+                'mimes:pdf',
+                'max:5120',
+            ],
+            'download_resume_type' => [
+                'required',
+                'in:generated,uploaded,both',
+            ],
+            'skill_display_style' => [
+                'required',
+                'string',
+                'in:compact,cards',
+            ],
+            'theme' => [
+                'required',
+                'string',
+                'in:professional_blue,dark_modern,minimal_light',
+            ],
 
             'skills' => ['nullable', 'array'],
-            'skills.*.skill_category' => ['nullable', 'string', 'max:255'],
-            'skills.*.skill_name' => ['nullable', 'string', 'max:255'],
-            'skills.*.skill_level' => ['nullable', 'string', 'max:255'],
+            'skills.*.skill_category' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'skills.*.skill_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'skills.*.skill_level' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
 
             'languages' => ['nullable', 'array'],
-            'languages.*.language_name' => ['nullable', 'string', 'max:255'],
-            'languages.*.proficiency_level' => ['nullable', 'string', 'max:255'],
+            'languages.*.language_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'languages.*.proficiency_level' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
 
             'interests' => ['nullable', 'array'],
-            'interests.*.interest_name' => ['nullable', 'string', 'max:255'],
-            'interests.*.description' => ['nullable', 'string'],
+            'interests.*.interest_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'interests.*.description' => [
+                'nullable',
+                'string',
+            ],
 
             'educations' => ['nullable', 'array'],
-            'educations.*.institution_name' => ['nullable', 'string', 'max:255'],
-            'educations.*.degree' => ['nullable', 'string', 'max:255'],
-            'educations.*.field_of_study' => ['nullable', 'string', 'max:255'],
-            'educations.*.start_date' => ['nullable', 'date'],
-            'educations.*.end_date' => ['nullable', 'date'],
-            'educations.*.description' => ['nullable', 'string'],
+            'educations.*.institution_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'educations.*.degree' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'educations.*.field_of_study' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'educations.*.start_date' => [
+                'nullable',
+                'date',
+            ],
+            'educations.*.end_date' => [
+                'nullable',
+                'date',
+            ],
+            'educations.*.description' => [
+                'nullable',
+                'string',
+            ],
 
             'experiences' => ['nullable', 'array'],
-            'experiences.*.company_name' => ['nullable', 'string', 'max:255'],
-            'experiences.*.job_title' => ['nullable', 'string', 'max:255'],
-            'experiences.*.start_date' => ['nullable', 'date'],
-            'experiences.*.end_date' => ['nullable', 'date'],
-            'experiences.*.description' => ['nullable', 'string'],
+            'experiences.*.company_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'experiences.*.job_title' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'experiences.*.start_date' => [
+                'nullable',
+                'date',
+            ],
+            'experiences.*.end_date' => [
+                'nullable',
+                'date',
+            ],
+            'experiences.*.description' => [
+                'nullable',
+                'string',
+            ],
 
             'projects' => ['nullable', 'array'],
-            'projects.*.project_title' => ['nullable', 'string', 'max:255'],
-            'projects.*.project_description' => ['nullable', 'string'],
-            'projects.*.project_link' => ['nullable', 'url', 'max:255'],
+            'projects.*.project_title' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'projects.*.project_description' => [
+                'nullable',
+                'string',
+            ],
+            'projects.*.project_link' => [
+                'nullable',
+                'url',
+                'max:255',
+            ],
 
             'certificates' => ['nullable', 'array'],
-            'certificates.*.certificate_title' => ['nullable', 'string', 'max:255'],
-            'certificates.*.issuer' => ['nullable', 'string', 'max:255'],
-            'certificates.*.issue_date' => ['nullable', 'date'],
-            'certificates.*.credential_id' => ['nullable', 'string', 'max:255'],
-            'certificates.*.credential_url' => ['nullable', 'url', 'max:255'],
-            'certificates.*.certificate_file' => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png,webp', 'max:4096'],
-            'certificates.*.existing_certificate_file' => ['nullable', 'string', 'max:255'],
-            'certificates.*.description' => ['nullable', 'string'],
-            'certificates.*.related_project_title' => ['nullable', 'string', 'max:255'],
-            'certificates.*.related_project_link' => ['nullable', 'url', 'max:255'],
+            'certificates.*.id' => [
+                'nullable',
+                'integer',
+                'distinct',
+                Rule::exists('resume_certificates', 'id')
+                    ->where(
+                        fn ($query) =>
+                            $query->where('resume_id', $resume->id)
+                    ),
+            ],
+            'certificates.*.certificate_title' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'certificates.*.issuer' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'certificates.*.issue_date' => [
+                'nullable',
+                'date',
+            ],
+            'certificates.*.credential_id' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'certificates.*.credential_url' => [
+                'nullable',
+                'url',
+                'max:255',
+            ],
+            'certificates.*.certificate_file' => [
+                'nullable',
+                'file',
+                'mimes:pdf,jpg,jpeg,png,webp',
+                'max:4096',
+            ],
+            'certificates.*.description' => [
+                'nullable',
+                'string',
+            ],
+            'certificates.*.related_project_title' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'certificates.*.related_project_link' => [
+                'nullable',
+                'url',
+                'max:255',
+            ],
         ]);
 
         if (
-            in_array($validated['download_resume_type'], ['uploaded', 'both'], true)
+            in_array(
+                $validated['download_resume_type'],
+                ['uploaded', 'both'],
+                true
+            )
             && !$request->hasFile('uploaded_resume_file')
             && !$resume->uploaded_resume_file
         ) {
             return back()
                 ->withErrors([
-                    'uploaded_resume_file' => 'Please upload a PDF resume file or choose Generated Resume PDF only.',
+                    'uploaded_resume_file' =>
+                        'Please upload a PDF resume file or choose Generated Resume PDF only.',
                 ])
                 ->withInput();
         }
@@ -221,13 +500,16 @@ class ResumeController extends Controller
         $uploadedResumeFilePath = $resume->uploaded_resume_file;
 
         if ($request->hasFile('uploaded_resume_file')) {
-            if ($resume->uploaded_resume_file) {
-                Storage::disk('public')->delete($resume->uploaded_resume_file);
-            }
-
-            $uploadedResumeFilePath = $request
+            $newUploadedResumeFilePath = $request
                 ->file('uploaded_resume_file')
                 ->store('uploaded-resumes', 'public');
+
+            if ($resume->uploaded_resume_file) {
+                Storage::disk('public')
+                    ->delete($resume->uploaded_resume_file);
+            }
+
+            $uploadedResumeFilePath = $newUploadedResumeFilePath;
         }
 
         $resume->update([
@@ -235,14 +517,25 @@ class ResumeController extends Controller
             'job_position' => $validated['job_position'] ?? null,
             'status' => $validated['status'],
             'uploaded_resume_file' => $uploadedResumeFilePath,
-            'download_resume_type' => $validated['download_resume_type'],
-            'skill_display_style' => $validated['skill_display_style'],
+            'download_resume_type' =>
+                $validated['download_resume_type'],
+            'skill_display_style' =>
+                $validated['skill_display_style'],
             'theme' => $validated['theme'],
         ]);
 
-        $this->deleteResumeDetails($resume);
+        $this->deleteReplaceableResumeDetails($resume);
 
-        $this->saveResumeDetails($request, $validated, $resume);
+        $this->saveReplaceableResumeDetails(
+            $validated,
+            $resume
+        );
+
+        $this->syncCertificates(
+            $request,
+            $validated,
+            $resume
+        );
 
         return redirect()
             ->route('user.resumes.index')
@@ -256,12 +549,14 @@ class ResumeController extends Controller
         }
 
         if ($resume->uploaded_resume_file) {
-            Storage::disk('public')->delete($resume->uploaded_resume_file);
+            Storage::disk('public')
+                ->delete($resume->uploaded_resume_file);
         }
 
         foreach ($resume->certificates as $certificate) {
             if ($certificate->certificate_file) {
-                Storage::disk('public')->delete($certificate->certificate_file);
+                Storage::disk('public')
+                    ->delete($certificate->certificate_file);
             }
         }
 
@@ -281,76 +576,163 @@ class ResumeController extends Controller
         return view('user.resumes.password', compact('resume'));
     }
 
-    public function updatePassword(Request $request, Resume $resume)
-    {
+    public function updatePassword(
+        Request $request,
+        Resume $resume
+    ) {
         if ($resume->user_id !== auth()->id()) {
             abort(403, 'Unauthorized access.');
         }
 
         $validated = $request->validate([
-            'resume_password' => ['required', 'string', 'min:6'],
+            'resume_password' => [
+                'required',
+                'string',
+                'min:6',
+            ],
         ]);
 
         $resume->update([
-            'resume_password_hash' => Hash::make($validated['resume_password']),
+            'resume_password_hash' =>
+                Hash::make($validated['resume_password']),
         ]);
 
         return redirect()
             ->route('user.resumes.index')
-            ->with('success', 'Resume password updated successfully.');
+            ->with(
+                'success',
+                'Resume password updated successfully.'
+            );
     }
 
-    private function saveResumeDetails(Request $request, array $validated, Resume $resume): void
-    {
+    private function saveResumeDetails(
+        Request $request,
+        array $validated,
+        Resume $resume
+    ): void {
+        $this->saveReplaceableResumeDetails(
+            $validated,
+            $resume
+        );
+
+        foreach (
+            $validated['certificates'] ?? []
+            as $index => $certificate
+        ) {
+            if (empty($certificate['certificate_title'])) {
+                continue;
+            }
+
+            $certificateFilePath = null;
+
+            if (
+                $request->hasFile(
+                    "certificates.$index.certificate_file"
+                )
+            ) {
+                $certificateFilePath = $request
+                    ->file(
+                        "certificates.$index.certificate_file"
+                    )
+                    ->store('certificate-files', 'public');
+            }
+
+            $resume->certificates()->create(
+                $this->certificateAttributes(
+                    $certificate,
+                    $certificateFilePath
+                )
+            );
+        }
+    }
+
+    private function saveReplaceableResumeDetails(
+        array $validated,
+        Resume $resume
+    ): void {
         foreach ($validated['skills'] ?? [] as $skill) {
             if (!empty($skill['skill_name'])) {
                 $resume->skills()->create([
-                    'skill_category' => $skill['skill_category'] ?? null,
+                    'skill_category' =>
+                        $skill['skill_category'] ?? null,
                     'skill_name' => $skill['skill_name'],
-                    'skill_level' => $skill['skill_level'] ?? null,
+                    'skill_level' =>
+                        $skill['skill_level'] ?? null,
                 ]);
             }
         }
 
-        foreach ($validated['languages'] ?? [] as $language) {
+        foreach (
+            $validated['languages'] ?? []
+            as $language
+        ) {
             if (!empty($language['language_name'])) {
                 $resume->languages()->create([
-                    'language_name' => $language['language_name'],
-                    'proficiency_level' => $language['proficiency_level'] ?? null,
+                    'language_name' =>
+                        $language['language_name'],
+                    'proficiency_level' =>
+                        $language['proficiency_level'] ?? null,
                 ]);
             }
         }
 
-        foreach ($validated['interests'] ?? [] as $interest) {
+        foreach (
+            $validated['interests'] ?? []
+            as $interest
+        ) {
             if (!empty($interest['interest_name'])) {
                 $resume->interests()->create([
-                    'interest_name' => $interest['interest_name'],
-                    'description' => $interest['description'] ?? null,
+                    'interest_name' =>
+                        $interest['interest_name'],
+                    'description' =>
+                        $interest['description'] ?? null,
                 ]);
             }
         }
 
-        foreach ($validated['educations'] ?? [] as $education) {
+        foreach (
+            $validated['educations'] ?? []
+            as $education
+        ) {
             if (!empty($education['institution_name'])) {
                 $resume->educations()->create([
-                    'institution_name' => $education['institution_name'],
-                    'degree' => $education['degree'] ?? null,
-                    'field_of_study' => $education['field_of_study'] ?? null,
-                    'start_date' => $education['start_date'] ?? null,
-                    'end_date' => $education['end_date'] ?? null,
-                    'description' => $education['description'] ?? null,
+                    'institution_name' =>
+                        $education['institution_name'],
+                    'degree' =>
+                        $education['degree'] ?? null,
+                    'field_of_study' =>
+                        $education['field_of_study'] ?? null,
+                    'start_date' =>
+                        $education['start_date'] ?? null,
+                    'end_date' =>
+                        $education['end_date'] ?? null,
+                    'description' =>
+                        $education['description'] ?? null,
                 ]);
             }
         }
 
-        foreach ($validated['experiences'] ?? [] as $experience) {
-            if (!empty($experience['company_name']) || !empty($experience['job_title'])) {
+        foreach (
+            $validated['experiences'] ?? []
+            as $experience
+        ) {
+            if (
+                !empty($experience['company_name'])
+                || !empty($experience['job_title'])
+            ) {
                 $resume->experiences()->create([
-                    'company_name' => $experience['company_name'] ?? 'Not specified',
-                    'job_title' => $experience['job_title'] ?? 'Not specified',
-                    'start_date' => $experience['start_date'] ?? null,
-                    'end_date' => $experience['end_date'] ?? null,
-                    'description' => $experience['description'] ?? null,
+                    'company_name' =>
+                        $experience['company_name']
+                            ?? 'Not specified',
+                    'job_title' =>
+                        $experience['job_title']
+                            ?? 'Not specified',
+                    'start_date' =>
+                        $experience['start_date'] ?? null,
+                    'end_date' =>
+                        $experience['end_date'] ?? null,
+                    'description' =>
+                        $experience['description'] ?? null,
                 ]);
             }
         }
@@ -358,61 +740,171 @@ class ResumeController extends Controller
         foreach ($validated['projects'] ?? [] as $project) {
             if (!empty($project['project_title'])) {
                 $resume->projects()->create([
-                    'project_title' => $project['project_title'],
-                    'project_description' => $project['project_description'] ?? null,
-                    'project_link' => $project['project_link'] ?? null,
-                ]);
-            }
-        }
-
-        foreach ($validated['certificates'] ?? [] as $index => $certificate) {
-            if (!empty($certificate['certificate_title'])) {
-                $certificateFilePath = $certificate['existing_certificate_file'] ?? null;
-
-                if ($request->hasFile("certificates.$index.certificate_file")) {
-                    $certificateFilePath = $request
-                        ->file("certificates.$index.certificate_file")
-                        ->store('certificate-files', 'public');
-                }
-
-                $resume->certificates()->create([
-                    'certificate_title' => $certificate['certificate_title'],
-                    'issuer' => $certificate['issuer'] ?? null,
-                    'issue_date' => $certificate['issue_date'] ?? null,
-                    'credential_id' => $certificate['credential_id'] ?? null,
-                    'credential_url' => $certificate['credential_url'] ?? null,
-                    'certificate_file' => $certificateFilePath,
-                    'description' => $certificate['description'] ?? null,
-                    'related_project_title' => $certificate['related_project_title'] ?? null,
-                    'related_project_link' => $certificate['related_project_link'] ?? null,
+                    'project_title' =>
+                        $project['project_title'],
+                    'project_description' =>
+                        $project['project_description'] ?? null,
+                    'project_link' =>
+                        $project['project_link'] ?? null,
                 ]);
             }
         }
     }
 
-    private function deleteResumeDetails(Resume $resume): void
-    {
+    private function syncCertificates(
+        Request $request,
+        array $validated,
+        Resume $resume
+    ): void {
+        $existingCertificates = $resume
+            ->certificates()
+            ->get()
+            ->keyBy('id');
+
+        $retainedCertificateIds = [];
+
+        foreach (
+            $validated['certificates'] ?? []
+            as $index => $certificateData
+        ) {
+            if (empty($certificateData['certificate_title'])) {
+                continue;
+            }
+
+            $certificateId = $certificateData['id'] ?? null;
+
+            if ($certificateId !== null) {
+                $certificate = $existingCertificates->get(
+                    (int) $certificateId
+                );
+
+                if (!$certificate) {
+                    continue;
+                }
+
+                $certificateFilePath =
+                    $certificate->certificate_file;
+
+                if (
+                    $request->hasFile(
+                        "certificates.$index.certificate_file"
+                    )
+                ) {
+                    $newCertificateFilePath = $request
+                        ->file(
+                            "certificates.$index.certificate_file"
+                        )
+                        ->store('certificate-files', 'public');
+
+                    if ($certificate->certificate_file) {
+                        Storage::disk('public')->delete(
+                            $certificate->certificate_file
+                        );
+                    }
+
+                    $certificateFilePath =
+                        $newCertificateFilePath;
+                }
+
+                $certificate->update(
+                    $this->certificateAttributes(
+                        $certificateData,
+                        $certificateFilePath
+                    )
+                );
+
+                $retainedCertificateIds[] = $certificate->id;
+
+                continue;
+            }
+
+            $certificateFilePath = null;
+
+            if (
+                $request->hasFile(
+                    "certificates.$index.certificate_file"
+                )
+            ) {
+                $certificateFilePath = $request
+                    ->file(
+                        "certificates.$index.certificate_file"
+                    )
+                    ->store('certificate-files', 'public');
+            }
+
+            $certificate = $resume
+                ->certificates()
+                ->create(
+                    $this->certificateAttributes(
+                        $certificateData,
+                        $certificateFilePath
+                    )
+                );
+
+            $retainedCertificateIds[] = $certificate->id;
+        }
+
+        $certificatesToRemove = $resume
+            ->certificates()
+            ->whereNotIn('id', $retainedCertificateIds)
+            ->get();
+
+        foreach ($certificatesToRemove as $certificate) {
+            if ($certificate->certificate_file) {
+                Storage::disk('public')->delete(
+                    $certificate->certificate_file
+                );
+            }
+
+            $certificate->delete();
+        }
+    }
+
+    private function certificateAttributes(
+        array $certificate,
+        ?string $certificateFilePath
+    ): array {
+        return [
+            'certificate_title' =>
+                $certificate['certificate_title'],
+            'issuer' =>
+                $certificate['issuer'] ?? null,
+            'issue_date' =>
+                $certificate['issue_date'] ?? null,
+            'credential_id' =>
+                $certificate['credential_id'] ?? null,
+            'credential_url' =>
+                $certificate['credential_url'] ?? null,
+            'certificate_file' =>
+                $certificateFilePath,
+            'description' =>
+                $certificate['description'] ?? null,
+            'related_project_title' =>
+                $certificate['related_project_title'] ?? null,
+            'related_project_link' =>
+                $certificate['related_project_link'] ?? null,
+        ];
+    }
+
+    private function deleteReplaceableResumeDetails(
+        Resume $resume
+    ): void {
         $resume->skills()->delete();
         $resume->languages()->delete();
         $resume->interests()->delete();
         $resume->educations()->delete();
         $resume->experiences()->delete();
         $resume->projects()->delete();
-
-        foreach ($resume->certificates as $certificate) {
-            if ($certificate->certificate_file) {
-                Storage::disk('public')->delete($certificate->certificate_file);
-            }
-        }
-
-        $resume->certificates()->delete();
     }
 
     private function generateUniquePublicLink(): string
     {
         do {
-            $publicLink = 'r-' . Str::lower(Str::random(8));
-        } while (Resume::where('public_link', $publicLink)->exists());
+            $publicLink =
+                'r-' . Str::lower(Str::random(8));
+        } while (
+            Resume::where('public_link', $publicLink)->exists()
+        );
 
         return $publicLink;
     }
