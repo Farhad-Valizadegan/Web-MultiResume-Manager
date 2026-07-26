@@ -45,6 +45,9 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
 
+      - name: Audit Composer dependencies
+        run: composer audit
+
       - name: Prepare Laravel environment
         run: |
           cp .env.example .env
@@ -58,6 +61,9 @@ jobs:
 
       - name: Install frontend dependencies
         run: npm ci
+
+      - name: Audit npm dependencies
+        run: npm audit --audit-level=high
 
       - name: Build frontend assets
         run: npm run build
