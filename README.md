@@ -1,468 +1,321 @@
-# Web Resume Management System
+# ResumeFolio — Web Resume Management System
 
-A Laravel-based resume management system that allows users to create, manage, protect, and share professional resumes through secure public links. The system includes separate admin and user dashboards, password-protected public resume access, PDF download options, and resume view analytics.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-This project was developed as a web development portfolio project using Laravel, Blade, Tailwind CSS, MySQL, and Laravel Breeze authentication.
+ResumeFolio is a full-stack resume management platform built with Laravel. It
+allows users to create and manage multiple professional resumes, share them
+through unique public links, protect them with employer passwords, generate PDF
+versions, and track viewing activity.
 
----
+The application includes separate admin and user areas, role-based
+authorization, secure authentication, and a responsive interface.
 
-## Project Overview
+**Live application:** [https://resumefolio.de](https://resumefolio.de)
 
-The Web Resume Management System is designed for users who want to manage multiple resumes for different job applications. Each resume can have its own public link and employer access password. Employers can view the shared resume without creating an account, while resume owners can track how many times their resumes have been viewed.
+## Features
 
-The system includes two main roles:
+### User features
 
-* **Admin**: manages users and all resumes in the system.
-* **User**: creates, edits, protects, and shares resumes.
+- Dashboard with resume and view statistics
+- Create and manage multiple resumes
+- Add and edit:
+  - Basic information
+  - Skills
+  - Languages
+  - Interests
+  - Education
+  - Work experience and internships
+  - Projects
+  - Certificates and courses
+- Upload a profile image
+- Generate a unique public resume link
+- Protect a public resume with a hashed employer password
+- Generate and download a resume as PDF
+- Upload a custom PDF and configure available download options
+- Activate or deactivate a resume
+- Track total views and the most recent view time
 
-Public registration is disabled. Users are created and managed by the admin.
+### Admin features
 
----
+- Dashboard with platform-wide statistics
+- View totals for users, resumes, active resumes, inactive resumes, and views
+- Create, edit, activate, deactivate, and delete users
+- Assign admin and user roles
+- View and manage resumes across the platform
+- Open resume details and public resume links
 
-## Main Features
+### Public resume features
 
-### User Features
+- Access through a unique public URL
+- Optional password protection
+- Responsive resume presentation
+- Generated and uploaded PDF downloads, according to owner settings
+- View tracking without exposing internal analytics to visitors
 
-* User dashboard with resume statistics.
-* Create multiple resumes.
-* Edit resume information.
-* Add and manage:
+## Technology Stack
 
-  * Basic resume information
-  * Skills
-  * Languages
-  * Hobbies and interests
-  * Education
-  * Work experience and internships
-  * Projects
-  * Certificates and courses
-* Set or change employer access password.
-* Generate public resume links.
-* Upload a custom resume PDF.
-* Choose download options:
+| Area | Technology |
+| --- | --- |
+| Backend | PHP 8.4, Laravel 12 |
+| Authentication | Laravel Breeze 2 |
+| Frontend | Blade, Tailwind CSS 4, Alpine.js 3 |
+| Database | MySQL |
+| PDF generation | Laravel DOMPDF 3 |
+| Asset pipeline | Vite 8 |
+| Testing | PHPUnit through Laravel's test runner |
+| CI | GitHub Actions |
+| Production | Linux, Nginx, PHP-FPM, HTTPS |
 
-  * Generated resume PDF only
-  * Uploaded resume PDF only
-  * Both generated and uploaded PDF
-* Track resume view count.
-* See last viewed date and time.
+Versions verified for v1.0.0:
 
-### Admin Features
+- Laravel Framework `12.64.0`
+- Laravel Breeze `2.4.2`
+- Laravel DOMPDF `3.1.2`
+- Tailwind CSS and `@tailwindcss/vite` `4.3.3`
+- Alpine.js `3.15.12`
+- Vite `8.1.5`
 
-* Admin dashboard with system analytics.
-* View total users, resumes, active resumes, inactive resumes, and total resume views.
-* Manage users:
+## Requirements
 
-  * Create users
-  * Edit users
-  * Deactivate users
-  * Delete users
-* Manage all resumes:
+- PHP `8.2` or later with the extensions required by Laravel
+- Composer
+- Node.js `22` or later and npm
+- MySQL
 
-  * View all user resumes
-  * Open public resume links
-  * View resume details
-  * Delete resumes
-* View resume analytics across the platform.
+## Installation
 
-### Public Resume Features
+1. Clone the repository:
 
-* Public resume access through a unique link.
-* Password-protected resume access for employers.
-* Clean public resume display.
-* No view counter visible to employers.
-* Download generated or uploaded PDF depending on user settings.
-* Resume view count increases when the public resume is accessed.
+   ```bash
+   git clone https://github.com/Farhad-Valizadegan/web-resume-management-system.git
+   cd web-resume-management-system
+   ```
 
----
+2. Install PHP and JavaScript dependencies:
 
-## Technologies Used
+   ```bash
+   composer install
+   npm install
+   ```
 
-* **PHP**
-* **Laravel**
-* **Laravel Breeze**
-* **Blade Templates**
-* **Tailwind CSS**
-* **Alpine.js**
-* **MySQL**
-* **Vite**
-* **Composer**
-* **NPM**
-* **XAMPP**
-* **Git and GitHub**
+3. Create the environment file and application key:
 
----
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-## Project Structure
+   On Windows PowerShell:
 
-Important folders and files:
+   ```powershell
+   Copy-Item .env.example .env
+   ```
 
-```text
-app/
-├── Http/Controllers/
-│   ├── Admin/
-│   ├── User/
-│   └── PublicResumeController.php
-├── Models/
+4. Configure the database in `.env`:
 
-database/
-├── migrations/
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=resume_management_system
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-resources/
-├── views/
-│   ├── admin/
-│   ├── auth/
-│   ├── public/
-│   ├── user/
-│   └── layouts/
+5. Prepare the database and public storage:
 
-routes/
-└── web.php
+   ```bash
+   php artisan migrate
+   php artisan storage:link
+   ```
 
-public/
-└── images/
-```
+6. Start the development servers:
 
----
+   ```bash
+   php artisan serve
+   npm run dev
+   ```
 
-## Installation and Setup
+   Open `http://127.0.0.1:8000`.
 
-### 1. Clone the Repository
+## Production Build
 
-```bash
-git clone https://github.com/Farhad-Valizadegan/web-resume-management-system.git
-cd web-resume-management-system
-```
-
-### 2. Install PHP Dependencies
-
-```bash
-composer install
-```
-
-### 3. Install JavaScript Dependencies
-
-```bash
-npm install
-```
-
-### 4. Create Environment File
-
-Copy the example environment file:
-
-```bash
-cp .env.example .env
-```
-
-On Windows PowerShell:
-
-```powershell
-copy .env.example .env
-```
-
-### 5. Generate Application Key
-
-```bash
-php artisan key:generate
-```
-
-### 6. Configure Database
-
-Update the `.env` file with your local database information:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_database_username
-DB_PASSWORD=your_database_password
-```
-
-For a default local XAMPP setup, this may look like:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=resume_management_system
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-### 7. Run Migrations
-
-```bash
-php artisan migrate
-```
-
-### 8. Create Storage Link
-
-```bash
-php artisan storage:link
-```
-
-### 9. Build Frontend Assets
-
-For development:
-
-```bash
-npm run dev
-```
-
-For production build:
+Build the optimized frontend assets:
 
 ```bash
 npm run build
+php artisan optimize
 ```
 
-### 10. Run the Application
+The web server document root must point to Laravel's `public` directory. Keep
+`APP_DEBUG=false` in production, configure HTTPS, and run Laravel background
+tasks under an appropriate process manager when required.
 
-```bash
-php artisan serve
-```
+## Windows and XAMPP
 
-Then open:
+If another PHP installation is selected in the terminal, call XAMPP PHP
+directly:
 
-```text
-http://127.0.0.1:8000
-```
-
-If using a local virtual host, open:
-
-```text
-http://resume.test
-```
-
----
-
-## Windows / XAMPP Notes
-
-If the default terminal PHP does not include the required MySQL extension, use the XAMPP PHP path:
-
-```bash
+```powershell
 C:\xampp\php\php.exe artisan migrate
 C:\xampp\php\php.exe artisan test
 C:\xampp\php\php.exe artisan serve
 ```
 
-If PowerShell blocks `npm`, use:
+If PowerShell blocks `npm.ps1`, use:
 
-```bash
+```powershell
 npm.cmd install
-npm.cmd run build
 npm.cmd run dev
+npm.cmd run build
 ```
 
----
-
-## Local Virtual Host Example
-
-For XAMPP, the Apache virtual host can point to the Laravel `public` folder:
+An Apache virtual host should use the project's `public` directory:
 
 ```apache
 <VirtualHost *:80>
     ServerName resume.test
-    DocumentRoot "C:/xampp/htdocs/PROJECTs/Web-Development/resume-management-system/public"
+    DocumentRoot "C:/path/to/web-resume-management-system/public"
 
-    <Directory "C:/xampp/htdocs/PROJECTs/Web-Development/resume-management-system/public">
+    <Directory "C:/path/to/web-resume-management-system/public">
         AllowOverride All
         Require all granted
     </Directory>
-
-    ErrorLog "logs/resume.test-error.log"
-    CustomLog "logs/resume.test-access.log" common
 </VirtualHost>
 ```
 
-The Windows `hosts` file should include:
+Add the local domain to the Windows hosts file:
 
 ```text
 127.0.0.1 resume.test
 ```
 
----
+## Authentication and Authorization
 
-## Security Notes
+- Public registration is disabled.
+- Administrators create and manage user accounts.
+- Admin and user areas are protected by authentication and role middleware.
+- Users may manage only their own resumes.
+- Guest access is limited to active public resumes and their permitted files.
 
-The `.env` file is not included in this repository for security reasons. It contains sensitive local configuration such as database credentials and application keys.
+## Security
 
-The following files and folders are ignored by Git:
+- Application and resume passwords are hashed and never stored as plain text.
+- Laravel provides CSRF protection, input validation, session security, and
+  escaped Blade output.
+- Authorization policies and middleware protect user and admin resources.
+- Environment secrets are kept outside version control.
+- Production runs over HTTPS.
 
-```text
-.env
-/vendor
-/node_modules
-/public/storage
-/storage/*.key
-```
-
-This means that after cloning the project, each developer must create their own `.env` file and install dependencies locally.
-
-Application security notes:
-
-* Resume passwords are not stored in plain text.
-* Resume passwords are stored only as hashed values.
-* The old plain-text `resume_password` database column was removed through a migration.
-* Public registration is disabled.
-* Users are created and managed by the admin.
-* Admin and user dashboards are separated by role-based access.
-* Public resume pages do not expose internal dashboard counters.
-* Guests who visit protected pages are redirected to the login page.
-
----
-
-## Database Notes
-
-Important resume password field:
-
-* `resume_password_hash`
-
-The old field below was removed:
-
-* `resume_password`
-
-The application now uses only hashed resume password storage.
-
----
-
-## Authentication Behavior
-
-Public registration is disabled.
-
-Users are created by the admin. Guests who visit protected pages are redirected to the login page.
-
-This behavior is also covered by automated tests.
-
----
+Never commit `.env`, credentials, private keys, generated secrets, or production
+database exports.
 
 ## Testing
 
-This project includes automated feature and unit tests for the main authentication and user account behavior.
-
-To run the tests locally:
+Run the automated test suite:
 
 ```bash
 php artisan test
 ```
 
-On Windows with XAMPP:
+The v1.0.0 verification result is:
+
+```text
+112 tests passed
+537 assertions
+```
+
+The suite covers authentication, profiles, roles, admin access, resume
+management, public resume access, password protection, PDF behavior, validation,
+and authorization rules.
+
+Additional release checks:
 
 ```bash
-C:\xampp\php\php.exe artisan test
+composer validate
+composer audit
+npm audit
+npm run build
 ```
 
-Current test coverage includes:
+For v1.0.0, Composer and npm reported no known security vulnerabilities, the
+production build passed, and GitHub Actions completed successfully.
 
-* Login and logout behavior
-* Password reset
-* Password update
-* Email verification
-* Profile update and deletion
-* Disabled public registration
-* Guest redirection to the login page
-
-Current test result:
+## Project Structure
 
 ```text
-25 tests passed
-61 assertions passed
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── Admin/
+│   │   ├── User/
+│   │   └── PublicResumeController.php
+│   └── Middleware/
+├── Models/
+└── Policies/
+
+database/
+├── factories/
+├── migrations/
+└── seeders/
+
+resources/
+├── css/
+├── js/
+└── views/
+    ├── admin/
+    ├── auth/
+    ├── public/
+    ├── user/
+    └── layouts/
+
+routes/
+└── web.php
+
+tests/
+├── Feature/
+└── Unit/
 ```
 
----
+## Development Workflow
 
-## Project Workflow
-
-This project follows a professional Git workflow:
+Changes are developed on focused branches and integrated through pull requests:
 
 ```text
-branch → change → test → commit → push → pull request → review → merge → pull latest main
+branch → implement → test → commit → push → pull request → CI → review → merge
 ```
 
-Completed workflow examples:
+Dependency updates are managed with Dependabot, while GitHub Actions validates
+the application before changes are merged.
 
-* Fixed resume password security.
-* Removed obsolete plain-text password database column.
-* Updated outdated tests to match real application behavior.
+## Release Status
 
----
+Version `v1.0.0` is the first stable portfolio release. Its user, admin, public
+resume, password-protection, PDF, analytics, security, CI, and production
+deployment workflows are complete.
 
-## Screenshots
+Known minor presentation items may be refined after v1.0.0:
 
-Screenshots can be added later in a dedicated folder:
+- Improve wrapping for unusually long job titles
+- Simplify duplicate resume-creation actions
+- Use a friendlier last-viewed date format
 
-```text
-public/screenshots/
-```
+## Roadmap
 
-Suggested screenshots:
-
-* Login page
-* User dashboard
-* My resumes page
-* Create resume page
-* Edit resume page
-* Public resume password page
-* Public resume view
-* Admin dashboard
-* Admin users page
-* Admin resumes page
-
-Example Markdown format:
-
-```markdown
-![User Dashboard](public/screenshots/user-dashboard.png)
-```
-
----
-
-## Current Status
-
-The project currently includes the main user, admin, and public resume workflows. It is functional locally and has been pushed to a private GitHub repository.
-
-The project also includes security improvements, database cleanup, and automated tests that match the current application behavior.
-
----
-
-## Future Improvements
-
-Possible future improvements:
-
-* Improve generated PDF design.
-* Add resume templates.
-* Add profile photo cropping.
-* Add email notifications.
-* Add advanced resume analytics.
-* Add search and filtering for admin pages.
-* Add pagination for users and resumes.
-* Add deployment configuration.
-* Add GitHub Actions CI workflow.
-* Add multilingual support.
-* Add more tests for resume CRUD, admin workflows, and public resume access.
-
----
-
-## Portfolio Purpose
-
-This project demonstrates:
-
-* Laravel full-stack development
-* Authentication and authorization
-* Admin and user dashboards
-* CRUD operations
-* Database migrations
-* Secure password handling
-* Public/private access control
-* Automated testing
-* Git and Pull Request workflow
-* Realistic software maintenance practices
-
----
+- Additional resume templates and design customization
+- Improved PDF layouts
+- Profile-photo cropping
+- Email notifications
+- Advanced analytics and reporting
+- Multilingual resume support
+- Broader end-to-end browser test coverage
 
 ## Author
 
 **Farhad Valizadegan**
 
-GitHub: [Farhad-Valizadegan](https://github.com/Farhad-Valizadegan)
+[GitHub profile](https://github.com/Farhad-Valizadegan)
 
-This project was developed as a personal web development portfolio project.
+## License
+
+This project is licensed under the [MIT License](LICENSE).
