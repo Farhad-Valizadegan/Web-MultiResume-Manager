@@ -56,7 +56,7 @@
                             <input type="text"
                                    name="projects[{{ $index }}][project_title]"
                                    value="{{ old('projects.' . $index . '.project_title', $project->project_title) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Laravel Resume Management System">
                         </div>
 
@@ -68,7 +68,7 @@
 
                             <textarea name="projects[{{ $index }}][project_description]"
                                       rows="4"
-                                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                       placeholder="Describe the project, technologies, features, and your role.">{{ old('projects.' . $index . '.project_description', $project->project_description) }}</textarea>
                         </div>
 
@@ -81,7 +81,7 @@
                             <input type="url"
                                    name="projects[{{ $index }}][project_link]"
                                    value="{{ old('projects.' . $index . '.project_link', $project->project_link) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="https://github.com/username/project">
                         </div>
 
@@ -119,7 +119,7 @@
 
                         <input type="text"
                                name="projects[0][project_title]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Laravel Resume Management System">
                     </div>
 
@@ -131,7 +131,7 @@
 
                         <textarea name="projects[0][project_description]"
                                   rows="4"
-                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Describe the project, technologies, features, and your role."></textarea>
                     </div>
 
@@ -143,7 +143,7 @@
 
                         <input type="url"
                                name="projects[0][project_link]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="https://github.com/username/project">
                     </div>
 

@@ -56,7 +56,7 @@
                             <input type="text"
                                    name="languages[{{ $index }}][language_name]"
                                    value="{{ old('languages.' . $index . '.language_name', $language->language_name) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: English">
                         </div>
 
@@ -69,7 +69,7 @@
                             <input type="text"
                                    name="languages[{{ $index }}][proficiency_level]"
                                    value="{{ old('languages.' . $index . '.proficiency_level', $language->proficiency_level) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: B2 / Native">
                         </div>
 
@@ -107,7 +107,7 @@
 
                         <input type="text"
                                name="languages[0][language_name]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: English">
                     </div>
 
@@ -119,7 +119,7 @@
 
                         <input type="text"
                                name="languages[0][proficiency_level]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: B2 / Native">
                     </div>
 

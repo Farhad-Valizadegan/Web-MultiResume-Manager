@@ -15,7 +15,7 @@
                    type="text"
                    name="title"
                    value="{{ old('title', $resume->title ?? '') }}"
-                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                    placeholder="Example: Data Analyst Resume"
                    required>
 
@@ -36,7 +36,7 @@
                    type="text"
                    name="job_position"
                    value="{{ old('job_position', $resume->job_position ?? '') }}"
-                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                    placeholder="Example: Junior Web Developer">
 
             <p class="text-sm text-slate-500 mt-2">
@@ -74,7 +74,7 @@
                        type="text"
                        name="full_name"
                        value="{{ old('full_name', $resume->full_name ?? '') }}"
-                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                        placeholder="Example: Farhad Valizadegan">
 
                 <x-input-error class="mt-2" :messages="$errors->get('full_name')" />
@@ -89,7 +89,7 @@
                        type="email"
                        name="email"
                        value="{{ old('email', $resume->email ?? '') }}"
-                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                        placeholder="Example: farhad@example.com">
 
                 <x-input-error class="mt-2" :messages="$errors->get('email')" />
@@ -109,7 +109,7 @@
                        type="text"
                        name="phone"
                        value="{{ old('phone', $resume->phone ?? '') }}"
-                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                        placeholder="Example: +49 123 456789">
 
                 <x-input-error class="mt-2" :messages="$errors->get('phone')" />
@@ -124,7 +124,7 @@
                        type="url"
                        name="website"
                        value="{{ old('website', $resume->website ?? '') }}"
-                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                        placeholder="https://example.com">
 
                 <x-input-error class="mt-2" :messages="$errors->get('website')" />
@@ -141,7 +141,7 @@
             <textarea id="address"
                       name="address"
                       rows="2"
-                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                       placeholder="Example: Musterstraße 10">{{ old('address', $resume->address ?? '') }}</textarea>
 
             <x-input-error class="mt-2" :messages="$errors->get('address')" />
@@ -159,7 +159,7 @@
                        type="text"
                        name="postal_code"
                        value="{{ old('postal_code', $resume->postal_code ?? '') }}"
-                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                        placeholder="Example: 91052">
 
                 <x-input-error class="mt-2" :messages="$errors->get('postal_code')" />
@@ -174,7 +174,7 @@
                        type="text"
                        name="city"
                        value="{{ old('city', $resume->city ?? '') }}"
-                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                        placeholder="Example: Erlangen">
 
                 <x-input-error class="mt-2" :messages="$errors->get('city')" />
@@ -189,7 +189,7 @@
                        type="text"
                        name="country"
                        value="{{ old('country', $resume->country ?? '') }}"
-                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                        placeholder="Example: Germany">
 
                 <x-input-error class="mt-2" :messages="$errors->get('country')" />
@@ -209,7 +209,7 @@
                        type="url"
                        name="linkedin"
                        value="{{ old('linkedin', $resume->linkedin ?? '') }}"
-                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                        placeholder="https://www.linkedin.com/in/username">
 
                 <x-input-error class="mt-2" :messages="$errors->get('linkedin')" />
@@ -224,7 +224,7 @@
                        type="url"
                        name="github"
                        value="{{ old('github', $resume->github ?? '') }}"
-                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                        placeholder="https://github.com/username">
 
                 <x-input-error class="mt-2" :messages="$errors->get('github')" />
@@ -241,7 +241,7 @@
             <textarea id="professional_summary"
                       name="professional_summary"
                       rows="5"
-                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                       placeholder="Write a concise professional summary tailored to this resume.">{{ old('professional_summary', $resume->professional_summary ?? '') }}</textarea>
 
             <x-input-error
@@ -260,14 +260,14 @@
 
                     <img src="{{ asset('storage/' . $resume->profile_photo) }}"
                          alt="{{ $resume->full_name ?: 'Resume profile photo' }}"
-                         class="w-28 h-28 rounded-lg object-cover border-2 border-slate-300 shadow-sm">
+                         class="w-28 h-28 rounded-lg object-cover border-2 border-slate-300 shadow-xs">
 
                     <label class="inline-flex items-center gap-2 text-sm font-semibold text-red-700">
                         <input type="checkbox"
                                name="remove_profile_photo"
                                value="1"
                                @checked(old('remove_profile_photo'))
-                               class="rounded border-slate-300 text-red-600 focus:ring-red-500">
+                               class="rounded-sm border-slate-300 text-red-600 focus:ring-red-500">
 
                         Remove the current photo
                     </label>
@@ -279,7 +279,7 @@
                    type="file"
                    name="profile_photo"
                    accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
-                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500">
 
             <p class="text-sm text-slate-500 mt-2">
                 Upload a JPG, PNG, or WebP image. Maximum file size: 2 MB.
@@ -311,7 +311,7 @@
             <input id="resume_password"
                    type="password"
                    name="resume_password"
-                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                    placeholder="Minimum 6 characters">
 
             <p class="text-sm text-slate-500 mt-2">
@@ -336,7 +336,7 @@
 
             <select id="status"
                     name="status"
-                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                     required>
 
                 <option value="active"
@@ -376,7 +376,7 @@
 
             <select id="download_resume_type"
                     name="download_resume_type"
-                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                     required>
 
                 <option value="generated"
@@ -417,7 +417,7 @@
                    type="file"
                    name="uploaded_resume_file"
                    accept=".pdf,application/pdf"
-                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500">
 
             <p class="text-sm text-slate-500 mt-2">
                 Optional if you choose generated PDF only.

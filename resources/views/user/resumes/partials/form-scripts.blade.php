@@ -38,7 +38,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Skill Category</label>
                         <input type="text"
                                name="skills[${skillIndex}][skill_category]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Web Development">
                     </div>
 
@@ -46,7 +46,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Skill Name</label>
                         <input type="text"
                                name="skills[${skillIndex}][skill_name]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Laravel">
                     </div>
 
@@ -54,7 +54,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Skill Level</label>
                         <input type="text"
                                name="skills[${skillIndex}][skill_level]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Intermediate">
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Language</label>
                         <input type="text"
                                name="languages[${languageIndex}][language_name]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Language Name">
                     </div>
 
@@ -99,7 +99,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Proficiency Level</label>
                         <input type="text"
                                name="languages[${languageIndex}][proficiency_level]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Intermediate">
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Interest / Hobby Name</label>
                         <input type="text"
                                name="interests[${interestIndex}][interest_name]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Open Source">
                     </div>
 
@@ -144,7 +144,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Description</label>
                         <textarea name="interests[${interestIndex}][description]"
                                   rows="3"
-                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Example: Interested in learning from open-source projects and contributing to practical tools."></textarea>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Institution Name</label>
                         <input type="text"
                                name="educations[${educationIndex}][institution_name]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: University Name">
                     </div>
 
@@ -190,7 +190,7 @@
                             <label class="block mb-2 font-bold text-slate-800">Degree</label>
                             <input type="text"
                                    name="educations[${educationIndex}][degree]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: M.Sc.">
                         </div>
 
@@ -198,7 +198,7 @@
                             <label class="block mb-2 font-bold text-slate-800">Field of Study</label>
                             <input type="text"
                                    name="educations[${educationIndex}][field_of_study]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Computer Science">
                         </div>
                     </div>
@@ -208,14 +208,14 @@
                             <label class="block mb-2 font-bold text-slate-800">Start Date</label>
                             <input type="date"
                                    name="educations[${educationIndex}][start_date]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block mb-2 font-bold text-slate-800">End Date</label>
                             <input type="date"
                                    name="educations[${educationIndex}][end_date]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
                     </div>
 
@@ -223,7 +223,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Description</label>
                         <textarea name="educations[${educationIndex}][description]"
                                   rows="3"
-                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Example: Focused on software engineering, data science, and applied computer science."></textarea>
                     </div>
                 </div>
@@ -261,7 +261,7 @@
                             <label class="block mb-2 font-bold text-slate-800">Company Name</label>
                             <input type="text"
                                    name="experiences[${experienceIndex}][company_name]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Company Name">
                         </div>
 
@@ -269,7 +269,7 @@
                             <label class="block mb-2 font-bold text-slate-800">Job Title / Internship Title</label>
                             <input type="text"
                                    name="experiences[${experienceIndex}][job_title]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Data Analyst">
                         </div>
                     </div>
@@ -279,14 +279,14 @@
                             <label class="block mb-2 font-bold text-slate-800">Start Date</label>
                             <input type="date"
                                    name="experiences[${experienceIndex}][start_date]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block mb-2 font-bold text-slate-800">End Date</label>
                             <input type="date"
                                    name="experiences[${experienceIndex}][end_date]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
                     </div>
 
@@ -294,7 +294,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Description</label>
                         <textarea name="experiences[${experienceIndex}][description]"
                                   rows="4"
-                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Describe responsibilities, tools, and achievements."></textarea>
                     </div>
                 </div>
@@ -331,7 +331,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Project Title</label>
                         <input type="text"
                                name="projects[${projectIndex}][project_title]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Portfolio Website">
                     </div>
 
@@ -339,7 +339,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Project Description</label>
                         <textarea name="projects[${projectIndex}][project_description]"
                                   rows="4"
-                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Describe the project, technologies, and main features."></textarea>
                     </div>
 
@@ -347,7 +347,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Project Link</label>
                         <input type="url"
                                name="projects[${projectIndex}][project_link]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="https://github.com/username/project">
                     </div>
                 </div>
@@ -385,7 +385,7 @@
                             <label class="block mb-2 font-bold text-slate-800">Certificate Title</label>
                             <input type="text"
                                    name="certificates[${certificateIndex}][certificate_title]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Professional Certificate">
                         </div>
 
@@ -393,7 +393,7 @@
                             <label class="block mb-2 font-bold text-slate-800">Issuer</label>
                             <input type="text"
                                    name="certificates[${certificateIndex}][issuer]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Certificate Provider">
                         </div>
                     </div>
@@ -403,14 +403,14 @@
                             <label class="block mb-2 font-bold text-slate-800">Issue Date</label>
                             <input type="date"
                                    name="certificates[${certificateIndex}][issue_date]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block mb-2 font-bold text-slate-800">Credential ID</label>
                             <input type="text"
                                    name="certificates[${certificateIndex}][credential_id]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: ABC-123">
                         </div>
                     </div>
@@ -419,7 +419,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Credential URL</label>
                         <input type="url"
                                name="certificates[${certificateIndex}][credential_url]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="https://example.com/certificate">
                     </div>
 
@@ -427,14 +427,14 @@
                         <label class="block mb-2 font-bold text-slate-800">Certificate File</label>
                         <input type="file"
                                name="certificates[${certificateIndex}][certificate_file]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500">
                     </div>
 
                     <div>
                         <label class="block mb-2 font-bold text-slate-800">Description</label>
                         <textarea name="certificates[${certificateIndex}][description]"
                                   rows="3"
-                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Short description of what the certificate covers."></textarea>
                     </div>
                 </div>

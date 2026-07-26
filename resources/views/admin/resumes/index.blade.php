@@ -18,7 +18,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @if (session('success'))
@@ -43,7 +43,7 @@
                 <!-- Resume Cards -->
                 <div class="space-y-5">
                     @forelse ($resumes as $resume)
-                        <div class="bg-white border-2 border-slate-300 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+                        <div class="bg-white border-2 border-slate-300 rounded-lg p-5 shadow-xs hover:shadow-md transition">
 
                             <!-- Top Row -->
                             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
@@ -70,11 +70,11 @@
                                         </span>
                                     </div>
 
-                                    <h4 class="text-xl font-extrabold text-slate-900 break-words">
+                                    <h4 class="text-xl font-extrabold text-slate-900 wrap-break-word">
                                         {{ $resume->title }}
                                     </h4>
 
-                                    <p class="text-slate-600 mt-2 break-words">
+                                    <p class="text-slate-600 mt-2 wrap-break-word">
                                         Job Position:
                                         <span class="font-semibold text-slate-800">
                                             {{ $resume->job_position ?? 'Not specified' }}
@@ -118,7 +118,7 @@
                                         Owner
                                     </p>
 
-                                    <p class="font-bold text-slate-900 mt-1 break-words">
+                                    <p class="font-bold text-slate-900 mt-1 wrap-break-word">
                                         {{ $resume->user->name ?? 'Unknown' }}
                                     </p>
                                 </div>

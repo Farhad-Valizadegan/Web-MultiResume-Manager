@@ -18,7 +18,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="bg-slate-300 shadow-2xl sm:rounded-lg p-4 sm:p-6 border-2 border-slate-500">
@@ -46,7 +46,7 @@
                                 Resume Title
                             </p>
 
-                            <p class="font-bold text-slate-900 mt-1 break-words">
+                            <p class="font-bold text-slate-900 mt-1 wrap-break-word">
                                 {{ $resume->title }}
                             </p>
                         </div>
@@ -56,7 +56,7 @@
                                 Target Position
                             </p>
 
-                            <p class="font-bold text-slate-900 mt-1 break-words">
+                            <p class="font-bold text-slate-900 mt-1 wrap-break-word">
                                 {{ $resume->job_position ?? 'Not specified' }}
                             </p>
                         </div>
@@ -98,7 +98,7 @@
                             <input id="resume_password"
                                    type="password"
                                    name="resume_password"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Enter new employer password"
                                    required>
 
@@ -119,7 +119,7 @@
                             <input id="resume_password_confirmation"
                                    type="password"
                                    name="resume_password_confirmation"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Repeat new employer password"
                                    required>
                         </div>

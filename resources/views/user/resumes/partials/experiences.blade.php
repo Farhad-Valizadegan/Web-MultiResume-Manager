@@ -57,7 +57,7 @@
                                 <input type="text"
                                        name="experiences[{{ $index }}][company_name]"
                                        value="{{ old('experiences.' . $index . '.company_name', $experience->company_name) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="Example: Company Name">
                             </div>
 
@@ -69,7 +69,7 @@
                                 <input type="text"
                                        name="experiences[{{ $index }}][job_title]"
                                        value="{{ old('experiences.' . $index . '.job_title', $experience->job_title) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="Example: Software Developer">
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                                 <input type="date"
                                        name="experiences[{{ $index }}][start_date]"
                                        value="{{ old('experiences.' . $index . '.start_date', $experience->start_date) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                             </div>
 
                             <div>
@@ -95,7 +95,7 @@
                                 <input type="date"
                                        name="experiences[{{ $index }}][end_date]"
                                        value="{{ old('experiences.' . $index . '.end_date', $experience->end_date) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                             </div>
                         </div>
 
@@ -107,7 +107,7 @@
 
                             <textarea name="experiences[{{ $index }}][description]"
                                       rows="4"
-                                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                       placeholder="Describe responsibilities, tools, tasks, and achievements.">{{ old('experiences.' . $index . '.description', $experience->description) }}</textarea>
                         </div>
 
@@ -146,7 +146,7 @@
 
                             <input type="text"
                                    name="experiences[0][company_name]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Company Name">
                         </div>
 
@@ -157,7 +157,7 @@
 
                             <input type="text"
                                    name="experiences[0][job_title]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Software Developer">
                         </div>
                     </div>
@@ -171,7 +171,7 @@
 
                             <input type="date"
                                    name="experiences[0][start_date]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
@@ -181,7 +181,7 @@
 
                             <input type="date"
                                    name="experiences[0][end_date]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
                     </div>
 
@@ -193,7 +193,7 @@
 
                         <textarea name="experiences[0][description]"
                                   rows="4"
-                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Describe responsibilities, tools, tasks, and achievements."></textarea>
                     </div>
 
