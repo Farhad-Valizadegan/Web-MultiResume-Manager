@@ -18,7 +18,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @if (session('success'))
@@ -58,17 +58,17 @@
                         $publicUrl = url('/resume/' . $resume->public_link);
                     @endphp
 
-                    <div class="bg-white border-2 border-slate-300 rounded-lg p-4 sm:p-5 mb-5 shadow-sm hover:shadow-md transition">
+                    <div class="bg-white border-2 border-slate-300 rounded-lg p-4 sm:p-5 mb-5 shadow-xs hover:shadow-md transition">
 
                         <!-- Resume Header -->
                         <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
 
                             <div class="flex-1">
-                                <h4 class="text-lg sm:text-xl font-extrabold text-slate-900 break-words">
+                                <h4 class="text-lg sm:text-xl font-extrabold text-slate-900 wrap-break-word">
                                     {{ $resume->title }}
                                 </h4>
 
-                                <p class="text-slate-600 mt-2 break-words">
+                                <p class="text-slate-600 mt-2 wrap-break-word">
                                     Job Position:
                                     <span class="font-semibold text-slate-800">
                                         {{ $resume->job_position ?? 'Not specified' }}
@@ -127,7 +127,7 @@
                                 <input type="text"
                                        value="{{ $publicUrl }}"
                                        readonly
-                                       class="w-full lg:flex-1 border-2 border-slate-300 rounded-md shadow-sm font-mono text-sm px-3 py-2">
+                                       class="w-full lg:flex-1 border-2 border-slate-300 rounded-md shadow-xs font-mono text-sm px-3 py-2">
 
                                 <button type="button"
                                         onclick="copyResumeLink('{{ $publicUrl }}')"

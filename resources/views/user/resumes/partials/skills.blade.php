@@ -56,7 +56,7 @@
                             <input type="text"
                                    name="skills[{{ $index }}][skill_category]"
                                    value="{{ old('skills.' . $index . '.skill_category', $skill->skill_category) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Programming">
                         </div>
 
@@ -69,7 +69,7 @@
                             <input type="text"
                                    name="skills[{{ $index }}][skill_name]"
                                    value="{{ old('skills.' . $index . '.skill_name', $skill->skill_name) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Python">
                         </div>
 
@@ -82,7 +82,7 @@
                             <input type="text"
                                    name="skills[{{ $index }}][skill_level]"
                                    value="{{ old('skills.' . $index . '.skill_level', $skill->skill_level) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Intermediate">
                         </div>
 
@@ -120,7 +120,7 @@
 
                         <input type="text"
                                name="skills[0][skill_category]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Programming">
                     </div>
 
@@ -132,7 +132,7 @@
 
                         <input type="text"
                                name="skills[0][skill_name]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Python">
                     </div>
 
@@ -144,7 +144,7 @@
 
                         <input type="text"
                                name="skills[0][skill_level]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Intermediate">
                     </div>
 

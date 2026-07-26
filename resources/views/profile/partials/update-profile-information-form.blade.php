@@ -28,7 +28,7 @@
                 <div class="mt-3 mb-4">
                     <img src="{{ asset('storage/' . $user->profile->profile_photo) }}"
                          alt="{{ $user->name }}"
-                         class="w-28 h-28 rounded-full object-cover border border-gray-300 shadow">
+                         class="w-28 h-28 rounded-full object-cover border border-gray-300 shadow-sm">
                 </div>
             @else
                 <div class="mt-3 mb-4 w-28 h-28 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center text-gray-500 text-sm">
@@ -40,7 +40,7 @@
                    name="profile_photo"
                    type="file"
                    accept=".jpg,.jpeg,.png,.webp"
-                   class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                   class="mt-1 block w-full border-gray-300 rounded-md shadow-xs">
 
             <p class="text-sm text-gray-500 mt-1">
                 Accepted formats: JPG, JPEG, PNG, WEBP. Maximum size: 2MB.
@@ -85,7 +85,7 @@
                         {{ __('Your email address is unverified.') }}
 
                         <button form="send-verification"
-                                class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             {{ __('Click here to re-send the verification email.') }}
                         </button>
                     </p>
@@ -204,7 +204,7 @@
             <textarea id="bio"
                       name="bio"
                       rows="5"
-                      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      class="mt-1 block w-full border-gray-300 rounded-md shadow-xs focus:border-indigo-500 focus:ring-indigo-500"
                       placeholder="Write a short professional summary about yourself.">{{ old('bio', $user->profile->bio ?? '') }}</textarea>
 
             <x-input-error class="mt-2" :messages="$errors->get('bio')" />

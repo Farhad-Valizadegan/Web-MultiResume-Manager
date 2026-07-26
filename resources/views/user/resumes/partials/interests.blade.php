@@ -56,7 +56,7 @@
                             <input type="text"
                                    name="interests[{{ $index }}][interest_name]"
                                    value="{{ old('interests.' . $index . '.interest_name', $interest->interest_name) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Artificial Intelligence">
                         </div>
 
@@ -68,7 +68,7 @@
 
                             <textarea name="interests[{{ $index }}][description]"
                                       rows="3"
-                                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                       placeholder="Example: Interested in applying AI tools to real-world software and data analysis problems.">{{ old('interests.' . $index . '.description', $interest->description) }}</textarea>
                         </div>
 
@@ -106,7 +106,7 @@
 
                         <input type="text"
                                name="interests[0][interest_name]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Artificial Intelligence">
                     </div>
 
@@ -118,7 +118,7 @@
 
                         <textarea name="interests[0][description]"
                                   rows="3"
-                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Example: Interested in applying AI tools to real-world software and data analysis problems."></textarea>
                     </div>
 

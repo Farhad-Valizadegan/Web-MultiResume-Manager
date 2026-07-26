@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 antialiased">
+<body class="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-blue-950 antialiased">
 
     <div class="min-h-screen flex items-center justify-center px-4 py-8">
 
@@ -65,7 +65,7 @@
                                    required
                                    autofocus
                                    autocomplete="name"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Enter your full name">
 
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -83,7 +83,7 @@
                                    value="{{ old('email') }}"
                                    required
                                    autocomplete="username"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Enter your email address">
 
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -100,7 +100,7 @@
                                    name="password"
                                    required
                                    autocomplete="new-password"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Create a password">
 
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -117,7 +117,7 @@
                                    name="password_confirmation"
                                    required
                                    autocomplete="new-password"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Repeat your password">
 
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
@@ -126,7 +126,7 @@
                         <!-- Actions -->
                         <div class="pt-4 border-t-2 border-slate-200">
                             <button type="submit"
-                                    class="w-full inline-flex justify-center px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-bold shadow-sm">
+                                    class="w-full inline-flex justify-center px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-bold shadow-xs">
                                 Register
                             </button>
                         </div>

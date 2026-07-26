@@ -18,7 +18,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="bg-slate-300 shadow-2xl sm:rounded-lg p-4 sm:p-6 border-2 border-slate-500">
@@ -61,7 +61,7 @@
                                        type="text"
                                        name="name"
                                        value="{{ old('name') }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="Enter full name"
                                        required>
 
@@ -83,7 +83,7 @@
                                        type="email"
                                        name="email"
                                        value="{{ old('email') }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="Enter email address"
                                        required>
 
@@ -117,7 +117,7 @@
                             <input id="password"
                                    type="password"
                                    name="password"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Enter temporary password"
                                    required>
 
@@ -155,7 +155,7 @@
 
                                 <select id="role"
                                         name="role"
-                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                         required>
                                     <option value="user" {{ old('role', 'user') === 'user' ? 'selected' : '' }}>
                                         User
@@ -182,7 +182,7 @@
 
                                 <select id="status"
                                         name="status"
-                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                        class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                         required>
                                     <option value="active" {{ old('status', 'active') === 'active' ? 'selected' : '' }}>
                                         Active

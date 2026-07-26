@@ -18,7 +18,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @php
@@ -55,11 +55,11 @@
                                 </span>
                             </div>
 
-                            <h3 class="text-2xl font-extrabold text-slate-900 break-words">
+                            <h3 class="text-2xl font-extrabold text-slate-900 wrap-break-word">
                                 {{ $resume->title }}
                             </h3>
 
-                            <p class="text-slate-600 mt-2 break-words">
+                            <p class="text-slate-600 mt-2 wrap-break-word">
                                 Job Position:
                                 <span class="font-semibold text-slate-800">
                                     {{ $resume->job_position ?? 'Not specified' }}
@@ -94,7 +94,7 @@
                             <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">
                                 Owner
                             </p>
-                            <p class="font-bold text-slate-900 mt-1 break-words">
+                            <p class="font-bold text-slate-900 mt-1 wrap-break-word">
                                 {{ $resume->user->name ?? 'Unknown' }}
                             </p>
                         </div>
@@ -148,7 +148,7 @@
                                 <input type="text"
                                        value="{{ $publicUrl }}"
                                        readonly
-                                       class="w-full lg:flex-1 border-2 border-slate-300 rounded-md shadow-sm font-mono text-sm px-3 py-2">
+                                       class="w-full lg:flex-1 border-2 border-slate-300 rounded-md shadow-xs font-mono text-sm px-3 py-2">
 
                                 <button type="button"
                                         onclick="copyResumeLink('{{ $publicUrl }}')"

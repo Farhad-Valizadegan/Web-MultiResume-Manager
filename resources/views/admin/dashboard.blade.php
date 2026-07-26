@@ -25,7 +25,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
             <!-- System Overview -->
@@ -71,7 +71,7 @@
             <section class="bg-slate-300 shadow-2xl border-2 border-slate-500 rounded-lg p-4 sm:p-6">
                 <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5">
 
-                    <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-slate-300 hover:shadow-md transition">
+                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-slate-300 hover:shadow-md transition">
                         <p class="text-sm text-slate-600 font-bold">
                             Total Users
                         </p>
@@ -81,7 +81,7 @@
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-slate-300 hover:shadow-md transition">
+                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-slate-300 hover:shadow-md transition">
                         <p class="text-sm text-slate-600 font-bold">
                             Total Resumes
                         </p>
@@ -91,7 +91,7 @@
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-green-200 hover:shadow-md transition">
+                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-green-200 hover:shadow-md transition">
                         <p class="text-sm text-slate-600 font-bold">
                             Active Resumes
                         </p>
@@ -101,7 +101,7 @@
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-red-200 hover:shadow-md transition">
+                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-red-200 hover:shadow-md transition">
                         <p class="text-sm text-slate-600 font-bold">
                             Inactive Resumes
                         </p>
@@ -111,7 +111,7 @@
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-blue-200 hover:shadow-md transition">
+                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-blue-200 hover:shadow-md transition">
                         <p class="text-sm text-slate-600 font-bold">
                             Total Resume Views
                         </p>
@@ -144,7 +144,7 @@
                             <div class="bg-white border-2 border-slate-300 rounded-lg p-4">
                                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                                     <div class="min-w-0">
-                                        <p class="font-extrabold text-slate-900 break-words">
+                                        <p class="font-extrabold text-slate-900 wrap-break-word">
                                             {{ $resume->title }}
                                         </p>
 
@@ -187,7 +187,7 @@
                     <div class="space-y-3">
                         @forelse ($recentlyViewedResumes as $resume)
                             <div class="bg-white border-2 border-slate-300 rounded-lg p-4">
-                                <p class="font-extrabold text-slate-900 break-words">
+                                <p class="font-extrabold text-slate-900 wrap-break-word">
                                     {{ $resume->title }}
                                 </p>
 
@@ -236,7 +236,7 @@
 
                 <div class="space-y-4">
                     @forelse ($allResumes as $resume)
-                        <div class="bg-white border-2 border-slate-300 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+                        <div class="bg-white border-2 border-slate-300 rounded-lg p-5 shadow-xs hover:shadow-md transition">
 
                             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
                                 <div class="flex-1 min-w-0">
@@ -256,18 +256,18 @@
                                         </span>
                                     </div>
 
-                                    <h4 class="text-lg font-extrabold text-slate-900 break-words">
+                                    <h4 class="text-lg font-extrabold text-slate-900 wrap-break-word">
                                         {{ $resume->title }}
                                     </h4>
 
-                                    <p class="text-slate-600 mt-2 break-words">
+                                    <p class="text-slate-600 mt-2 wrap-break-word">
                                         Owner:
                                         <span class="font-semibold text-slate-800">
                                             {{ $resume->user->name ?? 'Unknown user' }}
                                         </span>
                                     </p>
 
-                                    <p class="text-slate-600 mt-1 break-words">
+                                    <p class="text-slate-600 mt-1 wrap-break-word">
                                         Target Position:
                                         <span class="font-semibold text-slate-800">
                                             {{ $resume->job_position ?? 'Not specified' }}

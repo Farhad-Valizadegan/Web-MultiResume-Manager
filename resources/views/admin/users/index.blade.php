@@ -18,7 +18,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @if (session('success'))
@@ -58,7 +58,7 @@
                 <!-- User Cards -->
                 <div class="space-y-5">
                     @forelse ($users as $user)
-                        <div class="bg-white border-2 border-slate-300 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+                        <div class="bg-white border-2 border-slate-300 rounded-lg p-5 shadow-xs hover:shadow-md transition">
 
                             <!-- Top Row -->
                             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
@@ -95,7 +95,7 @@
                                         </span>
                                     </div>
 
-                                    <h4 class="text-xl font-extrabold text-slate-900 break-words">
+                                    <h4 class="text-xl font-extrabold text-slate-900 wrap-break-word">
                                         {{ $user->name }}
                                     </h4>
 

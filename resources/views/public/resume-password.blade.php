@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 flex items-center justify-center px-4 py-8 antialiased">
+<body class="min-h-screen bg-linear-to-br from-slate-950 via-blue-950 to-indigo-950 flex items-center justify-center px-4 py-8 antialiased">
 
     <div class="w-full max-w-lg">
 
@@ -15,7 +15,7 @@
         <div class="bg-white rounded-xl shadow-2xl border-4 border-blue-200 overflow-hidden">
 
             <!-- Header -->
-            <div class="bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 text-white px-6 py-7 text-center">
+            <div class="bg-linear-to-r from-slate-900 via-blue-900 to-indigo-900 text-white px-6 py-7 text-center">
                 <div class="mx-auto w-14 h-14 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 24 24"
@@ -48,12 +48,12 @@
                         Resume
                     </p>
 
-                    <h2 class="text-xl font-extrabold text-slate-900 mt-1 break-words tracking-tight">
+                    <h2 class="text-xl font-extrabold text-slate-900 mt-1 wrap-break-word tracking-tight">
                         {{ $resume->title }}
                     </h2>
 
                     @if ($resume->job_position)
-                        <p class="text-slate-600 mt-2 break-words">
+                        <p class="text-slate-600 mt-2 wrap-break-word">
                             Target Position:
                             <span class="font-semibold text-slate-800">
                                 {{ $resume->job_position }}
@@ -62,7 +62,7 @@
                     @endif
 
                     @if ($resume->user)
-                        <p class="text-slate-600 mt-2 break-words">
+                        <p class="text-slate-600 mt-2 wrap-break-word">
                             Owner:
                             <span class="font-semibold text-slate-800">
                                 {{ $resume->user->name }}
@@ -97,7 +97,7 @@
                         <input id="resume_password"
                                type="password"
                                name="resume_password"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-3 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Enter resume password"
                                required
                                autofocus>

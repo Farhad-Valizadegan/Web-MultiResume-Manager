@@ -11,7 +11,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 antialiased">
+<body class="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-blue-950 antialiased">
 
     <div class="min-h-screen flex items-center justify-center px-4 py-8">
 
@@ -68,7 +68,7 @@
                                    required
                                    autofocus
                                    autocomplete="username"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Enter your email address">
 
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -86,7 +86,7 @@
                                        name="password"
                                        required
                                        autocomplete="current-password"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 pr-20 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 pr-20 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="Enter your password">
 
                                 <button type="button"
@@ -106,7 +106,7 @@
                                 <input id="remember_me"
                                        type="checkbox"
                                        name="remember"
-                                       class="rounded border-slate-300 text-blue-600 shadow-sm focus:ring-blue-500">
+                                       class="rounded-sm border-slate-300 text-blue-600 shadow-xs focus:ring-blue-500">
 
                                 <span class="ms-2 text-sm text-slate-600">
                                     Remember me
@@ -139,7 +139,7 @@
                         <!-- Submit -->
                         <div class="pt-4 border-t-2 border-slate-200">
                             <button type="submit"
-                                    class="w-full inline-flex justify-center px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-bold shadow-sm">
+                                    class="w-full inline-flex justify-center px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-bold shadow-xs">
                                 Log in
                             </button>
                         </div>

@@ -60,7 +60,7 @@
                             <input type="text"
                                    name="certificates[{{ $index }}][certificate_title]"
                                    value="{{ old('certificates.' . $index . '.certificate_title', $certificate->certificate_title) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Professional Certificate">
                         </div>
 
@@ -74,7 +74,7 @@
                                 <input type="text"
                                        name="certificates[{{ $index }}][issuer]"
                                        value="{{ old('certificates.' . $index . '.issuer', $certificate->issuer) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="Example: Certificate Provider">
                             </div>
 
@@ -86,7 +86,7 @@
                                 <input type="date"
                                        name="certificates[{{ $index }}][issue_date]"
                                        value="{{ old('certificates.' . $index . '.issue_date', $certificate->issue_date) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                             </div>
                         </div>
 
@@ -100,7 +100,7 @@
                                 <input type="text"
                                        name="certificates[{{ $index }}][credential_id]"
                                        value="{{ old('certificates.' . $index . '.credential_id', $certificate->credential_id) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="Example: ABCD-1234">
                             </div>
 
@@ -112,7 +112,7 @@
                                 <input type="url"
                                        name="certificates[{{ $index }}][credential_url]"
                                        value="{{ old('certificates.' . $index . '.credential_url', $certificate->credential_url) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="https://example.com/verify/...">
                             </div>
                         </div>
@@ -125,7 +125,7 @@
 
                             <input type="file"
                                    name="certificates[{{ $index }}][certificate_file]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    accept=".pdf,.jpg,.jpeg,.png,.webp">
 
                             <p class="text-sm text-slate-500 mt-2">
@@ -154,7 +154,7 @@
 
                             <textarea name="certificates[{{ $index }}][description]"
                                       rows="3"
-                                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                       placeholder="Describe what you learned or achieved.">{{ old('certificates.' . $index . '.description', $certificate->description) }}</textarea>
                         </div>
 
@@ -168,7 +168,7 @@
                                 <input type="text"
                                        name="certificates[{{ $index }}][related_project_title]"
                                        value="{{ old('certificates.' . $index . '.related_project_title', $certificate->related_project_title) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="Example: Portfolio Project">
                             </div>
 
@@ -180,7 +180,7 @@
                                 <input type="url"
                                        name="certificates[{{ $index }}][related_project_link]"
                                        value="{{ old('certificates.' . $index . '.related_project_link', $certificate->related_project_link) }}"
-                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                       class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                        placeholder="https://example.com/project">
                             </div>
                         </div>
@@ -219,7 +219,7 @@
 
                         <input type="text"
                                name="certificates[0][certificate_title]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Professional Certificate">
                     </div>
 
@@ -232,7 +232,7 @@
 
                             <input type="text"
                                    name="certificates[0][issuer]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Certificate Provider">
                         </div>
 
@@ -243,7 +243,7 @@
 
                             <input type="date"
                                    name="certificates[0][issue_date]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
                     </div>
 
@@ -256,7 +256,7 @@
 
                             <input type="text"
                                    name="certificates[0][credential_id]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: ABCD-1234">
                         </div>
 
@@ -267,7 +267,7 @@
 
                             <input type="url"
                                    name="certificates[0][credential_url]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="https://example.com/verify/...">
                         </div>
                     </div>
@@ -280,7 +280,7 @@
 
                         <input type="file"
                                name="certificates[0][certificate_file]"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                accept=".pdf,.jpg,.jpeg,.png,.webp">
 
                         <p class="text-sm text-slate-500 mt-2">
@@ -296,7 +296,7 @@
 
                         <textarea name="certificates[0][description]"
                                   rows="3"
-                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                  class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Describe what you learned or achieved."></textarea>
                     </div>
 
@@ -309,7 +309,7 @@
 
                             <input type="text"
                                    name="certificates[0][related_project_title]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Portfolio Project">
                         </div>
 
@@ -320,7 +320,7 @@
 
                             <input type="url"
                                    name="certificates[0][related_project_link]"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="https://example.com/project">
                         </div>
                     </div>

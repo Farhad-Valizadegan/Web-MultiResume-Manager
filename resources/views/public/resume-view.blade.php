@@ -15,9 +15,9 @@
 
     $themes = [
         'professional_blue' => [
-            'page_background' => 'bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.28),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(14,165,233,0.18),_transparent_30%),linear-gradient(135deg,_#020617,_#0f172a_45%,_#172554)]',
+            'page_background' => 'bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.28),transparent_34%),radial-gradient(circle_at_top_right,rgba(14,165,233,0.18),transparent_30%),linear-gradient(135deg,#020617,#0f172a_45%,#172554)]',
             'header_background' => 'bg-slate-950',
-            'header_overlay' => 'bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.35),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(20,184,166,0.18),_transparent_28%)]',
+            'header_overlay' => 'bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.35),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(20,184,166,0.18),transparent_28%)]',
             'badge_background' => 'bg-white/10',
             'badge_text' => 'text-blue-100',
             'accent_dot' => 'bg-emerald-400',
@@ -30,11 +30,11 @@
             'main_heading' => 'text-slate-950',
             'muted_text' => 'text-slate-500',
             'card_background' => 'bg-slate-50',
-            'summary_background' => 'bg-gradient-to-br from-blue-50 via-white to-slate-50',
+            'summary_background' => 'bg-linear-to-br from-blue-50 via-white to-slate-50',
             'summary_border' => 'border-blue-100',
             'experience_border' => 'border-blue-600',
             'experience_company' => 'text-blue-700',
-            'skill_card_background' => 'bg-gradient-to-br from-white to-indigo-50',
+            'skill_card_background' => 'bg-linear-to-br from-white to-indigo-50',
             'skill_card_border' => 'border-indigo-100',
             'skill_badge_background' => 'bg-indigo-100',
             'skill_badge_text' => 'text-indigo-800',
@@ -43,9 +43,9 @@
         ],
 
         'dark_modern' => [
-            'page_background' => 'bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.22),_transparent_32%),radial-gradient(circle_at_bottom_right,_rgba(148,163,184,0.18),_transparent_30%),linear-gradient(135deg,_#020617,_#020617_45%,_#0f172a)]',
+            'page_background' => 'bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.22),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(148,163,184,0.18),transparent_30%),linear-gradient(135deg,#020617,#020617_45%,#0f172a)]',
             'header_background' => 'bg-black',
-            'header_overlay' => 'bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.28),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(71,85,105,0.35),_transparent_28%)]',
+            'header_overlay' => 'bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.28),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(71,85,105,0.35),transparent_28%)]',
             'badge_background' => 'bg-cyan-400/10',
             'badge_text' => 'text-cyan-100',
             'accent_dot' => 'bg-cyan-300',
@@ -58,11 +58,11 @@
             'main_heading' => 'text-white',
             'muted_text' => 'text-slate-400',
             'card_background' => 'bg-slate-800',
-            'summary_background' => 'bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950',
+            'summary_background' => 'bg-linear-to-br from-slate-800 via-slate-900 to-slate-950',
             'summary_border' => 'border-slate-700',
             'experience_border' => 'border-cyan-400',
             'experience_company' => 'text-cyan-300',
-            'skill_card_background' => 'bg-gradient-to-br from-slate-800 to-slate-900',
+            'skill_card_background' => 'bg-linear-to-br from-slate-800 to-slate-900',
             'skill_card_border' => 'border-slate-700',
             'skill_badge_background' => 'bg-cyan-400/10',
             'skill_badge_text' => 'text-cyan-100',
@@ -71,9 +71,9 @@
         ],
 
         'minimal_light' => [
-            'page_background' => 'bg-gradient-to-br from-slate-100 via-white to-slate-200',
+            'page_background' => 'bg-linear-to-br from-slate-100 via-white to-slate-200',
             'header_background' => 'bg-white',
-            'header_overlay' => 'bg-[linear-gradient(135deg,_rgba(15,23,42,0.04),_rgba(148,163,184,0.12))]',
+            'header_overlay' => 'bg-[linear-gradient(135deg,rgba(15,23,42,0.04),rgba(148,163,184,0.12))]',
             'badge_background' => 'bg-slate-100',
             'badge_text' => 'text-slate-700',
             'accent_dot' => 'bg-slate-700',
@@ -169,14 +169,14 @@
                                         <div class="flex w-36 flex-col gap-2 sm:w-40">
                                             @if ($canDownloadGenerated)
                                                 <a href="{{ route('public.resume.download-generated-pdf', $resume->public_link) }}"
-                                                   class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-center text-sm font-extrabold shadow transition {{ $theme['primary_button'] }}">
+                                                   class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-center text-sm font-extrabold shadow-sm transition {{ $theme['primary_button'] }}">
                                                     Download Generated PDF
                                                 </a>
                                             @endif
 
                                             @if ($canDownloadUploaded)
                                                 <a href="{{ route('public.resume.download-uploaded-pdf', $resume->public_link) }}"
-                                                   class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-center text-sm font-extrabold shadow transition {{ $theme['secondary_button'] }}">
+                                                   class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-center text-sm font-extrabold shadow-sm transition {{ $theme['secondary_button'] }}">
                                                     Download Uploaded PDF
                                                 </a>
                                             @endif
@@ -192,11 +192,11 @@
                                     Online Professional Resume
                                 </div>
 
-                                <h1 class="break-words text-4xl font-black tracking-tight {{ $isMinimalTheme ? 'text-slate-950' : 'text-white' }} sm:text-5xl lg:text-6xl">
+                                <h1 class="wrap-break-word text-4xl font-black tracking-tight {{ $isMinimalTheme ? 'text-slate-950' : 'text-white' }} sm:text-5xl lg:text-6xl">
                                     {{ $resume->user->name }}
                                 </h1>
 
-                                <p class="mt-4 break-words text-xl font-semibold {{ $theme['subtitle_text'] }} sm:text-2xl">
+                                <p class="mt-4 wrap-break-word text-xl font-semibold {{ $theme['subtitle_text'] }} sm:text-2xl">
                                     {{ $resume->job_position ?? $resume->title }}
                                 </p>
 
@@ -244,7 +244,7 @@
 
                             <!-- Contact Details -->
                             <div class="lg:col-span-4">
-                                <div class="overflow-hidden rounded-2xl border {{ $isMinimalTheme ? 'border-slate-200 bg-white text-slate-900' : 'border-white/15 bg-white/10 text-white backdrop-blur' }} shadow-xl">
+                                <div class="overflow-hidden rounded-2xl border {{ $isMinimalTheme ? 'border-slate-200 bg-white text-slate-900' : 'border-white/15 bg-white/10 text-white backdrop-blur-sm' }} shadow-xl">
                                     <div class="border-b {{ $isMinimalTheme ? 'border-slate-200' : 'border-white/10' }} px-5 py-4">
                                         <h2 class="text-sm font-black uppercase tracking-wider {{ $isMinimalTheme ? 'text-slate-700' : $theme['badge_text'] }}">
                                             Contact Details
@@ -268,7 +268,7 @@
                                                     Phone
                                                 </p>
 
-                                                <p class="mt-1 break-words font-semibold {{ $isMinimalTheme ? 'text-slate-900' : 'text-white' }}">
+                                                <p class="mt-1 wrap-break-word font-semibold {{ $isMinimalTheme ? 'text-slate-900' : 'text-white' }}">
                                                     {{ $profile->phone }}
                                                 </p>
                                             </div>
@@ -283,7 +283,7 @@
                                                 <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode($currentLocation) }}"
                                                    target="_blank"
                                                    rel="noopener noreferrer"
-                                                   class="mt-1 inline-block break-words font-semibold underline underline-offset-4 transition {{ $isMinimalTheme ? 'text-slate-900 hover:text-slate-600' : 'text-white hover:text-blue-200' }}">
+                                                   class="mt-1 inline-block wrap-break-word font-semibold underline underline-offset-4 transition {{ $isMinimalTheme ? 'text-slate-900 hover:text-slate-600' : 'text-white hover:text-blue-200' }}">
                                                     {{ $currentLocation }}
                                                 </a>
                                             </div>
@@ -320,7 +320,7 @@
                         <div class="space-y-6 xl:col-span-8">
 
                             <!-- Professional Summary -->
-                            <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-sm sm:p-6">
+                            <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-xs sm:p-6">
                                 <div class="mb-5 flex items-start justify-between gap-4">
                                     <div>
                                         <h2 class="text-2xl font-black {{ $theme['main_heading'] }}">
@@ -338,12 +338,12 @@
                                 </div>
 
                                 <div class="rounded-xl border {{ $theme['summary_border'] }} {{ $theme['summary_background'] }} p-5">
-                                    <p class="break-words text-base leading-relaxed {{ $isDarkTheme ? 'text-slate-200' : 'text-slate-700' }} sm:text-lg">
+                                    <p class="wrap-break-word text-base leading-relaxed {{ $isDarkTheme ? 'text-slate-200' : 'text-slate-700' }} sm:text-lg">
                                         {{ $resume->title }}
                                     </p>
 
                                     @if ($profile && $profile->bio)
-                                        <p class="mt-4 break-words leading-relaxed {{ $isDarkTheme ? 'text-slate-200' : 'text-slate-700' }}">
+                                        <p class="mt-4 wrap-break-word leading-relaxed {{ $isDarkTheme ? 'text-slate-200' : 'text-slate-700' }}">
                                             {{ $profile->bio }}
                                         </p>
                                     @endif
@@ -352,7 +352,7 @@
 
                             <!-- Professional Experience -->
                             @if ($resume->experiences->count())
-                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-sm sm:p-6">
+                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-xs sm:p-6">
                                     <div class="mb-5">
                                         <h2 class="text-2xl font-black {{ $theme['main_heading'] }}">
                                             Professional Experience
@@ -368,19 +368,19 @@
                                             <article class="rounded-xl border {{ $theme['section_border'] }} {{ $theme['card_background'] }} p-5">
                                                 <div class="border-l-4 {{ $theme['experience_border'] }} pl-4">
                                                     @if ($experience->job_title)
-                                                        <h3 class="break-words text-xl font-black {{ $theme['main_heading'] }}">
+                                                        <h3 class="wrap-break-word text-xl font-black {{ $theme['main_heading'] }}">
                                                             {{ $experience->job_title }}
                                                         </h3>
                                                     @endif
 
                                                     @if ($experience->company_name)
-                                                        <p class="mt-1 break-words font-extrabold {{ $theme['experience_company'] }}">
+                                                        <p class="mt-1 wrap-break-word font-extrabold {{ $theme['experience_company'] }}">
                                                             {{ $experience->company_name }}
                                                         </p>
                                                     @endif
 
                                                     @if ($experience->start_date || $experience->end_date)
-                                                        <p class="mt-3 inline-block rounded-full {{ $isDarkTheme ? 'bg-slate-700 text-slate-200' : 'bg-white text-slate-600' }} px-3 py-1 text-sm font-bold shadow-sm">
+                                                        <p class="mt-3 inline-block rounded-full {{ $isDarkTheme ? 'bg-slate-700 text-slate-200' : 'bg-white text-slate-600' }} px-3 py-1 text-sm font-bold shadow-xs">
                                                             @if ($experience->start_date && $experience->end_date)
                                                                 {{ $experience->start_date }} - {{ $experience->end_date }}
                                                             @elseif ($experience->start_date && !$experience->end_date)
@@ -392,7 +392,7 @@
                                                     @endif
 
                                                     @if ($experience->description)
-                                                        <p class="mt-4 break-words leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
+                                                        <p class="mt-4 wrap-break-word leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
                                                             {{ $experience->description }}
                                                         </p>
                                                     @endif
@@ -405,7 +405,7 @@
 
                             <!-- Projects -->
                             @if ($resume->projects->count())
-                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-sm sm:p-6">
+                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-xs sm:p-6">
                                     <div class="mb-5">
                                         <h2 class="text-2xl font-black {{ $theme['main_heading'] }}">
                                             Projects
@@ -418,13 +418,13 @@
 
                                     <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
                                         @foreach ($resume->projects as $project)
-                                            <article class="flex flex-col rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-rose-100 bg-gradient-to-br from-white to-rose-50' }} p-5 shadow-sm transition hover:shadow-md">
-                                                <h3 class="break-words text-lg font-black {{ $theme['main_heading'] }}">
+                                            <article class="flex flex-col rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-rose-100 bg-linear-to-br from-white to-rose-50' }} p-5 shadow-xs transition hover:shadow-md">
+                                                <h3 class="wrap-break-word text-lg font-black {{ $theme['main_heading'] }}">
                                                     {{ $project->project_title }}
                                                 </h3>
 
                                                 @if ($project->project_description)
-                                                    <p class="mt-3 flex-1 break-words leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
+                                                    <p class="mt-3 flex-1 wrap-break-word leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
                                                         {{ $project->project_description }}
                                                     </p>
                                                 @endif
@@ -447,7 +447,7 @@
 
                             <!-- Licenses & Certifications -->
                             @if ($resume->certificates->count())
-                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-sm sm:p-6">
+                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-xs sm:p-6">
                                     <div class="mb-5">
                                         <h2 class="text-2xl font-black {{ $theme['main_heading'] }}">
                                             Licenses & Certifications
@@ -460,20 +460,20 @@
 
                                     <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
                                         @foreach ($resume->certificates as $certificate)
-                                            <article class="flex flex-col rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-amber-100 bg-gradient-to-br from-white to-amber-50' }} p-5 shadow-sm transition hover:shadow-md">
+                                            <article class="flex flex-col rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-amber-100 bg-linear-to-br from-white to-amber-50' }} p-5 shadow-xs transition hover:shadow-md">
                                                 <div class="flex-1">
-                                                    <h3 class="break-words text-lg font-black {{ $theme['main_heading'] }}">
+                                                    <h3 class="wrap-break-word text-lg font-black {{ $theme['main_heading'] }}">
                                                         {{ $certificate->certificate_title }}
                                                     </h3>
 
                                                     @if ($certificate->issuer)
-                                                        <p class="mt-1 break-words font-extrabold {{ $isDarkTheme ? 'text-amber-300' : 'text-amber-700' }}">
+                                                        <p class="mt-1 wrap-break-word font-extrabold {{ $isDarkTheme ? 'text-amber-300' : 'text-amber-700' }}">
                                                             {{ $certificate->issuer }}
                                                         </p>
                                                     @endif
 
                                                     @if ($certificate->issue_date || $certificate->credential_id)
-                                                        <div class="mt-3 space-y-1 break-words text-sm font-medium {{ $theme['muted_text'] }}">
+                                                        <div class="mt-3 space-y-1 wrap-break-word text-sm font-medium {{ $theme['muted_text'] }}">
                                                             @if ($certificate->issue_date)
                                                                 <p>Issued: {{ $certificate->issue_date }}</p>
                                                             @endif
@@ -485,7 +485,7 @@
                                                     @endif
 
                                                     @if ($certificate->description)
-                                                        <p class="mt-3 break-words leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
+                                                        <p class="mt-3 wrap-break-word leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
                                                             {{ $certificate->description }}
                                                         </p>
                                                     @endif
@@ -515,7 +515,7 @@
                                                             </a>
                                                         @elseif ($extension === 'pdf')
                                                             <div class="rounded-lg border {{ $isDarkTheme ? 'border-slate-700 bg-slate-900' : 'border-amber-100 bg-white' }} p-3">
-                                                                <p class="break-words text-sm font-medium {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
+                                                                <p class="wrap-break-word text-sm font-medium {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
                                                                     PDF certificate uploaded.
                                                                 </p>
                                                             </div>
@@ -557,7 +557,7 @@
 
                             <!-- Skills -->
                             @if ($resume->skills->count())
-                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-sm sm:p-6">
+                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-xs sm:p-6">
                                     <div class="mb-5">
                                         <h2 class="text-2xl font-black {{ $theme['main_heading'] }}">
                                             Skills
@@ -576,7 +576,7 @@
                                                         {{ $category }}
                                                     </p>
 
-                                                    <p class="break-words text-sm leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
+                                                    <p class="wrap-break-word text-sm leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
                                                         @foreach ($skills as $skill)
                                                             <span class="font-semibold {{ $isDarkTheme ? 'text-white' : 'text-slate-900' }}">
                                                                 {{ $skill->skill_name }}
@@ -599,8 +599,8 @@
                                     @else
                                         <div class="space-y-4">
                                             @foreach ($groupedSkills as $category => $skills)
-                                                <div class="rounded-xl border {{ $theme['skill_card_border'] }} {{ $theme['skill_card_background'] }} p-4 shadow-sm">
-                                                    <h3 class="mb-3 break-words font-black {{ $theme['main_heading'] }}">
+                                                <div class="rounded-xl border {{ $theme['skill_card_border'] }} {{ $theme['skill_card_background'] }} p-4 shadow-xs">
+                                                    <h3 class="mb-3 wrap-break-word font-black {{ $theme['main_heading'] }}">
                                                         {{ $category }}
                                                     </h3>
 
@@ -628,7 +628,7 @@
 
                             <!-- Education -->
                             @if ($resume->educations->count())
-                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-sm sm:p-6">
+                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-xs sm:p-6">
                                     <div class="mb-5">
                                         <h2 class="text-2xl font-black {{ $theme['main_heading'] }}">
                                             Education
@@ -641,15 +641,15 @@
 
                                     <div class="space-y-4">
                                         @foreach ($resume->educations as $education)
-                                            <article class="rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-cyan-100 bg-gradient-to-br from-white to-cyan-50' }} p-5 shadow-sm">
+                                            <article class="rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-cyan-100 bg-linear-to-br from-white to-cyan-50' }} p-5 shadow-xs">
                                                 @if ($education->institution_name)
-                                                    <h3 class="break-words text-lg font-black {{ $theme['main_heading'] }}">
+                                                    <h3 class="wrap-break-word text-lg font-black {{ $theme['main_heading'] }}">
                                                         {{ $education->institution_name }}
                                                     </h3>
                                                 @endif
 
                                                 @if ($education->degree || $education->field_of_study)
-                                                    <p class="mt-2 break-words font-semibold {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
+                                                    <p class="mt-2 wrap-break-word font-semibold {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
                                                         @if ($education->degree)
                                                             {{ $education->degree }}
                                                         @endif
@@ -677,7 +677,7 @@
                                                 @endif
 
                                                 @if ($education->description)
-                                                    <p class="mt-4 break-words leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
+                                                    <p class="mt-4 wrap-break-word leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
                                                         {{ $education->description }}
                                                     </p>
                                                 @endif
@@ -689,7 +689,7 @@
 
                             <!-- Languages -->
                             @if ($resume->languages->count())
-                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-sm sm:p-6">
+                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-xs sm:p-6">
                                     <div class="mb-5">
                                         <h2 class="text-2xl font-black {{ $theme['main_heading'] }}">
                                             Languages
@@ -702,8 +702,8 @@
 
                                     <div class="space-y-3">
                                         @foreach ($resume->languages as $language)
-                                            <div class="flex items-center justify-between gap-4 rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-purple-100 bg-gradient-to-br from-white to-purple-50' }} p-4">
-                                                <h3 class="break-words font-black {{ $theme['main_heading'] }}">
+                                            <div class="flex items-center justify-between gap-4 rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-purple-100 bg-linear-to-br from-white to-purple-50' }} p-4">
+                                                <h3 class="wrap-break-word font-black {{ $theme['main_heading'] }}">
                                                     {{ $language->language_name }}
                                                 </h3>
 
@@ -720,7 +720,7 @@
 
                             <!-- Hobbies & Interests -->
                             @if ($resume->interests->count())
-                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-sm sm:p-6">
+                                <section class="rounded-2xl border {{ $theme['section_border'] }} {{ $theme['section_background'] }} p-5 shadow-xs sm:p-6">
                                     <div class="mb-5">
                                         <h2 class="text-2xl font-black {{ $theme['main_heading'] }}">
                                             Hobbies & Interests
@@ -733,13 +733,13 @@
 
                                     <div class="space-y-4">
                                         @foreach ($resume->interests as $interest)
-                                            <article class="rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-teal-100 bg-gradient-to-br from-white to-teal-50' }} p-5 shadow-sm">
-                                                <h3 class="break-words text-lg font-black {{ $theme['main_heading'] }}">
+                                            <article class="rounded-xl border {{ $isDarkTheme ? 'border-slate-700 bg-slate-800' : 'border-teal-100 bg-linear-to-br from-white to-teal-50' }} p-5 shadow-xs">
+                                                <h3 class="wrap-break-word text-lg font-black {{ $theme['main_heading'] }}">
                                                     {{ $interest->interest_name }}
                                                 </h3>
 
                                                 @if ($interest->description)
-                                                    <p class="mt-3 break-words leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
+                                                    <p class="mt-3 wrap-break-word leading-relaxed {{ $isDarkTheme ? 'text-slate-300' : 'text-slate-700' }}">
                                                         {{ $interest->description }}
                                                     </p>
                                                 @endif

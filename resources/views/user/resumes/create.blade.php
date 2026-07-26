@@ -18,7 +18,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="bg-slate-300 shadow-2xl sm:rounded-lg p-4 sm:p-6 border-2 border-slate-500">
@@ -41,7 +41,7 @@
                     @csrf
 
                     <!-- Basic Information -->
-                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-sm">
+                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-xs">
                         <div class="mb-4 bg-slate-100 border border-slate-300 rounded-md p-4">
                             <h4 class="text-base font-extrabold text-slate-900">
                                 Basic Information
@@ -58,7 +58,7 @@
                     </section>
 
                     <!-- Resume Display Settings -->
-                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-sm">
+                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-xs">
                         <div class="mb-4 bg-slate-100 border border-slate-300 rounded-md p-4">
                             <h4 class="text-base font-extrabold text-slate-900">
                                 Resume Display Settings
@@ -162,7 +162,7 @@
                                                 A clean professional theme with blue accents.
                                             </span>
 
-                                            <span class="block mt-3 h-2 rounded-full bg-gradient-to-r from-slate-900 via-blue-700 to-blue-400"></span>
+                                            <span class="block mt-3 h-2 rounded-full bg-linear-to-r from-slate-900 via-blue-700 to-blue-400"></span>
                                         </span>
                                     </label>
 
@@ -185,7 +185,7 @@
                                                 A strong dark theme for modern technical resumes.
                                             </span>
 
-                                            <span class="block mt-3 h-2 rounded-full bg-gradient-to-r from-black via-slate-800 to-cyan-500"></span>
+                                            <span class="block mt-3 h-2 rounded-full bg-linear-to-r from-black via-slate-800 to-cyan-500"></span>
                                         </span>
                                     </label>
 
@@ -208,7 +208,7 @@
                                                 A simple light theme for formal and academic resumes.
                                             </span>
 
-                                            <span class="block mt-3 h-2 rounded-full bg-gradient-to-r from-white via-slate-200 to-slate-500 border border-slate-300"></span>
+                                            <span class="block mt-3 h-2 rounded-full bg-linear-to-r from-white via-slate-200 to-slate-500 border border-slate-300"></span>
                                         </span>
                                     </label>
                                 </div>
@@ -224,7 +224,7 @@
                     </section>
 
                     <!-- Skills -->
-                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-sm">
+                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-xs">
                         <div class="mb-4 bg-slate-100 border border-slate-300 rounded-md p-4">
                             <h4 class="text-base font-extrabold text-slate-900">
                                 Skills
@@ -241,7 +241,7 @@
                     </section>
 
                     <!-- Languages -->
-                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-sm">
+                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-xs">
                         <div class="mb-4 bg-slate-100 border border-slate-300 rounded-md p-4">
                             <h4 class="text-base font-extrabold text-slate-900">
                                 Languages
@@ -258,7 +258,7 @@
                     </section>
 
                     <!-- Hobbies and Interests -->
-                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-sm">
+                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-xs">
                         <div class="mb-4 bg-slate-100 border border-slate-300 rounded-md p-4">
                             <h4 class="text-base font-extrabold text-slate-900">
                                 Hobbies & Interests
@@ -275,7 +275,7 @@
                     </section>
 
                     <!-- Education -->
-                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-sm">
+                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-xs">
                         <div class="mb-4 bg-slate-100 border border-slate-300 rounded-md p-4">
                             <h4 class="text-base font-extrabold text-slate-900">
                                 Education
@@ -292,7 +292,7 @@
                     </section>
 
                     <!-- Experience -->
-                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-sm">
+                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-xs">
                         <div class="mb-4 bg-slate-100 border border-slate-300 rounded-md p-4">
                             <h4 class="text-base font-extrabold text-slate-900">
                                 Work Experience / Internship
@@ -309,7 +309,7 @@
                     </section>
 
                     <!-- Projects -->
-                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-sm">
+                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-xs">
                         <div class="mb-4 bg-slate-100 border border-slate-300 rounded-md p-4">
                             <h4 class="text-base font-extrabold text-slate-900">
                                 Projects
@@ -326,7 +326,7 @@
                     </section>
 
                     <!-- Certificates -->
-                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-sm">
+                    <section class="border-2 border-slate-300 rounded-lg p-4 sm:p-5 bg-white shadow-xs">
                         <div class="mb-4 bg-slate-100 border border-slate-300 rounded-md p-4">
                             <h4 class="text-base font-extrabold text-slate-900">
                                 Licenses & Certifications

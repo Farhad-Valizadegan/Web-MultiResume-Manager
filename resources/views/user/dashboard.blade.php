@@ -18,7 +18,7 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
             <!-- Dashboard Intro -->
@@ -52,7 +52,7 @@
             <section class="bg-slate-100 shadow-2xl border-2 border-slate-300 rounded-lg p-4 sm:p-6">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
 
-                    <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-slate-300 hover:shadow-md transition">
+                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-slate-300 hover:shadow-md transition">
                         <p class="text-sm text-slate-600 font-bold">
                             Total Resumes
                         </p>
@@ -62,7 +62,7 @@
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-green-200 hover:shadow-md transition">
+                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-green-200 hover:shadow-md transition">
                         <p class="text-sm text-slate-600 font-bold">
                             Active Resumes
                         </p>
@@ -72,7 +72,7 @@
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-red-200 hover:shadow-md transition">
+                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-red-200 hover:shadow-md transition">
                         <p class="text-sm text-slate-600 font-bold">
                             Inactive Resumes
                         </p>
@@ -82,7 +82,7 @@
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-blue-200 hover:shadow-md transition">
+                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-blue-200 hover:shadow-md transition">
                         <p class="text-sm text-slate-600 font-bold">
                             Total Resume Views
                         </p>
