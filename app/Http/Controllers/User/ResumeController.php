@@ -33,6 +33,23 @@ class ResumeController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'job_position' => ['nullable', 'string', 'max:255'],
             'resume_password' => ['nullable', 'string', 'min:6'],
+            'full_name' => ['nullable', 'string', 'max:255'],
+            'email' => ['nullable', 'email', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:50'],
+            'address' => ['nullable', 'string'],
+            'postal_code' => ['nullable', 'string', 'max:30'],
+            'city' => ['nullable', 'string', 'max:255'],
+            'country' => ['nullable', 'string', 'max:255'],
+            'website' => ['nullable', 'url', 'max:2048'],
+            'linkedin' => ['nullable', 'url', 'max:2048'],
+            'github' => ['nullable', 'url', 'max:2048'],
+            'professional_summary' => ['nullable', 'string'],
+            'profile_photo' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048',
+            ],
 
             'uploaded_resume_file' => [
                 'nullable',
@@ -235,10 +252,31 @@ class ResumeController extends Controller
                 ->store('uploaded-resumes', 'public');
         }
 
+        $profilePhotoPath = null;
+
+        if ($request->hasFile('profile_photo')) {
+            $profilePhotoPath = $request
+                ->file('profile_photo')
+                ->store('resume-profile-photos', 'public');
+        }
+
         $resume = Resume::create([
             'user_id' => auth()->id(),
             'title' => $validated['title'],
             'job_position' => $validated['job_position'] ?? null,
+            'full_name' => $validated['full_name'] ?? null,
+            'email' => $validated['email'] ?? null,
+            'phone' => $validated['phone'] ?? null,
+            'address' => $validated['address'] ?? null,
+            'postal_code' => $validated['postal_code'] ?? null,
+            'city' => $validated['city'] ?? null,
+            'country' => $validated['country'] ?? null,
+            'website' => $validated['website'] ?? null,
+            'linkedin' => $validated['linkedin'] ?? null,
+            'github' => $validated['github'] ?? null,
+            'profile_photo' => $profilePhotoPath,
+            'professional_summary' =>
+                $validated['professional_summary'] ?? null,
             'public_link' => $this->generateUniquePublicLink(),
             'resume_password_hash' => !empty($validated['resume_password'])
                 ? Hash::make($validated['resume_password'])
@@ -292,6 +330,24 @@ class ResumeController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'job_position' => ['nullable', 'string', 'max:255'],
             'status' => ['required', 'in:active,inactive'],
+            'full_name' => ['nullable', 'string', 'max:255'],
+            'email' => ['nullable', 'email', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:50'],
+            'address' => ['nullable', 'string'],
+            'postal_code' => ['nullable', 'string', 'max:30'],
+            'city' => ['nullable', 'string', 'max:255'],
+            'country' => ['nullable', 'string', 'max:255'],
+            'website' => ['nullable', 'url', 'max:2048'],
+            'linkedin' => ['nullable', 'url', 'max:2048'],
+            'github' => ['nullable', 'url', 'max:2048'],
+            'professional_summary' => ['nullable', 'string'],
+            'profile_photo' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048',
+            ],
+            'remove_profile_photo' => ['nullable', 'boolean'],
 
             'uploaded_resume_file' => [
                 'nullable',
@@ -512,9 +568,44 @@ class ResumeController extends Controller
             $uploadedResumeFilePath = $newUploadedResumeFilePath;
         }
 
+        $profilePhotoPath = $resume->profile_photo;
+
+        if ($request->boolean('remove_profile_photo')) {
+            if ($profilePhotoPath) {
+                Storage::disk('public')->delete($profilePhotoPath);
+            }
+
+            $profilePhotoPath = null;
+        }
+
+        if ($request->hasFile('profile_photo')) {
+            $newProfilePhotoPath = $request
+                ->file('profile_photo')
+                ->store('resume-profile-photos', 'public');
+
+            if ($profilePhotoPath) {
+                Storage::disk('public')->delete($profilePhotoPath);
+            }
+
+            $profilePhotoPath = $newProfilePhotoPath;
+        }
+
         $resume->update([
             'title' => $validated['title'],
             'job_position' => $validated['job_position'] ?? null,
+            'full_name' => $validated['full_name'] ?? null,
+            'email' => $validated['email'] ?? null,
+            'phone' => $validated['phone'] ?? null,
+            'address' => $validated['address'] ?? null,
+            'postal_code' => $validated['postal_code'] ?? null,
+            'city' => $validated['city'] ?? null,
+            'country' => $validated['country'] ?? null,
+            'website' => $validated['website'] ?? null,
+            'linkedin' => $validated['linkedin'] ?? null,
+            'github' => $validated['github'] ?? null,
+            'profile_photo' => $profilePhotoPath,
+            'professional_summary' =>
+                $validated['professional_summary'] ?? null,
             'status' => $validated['status'],
             'uploaded_resume_file' => $uploadedResumeFilePath,
             'download_resume_type' =>
@@ -551,6 +642,11 @@ class ResumeController extends Controller
         if ($resume->uploaded_resume_file) {
             Storage::disk('public')
                 ->delete($resume->uploaded_resume_file);
+        }
+
+        if ($resume->profile_photo) {
+            Storage::disk('public')
+                ->delete($resume->profile_photo);
         }
 
         foreach ($resume->certificates as $certificate) {
