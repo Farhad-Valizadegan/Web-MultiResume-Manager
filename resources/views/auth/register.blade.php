@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    @include('layouts.theme-init')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register - Resume Management System</title>
@@ -8,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-blue-950 antialiased">
+<body class="min-h-screen bg-canvas antialiased">
 
     <div class="min-h-screen flex items-center justify-center px-4 py-8">
 
@@ -16,8 +17,8 @@
 
             <!-- Logo / Title -->
             <div class="text-center mb-6">
-                <div class="mx-auto w-16 h-16 bg-white border-2 border-slate-300 rounded-lg flex items-center justify-center shadow-lg">
-                    <svg class="w-9 h-9 text-slate-800"
+                <div class="mx-auto w-16 h-16 bg-surface border border-line rounded-xl flex items-center justify-center shadow-lg">
+                    <svg class="w-9 h-9 text-ink"
                          viewBox="0 0 316 316"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill="currentColor"
@@ -25,7 +26,7 @@
                     </svg>
                 </div>
 
-                <h1 class="text-3xl font-extrabold text-white mt-5">
+                <h1 class="text-3xl font-bold text-white mt-5">
                     Create Account
                 </h1>
 
@@ -35,16 +36,16 @@
             </div>
 
             <!-- Register Card -->
-            <div class="bg-slate-300 shadow-2xl rounded-lg p-4 border-2 border-slate-500">
+            <div class="bg-surface-soft shadow-sm rounded-xl p-4 border border-line">
 
-                <div class="bg-white border-2 border-slate-300 rounded-lg p-6">
+                <div class="bg-surface border border-line rounded-xl p-6">
 
                     <div class="mb-6">
-                        <h2 class="text-xl font-extrabold text-slate-900">
+                        <h2 class="text-xl font-bold text-ink">
                             Register
                         </h2>
 
-                        <p class="text-sm text-slate-600 mt-1">
+                        <p class="text-sm text-muted mt-1">
                             Create a new account to start building resumes.
                         </p>
                     </div>
@@ -54,7 +55,7 @@
 
                         <!-- Name -->
                         <div>
-                            <label for="name" class="block mb-2 font-bold text-slate-800">
+                            <label for="name" class="block mb-2 font-bold text-ink">
                                 Name
                             </label>
 
@@ -65,7 +66,7 @@
                                    required
                                    autofocus
                                    autocomplete="name"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Enter your full name">
 
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -73,7 +74,7 @@
 
                         <!-- Email -->
                         <div>
-                            <label for="email" class="block mb-2 font-bold text-slate-800">
+                            <label for="email" class="block mb-2 font-bold text-ink">
                                 Email
                             </label>
 
@@ -83,7 +84,7 @@
                                    value="{{ old('email') }}"
                                    required
                                    autocomplete="username"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Enter your email address">
 
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -91,7 +92,7 @@
 
                         <!-- Password -->
                         <div>
-                            <label for="password" class="block mb-2 font-bold text-slate-800">
+                            <label for="password" class="block mb-2 font-bold text-ink">
                                 Password
                             </label>
 
@@ -100,7 +101,7 @@
                                    name="password"
                                    required
                                    autocomplete="new-password"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Create a password">
 
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -108,7 +109,7 @@
 
                         <!-- Confirm Password -->
                         <div>
-                            <label for="password_confirmation" class="block mb-2 font-bold text-slate-800">
+                            <label for="password_confirmation" class="block mb-2 font-bold text-ink">
                                 Confirm Password
                             </label>
 
@@ -117,14 +118,14 @@
                                    name="password_confirmation"
                                    required
                                    autocomplete="new-password"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Repeat your password">
 
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                         </div>
 
                         <!-- Actions -->
-                        <div class="pt-4 border-t-2 border-slate-200">
+                        <div class="pt-4 border-t border-line">
                             <button type="submit"
                                     class="w-full inline-flex justify-center px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-bold shadow-xs">
                                 Register
@@ -133,7 +134,7 @@
 
                         <div class="text-center">
                             <a href="{{ route('login') }}"
-                               class="text-sm font-semibold text-blue-600 hover:text-blue-800 hover:underline">
+                               class="text-sm font-semibold text-blue-strong hover:text-blue-strong hover:underline">
                                 Already registered? Log in
                             </a>
                         </div>

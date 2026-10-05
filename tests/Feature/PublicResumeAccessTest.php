@@ -56,7 +56,7 @@ class PublicResumeAccessTest extends TestCase
             ->assertSessionHasErrors('resume_password');
     }
 
-    public function test_resume_without_password_cannot_be_verified(): void
+    public function test_resume_without_password_is_accessible(): void
     {
         $resume = $this->createResume([
             'resume_password_hash' => null,
@@ -70,13 +70,7 @@ class PublicResumeAccessTest extends TestCase
             );
 
         $response
-            ->assertRedirect(
-                route('public.resume.password', $resume->public_link)
-            )
-            ->assertSessionHas(
-                'error',
-                'This resume is not available for public access.'
-            );
+            ->assertRedirect(route('public.resume.view', $resume->public_link));
     }
 
     public function test_incorrect_resume_password_is_rejected(): void
@@ -119,7 +113,7 @@ class PublicResumeAccessTest extends TestCase
             )
             ->assertSessionHas(
                 'public_resume_access_' . $resume->id,
-                true
+                $resume->publicAccessToken()
             );
     }
 
@@ -152,7 +146,7 @@ class PublicResumeAccessTest extends TestCase
 
         $response = $this
             ->withSession([
-                'public_resume_access_' . $resume->id => true,
+                'public_resume_access_' . $resume->id => $resume->publicAccessToken(),
             ])
             ->get(route('public.resume.view', $resume->public_link));
 
@@ -175,7 +169,7 @@ class PublicResumeAccessTest extends TestCase
 
         $this
             ->withSession([
-                'public_resume_access_' . $resume->id => true,
+                'public_resume_access_' . $resume->id => $resume->publicAccessToken(),
             ])
             ->get(route('public.resume.view', $resume->public_link))
             ->assertNotFound();
@@ -205,7 +199,7 @@ class PublicResumeAccessTest extends TestCase
 
         $this
             ->withSession([
-                'public_resume_access_' . $resume->id => true,
+                'public_resume_access_' . $resume->id => $resume->publicAccessToken(),
             ])
             ->get(route(
                 'public.resume.download-generated-pdf',
@@ -222,7 +216,7 @@ class PublicResumeAccessTest extends TestCase
 
         $response = $this
             ->withSession([
-                'public_resume_access_' . $resume->id => true,
+                'public_resume_access_' . $resume->id => $resume->publicAccessToken(),
             ])
             ->get(route(
                 'public.resume.download-generated-pdf',
@@ -264,7 +258,7 @@ class PublicResumeAccessTest extends TestCase
 
         $this
             ->withSession([
-                'public_resume_access_' . $resume->id => true,
+                'public_resume_access_' . $resume->id => $resume->publicAccessToken(),
             ])
             ->get(route(
                 'public.resume.download-uploaded-pdf',
@@ -275,7 +269,7 @@ class PublicResumeAccessTest extends TestCase
 
     public function test_uploaded_pdf_download_returns_not_found_when_file_is_missing(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $resume = $this->createResume([
             'download_resume_type' => 'uploaded',
@@ -284,7 +278,7 @@ class PublicResumeAccessTest extends TestCase
 
         $this
             ->withSession([
-                'public_resume_access_' . $resume->id => true,
+                'public_resume_access_' . $resume->id => $resume->publicAccessToken(),
             ])
             ->get(route(
                 'public.resume.download-uploaded-pdf',
@@ -295,11 +289,11 @@ class PublicResumeAccessTest extends TestCase
 
     public function test_authorized_visitor_can_download_uploaded_pdf(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $filePath = 'uploaded-resumes/farhad-resume.pdf';
 
-        Storage::disk('public')->put(
+        Storage::disk('private')->put(
             $filePath,
             '%PDF-1.4 test resume content'
         );
@@ -311,7 +305,7 @@ class PublicResumeAccessTest extends TestCase
 
         $response = $this
             ->withSession([
-                'public_resume_access_' . $resume->id => true,
+                'public_resume_access_' . $resume->id => $resume->publicAccessToken(),
             ])
             ->get(route(
                 'public.resume.download-uploaded-pdf',
@@ -322,7 +316,7 @@ class PublicResumeAccessTest extends TestCase
             ->assertOk()
             ->assertDownload('farhad-valizadegan-uploaded-resume.pdf');
 
-        Storage::disk('public')->assertExists($filePath);
+        Storage::disk('private')->assertExists($filePath);
     }
 
     private function createResume(array $attributes = []): Resume

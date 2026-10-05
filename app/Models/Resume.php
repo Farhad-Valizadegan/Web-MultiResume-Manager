@@ -37,6 +37,32 @@ class Resume extends Model
         'last_viewed_at' => 'datetime',
     ];
 
+    public function publicAccessToken(): string
+    {
+        return hash_hmac('sha256', (string) $this->resume_password_hash, (string) config('app.key'));
+    }
+
+    public function allowsPublicAccess(\Illuminate\Http\Request $request): bool
+    {
+        if (!$this->resume_password_hash) {
+            return true;
+        }
+        $grant = $request->session()->get('public_resume_access_' . $this->id);
+        return is_string($grant) && hash_equals($this->publicAccessToken(), $grant);
+    }
+
+    protected static function booted(): void
+    {
+        static::deleting(function (Resume $resume) {
+            $files = app(\App\Services\ResumeFiles::class);
+            $files->delete($resume->uploaded_resume_file);
+            $files->delete($resume->profile_photo);
+            foreach ($resume->certificates as $certificate) {
+                $files->delete($certificate->certificate_file);
+            }
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

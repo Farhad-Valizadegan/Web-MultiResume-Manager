@@ -270,7 +270,7 @@ class ResumeManagementTest extends TestCase
 
     public function test_user_can_upload_a_resume_pdf_during_creation(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
 
@@ -297,20 +297,20 @@ class ResumeManagementTest extends TestCase
 
         $this->assertNotNull($resume->uploaded_resume_file);
 
-        Storage::disk('public')->assertExists(
+        Storage::disk('private')->assertExists(
             $resume->uploaded_resume_file
         );
     }
 
     public function test_replacing_uploaded_resume_deletes_previous_file(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
 
         $oldFile = UploadedFile::fake()
             ->create('old-resume.pdf', 300, 'application/pdf')
-            ->store('uploaded-resumes', 'public');
+            ->store('uploaded-resumes', 'private');
 
         $resume = $this->createResume($user, [
             'uploaded_resume_file' => $oldFile,
@@ -337,9 +337,9 @@ class ResumeManagementTest extends TestCase
 
         $resume->refresh();
 
-        Storage::disk('public')->assertMissing($oldFile);
+        Storage::disk('private')->assertMissing($oldFile);
 
-        Storage::disk('public')->assertExists(
+        Storage::disk('private')->assertExists(
             $resume->uploaded_resume_file
         );
 
@@ -351,13 +351,13 @@ class ResumeManagementTest extends TestCase
 
     public function test_user_can_delete_resume_and_its_uploaded_file(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
 
         $uploadedFile = UploadedFile::fake()
             ->create('resume.pdf', 300, 'application/pdf')
-            ->store('uploaded-resumes', 'public');
+            ->store('uploaded-resumes', 'private');
 
         $resume = $this->createResume($user, [
             'uploaded_resume_file' => $uploadedFile,
@@ -378,7 +378,7 @@ class ResumeManagementTest extends TestCase
             'id' => $resume->id,
         ]);
 
-        Storage::disk('public')->assertMissing($uploadedFile);
+        Storage::disk('private')->assertMissing($uploadedFile);
     }
 
     public function test_user_cannot_manage_another_users_resume(): void

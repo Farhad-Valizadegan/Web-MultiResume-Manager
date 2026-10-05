@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                <h2 class="font-semibold text-xl text-ink leading-tight">
                     Admin Dashboard
                 </h2>
 
-                <p class="text-sm text-gray-500 mt-1">
+                <p class="text-sm text-muted mt-1">
                     System overview, resume analytics, and user activity monitoring.
                 </p>
             </div>
@@ -25,40 +25,40 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-canvas">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
             <!-- System Overview -->
-            <section class="bg-slate-300 shadow-2xl border-2 border-slate-500 rounded-lg p-4 sm:p-6">
-                <div class="bg-white border-2 border-slate-300 rounded-lg p-5">
+            <section class="bg-surface-soft shadow-sm border border-line rounded-xl p-4 sm:p-6">
+                <div class="bg-surface border border-line rounded-xl p-5">
                     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
                         <div>
-                            <h3 class="text-2xl font-extrabold text-slate-900">
+                            <h3 class="text-2xl font-bold text-ink">
                                 System Analytics Overview
                             </h3>
 
-                            <p class="text-slate-600 mt-2 max-w-2xl">
+                            <p class="text-muted mt-2 max-w-2xl">
                                 Monitor all users, resumes, active public links, and total resume views across the platform.
                             </p>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div class="bg-blue-50 border-2 border-blue-100 rounded-lg px-5 py-4">
-                                <p class="text-sm text-blue-600 font-bold uppercase tracking-wide">
+                            <div class="bg-blue-soft border border-blue-soft rounded-xl px-5 py-4">
+                                <p class="text-sm text-blue-strong font-bold uppercase tracking-wide">
                                     Total Users
                                 </p>
 
-                                <p class="text-4xl font-extrabold text-blue-700 mt-1">
+                                <p class="text-4xl font-bold text-blue-strong mt-1">
                                     {{ $totalUsers }}
                                 </p>
                             </div>
 
-                            <div class="bg-slate-50 border-2 border-slate-200 rounded-lg px-5 py-4">
-                                <p class="text-sm text-slate-600 font-bold uppercase tracking-wide">
+                            <div class="bg-surface-soft border border-line rounded-xl px-5 py-4">
+                                <p class="text-sm text-muted font-bold uppercase tracking-wide">
                                     Total Views
                                 </p>
 
-                                <p class="text-4xl font-extrabold text-slate-900 mt-1">
+                                <p class="text-4xl font-bold text-ink mt-1">
                                     {{ $totalViews }}
                                 </p>
                             </div>
@@ -68,55 +68,55 @@
             </section>
 
             <!-- Statistics Cards -->
-            <section class="bg-slate-300 shadow-2xl border-2 border-slate-500 rounded-lg p-4 sm:p-6">
+            <section class="bg-surface-soft shadow-sm border border-line rounded-xl p-4 sm:p-6">
                 <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5">
 
-                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-slate-300 hover:shadow-md transition">
-                        <p class="text-sm text-slate-600 font-bold">
+                    <div class="bg-surface p-5 rounded-xl shadow-xs border border-line hover:shadow-md transition">
+                        <p class="text-sm text-muted font-bold">
                             Total Users
                         </p>
 
-                        <p class="text-3xl font-extrabold text-slate-900 mt-2">
+                        <p class="text-3xl font-bold text-ink mt-2">
                             {{ $totalUsers }}
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-slate-300 hover:shadow-md transition">
-                        <p class="text-sm text-slate-600 font-bold">
+                    <div class="bg-surface p-5 rounded-xl shadow-xs border border-line hover:shadow-md transition">
+                        <p class="text-sm text-muted font-bold">
                             Total Resumes
                         </p>
 
-                        <p class="text-3xl font-extrabold text-slate-900 mt-2">
+                        <p class="text-3xl font-bold text-ink mt-2">
                             {{ $totalResumes }}
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-green-200 hover:shadow-md transition">
-                        <p class="text-sm text-slate-600 font-bold">
+                    <div class="bg-surface p-5 rounded-xl shadow-xs border border-green-soft hover:shadow-md transition">
+                        <p class="text-sm text-muted font-bold">
                             Active Resumes
                         </p>
 
-                        <p class="text-3xl font-extrabold text-green-600 mt-2">
+                        <p class="text-3xl font-bold text-green-strong mt-2">
                             {{ $activeResumes }}
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-red-200 hover:shadow-md transition">
-                        <p class="text-sm text-slate-600 font-bold">
+                    <div class="bg-surface p-5 rounded-xl shadow-xs border border-red-soft hover:shadow-md transition">
+                        <p class="text-sm text-muted font-bold">
                             Inactive Resumes
                         </p>
 
-                        <p class="text-3xl font-extrabold text-red-600 mt-2">
+                        <p class="text-3xl font-bold text-red-strong mt-2">
                             {{ $inactiveResumes }}
                         </p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-lg shadow-xs border-2 border-blue-200 hover:shadow-md transition">
-                        <p class="text-sm text-slate-600 font-bold">
+                    <div class="bg-surface p-5 rounded-xl shadow-xs border border-blue-soft hover:shadow-md transition">
+                        <p class="text-sm text-muted font-bold">
                             Total Resume Views
                         </p>
 
-                        <p class="text-3xl font-extrabold text-blue-600 mt-2">
+                        <p class="text-3xl font-bold text-blue-strong mt-2">
                             {{ $totalViews }}
                         </p>
                     </div>
@@ -128,43 +128,43 @@
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
                 <!-- Most Viewed Resumes -->
-                <div class="bg-slate-300 shadow-2xl border-2 border-slate-500 rounded-lg p-4 sm:p-6">
-                    <div class="mb-5 bg-white border-2 border-slate-300 rounded-lg p-5">
-                        <h3 class="text-lg font-extrabold text-slate-900">
+                <div class="bg-surface-soft shadow-sm border border-line rounded-xl p-4 sm:p-6">
+                    <div class="mb-5 bg-surface border border-line rounded-xl p-5">
+                        <h3 class="text-lg font-bold text-ink">
                             Most Viewed Resumes
                         </h3>
 
-                        <p class="text-sm text-slate-600 mt-1">
+                        <p class="text-sm text-muted mt-1">
                             Resumes ranked by total public views.
                         </p>
                     </div>
 
                     <div class="space-y-3">
                         @forelse ($mostViewedResumes as $resume)
-                            <div class="bg-white border-2 border-slate-300 rounded-lg p-4">
+                            <div class="bg-surface border border-line rounded-xl p-4">
                                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                                     <div class="min-w-0">
-                                        <p class="font-extrabold text-slate-900 wrap-break-word">
+                                        <p class="font-bold text-ink wrap-break-word">
                                             {{ $resume->title }}
                                         </p>
 
-                                        <p class="text-sm text-slate-600 mt-1">
+                                        <p class="text-sm text-muted mt-1">
                                             Owner: {{ $resume->user->name ?? 'Unknown user' }}
                                         </p>
 
-                                        <p class="text-sm text-slate-600">
+                                        <p class="text-sm text-muted">
                                             Position: {{ $resume->job_position ?? 'Not specified' }}
                                         </p>
                                     </div>
 
-                                    <span class="inline-flex justify-center px-3 py-1 rounded-md bg-blue-100 text-blue-700 font-bold text-sm whitespace-nowrap">
+                                    <span class="inline-flex justify-center px-3 py-1 rounded-md bg-blue-soft text-blue-strong font-bold text-sm whitespace-nowrap">
                                         {{ $resume->view_count ?? 0 }} views
                                     </span>
                                 </div>
                             </div>
                         @empty
-                            <div class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                                <p class="text-slate-600">
+                            <div class="bg-surface border border-line rounded-xl p-5">
+                                <p class="text-muted">
                                     No view data yet.
                                 </p>
                             </div>
@@ -173,36 +173,36 @@
                 </div>
 
                 <!-- Recently Viewed Resumes -->
-                <div class="bg-slate-300 shadow-2xl border-2 border-slate-500 rounded-lg p-4 sm:p-6">
-                    <div class="mb-5 bg-white border-2 border-slate-300 rounded-lg p-5">
-                        <h3 class="text-lg font-extrabold text-slate-900">
+                <div class="bg-surface-soft shadow-sm border border-line rounded-xl p-4 sm:p-6">
+                    <div class="mb-5 bg-surface border border-line rounded-xl p-5">
+                        <h3 class="text-lg font-bold text-ink">
                             Recently Viewed Resumes
                         </h3>
 
-                        <p class="text-sm text-slate-600 mt-1">
+                        <p class="text-sm text-muted mt-1">
                             Resumes most recently opened through protected public links.
                         </p>
                     </div>
 
                     <div class="space-y-3">
                         @forelse ($recentlyViewedResumes as $resume)
-                            <div class="bg-white border-2 border-slate-300 rounded-lg p-4">
-                                <p class="font-extrabold text-slate-900 wrap-break-word">
+                            <div class="bg-surface border border-line rounded-xl p-4">
+                                <p class="font-bold text-ink wrap-break-word">
                                     {{ $resume->title }}
                                 </p>
 
-                                <p class="text-sm text-slate-600 mt-1">
+                                <p class="text-sm text-muted mt-1">
                                     Owner: {{ $resume->user->name ?? 'Unknown user' }}
                                 </p>
 
-                                <p class="text-sm text-slate-600">
+                                <p class="text-sm text-muted">
                                     Last viewed:
                                     {{ $resume->last_viewed_at->format('Y-m-d H:i') }}
                                 </p>
                             </div>
                         @empty
-                            <div class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                                <p class="text-slate-600">
+                            <div class="bg-surface border border-line rounded-xl p-5">
+                                <p class="text-muted">
                                     No recent views yet.
                                 </p>
                             </div>
@@ -213,16 +213,16 @@
             </section>
 
             <!-- All Resume Analytics -->
-            <section class="bg-slate-300 shadow-2xl border-2 border-slate-500 rounded-lg p-4 sm:p-6">
+            <section class="bg-surface-soft shadow-sm border border-line rounded-xl p-4 sm:p-6">
 
-                <div class="mb-5 bg-white border-2 border-slate-300 rounded-lg p-5">
+                <div class="mb-5 bg-surface border border-line rounded-xl p-5">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
-                            <h3 class="text-lg font-extrabold text-slate-900">
+                            <h3 class="text-lg font-bold text-ink">
                                 All Resume Analytics
                             </h3>
 
-                            <p class="text-sm text-slate-600 mt-1">
+                            <p class="text-sm text-muted mt-1">
                                 View statistics for all resumes in the system without horizontal scrolling.
                             </p>
                         </div>
@@ -236,47 +236,47 @@
 
                 <div class="space-y-4">
                     @forelse ($allResumes as $resume)
-                        <div class="bg-white border-2 border-slate-300 rounded-lg p-5 shadow-xs hover:shadow-md transition">
+                        <div class="bg-surface border border-line rounded-xl p-5 shadow-xs hover:shadow-md transition">
 
                             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
                                 <div class="flex-1 min-w-0">
                                     <div class="flex flex-wrap gap-2 mb-3">
                                         @if ($resume->status === 'active')
-                                            <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-green-100 text-green-700">
+                                            <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-green-soft text-green-strong">
                                                 Active
                                             </span>
                                         @else
-                                            <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-red-100 text-red-700">
+                                            <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-red-soft text-red-strong">
                                                 Inactive
                                             </span>
                                         @endif
 
-                                        <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-blue-100 text-blue-700">
+                                        <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-blue-soft text-blue-strong">
                                             {{ $resume->view_count ?? 0 }} views
                                         </span>
                                     </div>
 
-                                    <h4 class="text-lg font-extrabold text-slate-900 wrap-break-word">
+                                    <h4 class="text-lg font-bold text-ink wrap-break-word">
                                         {{ $resume->title }}
                                     </h4>
 
-                                    <p class="text-slate-600 mt-2 wrap-break-word">
+                                    <p class="text-muted mt-2 wrap-break-word">
                                         Owner:
-                                        <span class="font-semibold text-slate-800">
+                                        <span class="font-semibold text-ink">
                                             {{ $resume->user->name ?? 'Unknown user' }}
                                         </span>
                                     </p>
 
-                                    <p class="text-slate-600 mt-1 wrap-break-word">
+                                    <p class="text-muted mt-1 wrap-break-word">
                                         Target Position:
-                                        <span class="font-semibold text-slate-800">
+                                        <span class="font-semibold text-ink">
                                             {{ $resume->job_position ?? 'Not specified' }}
                                         </span>
                                     </p>
 
-                                    <p class="text-slate-600 mt-1">
+                                    <p class="text-muted mt-1">
                                         Last Viewed:
-                                        <span class="font-semibold text-slate-800">
+                                        <span class="font-semibold text-ink">
                                             @if ($resume->last_viewed_at)
                                                 {{ $resume->last_viewed_at->format('Y-m-d H:i') }}
                                             @else
@@ -294,8 +294,8 @@
 
                         </div>
                     @empty
-                        <div class="bg-white border-2 border-slate-300 rounded-lg p-8 text-center">
-                            <p class="text-slate-600">
+                        <div class="bg-surface border border-line rounded-xl p-8 text-center">
+                            <p class="text-muted">
                                 No resumes found.
                             </p>
                         </div>
@@ -305,9 +305,9 @@
             </section>
 
             <!-- Quick Actions -->
-            <section class="bg-slate-300 shadow-2xl border-2 border-slate-500 rounded-lg p-4 sm:p-6">
-                <div class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                    <h3 class="text-lg font-extrabold text-slate-900 mb-4">
+            <section class="bg-surface-soft shadow-sm border border-line rounded-xl p-4 sm:p-6">
+                <div class="bg-surface border border-line rounded-xl p-5">
+                    <h3 class="text-lg font-bold text-ink mb-4">
                         Quick Actions
                     </h3>
 
