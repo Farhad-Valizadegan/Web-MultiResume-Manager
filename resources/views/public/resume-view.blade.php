@@ -164,8 +164,10 @@
                                                     </p>
                                                 @endif
 
-                                                @if ($project->project_link)
-                                                    <p class="mt-4">
+                                                <div class="mt-4 flex flex-wrap items-center gap-3">
+<div class="mt-4 flex flex-wrap items-center gap-3">
+@if ($project->project_link)
+                                                    <p class="m-0">
                                                         <a href="{{ $project->project_link }}"
                                                            target="_blank"
                                                            rel="noopener noreferrer"
@@ -176,7 +178,7 @@
                                                     </p>
                                                 @endif
                                                 @if ($project->demo_url)
-                                                    <p class="mt-4">
+                                                    <p class="m-0">
                                                         <a href="{{ $project->demo_url }}" target="_blank" rel="noopener noreferrer"
                                                            class="rf-button rf-button-secondary">
                                                             {{ $project->demo_label ?: 'Watch demo' }}
@@ -184,6 +186,8 @@
                                                         </a>
                                                     </p>
                                                 @endif
+</div>
+</div>
                                             </article>
                                         @endforeach
                                     </div>
