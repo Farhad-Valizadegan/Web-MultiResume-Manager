@@ -31,7 +31,7 @@ class ResumeController extends Controller
 
     public function destroy(Resume $resume)
     {
-        $resume->delete();
+        app(\App\Services\ResumeFiles::class)->transaction(fn () => $resume->delete());
 
         return redirect()
             ->route('admin.resumes.index')

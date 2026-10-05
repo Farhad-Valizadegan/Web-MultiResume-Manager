@@ -15,14 +15,14 @@ class ResumeCertificateUpdateTest extends TestCase
 
     public function test_updating_a_resume_retains_an_existing_certificate_and_its_file(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
         $resume = $this->createResume($user);
 
         $certificatePath = 'certificate-files/existing-certificate.pdf';
 
-        Storage::disk('public')->put($certificatePath, 'certificate contents');
+        Storage::disk('private')->put($certificatePath, 'certificate contents');
 
         $certificate = $resume->certificates()->create([
             'certificate_title' => 'Laravel Certificate',
@@ -59,12 +59,12 @@ class ResumeCertificateUpdateTest extends TestCase
 
         $this->assertDatabaseCount('resume_certificates', 1);
 
-        Storage::disk('public')->assertExists($certificatePath);
+        Storage::disk('private')->assertExists($certificatePath);
     }
 
     public function test_replacing_a_certificate_file_deletes_only_the_previous_file(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
         $resume = $this->createResume($user);
@@ -72,8 +72,8 @@ class ResumeCertificateUpdateTest extends TestCase
         $oldCertificatePath = 'certificate-files/old-certificate.pdf';
         $unrelatedPath = 'certificate-files/unrelated-certificate.pdf';
 
-        Storage::disk('public')->put($oldCertificatePath, 'old certificate');
-        Storage::disk('public')->put($unrelatedPath, 'unrelated certificate');
+        Storage::disk('private')->put($oldCertificatePath, 'old certificate');
+        Storage::disk('private')->put($unrelatedPath, 'unrelated certificate');
 
         $certificate = $resume->certificates()->create([
             'certificate_title' => 'Original Certificate',
@@ -124,23 +124,23 @@ class ResumeCertificateUpdateTest extends TestCase
 
         $this->assertDatabaseCount('resume_certificates', 1);
 
-        Storage::disk('public')->assertMissing($oldCertificatePath);
-        Storage::disk('public')->assertExists(
+        Storage::disk('private')->assertMissing($oldCertificatePath);
+        Storage::disk('private')->assertExists(
             $updatedCertificate->certificate_file
         );
-        Storage::disk('public')->assertExists($unrelatedPath);
+        Storage::disk('private')->assertExists($unrelatedPath);
     }
 
     public function test_removing_a_certificate_deletes_its_record_and_file(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
         $resume = $this->createResume($user);
 
         $certificatePath = 'certificate-files/removed-certificate.pdf';
 
-        Storage::disk('public')->put($certificatePath, 'certificate contents');
+        Storage::disk('private')->put($certificatePath, 'certificate contents');
 
         $certificate = $resume->certificates()->create([
             'certificate_title' => 'Certificate to Remove',
@@ -165,12 +165,12 @@ class ResumeCertificateUpdateTest extends TestCase
             'id' => $certificate->id,
         ]);
 
-        Storage::disk('public')->assertMissing($certificatePath);
+        Storage::disk('private')->assertMissing($certificatePath);
     }
 
     public function test_user_cannot_submit_a_certificate_id_from_another_resume(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
         $otherUser = $this->createActiveUser();
@@ -180,7 +180,7 @@ class ResumeCertificateUpdateTest extends TestCase
 
         $otherCertificatePath = 'certificate-files/other-users-certificate.pdf';
 
-        Storage::disk('public')->put(
+        Storage::disk('private')->put(
             $otherCertificatePath,
             'other certificate contents'
         );
@@ -223,19 +223,19 @@ class ResumeCertificateUpdateTest extends TestCase
             'certificate_title' => 'Forged Certificate',
         ]);
 
-        Storage::disk('public')->assertExists($otherCertificatePath);
+        Storage::disk('private')->assertExists($otherCertificatePath);
     }
 
     public function test_browser_submitted_certificate_file_path_is_not_trusted(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
         $resume = $this->createResume($user);
 
         $forgedPath = 'certificate-files/forged-certificate.pdf';
 
-        Storage::disk('public')->put($forgedPath, 'protected file contents');
+        Storage::disk('private')->put($forgedPath, 'protected file contents');
 
         $response = $this
             ->actingAs($user)
@@ -262,7 +262,7 @@ class ResumeCertificateUpdateTest extends TestCase
             'certificate_file' => null,
         ]);
 
-        Storage::disk('public')->assertExists($forgedPath);
+        Storage::disk('private')->assertExists($forgedPath);
     }
 
     private function createActiveUser(): User
