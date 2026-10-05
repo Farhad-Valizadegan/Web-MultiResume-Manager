@@ -21,7 +21,7 @@
                     <div class="flex justify-end mb-2">
                         <button type="button"
                                 onclick="this.closest('.education-item').remove()"
-                                class="text-red-600 hover:underline">
+                                class="text-red-strong hover:underline">
                             Remove
                         </button>
                     </div>
@@ -31,7 +31,7 @@
                         <input type="text"
                                name="educations[{{ $index }}][institution_name]"
                                value="{{ old('educations.' . $index . '.institution_name', ($education->institution_name ?? null)) }}"
-                               class="w-full border-gray-300 rounded-sm"
+                               class="w-full border-line rounded-sm"
                                placeholder="Example: University Name">
                     </div>
 
@@ -41,7 +41,7 @@
                             <input type="text"
                                    name="educations[{{ $index }}][degree]"
                                    value="{{ old('educations.' . $index . '.degree', ($education->degree ?? null)) }}"
-                                   class="w-full border-gray-300 rounded-sm"
+                                   class="w-full border-line rounded-sm"
                                    placeholder="Example: M.Sc.">
                         </div>
 
@@ -50,7 +50,7 @@
                             <input type="text"
                                    name="educations[{{ $index }}][field_of_study]"
                                    value="{{ old('educations.' . $index . '.field_of_study', ($education->field_of_study ?? null)) }}"
-                                   class="w-full border-gray-300 rounded-sm"
+                                   class="w-full border-line rounded-sm"
                                    placeholder="Example: Computer Science">
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             <input type="date"
                                    name="educations[{{ $index }}][start_date]"
                                    value="{{ old('educations.' . $index . '.start_date', ($education->start_date ?? null)) }}"
-                                   class="w-full border-gray-300 rounded-sm">
+                                   class="w-full border-line rounded-sm">
                         </div>
 
                         <div class="mb-4">
@@ -69,7 +69,7 @@
                             <input type="date"
                                    name="educations[{{ $index }}][end_date]"
                                    value="{{ old('educations.' . $index . '.end_date', ($education->end_date ?? null)) }}"
-                                   class="w-full border-gray-300 rounded-sm">
+                                   class="w-full border-line rounded-sm">
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                         <label class="block mb-1 font-medium">Description</label>
                         <textarea name="educations[{{ $index }}][description]"
                                   rows="3"
-                                  class="w-full border-gray-300 rounded-sm"
+                                  class="w-full border-line rounded-sm"
                                   placeholder="Example: Focused on software engineering, data science, machine learning, and applied computer science.">{{ old('educations.' . $index . '.description', ($education->description ?? null)) }}</textarea>
                     </div>
                 </div>

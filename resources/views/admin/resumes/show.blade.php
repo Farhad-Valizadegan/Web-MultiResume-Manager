@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                <h2 class="font-semibold text-xl text-ink leading-tight">
                     Resume Details
                 </h2>
 
-                <p class="text-sm text-gray-500 mt-1">
+                <p class="text-sm text-muted mt-1">
                     View resume information, owner details, access settings, and resume content.
                 </p>
             </div>
@@ -18,50 +18,50 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-canvas">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @php
                 $publicUrl = url('/resume/' . $resume->public_link);
             @endphp
 
-            <div id="copy-message" class="hidden mb-4 p-4 bg-blue-100 border-2 border-blue-200 text-blue-700 rounded-md font-semibold">
+            <div id="copy-message" class="hidden mb-4 p-4 bg-blue-soft border border-blue-soft text-blue-strong rounded-md font-semibold">
                 Public resume link copied successfully.
             </div>
 
-            <div class="bg-slate-300 shadow-2xl sm:rounded-lg p-4 sm:p-6 border-2 border-slate-500 space-y-6">
+            <div class="bg-surface-soft shadow-sm sm:rounded-xl p-4 sm:p-6 border border-line space-y-6">
 
                 <!-- Page Intro -->
-                <section class="bg-white border-2 border-slate-300 rounded-lg p-5">
+                <section class="bg-surface border border-line rounded-xl p-5">
                     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
                         <div>
                             <div class="flex flex-wrap gap-2 mb-3">
-                                <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">
+                                <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-surface-soft text-muted">
                                     ID: {{ $resume->id }}
                                 </span>
 
                                 @if ($resume->status === 'active')
-                                    <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-green-100 text-green-700">
+                                    <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-green-soft text-green-strong">
                                         Active
                                     </span>
                                 @else
-                                    <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-red-100 text-red-700">
+                                    <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-red-soft text-red-strong">
                                         Inactive
                                     </span>
                                 @endif
 
-                                <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-blue-100 text-blue-700">
+                                <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-blue-soft text-blue-strong">
                                     {{ $resume->view_count ?? 0 }} views
                                 </span>
                             </div>
 
-                            <h3 class="text-2xl font-extrabold text-slate-900 wrap-break-word">
+                            <h3 class="text-2xl font-bold text-ink wrap-break-word">
                                 {{ $resume->title }}
                             </h3>
 
-                            <p class="text-slate-600 mt-2 wrap-break-word">
+                            <p class="text-muted mt-2 wrap-break-word">
                                 Job Position:
-                                <span class="font-semibold text-slate-800">
+                                <span class="font-semibold text-ink">
                                     {{ $resume->job_position ?? 'Not specified' }}
                                 </span>
                             </p>
@@ -84,35 +84,35 @@
                 </section>
 
                 <!-- Owner and Analytics -->
-                <section class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                    <h4 class="text-lg font-extrabold text-slate-900 mb-4">
+                <section class="bg-surface border border-line rounded-xl p-5">
+                    <h4 class="text-lg font-bold text-ink mb-4">
                         Owner and Analytics
                     </h4>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                        <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">
+                        <div class="bg-surface-soft border border-line rounded-md p-4">
+                            <p class="text-xs text-muted font-bold uppercase tracking-wide">
                                 Owner
                             </p>
-                            <p class="font-bold text-slate-900 mt-1 wrap-break-word">
+                            <p class="font-bold text-ink mt-1 wrap-break-word">
                                 {{ $resume->user->name ?? 'Unknown' }}
                             </p>
                         </div>
 
-                        <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">
+                        <div class="bg-surface-soft border border-line rounded-md p-4">
+                            <p class="text-xs text-muted font-bold uppercase tracking-wide">
                                 Email
                             </p>
-                            <p class="font-bold text-slate-900 mt-1 break-all">
+                            <p class="font-bold text-ink mt-1 break-all">
                                 {{ $resume->user->email ?? 'Unknown' }}
                             </p>
                         </div>
 
-                        <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">
+                        <div class="bg-surface-soft border border-line rounded-md p-4">
+                            <p class="text-xs text-muted font-bold uppercase tracking-wide">
                                 Last Viewed
                             </p>
-                            <p class="font-bold text-slate-900 mt-1">
+                            <p class="font-bold text-ink mt-1">
                                 @if ($resume->last_viewed_at)
                                     {{ $resume->last_viewed_at->format('Y-m-d H:i') }}
                                 @else
@@ -121,11 +121,11 @@
                             </p>
                         </div>
 
-                        <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">
+                        <div class="bg-surface-soft border border-line rounded-md p-4">
+                            <p class="text-xs text-muted font-bold uppercase tracking-wide">
                                 Created
                             </p>
-                            <p class="font-bold text-slate-900 mt-1">
+                            <p class="font-bold text-ink mt-1">
                                 {{ $resume->created_at->format('Y-m-d H:i') }}
                             </p>
                         </div>
@@ -133,14 +133,14 @@
                 </section>
 
                 <!-- Access Information -->
-                <section class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                    <h4 class="text-lg font-extrabold text-slate-900 mb-4">
+                <section class="bg-surface border border-line rounded-xl p-5">
+                    <h4 class="text-lg font-bold text-ink mb-4">
                         Access and Download Information
                     </h4>
 
                     <div class="space-y-4">
-                        <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                            <p class="text-sm text-slate-600 font-bold mb-2">
+                        <div class="bg-surface-soft border border-line rounded-md p-4">
+                            <p class="text-sm text-muted font-bold mb-2">
                                 Public Link
                             </p>
 
@@ -148,7 +148,7 @@
                                 <input type="text"
                                        value="{{ $publicUrl }}"
                                        readonly
-                                       class="w-full lg:flex-1 border-2 border-slate-300 rounded-md shadow-xs font-mono text-sm px-3 py-2">
+                                       class="w-full lg:flex-1 border border-line rounded-md shadow-xs font-mono text-sm px-3 py-2">
 
                                 <button type="button"
                                         onclick="copyResumeLink('{{ $publicUrl }}')"
@@ -159,28 +159,28 @@
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">
+                            <div class="bg-surface-soft border border-line rounded-md p-4">
+                                <p class="text-xs text-muted font-bold uppercase tracking-wide">
                                     Employer Password
                                 </p>
 
                                 @if ($resume->resume_password_hash)
-                                    <p class="font-mono bg-white border border-slate-300 px-2 py-1 rounded-md mt-2 break-all inline-block">
+                                    <p class="font-mono bg-surface border border-line px-2 py-1 rounded-md mt-2 break-all inline-block">
                                         Password set (hidden)
                                     </p>
                                 @else
-                                    <p class="text-red-600 font-semibold mt-2">
+                                    <p class="text-red-strong font-semibold mt-2">
                                         No password set
                                     </p>
                                 @endif
                             </div>
 
-                            <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">
+                            <div class="bg-surface-soft border border-line rounded-md p-4">
+                                <p class="text-xs text-muted font-bold uppercase tracking-wide">
                                     Access Status
                                 </p>
 
-                                <p class="font-bold text-slate-900 mt-2">
+                                <p class="font-bold text-ink mt-2">
                                     @if ($resume->resume_password_hash)
                                         Password Required
                                     @else
@@ -189,12 +189,12 @@
                                 </p>
                             </div>
 
-                            <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">
+                            <div class="bg-surface-soft border border-line rounded-md p-4">
+                                <p class="text-xs text-muted font-bold uppercase tracking-wide">
                                     Download Option
                                 </p>
 
-                                <p class="font-bold text-slate-900 mt-2">
+                                <p class="font-bold text-ink mt-2">
                                     @if ($resume->download_resume_type === 'generated')
                                         Generated PDF only
                                     @elseif ($resume->download_resume_type === 'uploaded')
@@ -219,8 +219,8 @@
                 </section>
 
                 <!-- Skills -->
-                <section class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                    <h4 class="text-lg font-extrabold text-slate-900 mb-4">
+                <section class="bg-surface border border-line rounded-xl p-5">
+                    <h4 class="text-lg font-bold text-ink mb-4">
                         Skills
                     </h4>
 
@@ -233,14 +233,14 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                             @foreach ($groupedSkills as $category => $skills)
-                                <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                    <h5 class="font-bold text-slate-900 mb-3">
+                                <div class="bg-surface-soft border border-line rounded-md p-4">
+                                    <h5 class="font-bold text-ink mb-3">
                                         {{ $category }}
                                     </h5>
 
                                     <div class="flex flex-wrap gap-2">
                                         @foreach ($skills as $skill)
-                                            <span class="inline-flex px-3 py-1 rounded-md bg-blue-100 text-blue-700 text-sm font-bold">
+                                            <span class="inline-flex px-3 py-1 rounded-md bg-blue-soft text-blue-strong text-sm font-bold">
                                                 {{ $skill->skill_name }}
                                                 @if ($skill->skill_level)
                                                     - {{ $skill->skill_level }}
@@ -252,7 +252,7 @@
                             @endforeach
                         </div>
                     @else
-                        <p class="text-slate-500">
+                        <p class="text-muted">
                             No skills added.
                         </p>
                     @endif
@@ -260,52 +260,52 @@
 
                 <!-- Languages and Interests -->
                 <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                        <h4 class="text-lg font-extrabold text-slate-900 mb-4">
+                    <div class="bg-surface border border-line rounded-xl p-5">
+                        <h4 class="text-lg font-bold text-ink mb-4">
                             Languages
                         </h4>
 
                         <div class="space-y-3">
                             @forelse ($resume->languages as $language)
-                                <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                    <p class="font-bold text-slate-900">
+                                <div class="bg-surface-soft border border-line rounded-md p-4">
+                                    <p class="font-bold text-ink">
                                         {{ $language->language_name }}
                                     </p>
 
                                     @if ($language->proficiency_level)
-                                        <p class="text-slate-600 mt-1">
+                                        <p class="text-muted mt-1">
                                             {{ $language->proficiency_level }}
                                         </p>
                                     @endif
                                 </div>
                             @empty
-                                <p class="text-slate-500">
+                                <p class="text-muted">
                                     No languages added.
                                 </p>
                             @endforelse
                         </div>
                     </div>
 
-                    <div class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                        <h4 class="text-lg font-extrabold text-slate-900 mb-4">
+                    <div class="bg-surface border border-line rounded-xl p-5">
+                        <h4 class="text-lg font-bold text-ink mb-4">
                             Hobbies & Interests
                         </h4>
 
                         <div class="space-y-3">
                             @forelse ($resume->interests as $interest)
-                                <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                    <p class="font-bold text-slate-900">
+                                <div class="bg-surface-soft border border-line rounded-md p-4">
+                                    <p class="font-bold text-ink">
                                         {{ $interest->interest_name }}
                                     </p>
 
                                     @if ($interest->description)
-                                        <p class="text-slate-700 mt-2">
+                                        <p class="text-muted mt-2">
                                             {{ $interest->description }}
                                         </p>
                                     @endif
                                 </div>
                             @empty
-                                <p class="text-slate-500">
+                                <p class="text-muted">
                                     No hobbies or interests added.
                                 </p>
                             @endforelse
@@ -314,37 +314,37 @@
                 </section>
 
                 <!-- Education -->
-                <section class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                    <h4 class="text-lg font-extrabold text-slate-900 mb-4">
+                <section class="bg-surface border border-line rounded-xl p-5">
+                    <h4 class="text-lg font-bold text-ink mb-4">
                         Education
                     </h4>
 
                     <div class="space-y-4">
                         @forelse ($resume->educations as $education)
-                            <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                <p class="font-bold text-slate-900">
+                            <div class="bg-surface-soft border border-line rounded-md p-4">
+                                <p class="font-bold text-ink">
                                     {{ $education->institution_name }}
                                 </p>
 
-                                <p class="text-slate-700 mt-1">
+                                <p class="text-muted mt-1">
                                     {{ $education->degree }}
                                     @if ($education->field_of_study)
                                         - {{ $education->field_of_study }}
                                     @endif
                                 </p>
 
-                                <p class="text-slate-500 text-sm mt-1">
+                                <p class="text-muted text-sm mt-1">
                                     {{ $education->start_date }} - {{ $education->end_date ?? 'Present' }}
                                 </p>
 
                                 @if ($education->description)
-                                    <p class="text-slate-700 mt-3">
+                                    <p class="text-muted mt-3">
                                         {{ $education->description }}
                                     </p>
                                 @endif
                             </div>
                         @empty
-                            <p class="text-slate-500">
+                            <p class="text-muted">
                                 No education added.
                             </p>
                         @endforelse
@@ -352,34 +352,34 @@
                 </section>
 
                 <!-- Experience -->
-                <section class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                    <h4 class="text-lg font-extrabold text-slate-900 mb-4">
+                <section class="bg-surface border border-line rounded-xl p-5">
+                    <h4 class="text-lg font-bold text-ink mb-4">
                         Work Experience / Internship
                     </h4>
 
                     <div class="space-y-4">
                         @forelse ($resume->experiences as $experience)
-                            <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                <p class="font-bold text-slate-900">
+                            <div class="bg-surface-soft border border-line rounded-md p-4">
+                                <p class="font-bold text-ink">
                                     {{ $experience->job_title }}
                                 </p>
 
-                                <p class="text-slate-700 mt-1">
+                                <p class="text-muted mt-1">
                                     {{ $experience->company_name }}
                                 </p>
 
-                                <p class="text-slate-500 text-sm mt-1">
+                                <p class="text-muted text-sm mt-1">
                                     {{ $experience->start_date }} - {{ $experience->end_date ?? 'Present' }}
                                 </p>
 
                                 @if ($experience->description)
-                                    <p class="text-slate-700 mt-3">
+                                    <p class="text-muted mt-3">
                                         {{ $experience->description }}
                                     </p>
                                 @endif
                             </div>
                         @empty
-                            <p class="text-slate-500">
+                            <p class="text-muted">
                                 No work experience added.
                             </p>
                         @endforelse
@@ -387,38 +387,38 @@
                 </section>
 
                 <!-- Certificates -->
-                <section class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                    <h4 class="text-lg font-extrabold text-slate-900 mb-4">
+                <section class="bg-surface border border-line rounded-xl p-5">
+                    <h4 class="text-lg font-bold text-ink mb-4">
                         Licenses & Certifications
                     </h4>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         @forelse ($resume->certificates as $certificate)
-                            <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                <p class="font-bold text-slate-900">
+                            <div class="bg-surface-soft border border-line rounded-md p-4">
+                                <p class="font-bold text-ink">
                                     {{ $certificate->certificate_title }}
                                 </p>
 
                                 @if ($certificate->issuer)
-                                    <p class="text-slate-700 mt-1">
+                                    <p class="text-muted mt-1">
                                         Issuer: {{ $certificate->issuer }}
                                     </p>
                                 @endif
 
                                 @if ($certificate->issue_date)
-                                    <p class="text-slate-500 text-sm mt-1">
+                                    <p class="text-muted text-sm mt-1">
                                         Issued: {{ $certificate->issue_date }}
                                     </p>
                                 @endif
 
                                 @if ($certificate->credential_id)
-                                    <p class="text-slate-500 text-sm mt-1">
+                                    <p class="text-muted text-sm mt-1">
                                         Credential ID: {{ $certificate->credential_id }}
                                     </p>
                                 @endif
 
                                 @if ($certificate->description)
-                                    <p class="text-slate-700 mt-3">
+                                    <p class="text-muted mt-3">
                                         {{ $certificate->description }}
                                     </p>
                                 @endif
@@ -442,7 +442,7 @@
                                 </div>
                             </div>
                         @empty
-                            <p class="text-slate-500">
+                            <p class="text-muted">
                                 No certificates added.
                             </p>
                         @endforelse
@@ -450,20 +450,20 @@
                 </section>
 
                 <!-- Projects -->
-                <section class="bg-white border-2 border-slate-300 rounded-lg p-5">
-                    <h4 class="text-lg font-extrabold text-slate-900 mb-4">
+                <section class="bg-surface border border-line rounded-xl p-5">
+                    <h4 class="text-lg font-bold text-ink mb-4">
                         Projects
                     </h4>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         @forelse ($resume->projects as $project)
-                            <div class="bg-slate-50 border border-slate-200 rounded-md p-4">
-                                <p class="font-bold text-slate-900">
+                            <div class="bg-surface-soft border border-line rounded-md p-4">
+                                <p class="font-bold text-ink">
                                     {{ $project->project_title }}
                                 </p>
 
                                 @if ($project->project_description)
-                                    <p class="text-slate-700 mt-2">
+                                    <p class="text-muted mt-2">
                                         {{ $project->project_description }}
                                     </p>
                                 @endif
@@ -477,7 +477,7 @@
                                 @endif
                             </div>
                         @empty
-                            <p class="text-slate-500">
+                            <p class="text-muted">
                                 No projects added.
                             </p>
                         @endforelse

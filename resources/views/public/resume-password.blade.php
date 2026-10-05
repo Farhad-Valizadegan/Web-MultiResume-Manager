@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @include('layouts.theme-init')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Protected Resume</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen bg-linear-to-br from-slate-950 via-blue-950 to-indigo-950 flex items-center justify-center px-4 py-8 antialiased">
+<body class="min-h-screen bg-canvas flex items-center justify-center px-4 py-8 antialiased">
+    <div class="rf-theme-corner">@include('layouts.theme-switch')</div>
 
     <div class="w-full max-w-lg">
 
         <!-- Main Card -->
-        <div class="bg-white rounded-xl shadow-2xl border-4 border-blue-200 overflow-hidden">
+        <div class="bg-surface rounded-xl shadow-sm border border-blue-soft overflow-hidden">
 
             <!-- Header -->
             <div class="bg-linear-to-r from-slate-900 via-blue-900 to-indigo-900 text-white px-6 py-7 text-center">
-                <div class="mx-auto w-14 h-14 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center mb-4">
+                <div class="mx-auto w-14 h-14 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 24 24"
                          fill="none"
@@ -30,7 +32,7 @@
                     </svg>
                 </div>
 
-                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">
                     Protected Resume Access
                 </h1>
 
@@ -43,28 +45,28 @@
             <div class="p-6 sm:p-8">
 
                 <!-- Resume Info -->
-                <div class="mb-6 bg-slate-50 border-2 border-slate-200 rounded-lg p-4">
-                    <p class="text-sm text-slate-500 font-semibold uppercase tracking-wide">
+                <div class="mb-6 bg-surface-soft border border-line rounded-xl p-4">
+                    <p class="text-sm text-muted font-semibold uppercase tracking-wide">
                         Resume
                     </p>
 
-                    <h2 class="text-xl font-extrabold text-slate-900 mt-1 wrap-break-word tracking-tight">
+                    <h2 class="text-xl font-bold text-ink mt-1 wrap-break-word tracking-tight">
                         {{ $resume->title }}
                     </h2>
 
                     @if ($resume->job_position)
-                        <p class="text-slate-600 mt-2 wrap-break-word">
+                        <p class="text-muted mt-2 wrap-break-word">
                             Target Position:
-                            <span class="font-semibold text-slate-800">
+                            <span class="font-semibold text-ink">
                                 {{ $resume->job_position }}
                             </span>
                         </p>
                     @endif
 
                     @if ($resume->user)
-                        <p class="text-slate-600 mt-2 wrap-break-word">
+                        <p class="text-muted mt-2 wrap-break-word">
                             Owner:
-                            <span class="font-semibold text-slate-800">
+                            <span class="font-semibold text-ink">
                                 {{ ($resume->full_name ?: $resume->title) }}
                             </span>
                         </p>
@@ -73,14 +75,14 @@
 
                 <!-- Error Message -->
                 @if (session('error'))
-                    <div class="mb-5 p-4 bg-red-50 border-2 border-red-200 text-red-700 rounded-lg font-semibold">
+                    <div class="mb-5 p-4 bg-red-soft border border-red-soft text-red-strong rounded-xl font-semibold">
                         {{ session('error') }}
                     </div>
                 @endif
 
                 <!-- Validation Error -->
                 @error('resume_password')
-                    <div class="mb-5 p-4 bg-red-50 border-2 border-red-200 text-red-700 rounded-lg font-semibold">
+                    <div class="mb-5 p-4 bg-red-soft border border-red-soft text-red-strong rounded-xl font-semibold">
                         {{ $message }}
                     </div>
                 @enderror
@@ -90,21 +92,21 @@
                     @csrf
 
                     <div>
-                        <label for="resume_password" class="block mb-2 font-bold text-slate-800">
+                        <label for="resume_password" class="block mb-2 font-bold text-ink">
                             Resume Password
                         </label>
 
                         <input id="resume_password"
                                type="password"
                                name="resume_password"
-                               class="w-full border-2 border-slate-300 rounded-md px-4 py-3 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                               class="w-full border border-line rounded-md px-4 py-3 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Enter resume password"
                                required
                                autofocus>
                     </div>
 
                     <button type="submit"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-extrabold shadow-lg transition">
+                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-bold shadow-lg transition">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 24 24"
                              fill="none"
@@ -122,8 +124,8 @@
                 </form>
 
                 <!-- Security Note -->
-                <div class="mt-6 bg-blue-50 border-2 border-blue-100 rounded-lg p-4">
-                    <p class="text-sm text-blue-800 leading-relaxed">
+                <div class="mt-6 bg-blue-soft border border-blue-soft rounded-xl p-4">
+                    <p class="text-sm text-blue-strong leading-relaxed">
                         This page protects the resume from unauthorized access. If you do not have the password, please contact the resume owner.
                     </p>
                 </div>

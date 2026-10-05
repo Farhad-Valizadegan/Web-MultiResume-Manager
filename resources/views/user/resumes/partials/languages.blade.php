@@ -2,13 +2,13 @@
 <div class="space-y-5">
 
     <!-- Section Header -->
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-slate-50 border-2 border-slate-200 rounded-lg p-4">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-surface-soft border border-line rounded-xl p-4">
         <div>
-            <h3 class="text-lg font-extrabold text-slate-900">
+            <h3 class="text-lg font-bold text-ink">
                 Languages
             </h3>
 
-            <p class="text-sm text-slate-500 mt-1">
+            <p class="text-sm text-muted mt-1">
                 Add languages and your proficiency level for each one.
             </p>
         </div>
@@ -29,15 +29,15 @@
                 : (isset($resume) ? $resume->languages : collect([(object) []]));
         @endphp
         @foreach ($languages as $index => $language)
-                <div class="language-item bg-slate-50 border-2 border-slate-200 rounded-lg p-4">
+                <div class="language-item bg-surface-soft border border-line rounded-xl p-4">
 
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
                         <div>
-                            <p class="font-bold text-slate-900">
+                            <p class="font-bold text-ink">
                                 Language Item #{{ $index + 1 }}
                             </p>
 
-                            <p class="text-sm text-slate-500">
+                            <p class="text-sm text-muted">
                                 Language name and proficiency level.
                             </p>
                         </div>
@@ -53,27 +53,27 @@
 
                         <!-- Language Name -->
                         <div>
-                            <label class="block mb-2 font-bold text-slate-800">
+                            <label class="block mb-2 font-bold text-ink">
                                 Language
                             </label>
 
                             <input type="text"
                                    name="languages[{{ $index }}][language_name]"
                                    value="{{ old('languages.' . $index . '.language_name', ($language->language_name ?? null)) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: English">
                         </div>
 
                         <!-- Proficiency Level -->
                         <div>
-                            <label class="block mb-2 font-bold text-slate-800">
+                            <label class="block mb-2 font-bold text-ink">
                                 Proficiency Level
                             </label>
 
                             <input type="text"
                                    name="languages[{{ $index }}][proficiency_level]"
                                    value="{{ old('languages.' . $index . '.proficiency_level', ($language->proficiency_level ?? null)) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: B2 / Native">
                         </div>
 

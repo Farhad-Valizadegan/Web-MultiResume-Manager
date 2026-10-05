@@ -2,13 +2,13 @@
 <div class="space-y-5">
 
     <!-- Section Header -->
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-slate-50 border-2 border-slate-200 rounded-lg p-4">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-surface-soft border border-line rounded-xl p-4">
         <div>
-            <h3 class="text-lg font-extrabold text-slate-900">
+            <h3 class="text-lg font-bold text-ink">
                 Hobbies & Interests
             </h3>
 
-            <p class="text-sm text-slate-500 mt-1">
+            <p class="text-sm text-muted mt-1">
                 Add optional interests that support your professional profile.
             </p>
         </div>
@@ -29,15 +29,15 @@
                 : (isset($resume) ? $resume->interests : collect([(object) []]));
         @endphp
         @foreach ($interests as $index => $interest)
-                <div class="interest-item bg-slate-50 border-2 border-slate-200 rounded-lg p-4">
+                <div class="interest-item bg-surface-soft border border-line rounded-xl p-4">
 
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
                         <div>
-                            <p class="font-bold text-slate-900">
+                            <p class="font-bold text-ink">
                                 Interest Item #{{ $index + 1 }}
                             </p>
 
-                            <p class="text-sm text-slate-500">
+                            <p class="text-sm text-muted">
                                 Hobby or interest with optional description.
                             </p>
                         </div>
@@ -53,26 +53,26 @@
 
                         <!-- Interest Name -->
                         <div>
-                            <label class="block mb-2 font-bold text-slate-800">
+                            <label class="block mb-2 font-bold text-ink">
                                 Interest / Hobby Name
                             </label>
 
                             <input type="text"
                                    name="interests[{{ $index }}][interest_name]"
                                    value="{{ old('interests.' . $index . '.interest_name', ($interest->interest_name ?? null)) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Artificial Intelligence">
                         </div>
 
                         <!-- Description -->
                         <div>
-                            <label class="block mb-2 font-bold text-slate-800">
+                            <label class="block mb-2 font-bold text-ink">
                                 Description
                             </label>
 
                             <textarea name="interests[{{ $index }}][description]"
                                       rows="3"
-                                      class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                      class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                       placeholder="Example: Interested in applying AI tools to real-world software and data analysis problems.">{{ old('interests.' . $index . '.description', ($interest->description ?? null)) }}</textarea>
                         </div>
 
