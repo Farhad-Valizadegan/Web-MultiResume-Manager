@@ -165,7 +165,6 @@
                                                 @endif
 
                                                 <div class="mt-4 flex flex-wrap items-center gap-3">
-<div class="mt-4 flex flex-wrap items-center gap-3">
 @if ($project->project_link)
                                                     <p class="m-0">
                                                         <a href="{{ $project->project_link }}"
@@ -186,7 +185,6 @@
                                                         </a>
                                                     </p>
                                                 @endif
-</div>
 </div>
                                             </article>
                                         @endforeach
