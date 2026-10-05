@@ -57,19 +57,21 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="mb-4">
-                            <label class="block mb-1 font-medium">Start Date</label>
-                            <input type="date"
+                            <label class="block mb-1 font-medium">Start month</label>
+                            <input type="month"
                                    name="educations[{{ $index }}][start_date]"
-                                   value="{{ old('educations.' . $index . '.start_date', ($education->start_date ?? null)) }}"
+                                   value="{{ substr((string) old('educations.' . $index . '.start_date', ($education->start_date ?? '')), 0, 7) }}"
                                    class="w-full border-line rounded-sm">
+                            @error('educations.' . $index . '.start_date')<p class="mt-2 text-sm text-red-600" role="alert">{{ $message }}</p>@enderror
                         </div>
 
                         <div class="mb-4">
-                            <label class="block mb-1 font-medium">End Date</label>
-                            <input type="date"
+                            <label class="block mb-1 font-medium">End month (leave blank if ongoing)</label>
+                            <input type="month"
                                    name="educations[{{ $index }}][end_date]"
-                                   value="{{ old('educations.' . $index . '.end_date', ($education->end_date ?? null)) }}"
+                                   value="{{ substr((string) old('educations.' . $index . '.end_date', ($education->end_date ?? '')), 0, 7) }}"
                                    class="w-full border-line rounded-sm">
+                            @error('educations.' . $index . '.end_date')<p class="mt-2 text-sm text-red-600" role="alert">{{ $message }}</p>@enderror
                         </div>
                     </div>
 

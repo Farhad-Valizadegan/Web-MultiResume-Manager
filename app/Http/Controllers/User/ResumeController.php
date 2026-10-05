@@ -45,6 +45,8 @@ class ResumeController extends Controller
 
     private function storeResume(Request $request)
     {
+        $this->normalizeResumeMonths($request);
+
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'job_position' => ['nullable', 'string', 'max:255'],
@@ -153,6 +155,15 @@ class ResumeController extends Controller
             'educations.*.end_date' => [
                 'nullable',
                 'date',
+                function ($attribute, $value, $fail) use ($request) {
+                    $start = $request->input(str_replace('.end_date', '.start_date', $attribute));
+                    if (is_string($start) && is_string($value)
+                        && preg_match('/^\d{4}-\d{2}-\d{2}$/', $start)
+                        && preg_match('/^\d{4}-\d{2}-\d{2}$/', $value)
+                        && substr($value, 0, 7) < substr($start, 0, 7)) {
+                        $fail('The end month must be the same as or after the start month.');
+                    }
+                },
             ],
             'educations.*.description' => [
                 'nullable',
@@ -173,10 +184,21 @@ class ResumeController extends Controller
             'experiences.*.start_date' => [
                 'nullable',
                 'date',
+                'before_or_equal:today',
             ],
             'experiences.*.end_date' => [
                 'nullable',
                 'date',
+                'before_or_equal:today',
+                function ($attribute, $value, $fail) use ($request) {
+                    $start = $request->input(str_replace('.end_date', '.start_date', $attribute));
+                    if (is_string($start) && is_string($value)
+                        && preg_match('/^\d{4}-\d{2}-\d{2}$/', $start)
+                        && preg_match('/^\d{4}-\d{2}-\d{2}$/', $value)
+                        && substr($value, 0, 7) < substr($start, 0, 7)) {
+                        $fail('The end month must be the same as or after the start month.');
+                    }
+                },
             ],
             'experiences.*.description' => [
                 'nullable',
@@ -343,6 +365,8 @@ class ResumeController extends Controller
             abort(403, 'Unauthorized access.');
         }
 
+        $this->normalizeResumeMonths($request);
+
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'job_position' => ['nullable', 'string', 'max:255'],
@@ -452,6 +476,15 @@ class ResumeController extends Controller
             'educations.*.end_date' => [
                 'nullable',
                 'date',
+                function ($attribute, $value, $fail) use ($request) {
+                    $start = $request->input(str_replace('.end_date', '.start_date', $attribute));
+                    if (is_string($start) && is_string($value)
+                        && preg_match('/^\d{4}-\d{2}-\d{2}$/', $start)
+                        && preg_match('/^\d{4}-\d{2}-\d{2}$/', $value)
+                        && substr($value, 0, 7) < substr($start, 0, 7)) {
+                        $fail('The end month must be the same as or after the start month.');
+                    }
+                },
             ],
             'educations.*.description' => [
                 'nullable',
@@ -472,10 +505,21 @@ class ResumeController extends Controller
             'experiences.*.start_date' => [
                 'nullable',
                 'date',
+                'before_or_equal:today',
             ],
             'experiences.*.end_date' => [
                 'nullable',
                 'date',
+                'before_or_equal:today',
+                function ($attribute, $value, $fail) use ($request) {
+                    $start = $request->input(str_replace('.end_date', '.start_date', $attribute));
+                    if (is_string($start) && is_string($value)
+                        && preg_match('/^\d{4}-\d{2}-\d{2}$/', $start)
+                        && preg_match('/^\d{4}-\d{2}-\d{2}$/', $value)
+                        && substr($value, 0, 7) < substr($start, 0, 7)) {
+                        $fail('The end month must be the same as or after the start month.');
+                    }
+                },
             ],
             'experiences.*.description' => [
                 'nullable',
@@ -736,6 +780,29 @@ class ResumeController extends Controller
                     $certificateFilePath
                 )
             );
+        }
+    }
+
+    private function normalizeResumeMonths(Request $request): void
+    {
+        foreach (['experiences' => ['start_date', 'end_date'], 'educations' => ['start_date', 'end_date']] as $group => $fields) {
+            $rows = $request->input($group);
+            if (!is_array($rows)) {
+                continue;
+            }
+            foreach ($rows as &$row) {
+                if (!is_array($row)) {
+                    continue;
+                }
+                foreach ($fields as $field) {
+                    $value = $row[$field] ?? null;
+                    if (is_string($value) && preg_match('/^\d{4}-(0[1-9]|1[0-2])$/', $value)) {
+                        $row[$field] = $value.'-01';
+                    }
+                }
+            }
+            unset($row);
+            $request->merge([$group => $rows]);
         }
     }
 
