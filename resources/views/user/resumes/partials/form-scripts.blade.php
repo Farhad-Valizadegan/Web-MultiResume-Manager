@@ -57,6 +57,22 @@
                                class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="Example: Intermediate">
                     </div>
+
+                    <div class="md:col-span-3">
+                        <label for="skill-link-text-${skillIndex}" class="block mb-2 font-bold text-ink">Link text (optional)</label>
+                        <input id="skill-link-text-${skillIndex}" type="text" name="skills[${skillIndex}][evidence_label]"
+                               maxlength="100" placeholder="Example: Watch my Laravel demo"
+                               class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div class="md:col-span-3">
+                        <label for="skill-evidence-${skillIndex}" class="block mb-2 font-bold text-ink">Evidence link (optional)</label>
+                        <input id="skill-evidence-${skillIndex}" type="url" name="skills[${skillIndex}][evidence_url]"
+                               maxlength="2048" placeholder="https://example.com/my-video"
+                               aria-describedby="skill-evidence-help-${skillIndex}"
+                               class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                        <p id="skill-evidence-help-${skillIndex}" class="mt-2 text-sm text-muted">Link to a video, certificate, or work sample. Visitors can open this link from your resume.</p>
+                    </div>
+
                 </div>
             </div>
         `);
@@ -344,11 +360,27 @@
                     </div>
 
                     <div>
+                        <label for="project-link-text-${projectIndex}" class="block mb-2 font-bold text-ink">Link text (optional)</label>
+                        <input id="project-link-text-${projectIndex}" type="text" name="projects[${projectIndex}][project_link_label]"
+                               maxlength="100" placeholder="Example: Watch the project demo"
+                               class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
                         <label class="block mb-2 font-bold text-ink">Project Link</label>
                         <input type="url"
                                name="projects[${projectIndex}][project_link]"
                                class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                placeholder="https://github.com/username/project">
+                    </div>
+                    <div>
+                        <label for="project-demo-text-${projectIndex}" class="block mb-2 font-bold text-ink">Demo link text (optional)</label>
+                        <input id="project-demo-text-${projectIndex}" type="text" name="projects[${projectIndex}][demo_label]" maxlength="100"
+                               placeholder="Example: Watch the video demo" class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="project-demo-url-${projectIndex}" class="block mb-2 font-bold text-ink">Demo URL (optional)</label>
+                        <input id="project-demo-url-${projectIndex}" type="url" name="projects[${projectIndex}][demo_url]" maxlength="2048"
+                               placeholder="https://www.youtube.com/watch?v=..." class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                     </div>
                 </div>
             </div>

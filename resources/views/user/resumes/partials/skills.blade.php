@@ -90,6 +90,26 @@
                                    placeholder="Example: Intermediate">
                         </div>
 
+
+                        <div class="md:col-span-3">
+                            <label for="skill-link-text-{{ $index }}" class="block mb-2 font-bold text-ink">Link text (optional)</label>
+                            <input id="skill-link-text-{{ $index }}" type="text" name="skills[{{ $index }}][evidence_label]"
+                                   value="{{ old('skills.' . $index . '.evidence_label', $skill->evidence_label ?? '') }}"
+                                   maxlength="100" placeholder="Example: Watch my Laravel demo"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                            @error('skills.' . $index . '.evidence_label')<p class="mt-2 text-sm text-red-600" role="alert">{{ $message }}</p>@enderror
+                        </div>
+                        <div class="md:col-span-3">
+                            <label for="skill-evidence-{{ $index }}" class="block mb-2 font-bold text-ink">Evidence link (optional)</label>
+                            <input id="skill-evidence-{{ $index }}" type="url" name="skills[{{ $index }}][evidence_url]"
+                                   value="{{ old('skills.' . $index . '.evidence_url', $skill->evidence_url ?? '') }}"
+                                   maxlength="2048" placeholder="https://example.com/my-video"
+                                   aria-describedby="skill-evidence-help-{{ $index }}"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                            <p id="skill-evidence-help-{{ $index }}" class="mt-2 text-sm text-muted">Link to a video, certificate, or work sample. Visitors can open this link from your resume.</p>
+                            @error('skills.' . $index . '.evidence_url')<p class="mt-2 text-sm text-red-600" role="alert">{{ $message }}</p>@enderror
+                        </div>
+
                     </div>
                 </div>
             @endforeach

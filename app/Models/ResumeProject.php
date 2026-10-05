@@ -11,6 +11,9 @@ class ResumeProject extends Model
         'project_title',
         'project_description',
         'project_link',
+        'project_link_label',
+        'demo_label',
+        'demo_url',
     ];
 
     public function resume()

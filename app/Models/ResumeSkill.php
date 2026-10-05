@@ -11,6 +11,8 @@ class ResumeSkill extends Model
         'skill_category',
         'skill_name',
         'skill_level',
+        'evidence_url',
+        'evidence_label',
     ];
 
     public function resume()
