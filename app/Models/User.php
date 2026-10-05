@@ -43,6 +43,16 @@ class User extends Authenticatable
     /**
      * Each user can have one profile.
      */
+    protected static function booted(): void
+    {
+        static::deleting(function (User $user) {
+            foreach ($user->resumes as $resume) {
+                $resume->delete();
+            }
+            app(\App\Services\ResumeFiles::class)->delete($user->profile?->profile_photo, 'public');
+        });
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);

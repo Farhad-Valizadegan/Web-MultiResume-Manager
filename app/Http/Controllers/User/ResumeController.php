@@ -6,12 +6,28 @@ use App\Http\Controllers\Controller;
 use App\Models\Resume;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class ResumeController extends Controller
 {
+    public function __construct(private \App\Services\ResumeFiles $files) {}
+
+    public function store(Request $request)
+    {
+        return $this->files->transaction(fn () => $this->storeResume($request));
+    }
+
+    public function update(Request $request, Resume $resume)
+    {
+        return $this->files->transaction(fn () => $this->updateResume($request, $resume));
+    }
+
+    public function destroy(Resume $resume)
+    {
+        return $this->files->transaction(fn () => $this->destroyResume($resume));
+    }
+
     public function index()
     {
         $resumes = auth()->user()
@@ -27,7 +43,7 @@ class ResumeController extends Controller
         return view('user.resumes.create');
     }
 
-    public function store(Request $request)
+    private function storeResume(Request $request)
     {
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -247,17 +263,13 @@ class ResumeController extends Controller
         $uploadedResumeFilePath = null;
 
         if ($request->hasFile('uploaded_resume_file')) {
-            $uploadedResumeFilePath = $request
-                ->file('uploaded_resume_file')
-                ->store('uploaded-resumes', 'public');
+            $uploadedResumeFilePath = $this->files->store($request->file('uploaded_resume_file'), 'uploaded-resumes');
         }
 
         $profilePhotoPath = null;
 
         if ($request->hasFile('profile_photo')) {
-            $profilePhotoPath = $request
-                ->file('profile_photo')
-                ->store('resume-profile-photos', 'public');
+            $profilePhotoPath = $this->files->store($request->file('profile_photo'), 'resume-profile-photos');
         }
 
         $resume = Resume::create([
@@ -320,7 +332,7 @@ class ResumeController extends Controller
         return view('user.resumes.edit', compact('resume'));
     }
 
-    public function update(Request $request, Resume $resume)
+    private function updateResume(Request $request, Resume $resume)
     {
         if ($resume->user_id !== auth()->id()) {
             abort(403, 'Unauthorized access.');
@@ -556,13 +568,10 @@ class ResumeController extends Controller
         $uploadedResumeFilePath = $resume->uploaded_resume_file;
 
         if ($request->hasFile('uploaded_resume_file')) {
-            $newUploadedResumeFilePath = $request
-                ->file('uploaded_resume_file')
-                ->store('uploaded-resumes', 'public');
+            $newUploadedResumeFilePath = $this->files->store($request->file('uploaded_resume_file'), 'uploaded-resumes');
 
             if ($resume->uploaded_resume_file) {
-                Storage::disk('public')
-                    ->delete($resume->uploaded_resume_file);
+                $this->files->delete($resume->uploaded_resume_file);
             }
 
             $uploadedResumeFilePath = $newUploadedResumeFilePath;
@@ -572,19 +581,17 @@ class ResumeController extends Controller
 
         if ($request->boolean('remove_profile_photo')) {
             if ($profilePhotoPath) {
-                Storage::disk('public')->delete($profilePhotoPath);
+                $this->files->delete($profilePhotoPath);
             }
 
             $profilePhotoPath = null;
         }
 
         if ($request->hasFile('profile_photo')) {
-            $newProfilePhotoPath = $request
-                ->file('profile_photo')
-                ->store('resume-profile-photos', 'public');
+            $newProfilePhotoPath = $this->files->store($request->file('profile_photo'), 'resume-profile-photos');
 
             if ($profilePhotoPath) {
-                Storage::disk('public')->delete($profilePhotoPath);
+                $this->files->delete($profilePhotoPath);
             }
 
             $profilePhotoPath = $newProfilePhotoPath;
@@ -633,27 +640,10 @@ class ResumeController extends Controller
             ->with('success', 'Resume updated successfully.');
     }
 
-    public function destroy(Resume $resume)
+    private function destroyResume(Resume $resume)
     {
         if ($resume->user_id !== auth()->id()) {
             abort(403, 'Unauthorized access.');
-        }
-
-        if ($resume->uploaded_resume_file) {
-            Storage::disk('public')
-                ->delete($resume->uploaded_resume_file);
-        }
-
-        if ($resume->profile_photo) {
-            Storage::disk('public')
-                ->delete($resume->profile_photo);
-        }
-
-        foreach ($resume->certificates as $certificate) {
-            if ($certificate->certificate_file) {
-                Storage::disk('public')
-                    ->delete($certificate->certificate_file);
-            }
         }
 
         $resume->delete();
@@ -685,6 +675,7 @@ class ResumeController extends Controller
                 'required',
                 'string',
                 'min:6',
+                'confirmed',
             ],
         ]);
 
@@ -726,11 +717,7 @@ class ResumeController extends Controller
                     "certificates.$index.certificate_file"
                 )
             ) {
-                $certificateFilePath = $request
-                    ->file(
-                        "certificates.$index.certificate_file"
-                    )
-                    ->store('certificate-files', 'public');
+                $certificateFilePath = $this->files->store($request->file("certificates.$index.certificate_file"), 'certificate-files');
             }
 
             $resume->certificates()->create(
@@ -886,14 +873,10 @@ class ResumeController extends Controller
                         "certificates.$index.certificate_file"
                     )
                 ) {
-                    $newCertificateFilePath = $request
-                        ->file(
-                            "certificates.$index.certificate_file"
-                        )
-                        ->store('certificate-files', 'public');
+                    $newCertificateFilePath = $this->files->store($request->file("certificates.$index.certificate_file"), 'certificate-files');
 
                     if ($certificate->certificate_file) {
-                        Storage::disk('public')->delete(
+                        $this->files->delete(
                             $certificate->certificate_file
                         );
                     }
@@ -921,11 +904,7 @@ class ResumeController extends Controller
                     "certificates.$index.certificate_file"
                 )
             ) {
-                $certificateFilePath = $request
-                    ->file(
-                        "certificates.$index.certificate_file"
-                    )
-                    ->store('certificate-files', 'public');
+                $certificateFilePath = $this->files->store($request->file("certificates.$index.certificate_file"), 'certificate-files');
             }
 
             $certificate = $resume
@@ -947,7 +926,7 @@ class ResumeController extends Controller
 
         foreach ($certificatesToRemove as $certificate) {
             if ($certificate->certificate_file) {
-                Storage::disk('public')->delete(
+                $this->files->delete(
                     $certificate->certificate_file
                 );
             }
