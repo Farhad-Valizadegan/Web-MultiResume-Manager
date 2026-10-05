@@ -26,7 +26,7 @@
                 <!-- Page Intro -->
 
 
-                <form method="POST"
+                <form data-resume-editor method="POST"
                       action="{{ route('user.resumes.update', $resume) }}"
                       enctype="multipart/form-data"
                       class="space-y-6">
