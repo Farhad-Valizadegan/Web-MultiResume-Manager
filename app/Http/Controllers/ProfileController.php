@@ -7,7 +7,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -29,20 +28,12 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        return app(\App\Services\ResumeFiles::class)->transaction(fn () => $this->updateProfile($request));
+    }
+
+    private function updateProfile(ProfileUpdateRequest $request): RedirectResponse
+    {
         $user = $request->user();
-
-        /*
-        |--------------------------------------------------------------------------
-        | Update basic user information
-        |--------------------------------------------------------------------------
-        */
-        $user->fill($request->validated());
-
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
-
-        $user->save();
 
         /*
         |--------------------------------------------------------------------------
@@ -61,6 +52,14 @@ class ProfileController extends Controller
             'profile_photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
         ]);
 
+        $user->fill($request->validated());
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
+
         /*
         |--------------------------------------------------------------------------
         | Upload profile photo
@@ -68,12 +67,10 @@ class ProfileController extends Controller
         */
         if ($request->hasFile('profile_photo')) {
             if ($user->profile && $user->profile->profile_photo) {
-                Storage::disk('public')->delete($user->profile->profile_photo);
+                app(\App\Services\ResumeFiles::class)->delete($user->profile->profile_photo, 'public');
             }
 
-            $profileData['profile_photo'] = $request
-                ->file('profile_photo')
-                ->store('profile-photos', 'public');
+            $profileData['profile_photo'] = app(\App\Services\ResumeFiles::class)->store($request->file('profile_photo'), 'profile-photos', 'public');
         } else {
             unset($profileData['profile_photo']);
         }
@@ -102,13 +99,14 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
-        if ($user->profile && $user->profile->profile_photo) {
-            Storage::disk('public')->delete($user->profile->profile_photo);
-        }
-
-        Auth::logout();
-
-        $user->delete();
+        app(\App\Services\ResumeFiles::class)->transaction(function () use ($user) {
+            $admins = \App\Models\User::where('role', 'admin')->where('status', 'active')->lockForUpdate()->get();
+            if ($admins->contains('id', $user->id) && $admins->count() === 1) {
+                throw \Illuminate\Validation\ValidationException::withMessages(['password' => 'Keep at least one active administrator.'])->errorBag('userDeletion');
+            }
+            Auth::logout();
+            $user->delete();
+        });
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

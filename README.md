@@ -200,6 +200,33 @@ Add the local domain to the Windows hosts file:
 
 ## Security
 
+Resume PDFs, resume photos, and certificate uploads use the `private` storage
+disk. File routes check ownership/admin permissions or the active resume's public
+access grant; uploaded PDF routes also enforce the configured download option.
+Account profile photos remain on the public disk.
+
+When updating an existing installation, run this once after installing the code:
+
+```bash
+php artisan resumes:protect-files
+php artisan optimize:clear
+```
+
+The command verifies each copied file before removing its old public copy. It is
+safe to rerun and stops without removing the original if a conflicting private
+file already exists. Back up your uploads before upgrading.
+
+Resumes without a password are publicly accessible. Changing a protected
+resume's password invalidates previous visitor grants. Inactive accounts cannot
+sign in, and existing sessions lose account access after deactivation.
+
+Image-related tests require PHP's GD extension. With XAMPP, it can be enabled for
+one test run without changing the PHP configuration:
+
+```powershell
+C:\xampp\php\php.exe -d extension=gd artisan test
+```
+
 - Application and resume passwords are hashed and never stored as plain text.
 - Laravel provides CSRF protection, input validation, session security, and
   escaped Blade output.
