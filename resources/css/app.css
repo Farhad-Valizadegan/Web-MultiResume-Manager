@@ -1,69 +1,135 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap')
-layer(base);
-
 @import 'tailwindcss';
-
+@import './public-resume.css';
 @plugin '@tailwindcss/forms';
-
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
-
-@theme {
-  --font-sans:
-    Figtree, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@theme inline {
+    --font-sans: 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+    --color-canvas: var(--rf-canvas);
+    --color-surface: var(--rf-surface);
+    --color-surface-soft: var(--rf-soft);
+    --color-ink: var(--rf-ink);
+    --color-muted: var(--rf-muted);
+    --color-line: var(--rf-line);
+    --color-blue-soft: var(--rf-blue-soft);
+    --color-blue-strong: var(--rf-blue-strong);
+    --color-indigo-soft: var(--rf-indigo-soft);
+    --color-indigo-strong: var(--rf-indigo-strong);
+    --color-green-soft: var(--rf-green-soft);
+    --color-green-strong: var(--rf-green-strong);
+    --color-emerald-soft: var(--rf-emerald-soft);
+    --color-emerald-strong: var(--rf-emerald-strong);
+    --color-red-soft: var(--rf-red-soft);
+    --color-red-strong: var(--rf-red-strong);
+    --color-yellow-soft: var(--rf-yellow-soft);
+    --color-yellow-strong: var(--rf-yellow-strong);
+    --color-amber-soft: var(--rf-amber-soft);
+    --color-amber-strong: var(--rf-amber-strong);
 }
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+:root { --rf-canvas:#f5f7fb; --rf-surface:#ffffff; --rf-soft:#f0f3f8; --rf-ink:#172235; --rf-muted:#526176; --rf-line:#dce3ed; --rf-focus:#2563eb;
+--rf-blue-soft:#eff6ff; --rf-blue-strong:#1d4ed8;
+--rf-indigo-soft:#eef2ff; --rf-indigo-strong:#4338ca;
+--rf-green-soft:#ecfdf5; --rf-green-strong:#047857;
+--rf-emerald-soft:#ecfdf5; --rf-emerald-strong:#047857;
+--rf-red-soft:#fff1f2; --rf-red-strong:#be123c;
+--rf-yellow-soft:#fffbeb; --rf-yellow-strong:#92400e;
+--rf-amber-soft:#fffbeb; --rf-amber-strong:#92400e;
+}
+:root[data-theme=dark] { --rf-canvas:#0b1220; --rf-surface:#131e30; --rf-soft:#1b283d; --rf-ink:#edf2fa; --rf-muted:#b0bfd2; --rf-line:#34455e; --rf-focus:#93c5fd;
+--rf-blue-soft:#172b4d; --rf-blue-strong:#a8c7ff;
+--rf-indigo-soft:#29264e; --rf-indigo-strong:#c4b5fd;
+--rf-green-soft:#14382e; --rf-green-strong:#88e0bd;
+--rf-emerald-soft:#14382e; --rf-emerald-strong:#88e0bd;
+--rf-red-soft:#42232d; --rf-red-strong:#fda4af;
+--rf-yellow-soft:#3c301b; --rf-yellow-strong:#fcd98a;
+--rf-amber-soft:#3c301b; --rf-amber-strong:#fcd98a;
+}
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+    *, ::after, ::before { border-color:var(--rf-line); }
+    body { font-family:var(--font-sans); background:var(--rf-canvas); color:var(--rf-ink); -webkit-font-smoothing:antialiased; line-height:1.6; }
+    h1,h2,h3,h4 { letter-spacing:-.025em; line-height:1.25; }
+    input:not([type=checkbox]):not([type=radio]):not([type=hidden]), textarea, select { background:var(--rf-surface); color:var(--rf-ink); border:1px solid var(--rf-line); border-radius:.65rem; min-height:44px; padding:.65rem .85rem; box-shadow:none; }
+    input::placeholder, textarea::placeholder { color:var(--rf-muted); opacity:.85; }
+    input[type=checkbox], input[type=radio] { background-color:var(--rf-surface); border-color:var(--rf-line); color:#2563eb; }
+    input[type=checkbox]:checked,input[type=radio]:checked { background-color:#2563eb; }
+    :focus-visible { outline:3px solid var(--rf-focus); outline-offset:3px; }
+    button, a, input, select, textarea { -webkit-tap-highlight-color:transparent; }
+    button:not(:disabled), select { cursor:pointer; }
+    button:disabled { cursor:not-allowed; opacity:.55; }
+    [x-cloak] { display:none !important; }
+    table { font-variant-numeric:tabular-nums; }
+    th { font-size:.75rem; letter-spacing:.045em; }
 }
-
-/*
-|--------------------------------------------------------------------------
-| Global Font System
-|--------------------------------------------------------------------------
-*/
-@layer base {
-    html {
-        font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-            "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    }
-
-    body {
-        font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-            "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        letter-spacing: -0.035em;
-    }
-
-    input,
-    textarea,
-    select,
-    button {
-        font-family: inherit;
-    }
+@layer components {
+    .rf-button { display:inline-flex; justify-content:center; align-items:center; gap:.65rem; min-height:44px; padding:.65rem 1.1rem; border-radius:.7rem; font-weight:600; font-size:.875rem; transition:background .15s; }
+    .rf-button-primary { color:white; background:#2563eb; border:1px solid #2563eb; }
+    .rf-button-primary:hover { background:#1d4ed8; }
+    .rf-button-secondary { color:var(--rf-ink); background:var(--rf-surface); border:1px solid var(--rf-line); }
+    .rf-button-secondary:hover { background:var(--rf-soft); }
+    .rf-label { display:block; font-size:.875rem; font-weight:600; margin-bottom:.5rem; }
+    .rf-navigation { position:sticky; top:0; z-index:30; }
+    .rf-brand { font-weight:750; letter-spacing:-.04em; font-size:1.1rem; }
+    .rf-nav-link { display:inline-flex; align-items:center; padding:.5rem .2rem; border-bottom:2px solid transparent; color:var(--rf-muted); font-size:.875rem; font-weight:600; }
+    .rf-nav-link:hover { color:var(--rf-ink); }
+    .rf-nav-link.is-active { border-bottom-color:#2563eb; color:var(--rf-blue-strong); }
+    .rf-theme-switch { display:inline-flex; align-items:center; min-height:44px; gap:.3rem; padding:.1rem .4rem; background:var(--rf-surface); color:var(--rf-muted); border:1px solid var(--rf-line); border-radius:.7rem; }
+    .rf-theme-switch select { font-size:.8rem; min-height:36px; border:0; padding:.3rem 1.8rem .3rem .3rem; background-color:transparent; }
+    .rf-theme-corner { position:absolute; right:1.5rem; top:1.25rem; z-index:40; }
+    .rf-skip { position:absolute; top:-100px; left:1rem; z-index:60; background:var(--rf-surface); padding:.75rem 1rem; border-radius:.5rem; }
+    .rf-skip:focus { top:1rem; }
+    .rf-login { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; }
+    .rf-login-story { margin:1rem; border-radius:1.5rem; background:linear-gradient(145deg,#122744,#143c68); color:#fff; padding:clamp(2rem,5vw,5rem); display:flex; flex-direction:column; justify-content:space-between; gap:3rem; }
+    .rf-login-brand { display:flex; align-items:center; gap:.75rem; font-weight:700; font-size:1.3rem; }
+    .rf-login-brand img { border-radius:.65rem; background:white; padding:.3rem; }
+    .rf-eyebrow { font-size:.7rem; font-weight:700; letter-spacing:.16em; color:var(--rf-blue-strong); }
+    .rf-login-story .rf-eyebrow { color:#93c5fd; }
+    .rf-login-story h1 { font-size:clamp(2.3rem,4vw,4.3rem); font-weight:700; margin:1rem 0 1.5rem; }
+    .rf-login-story p { color:#d0def0; max-width:30rem; font-size:1.05rem; }
+    .rf-story-features { display:grid; gap:1rem; }
+    .rf-story-features p { font-size:.9rem; display:flex; align-items:center; gap:1rem; }
+    .rf-story-features span { color:#93c5fd; font-size:.75rem; font-weight:700; }
+    .rf-login-panel { padding:6rem 2rem 3rem; display:flex; align-items:center; justify-content:center; }
+    .rf-login-card { width:100%; max-width:25rem; }
+    .rf-login-card h2 { margin-top:.75rem; font-size:1.85rem; font-weight:700; }
+    .rf-login-note { font-size:.75rem; color:var(--rf-muted); text-align:center; margin-top:2rem; }
+    .rf-form-navigation { border:1px solid var(--rf-line); border-radius:.85rem; padding:1rem; background:var(--rf-surface); }
+    .rf-form-navigation span { font-size:.75rem; font-weight:600; color:var(--rf-muted); }
+    .rf-form-navigation div { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
+    .rf-form-navigation a { font-size:.8rem; padding:.4rem .7rem; border-radius:.5rem; background:var(--rf-soft); color:var(--rf-ink); }
+    .rf-form-navigation a:hover { color:var(--rf-blue-strong); }
 }
+@media(max-width:900px) { .rf-login { grid-template-columns:1fr; } .rf-login-story { padding:2rem; gap:1.5rem; margin-top:4.5rem; } .rf-login-story h1 { font-size:2rem; } .rf-story-features { display:none; } .rf-login-panel { padding:2rem 1.5rem 3rem; } }
+@media(max-width:640px) { .rf-brand { display:none; } .rf-theme-corner { right:1rem; top:1rem; } }
+/* The forms plugin supplies an unlayered select background; keep native fields on theme. */
+textarea, select { background-color:var(--rf-surface); color:var(--rf-ink); }
+button:not([type=button][class*=absolute]), a.inline-flex[class*=bg-] { min-height:44px; }
+@media(max-width:640px) { .rf-login-story { background:none; color:var(--rf-ink); padding:1rem .5rem; margin:4rem 1rem 0; gap:0; } .rf-login-story > div { display:none; } .rf-login-panel { padding-top:1rem; } }
+@media(max-width:640px) { .rf-form-navigation div { flex-wrap:nowrap; overflow-x:auto; padding-bottom:.25rem; } .rf-form-navigation a { white-space:nowrap; min-height:44px; display:flex; align-items:center; } }
+@media(prefers-reduced-motion:reduce) { *,::before,::after { scroll-behavior:auto !important; transition:none !important; animation:none !important; } }
+@media print { .rf-theme-corner,.rf-theme-switch,.rf-navigation,.rf-form-navigation { display:none !important; } :root { --rf-canvas:white; --rf-surface:white; --rf-soft:#f5f5f5; --rf-ink:#111; --rf-muted:#444; --rf-line:#ddd; } }
+
+/* Focused resume workspace */
+.rf-list-toolbar { display:flex; flex-wrap:wrap; align-items:end; gap:1rem; background:var(--rf-surface); padding:1.25rem; border:1px solid var(--rf-line); border-radius:1rem; }
+.rf-list-toolbar > label { min-width:12rem; }
+.rf-list-toolbar select { min-height:44px; border:1px solid var(--rf-line); border-radius:.65rem; }
+.rf-resume-grid { display:grid; gap:1.5rem; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; }
+.rf-resume-card { padding:1.5rem; border:1px solid var(--rf-line); border-radius:1rem; background:var(--rf-surface); box-shadow:0 2px 5px rgb(0 0 0 / .025); }
+.rf-badge { display:inline-flex; align-items:center; font-size:.75rem; font-weight:600; padding:.25rem .6rem; border-radius:999px; }
+.rf-resume-meta { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--rf-line); }
+.rf-resume-meta dt { font-size:.75rem; color:var(--rf-muted); }
+.rf-resume-meta dd { font-size:1rem; font-weight:650; margin-top:.3rem; color:var(--rf-ink); }
+.rf-resume-details { margin-top:1.5rem; border-top:1px solid var(--rf-line); }
+.rf-resume-details summary { cursor:pointer; padding:1rem 0 0; font-size:.875rem; font-weight:600; color:var(--rf-muted); }
+.rf-resume-details[open] summary { color:var(--rf-blue-strong); }
+.rf-resume-details-content { display:grid; gap:1.25rem; padding-top:1.25rem; }
+.rf-setting-row { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; padding-top:1rem; border-top:1px solid var(--rf-line); }
+.rf-setting-row > div,.rf-setting-row > p { flex:1; min-width:12rem; }
+.rf-danger-row { margin-top:.25rem; }
+.rf-button-danger { background:var(--rf-red-soft); color:var(--rf-red-strong); border:1px solid var(--rf-red-strong); }
+.rf-button-danger:hover { filter:brightness(.95); }
+.rf-empty-state { padding:3rem 1.5rem; border:1px dashed var(--rf-line); border-radius:1rem; background:var(--rf-surface); text-align:center; grid-column:1/-1; }
+.rf-empty-icon { display:inline-flex; justify-content:center; align-items:center; width:3rem; height:3rem; margin-bottom:1rem; border-radius:1rem; color:var(--rf-blue-strong); background:var(--rf-blue-soft); font-size:1.8rem; }
+[hidden] { display:none !important; }
+@media(max-width:900px) { .rf-resume-grid { grid-template-columns:1fr; } }
+@media(max-width:640px) { .rf-resume-card { padding:1.1rem; } .rf-list-toolbar { padding:1rem; } .rf-list-toolbar > label { width:100%; } }

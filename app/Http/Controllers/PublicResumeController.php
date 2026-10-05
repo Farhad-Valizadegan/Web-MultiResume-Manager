@@ -16,6 +16,10 @@ class PublicResumeController extends Controller
             ->where('status', 'active')
             ->firstOrFail();
 
+        if (!$resume->resume_password_hash) {
+            return redirect()->route('public.resume.view', $resume->public_link);
+        }
+
         return view('public.resume-password', compact('resume'));
     }
 
@@ -25,15 +29,13 @@ class PublicResumeController extends Controller
             ->where('status', 'active')
             ->firstOrFail();
 
+        if (!$resume->resume_password_hash) {
+            return redirect()->route('public.resume.view', $resume->public_link);
+        }
+
         $request->validate([
             'resume_password' => ['required', 'string'],
         ]);
-
-        if (!$resume->resume_password_hash) {
-            return redirect()
-                ->back()
-                ->with('error', 'This resume is not available for public access.');
-        }
 
         if (!Hash::check($request->resume_password, $resume->resume_password_hash)) {
             return redirect()
@@ -42,7 +44,7 @@ class PublicResumeController extends Controller
         }
 
         session([
-            'public_resume_access_' . $resume->id => true,
+            'public_resume_access_' . $resume->id => $resume->publicAccessToken(),
         ]);
 
         return redirect()->route('public.resume.view', $resume->public_link);
@@ -64,7 +66,7 @@ class PublicResumeController extends Controller
             ->where('status', 'active')
             ->firstOrFail();
 
-        if (!session('public_resume_access_' . $resume->id)) {
+        if (!$resume->allowsPublicAccess(request())) {
             return redirect()->route('public.resume.password', $resume->public_link);
         }
 
@@ -100,7 +102,7 @@ class PublicResumeController extends Controller
             ->where('status', 'active')
             ->firstOrFail();
 
-        if (!session('public_resume_access_' . $resume->id)) {
+        if (!$resume->allowsPublicAccess(request())) {
             return redirect()->route('public.resume.password', $resume->public_link);
         }
 
@@ -108,7 +110,7 @@ class PublicResumeController extends Controller
             abort(403, 'Generated PDF download is not enabled for this resume.');
         }
 
-        $fileName = str_replace(' ', '-', strtolower($resume->user->name)) . '-generated-resume.pdf';
+        $fileName = str_replace(' ', '-', strtolower($resume->full_name ?: $resume->title)) . '-generated-resume.pdf';
 
         $pdf = Pdf::loadView('public.resume-pdf', [
             'resume' => $resume,
@@ -123,7 +125,7 @@ class PublicResumeController extends Controller
             ->where('status', 'active')
             ->firstOrFail();
 
-        if (!session('public_resume_access_' . $resume->id)) {
+        if (!$resume->allowsPublicAccess(request())) {
             return redirect()->route('public.resume.password', $resume->public_link);
         }
 
@@ -133,13 +135,13 @@ class PublicResumeController extends Controller
 
         if (
             !$resume->uploaded_resume_file ||
-            !Storage::disk('public')->exists($resume->uploaded_resume_file)
+            !Storage::disk('private')->exists($resume->uploaded_resume_file)
         ) {
             abort(404, 'Uploaded resume file not found.');
         }
 
-        $fileName = str_replace(' ', '-', strtolower($resume->user->name)) . '-uploaded-resume.pdf';
+        $fileName = str_replace(' ', '-', strtolower($resume->full_name ?: $resume->title)) . '-uploaded-resume.pdf';
 
-        return Storage::disk('public')->download($resume->uploaded_resume_file, $fileName);
+        return Storage::disk('private')->download($resume->uploaded_resume_file, $fileName);
     }
 }

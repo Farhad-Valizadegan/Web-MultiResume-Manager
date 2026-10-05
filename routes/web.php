@@ -142,7 +142,7 @@ Route::get('/resume/{publicLink}', [PublicResumeController::class, 'showPassword
     ->name('public.resume.password');
 
 Route::post('/resume/{publicLink}', [PublicResumeController::class, 'verifyPassword'])
-    ->name('public.resume.verify');
+    ->middleware('throttle:10,1')->name('public.resume.verify');
 
 Route::get('/resume/{publicLink}/view', [PublicResumeController::class, 'view'])
     ->name('public.resume.view');
@@ -154,3 +154,5 @@ Route::get('/resume/{publicLink}/download-uploaded-pdf', [PublicResumeController
     ->name('public.resume.download-uploaded-pdf');
 
 require __DIR__ . '/auth.php';
+Route::get('/resume-files/{resume}/{type}/{certificate?}', [\App\Http\Controllers\ResumeFileController::class, 'show'])
+    ->where('type', 'photo|uploaded|certificate')->whereNumber('certificate')->name('resume.files.show');

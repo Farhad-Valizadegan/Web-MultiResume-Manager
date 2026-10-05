@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $resume->user->name }} - Resume</title>
+    <title>{{ ($resume->full_name ?: $resume->title) }} - Resume</title>
 
     <style>
         @page {
@@ -182,7 +182,7 @@
     <!-- Header -->
     <div class="header">
         <div class="name">
-            {{ $resume->user->name }}
+            {{ ($resume->full_name ?: $resume->title) }}
         </div>
 
         <div class="job-title">
@@ -191,50 +191,40 @@
 
         <div class="contact">
             <div class="contact-item">
-                Email: {{ $resume->user->email }}
+                Email: {{ $resume->email }}
             </div>
 
-            @if ($resume->user->profile && $resume->user->profile->phone)
+            @if ($resume->phone)
                 <div class="contact-item">
-                    Phone: {{ $resume->user->profile->phone }}
+                    Phone: {{ $resume->phone }}
                 </div>
             @endif
 
-            @if ($resume->user->profile && $resume->user->profile->address)
+            @if ($resume->address)
                 <div class="contact-item">
-                    Location: {{ $resume->user->profile->address }}
+                    Location: {{ $resume->address }}
                 </div>
             @endif
 
-            @if ($resume->user->profile && $resume->user->profile->website)
+            @if ($resume->website)
                 <div class="contact-item">
-                    Website: {{ $resume->user->profile->website }}
+                    Website: {{ $resume->website }}
                 </div>
             @endif
 
-            @if ($resume->user->profile && $resume->user->profile->linkedin)
+            @if ($resume->linkedin)
                 <div class="contact-item">
-                    LinkedIn: {{ $resume->user->profile->linkedin }}
+                    LinkedIn: {{ $resume->linkedin }}
                 </div>
             @endif
 
-            @if ($resume->user->profile && $resume->user->profile->github)
+            @if ($resume->github)
                 <div class="contact-item">
-                    GitHub: {{ $resume->user->profile->github }}
+                    GitHub: {{ $resume->github }}
                 </div>
             @endif
 
-            @if ($resume->user->profile && $resume->user->profile->portfolio)
-                <div class="contact-item">
-                    Portfolio: {{ $resume->user->profile->portfolio }}
-                </div>
-            @endif
 
-            @if ($resume->user->profile && $resume->user->profile->xing)
-                <div class="contact-item">
-                    Xing: {{ $resume->user->profile->xing }}
-                </div>
-            @endif
         </div>
     </div>
 
@@ -249,9 +239,9 @@
                 {{ $resume->title }}
             </p>
 
-            @if ($resume->user->profile && $resume->user->profile->bio)
+            @if ($resume->professional_summary)
                 <p class="text" style="margin-top: 6px;">
-                    {{ $resume->user->profile->bio }}
+                    {{ $resume->professional_summary }}
                 </p>
             @endif
         </div>

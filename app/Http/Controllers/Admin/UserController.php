@@ -51,7 +51,18 @@ class UserController extends Controller
             'status' => ['required', 'in:active,inactive'],
         ]);
 
-        $user->update($validated);
+        \Illuminate\Support\Facades\DB::transaction(function () use ($user, $validated) {
+            // Lock the same administrator set for competing role/status changes.
+            $admins = User::where('role', 'admin')->where('status', 'active')->lockForUpdate()->get();
+            if ($admins->contains('id', $user->id)
+                && ($validated['role'] !== 'admin' || $validated['status'] !== 'active')
+                && $admins->count() === 1) {
+                throw \Illuminate\Validation\ValidationException::withMessages([
+                    'role' => 'Keep at least one active administrator.',
+                ]);
+            }
+            $user->update($validated);
+        });
 
         return redirect()
             ->route('admin.users.index')
@@ -66,7 +77,7 @@ class UserController extends Controller
                 ->with('error', 'You cannot delete your own account.');
         }
 
-        $user->delete();
+        app(\App\Services\ResumeFiles::class)->transaction(fn () => $user->delete());
 
         return redirect()
             ->route('admin.users.index')
@@ -81,9 +92,13 @@ class UserController extends Controller
                 ->with('error', 'You cannot deactivate your own account.');
         }
 
-        $user->update([
-            'status' => 'inactive',
-        ]);
+        \Illuminate\Support\Facades\DB::transaction(function () use ($user) {
+            $admins = User::where('role', 'admin')->where('status', 'active')->lockForUpdate()->get();
+            if ($admins->contains('id', $user->id) && $admins->count() === 1) {
+                throw \Illuminate\Validation\ValidationException::withMessages(['status' => 'Keep at least one active administrator.']);
+            }
+            $user->update(['status' => 'inactive']);
+        });
 
         return redirect()
             ->route('admin.users.index')
