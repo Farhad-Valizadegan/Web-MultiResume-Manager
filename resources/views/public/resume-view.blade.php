@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @include('layouts.theme-init')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $resume->title }}</title>
@@ -141,6 +142,7 @@
 @endphp
 
 <body class="min-h-screen {{ $isDarkTheme ? 'bg-slate-950 text-slate-100' : 'bg-slate-950 text-slate-900' }} antialiased">
+    <div class="rf-theme-corner">@include('layouts.theme-switch')</div>
 
     <div class="min-h-screen {{ $theme['page_background'] }} px-4 py-6 sm:px-6 sm:py-10 lg:px-10">
 

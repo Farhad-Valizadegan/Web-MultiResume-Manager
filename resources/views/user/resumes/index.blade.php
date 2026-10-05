@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                <h2 class="font-semibold text-xl text-ink leading-tight">
                     My Resumes
                 </h2>
 
-                <p class="text-sm text-gray-500 mt-1">
+                <p class="text-sm text-muted mt-1">
                     Manage your resumes, public links, passwords, downloads, and view analytics.
                 </p>
             </div>
@@ -18,30 +18,30 @@
         </div>
     </x-slot>
 
-    <div class="py-6 sm:py-12 bg-linear-to-br from-slate-900 via-slate-800 to-blue-950">
+    <div class="py-6 sm:py-12 bg-canvas">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @if (session('success'))
-                <div class="mb-4 p-4 bg-green-100 border-2 border-green-200 text-green-700 rounded-md font-semibold">
+                <div class="mb-4 p-4 bg-green-soft border border-green-soft text-green-strong rounded-md font-semibold">
                     {{ session('success') }}
                 </div>
             @endif
 
-            <div id="copy-message" class="hidden mb-4 p-4 bg-blue-100 border-2 border-blue-200 text-blue-700 rounded-md font-semibold">
+            <div id="copy-message" role="status" aria-live="polite" class="hidden mb-4 p-4 bg-blue-soft border border-blue-soft text-blue-strong rounded-md font-semibold">
                 Public resume link copied successfully.
             </div>
 
-            <div class="bg-slate-100 shadow-2xl sm:rounded-lg p-4 sm:p-6 border-2 border-slate-300">
+            <div class="space-y-6">
 
                 <!-- Page Intro -->
-                <div class="mb-6 bg-white border-2 border-slate-300 rounded-lg p-5">
+                <div class="mb-6 bg-surface border border-line rounded-xl p-5">
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                         <div>
-                            <h3 class="text-lg font-extrabold text-slate-900">
+                            <h3 class="text-lg font-bold text-ink">
                                 Resume List
                             </h3>
 
-                            <p class="text-sm text-slate-600 mt-1">
+                            <p class="text-sm text-muted mt-1">
                                 Each resume has its own public link, password, download settings, and view counter.
                             </p>
                         </div>
@@ -53,36 +53,41 @@
                     </div>
                 </div>
 
+                <div class="rf-resume-filter mb-5 flex flex-col sm:flex-row gap-3">
+                    <label class="flex-1"><span class="sr-only">Search resumes</span><input type="search" data-resume-search placeholder="Search by title or job position" class="w-full"></label>
+                    <label><span class="sr-only">Filter by status</span><select data-resume-status><option value="all">All statuses</option><option value="active">Active</option><option value="inactive">Inactive</option></select></label>
+                </div>
+                <p data-resume-results role="status" aria-live="polite" class="text-sm text-muted mb-4"></p>
                 @forelse ($resumes as $resume)
                     @php
                         $publicUrl = url('/resume/' . $resume->public_link);
                     @endphp
 
-                    <div class="bg-white border-2 border-slate-300 rounded-lg p-4 sm:p-5 mb-5 shadow-xs hover:shadow-md transition">
+                    <article data-resume-card data-search="{{ $resume->title }} {{ $resume->job_position }}" data-status="{{ $resume->status }}" class="bg-surface border border-line rounded-xl p-4 sm:p-5 mb-5 shadow-xs hover:shadow-md transition">
 
                         <!-- Resume Header -->
                         <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
 
                             <div class="flex-1">
-                                <h4 class="text-lg sm:text-xl font-extrabold text-slate-900 wrap-break-word">
+                                <h4 class="text-lg sm:text-xl font-bold text-ink wrap-break-word">
                                     {{ $resume->title }}
                                 </h4>
 
-                                <p class="text-slate-600 mt-2 wrap-break-word">
+                                <p class="text-muted mt-2 wrap-break-word">
                                     Job Position:
-                                    <span class="font-semibold text-slate-800">
+                                    <span class="font-semibold text-ink">
                                         {{ $resume->job_position ?? 'Not specified' }}
                                     </span>
                                 </p>
 
-                                <p class="text-slate-600 mt-2">
+                                <p class="text-muted mt-2">
                                     Status:
                                     @if ($resume->status === 'active')
-                                        <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-green-100 text-green-700">
+                                        <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-green-soft text-green-strong">
                                             Active
                                         </span>
                                     @else
-                                        <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-red-100 text-red-700">
+                                        <span class="inline-flex px-3 py-1 rounded-md text-xs font-bold bg-red-soft text-red-strong">
                                             Inactive
                                         </span>
                                     @endif
@@ -91,22 +96,22 @@
 
                             <!-- View Counter Box -->
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 min-w-full lg:min-w-0 lg:w-auto">
-                                <div class="bg-blue-50 border-2 border-blue-100 rounded-lg px-4 py-3">
-                                    <p class="text-xs text-blue-600 font-bold uppercase tracking-wide">
+                                <div class="bg-blue-soft border border-blue-soft rounded-xl px-4 py-3">
+                                    <p class="text-xs text-blue-strong font-bold uppercase tracking-wide">
                                         Views
                                     </p>
 
-                                    <p class="text-2xl font-extrabold text-blue-700 mt-1">
+                                    <p class="text-2xl font-bold text-blue-strong mt-1">
                                         {{ $resume->view_count ?? 0 }}
                                     </p>
                                 </div>
 
-                                <div class="bg-slate-50 border-2 border-slate-200 rounded-lg px-4 py-3">
-                                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wide">
+                                <div class="bg-surface-soft border border-line rounded-xl px-4 py-3">
+                                    <p class="text-xs text-muted font-bold uppercase tracking-wide">
                                         Last Viewed
                                     </p>
 
-                                    <p class="text-sm font-bold text-slate-800 mt-2">
+                                    <p class="text-sm font-bold text-ink mt-2">
                                         @if ($resume->last_viewed_at)
                                             {{ $resume->last_viewed_at->format('Y-m-d H:i') }}
                                         @else
@@ -118,8 +123,8 @@
                         </div>
 
                         <!-- Public Link -->
-                        <div class="mt-5 bg-slate-50 border border-slate-200 rounded-lg p-4">
-                            <p class="text-slate-700 mb-2 font-bold">
+                        <div class="mt-5 bg-surface-soft border border-line rounded-xl p-4">
+                            <p class="text-muted mb-2 font-bold">
                                 Public Link
                             </p>
 
@@ -127,7 +132,7 @@
                                 <input type="text"
                                        value="{{ $publicUrl }}"
                                        readonly
-                                       class="w-full lg:flex-1 border-2 border-slate-300 rounded-md shadow-xs font-mono text-sm px-3 py-2">
+                                       class="w-full lg:flex-1 border border-line rounded-md shadow-xs font-mono text-sm px-3 py-2">
 
                                 <button type="button"
                                         onclick="copyResumeLink('{{ $publicUrl }}')"
@@ -139,44 +144,44 @@
 
                         <!-- Password and Access Info -->
                         <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-4">
-                            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
-                                <p class="text-slate-700 font-bold">
-                                    Employer Password
+                            <div class="bg-surface-soft border border-line rounded-xl p-4">
+                                <p class="text-muted font-bold">
+                                    Resume password
                                 </p>
 
                                 @if ($resume->resume_password_hash)
-                                    <span class="font-mono bg-white border border-slate-300 px-2 py-1 rounded-md break-all inline-block mt-2">
+                                    <span class="font-mono bg-surface border border-line px-2 py-1 rounded-md break-all inline-block mt-2">
                                         Password set (hidden)
                                     </span>
                                 @else
-                                    <span class="text-red-600 font-semibold inline-block mt-2">
-                                        No password set
+                                    <span class="text-muted font-semibold inline-block mt-2">
+                                        Public access
                                     </span>
                                 @endif
                             </div>
 
-                            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
-                                <p class="text-slate-700 font-bold">
+                            <div class="bg-surface-soft border border-line rounded-xl p-4">
+                                <p class="text-muted font-bold">
                                     Access Status
                                 </p>
 
-                                <p class="mt-2 text-slate-800 font-medium">
+                                <p class="mt-2 text-ink font-medium">
                                     @if ($resume->resume_password_hash)
-                                        Password Required for Employer
+                                        Password protected
                                     @else
-                                        Public Without Password
+                                        Anyone with the link
                                     @endif
                                 </p>
                             </div>
                         </div>
 
                         <!-- Download Type Info -->
-                        <div class="mt-4 bg-slate-50 border border-slate-200 rounded-lg p-4">
-                            <p class="text-slate-700 font-bold">
+                        <div class="mt-4 bg-surface-soft border border-line rounded-xl p-4">
+                            <p class="text-muted font-bold">
                                 Download Option
                             </p>
 
-                            <p class="mt-2 text-slate-800 font-medium">
+                            <p class="mt-2 text-ink font-medium">
                                 @if ($resume->download_resume_type === 'generated')
                                     Generated Resume PDF only
                                 @elseif ($resume->download_resume_type === 'uploaded')
@@ -190,7 +195,7 @@
                         </div>
 
                         <!-- Actions -->
-                        <div class="mt-5 pt-5 border-t-2 border-slate-200 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+                        <div class="mt-5 pt-5 border-t border-line flex flex-col sm:flex-row sm:flex-wrap gap-3">
                             <a href="{{ $publicUrl }}"
                                target="_blank"
                                class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700 font-semibold">
@@ -203,7 +208,7 @@
                             </a>
 
                             <a href="{{ route('user.resumes.password', $resume) }}"
-                               class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-yellow-500 text-white hover:bg-yellow-600 font-semibold">
+                               class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-surface-soft text-ink border border-line hover:bg-surface font-semibold">
                                 Set / Change Password
                             </a>
 
@@ -219,10 +224,10 @@
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    </article>
                 @empty
-                    <div class="bg-white border-2 border-slate-300 rounded-lg p-8 text-center">
-                        <p class="text-slate-600 mb-4">
+                    <div class="bg-surface border border-line rounded-xl p-8 text-center">
+                        <p class="text-muted mb-4">
                             No resumes yet.
                         </p>
 
@@ -232,6 +237,7 @@
                         </a>
                     </div>
                 @endforelse
+                <p data-resume-empty hidden class="p-6 text-center text-muted">No resumes match your search. Try a different title or status.</p>
 
             </div>
 
@@ -242,11 +248,16 @@
         function copyResumeLink(link) {
             navigator.clipboard.writeText(link).then(function () {
                 const message = document.getElementById('copy-message');
+                message.textContent = 'Public resume link copied successfully.';
                 message.classList.remove('hidden');
 
                 setTimeout(function () {
                     message.classList.add('hidden');
                 }, 2500);
+            }).catch(function () {
+                const message = document.getElementById('copy-message');
+                message.textContent = 'Could not copy automatically. Select the public link and copy it manually.';
+                message.classList.remove('hidden');
             });
         }
     </script>
