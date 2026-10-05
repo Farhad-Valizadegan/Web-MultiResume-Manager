@@ -101,7 +101,7 @@
 @media(max-width:900px) { .rf-login { grid-template-columns:1fr; } .rf-login-story { padding:2rem; gap:1.5rem; margin-top:4.5rem; } .rf-login-story h1 { font-size:2rem; } .rf-story-features { display:none; } .rf-login-panel { padding:2rem 1.5rem 3rem; } }
 @media(max-width:640px) { .rf-brand { display:none; } .rf-theme-corner { right:1rem; top:1rem; } }
 /* The forms plugin supplies an unlayered select background; keep native fields on theme. */
-select { background-color:var(--rf-surface); color:var(--rf-ink); }
+textarea, select { background-color:var(--rf-surface); color:var(--rf-ink); }
 button:not([type=button][class*=absolute]), a.inline-flex[class*=bg-] { min-height:44px; }
 @media(max-width:640px) { .rf-login-story { background:none; color:var(--rf-ink); padding:1rem .5rem; margin:4rem 1rem 0; gap:0; } .rf-login-story > div { display:none; } .rf-login-panel { padding-top:1rem; } }
 @media(max-width:640px) { .rf-form-navigation div { flex-wrap:nowrap; overflow-x:auto; padding-bottom:.25rem; } .rf-form-navigation a { white-space:nowrap; min-height:44px; display:flex; align-items:center; } }
