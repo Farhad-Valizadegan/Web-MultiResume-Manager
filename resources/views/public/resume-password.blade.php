@@ -65,7 +65,7 @@
                         <p class="text-slate-600 mt-2 wrap-break-word">
                             Owner:
                             <span class="font-semibold text-slate-800">
-                                {{ $resume->user->name }}
+                                {{ ($resume->full_name ?: $resume->title) }}
                             </span>
                         </p>
                     @endif

@@ -1,11 +1,11 @@
 <script>
-    let skillIndex = {{ isset($resume) ? max($resume->skills->count(), 1) : 1 }};
-    let languageIndex = {{ isset($resume) ? max($resume->languages->count(), 1) : 1 }};
-    let interestIndex = {{ isset($resume) ? max($resume->interests->count(), 1) : 1 }};
-    let educationIndex = {{ isset($resume) ? max($resume->educations->count(), 1) : 1 }};
-    let experienceIndex = {{ isset($resume) ? max($resume->experiences->count(), 1) : 1 }};
-    let projectIndex = {{ isset($resume) ? max($resume->projects->count(), 1) : 1 }};
-    let certificateIndex = {{ isset($resume) ? max($resume->certificates->count(), 1) : 1 }};
+    let skillIndex = {{ session()->hasOldInput() ? (count(old('skills', [])) ? max(array_map('intval', array_keys(old('skills', [])))) + 1 : 0) : (isset($resume) ? max($resume->skills->count(), 1) : 1) }};
+    let languageIndex = {{ session()->hasOldInput() ? (count(old('languages', [])) ? max(array_map('intval', array_keys(old('languages', [])))) + 1 : 0) : (isset($resume) ? max($resume->languages->count(), 1) : 1) }};
+    let interestIndex = {{ session()->hasOldInput() ? (count(old('interests', [])) ? max(array_map('intval', array_keys(old('interests', [])))) + 1 : 0) : (isset($resume) ? max($resume->interests->count(), 1) : 1) }};
+    let educationIndex = {{ session()->hasOldInput() ? (count(old('educations', [])) ? max(array_map('intval', array_keys(old('educations', [])))) + 1 : 0) : (isset($resume) ? max($resume->educations->count(), 1) : 1) }};
+    let experienceIndex = {{ session()->hasOldInput() ? (count(old('experiences', [])) ? max(array_map('intval', array_keys(old('experiences', [])))) + 1 : 0) : (isset($resume) ? max($resume->experiences->count(), 1) : 1) }};
+    let projectIndex = {{ session()->hasOldInput() ? (count(old('projects', [])) ? max(array_map('intval', array_keys(old('projects', [])))) + 1 : 0) : (isset($resume) ? max($resume->projects->count(), 1) : 1) }};
+    let certificateIndex = {{ session()->hasOldInput() ? (count(old('certificates', [])) ? max(array_map('intval', array_keys(old('certificates', [])))) + 1 : 0) : (isset($resume) ? max($resume->certificates->count(), 1) : 1) }};
 
     function removeItem(button, selector) {
         button.closest(selector).remove();
@@ -427,6 +427,7 @@
                         <label class="block mb-2 font-bold text-slate-800">Certificate File</label>
                         <input type="file"
                                name="certificates[${certificateIndex}][certificate_file]"
+                               accept=".pdf,.jpg,.jpeg,.png,.webp"
                                class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 bg-white shadow-xs focus:border-blue-500 focus:ring-blue-500">
                     </div>
 
@@ -436,6 +437,14 @@
                                   rows="3"
                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                   placeholder="Short description of what the certificate covers."></textarea>
+                    </div>
+                    <div>
+                        <label class="block mb-2 font-bold text-slate-800">Related Project Title</label>
+                        <input type="text" name="certificates[${certificateIndex}][related_project_title]" class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5">
+                    </div>
+                    <div>
+                        <label class="block mb-2 font-bold text-slate-800">Related Project Link</label>
+                        <input type="url" name="certificates[${certificateIndex}][related_project_link]" class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5">
                     </div>
                 </div>
             </div>

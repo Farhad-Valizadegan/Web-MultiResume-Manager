@@ -15,7 +15,7 @@ class ResumePersonalInformationTest extends TestCase
 
     public function test_user_can_create_resume_with_personal_information_and_profile_photo(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = User::factory()->create();
         $photo = UploadedFile::fake()->image(
@@ -86,7 +86,7 @@ class ResumePersonalInformationTest extends TestCase
         );
 
         $this->assertNotNull($resume->profile_photo);
-        Storage::disk('public')->assertExists(
+        Storage::disk('private')->assertExists(
             $resume->profile_photo
         );
     }
@@ -164,12 +164,12 @@ class ResumePersonalInformationTest extends TestCase
 
     public function test_updating_resume_without_new_photo_retains_existing_photo(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = User::factory()->create();
         $existingPhoto = UploadedFile::fake()
             ->image('existing-photo.jpg')
-            ->store('resume-profile-photos', 'public');
+            ->store('resume-profile-photos', 'private');
 
         $resume = $this->createResume($user, [
             'profile_photo' => $existingPhoto,
@@ -190,17 +190,17 @@ class ResumePersonalInformationTest extends TestCase
             $existingPhoto,
             $resume->profile_photo
         );
-        Storage::disk('public')->assertExists($existingPhoto);
+        Storage::disk('private')->assertExists($existingPhoto);
     }
 
     public function test_replacing_profile_photo_deletes_previous_photo(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = User::factory()->create();
         $oldPhoto = UploadedFile::fake()
             ->image('old-photo.jpg')
-            ->store('resume-profile-photos', 'public');
+            ->store('resume-profile-photos', 'private');
 
         $resume = $this->createResume($user, [
             'profile_photo' => $oldPhoto,
@@ -232,20 +232,20 @@ class ResumePersonalInformationTest extends TestCase
             $resume->profile_photo
         );
 
-        Storage::disk('public')->assertMissing($oldPhoto);
-        Storage::disk('public')->assertExists(
+        Storage::disk('private')->assertMissing($oldPhoto);
+        Storage::disk('private')->assertExists(
             $resume->profile_photo
         );
     }
 
     public function test_user_can_remove_existing_profile_photo(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = User::factory()->create();
         $photo = UploadedFile::fake()
             ->image('profile-photo.webp')
-            ->store('resume-profile-photos', 'public');
+            ->store('resume-profile-photos', 'private');
 
         $resume = $this->createResume($user, [
             'profile_photo' => $photo,
@@ -266,17 +266,17 @@ class ResumePersonalInformationTest extends TestCase
         $resume->refresh();
 
         $this->assertNull($resume->profile_photo);
-        Storage::disk('public')->assertMissing($photo);
+        Storage::disk('private')->assertMissing($photo);
     }
 
     public function test_deleting_resume_deletes_profile_photo(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = User::factory()->create();
         $photo = UploadedFile::fake()
             ->image('profile-photo.jpg')
-            ->store('resume-profile-photos', 'public');
+            ->store('resume-profile-photos', 'private');
 
         $resume = $this->createResume($user, [
             'profile_photo' => $photo,
@@ -294,7 +294,7 @@ class ResumePersonalInformationTest extends TestCase
             'id' => $resume->id,
         ]);
 
-        Storage::disk('public')->assertMissing($photo);
+        Storage::disk('private')->assertMissing($photo);
     }
 
     public function test_personal_information_urls_and_email_are_validated(): void
@@ -323,7 +323,7 @@ class ResumePersonalInformationTest extends TestCase
 
     public function test_invalid_profile_photo_is_rejected(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = User::factory()->create();
         $invalidPhoto = UploadedFile::fake()->create(

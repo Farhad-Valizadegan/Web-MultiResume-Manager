@@ -144,9 +144,9 @@
                                     Employer Password
                                 </p>
 
-                                @if ($resume->resume_password)
+                                @if ($resume->resume_password_hash)
                                     <span class="font-mono bg-white border border-slate-300 px-2 py-1 rounded-md break-all inline-block mt-2">
-                                        {{ $resume->resume_password }}
+                                        Password set (hidden)
                                     </span>
                                 @else
                                     <span class="text-red-600 font-semibold inline-block mt-2">

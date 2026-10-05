@@ -15,7 +15,7 @@ class ResumeCertificateTest extends TestCase
 
     public function test_user_can_create_resume_with_multiple_certificates(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
 
@@ -91,7 +91,7 @@ class ResumeCertificateTest extends TestCase
             $laravelCertificate->certificate_file
         );
 
-        Storage::disk('public')->assertExists(
+        Storage::disk('private')->assertExists(
             $laravelCertificate->certificate_file
         );
 
@@ -111,7 +111,7 @@ class ResumeCertificateTest extends TestCase
 
     public function test_certificate_without_title_is_ignored(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
 
@@ -160,7 +160,7 @@ class ResumeCertificateTest extends TestCase
 
         $this->assertSame(
             [],
-            Storage::disk('public')->allFiles('certificate-files')
+            Storage::disk('private')->allFiles('certificate-files')
         );
     }
 
@@ -281,7 +281,7 @@ class ResumeCertificateTest extends TestCase
 
     public function test_invalid_and_oversized_certificate_files_are_rejected(): void
     {
-        Storage::fake('public');
+        Storage::fake('private');
 
         $user = $this->createActiveUser();
 
@@ -330,7 +330,7 @@ class ResumeCertificateTest extends TestCase
 
         $this->assertSame(
             [],
-            Storage::disk('public')->allFiles('certificate-files')
+            Storage::disk('private')->allFiles('certificate-files')
         );
     }
 

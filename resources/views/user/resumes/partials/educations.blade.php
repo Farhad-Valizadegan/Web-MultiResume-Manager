@@ -11,8 +11,12 @@
     </div>
 
     <div id="educations-wrapper">
-        @if (isset($resume) && $resume->educations->count())
-            @foreach ($resume->educations as $index => $education)
+        @php
+            $educations = session()->hasOldInput()
+                ? collect(old('educations', []))->map(fn ($row) => (object) $row)
+                : (isset($resume) ? $resume->educations : collect([(object) []]));
+        @endphp
+        @foreach ($educations as $index => $education)
                 <div class="education-item border rounded-sm p-4 mb-4">
                     <div class="flex justify-end mb-2">
                         <button type="button"
@@ -26,7 +30,7 @@
                         <label class="block mb-1 font-medium">Institution Name</label>
                         <input type="text"
                                name="educations[{{ $index }}][institution_name]"
-                               value="{{ old('educations.' . $index . '.institution_name', $education->institution_name) }}"
+                               value="{{ old('educations.' . $index . '.institution_name', ($education->institution_name ?? null)) }}"
                                class="w-full border-gray-300 rounded-sm"
                                placeholder="Example: University Name">
                     </div>
@@ -36,7 +40,7 @@
                             <label class="block mb-1 font-medium">Degree</label>
                             <input type="text"
                                    name="educations[{{ $index }}][degree]"
-                                   value="{{ old('educations.' . $index . '.degree', $education->degree) }}"
+                                   value="{{ old('educations.' . $index . '.degree', ($education->degree ?? null)) }}"
                                    class="w-full border-gray-300 rounded-sm"
                                    placeholder="Example: M.Sc.">
                         </div>
@@ -45,7 +49,7 @@
                             <label class="block mb-1 font-medium">Field of Study</label>
                             <input type="text"
                                    name="educations[{{ $index }}][field_of_study]"
-                                   value="{{ old('educations.' . $index . '.field_of_study', $education->field_of_study) }}"
+                                   value="{{ old('educations.' . $index . '.field_of_study', ($education->field_of_study ?? null)) }}"
                                    class="w-full border-gray-300 rounded-sm"
                                    placeholder="Example: Computer Science">
                         </div>
@@ -56,7 +60,7 @@
                             <label class="block mb-1 font-medium">Start Date</label>
                             <input type="date"
                                    name="educations[{{ $index }}][start_date]"
-                                   value="{{ old('educations.' . $index . '.start_date', $education->start_date) }}"
+                                   value="{{ old('educations.' . $index . '.start_date', ($education->start_date ?? null)) }}"
                                    class="w-full border-gray-300 rounded-sm">
                         </div>
 
@@ -64,7 +68,7 @@
                             <label class="block mb-1 font-medium">End Date</label>
                             <input type="date"
                                    name="educations[{{ $index }}][end_date]"
-                                   value="{{ old('educations.' . $index . '.end_date', $education->end_date) }}"
+                                   value="{{ old('educations.' . $index . '.end_date', ($education->end_date ?? null)) }}"
                                    class="w-full border-gray-300 rounded-sm">
                         </div>
                     </div>
@@ -74,62 +78,10 @@
                         <textarea name="educations[{{ $index }}][description]"
                                   rows="3"
                                   class="w-full border-gray-300 rounded-sm"
-                                  placeholder="Example: Focused on software engineering, data science, machine learning, and applied computer science.">{{ old('educations.' . $index . '.description', $education->description) }}</textarea>
+                                  placeholder="Example: Focused on software engineering, data science, machine learning, and applied computer science.">{{ old('educations.' . $index . '.description', ($education->description ?? null)) }}</textarea>
                     </div>
                 </div>
             @endforeach
-        @else
-            <div class="education-item border rounded-sm p-4 mb-4">
-                <div class="mb-4">
-                    <label class="block mb-1 font-medium">Institution Name</label>
-                    <input type="text"
-                           name="educations[0][institution_name]"
-                           class="w-full border-gray-300 rounded-sm"
-                           placeholder="Example: University Name">
-                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="mb-4">
-                        <label class="block mb-1 font-medium">Degree</label>
-                        <input type="text"
-                               name="educations[0][degree]"
-                               class="w-full border-gray-300 rounded-sm"
-                               placeholder="Example: M.Sc.">
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block mb-1 font-medium">Field of Study</label>
-                        <input type="text"
-                               name="educations[0][field_of_study]"
-                               class="w-full border-gray-300 rounded-sm"
-                               placeholder="Example: Computer Science">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="mb-4">
-                        <label class="block mb-1 font-medium">Start Date</label>
-                        <input type="date"
-                               name="educations[0][start_date]"
-                               class="w-full border-gray-300 rounded-sm">
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block mb-1 font-medium">End Date</label>
-                        <input type="date"
-                               name="educations[0][end_date]"
-                               class="w-full border-gray-300 rounded-sm">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block mb-1 font-medium">Description</label>
-                    <textarea name="educations[0][description]"
-                              rows="3"
-                              class="w-full border-gray-300 rounded-sm"
-                              placeholder="Example: Focused on software engineering, data analysis, databases, and web development."></textarea>
-                </div>
-            </div>
-        @endif
     </div>
 </div>

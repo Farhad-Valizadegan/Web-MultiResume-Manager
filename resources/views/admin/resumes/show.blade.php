@@ -164,9 +164,9 @@
                                     Employer Password
                                 </p>
 
-                                @if ($resume->resume_password)
+                                @if ($resume->resume_password_hash)
                                     <p class="font-mono bg-white border border-slate-300 px-2 py-1 rounded-md mt-2 break-all inline-block">
-                                        {{ $resume->resume_password }}
+                                        Password set (hidden)
                                     </p>
                                 @else
                                     <p class="text-red-600 font-semibold mt-2">
@@ -209,7 +209,7 @@
                         </div>
 
                         @if ($resume->uploaded_resume_file)
-                            <a href="{{ asset('storage/' . $resume->uploaded_resume_file) }}"
+                            <a href="{{ route('resume.files.show', [$resume, 'uploaded']) }}"
                                target="_blank"
                                class="inline-flex px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-semibold">
                                 View Uploaded Resume PDF
@@ -433,7 +433,7 @@
                                     @endif
 
                                     @if ($certificate->certificate_file)
-                                        <a href="{{ asset('storage/' . $certificate->certificate_file) }}"
+                                        <a href="{{ route('resume.files.show', [$resume, 'certificate', $certificate->id]) }}"
                                            target="_blank"
                                            class="inline-flex px-3 py-1.5 bg-slate-700 text-white rounded-md hover:bg-slate-800 font-semibold text-sm">
                                             View File

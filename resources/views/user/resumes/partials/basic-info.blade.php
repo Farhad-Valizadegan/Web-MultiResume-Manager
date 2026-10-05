@@ -258,7 +258,7 @@
             @if (isset($resume) && $resume->profile_photo)
                 <div class="mb-4 flex flex-col sm:flex-row sm:items-center gap-4">
 
-                    <img src="{{ asset('storage/' . $resume->profile_photo) }}"
+                    <img src="{{ route('resume.files.show', [$resume, 'photo']) }}"
                          alt="{{ $resume->full_name ?: 'Resume profile photo' }}"
                          class="w-28 h-28 rounded-lg object-cover border-2 border-slate-300 shadow-xs">
 
@@ -315,7 +315,7 @@
                    placeholder="Minimum 6 characters">
 
             <p class="text-sm text-slate-500 mt-2">
-                Employers need this password to view the public resume.
+                Leave blank for public access, or set a password to restrict access.
                 You can change it later.
             </p>
 
@@ -430,7 +430,7 @@
                     <p class="text-sm text-slate-700">
                         Current uploaded resume:
 
-                        <a href="{{ asset('storage/' . $resume->uploaded_resume_file) }}"
+                        <a href="{{ route('resume.files.show', [$resume, 'uploaded']) }}"
                            target="_blank"
                            rel="noopener noreferrer"
                            class="text-blue-600 hover:underline font-semibold">

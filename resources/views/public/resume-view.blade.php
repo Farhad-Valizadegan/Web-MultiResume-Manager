@@ -8,7 +8,13 @@
 </head>
 
 @php
-    $profile = $resume->user->profile;
+    $profile = (object) [
+        'address' => trim(implode(', ', array_filter([$resume->address, trim(($resume->postal_code ?? '') . ' ' . ($resume->city ?? '')), $resume->country]))),
+        'phone' => $resume->phone, 'website' => $resume->website,
+        'linkedin' => $resume->linkedin, 'github' => $resume->github,
+        'portfolio' => null, 'xing' => null, 'profile_photo' => $resume->profile_photo,
+        'bio' => $resume->professional_summary,
+    ];
     $currentLocation = $profile?->address;
 
     $selectedTheme = $resume->theme ?? 'professional_blue';
@@ -154,13 +160,13 @@
                             <div class="lg:col-span-2">
                                 <div class="flex flex-col items-start gap-4">
                                     @if ($profile && $profile->profile_photo)
-                                        <img src="{{ asset('storage/' . $profile->profile_photo) }}"
-                                             alt="{{ $resume->user->name }}"
+                                        <img src="{{ route('resume.files.show', [$resume, 'photo']) }}"
+                                             alt="{{ ($resume->full_name ?: $resume->title) }}"
                                              class="h-36 w-36 rounded-2xl {{ $isMinimalTheme ? 'border border-slate-200' : 'border border-white/20' }} object-cover shadow-xl sm:h-40 sm:w-40">
                                     @else
                                         <div class="flex h-36 w-36 items-center justify-center rounded-2xl {{ $isMinimalTheme ? 'border border-slate-200 bg-slate-100' : 'border border-white/20 bg-white/10' }} shadow-xl sm:h-40 sm:w-40">
                                             <span class="text-5xl font-black {{ $isMinimalTheme ? 'text-slate-900' : 'text-white' }}">
-                                                {{ strtoupper(substr($resume->user->name, 0, 1)) }}
+                                                {{ strtoupper(substr(($resume->full_name ?: $resume->title), 0, 1)) }}
                                             </span>
                                         </div>
                                     @endif
@@ -193,7 +199,7 @@
                                 </div>
 
                                 <h1 class="wrap-break-word text-4xl font-black tracking-tight {{ $isMinimalTheme ? 'text-slate-950' : 'text-white' }} sm:text-5xl lg:text-6xl">
-                                    {{ $resume->user->name }}
+                                    {{ ($resume->full_name ?: $resume->title) }}
                                 </h1>
 
                                 <p class="mt-4 wrap-break-word text-xl font-semibold {{ $theme['subtitle_text'] }} sm:text-2xl">
@@ -258,7 +264,7 @@
                                             </p>
 
                                             <p class="mt-1 break-all font-semibold {{ $isMinimalTheme ? 'text-slate-900' : 'text-white' }}">
-                                                {{ $resume->user->email }}
+                                                {{ $resume->email }}
                                             </p>
                                         </div>
 
@@ -494,7 +500,7 @@
                                                 @if ($certificate->certificate_file)
                                                     @php
                                                         $extension = strtolower(pathinfo($certificate->certificate_file, PATHINFO_EXTENSION));
-                                                        $certificateFileUrl = asset('storage/' . $certificate->certificate_file);
+                                                        $certificateFileUrl = route('resume.files.show', [$resume, 'certificate', $certificate->id]);
                                                     @endphp
 
                                                     <div class="mt-4">
@@ -535,7 +541,7 @@
                                                         @endif
 
                                                         @if ($certificate->certificate_file)
-                                                            <a href="{{ asset('storage/' . $certificate->certificate_file) }}"
+                                                            <a href="{{ route('resume.files.show', [$resume, 'certificate', $certificate->id]) }}"
                                                                target="_blank"
                                                                rel="noopener noreferrer"
                                                                class="inline-flex items-center justify-center rounded-lg {{ $isDarkTheme ? 'bg-slate-700 text-white hover:bg-slate-600' : 'bg-slate-900 text-white hover:bg-slate-800' }} px-3 py-2 text-sm font-extrabold transition">
