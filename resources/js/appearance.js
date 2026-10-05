@@ -21,14 +21,15 @@ window.addEventListener('storage', event => {
 // Build navigation from real section headings so create and edit stay consistent.
 document.querySelectorAll('[data-section-links]').forEach(container => {
     const form = container.closest('form');
-    form.querySelectorAll('section').forEach((section, index) => {
-        const heading = section.querySelector('h3,h4');
+    form.querySelectorAll('[data-editor-section]').forEach((section, index) => {
+        const heading = section.querySelector('[data-section-title]');
         if (!heading) return;
         section.id = section.id || 'resume-section-' + index;
         section.style.scrollMarginTop = '6rem';
         const link = document.createElement('a');
         link.href = '#' + section.id;
         link.textContent = heading.textContent.trim();
+        link.addEventListener('click', () => { section.open = true; });
         container.append(link);
     });
 });

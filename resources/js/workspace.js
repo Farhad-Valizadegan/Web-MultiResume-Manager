@@ -37,6 +37,14 @@ function associateLabels(container) {
     });
 }
 document.querySelectorAll('form[data-resume-editor]').forEach(form => {
+    // Reveal invalid fields before the browser tries to focus them.
+    form.addEventListener('invalid', event => {
+        let section = event.target.closest('details');
+        while (section) {
+            section.open = true;
+            section = section.parentElement.closest('details');
+        }
+    }, true);
     associateLabels(form);
     new MutationObserver(() => associateLabels(form)).observe(form, { childList: true, subtree: true });
     let dirty = false;
