@@ -324,11 +324,11 @@
                     @if ($experience->start_date || $experience->end_date)
                         <div class="muted">
                             @if ($experience->start_date && $experience->end_date)
-                                {{ $experience->start_date }} - {{ $experience->end_date }}
+                                {{ \Carbon\Carbon::parse($experience->start_date)->format('M Y') }} - {{ \Carbon\Carbon::parse($experience->end_date)->format('M Y') }}
                             @elseif ($experience->start_date && !$experience->end_date)
-                                {{ $experience->start_date }} - Present
+                                {{ \Carbon\Carbon::parse($experience->start_date)->format('M Y') }} - Present
                             @elseif (!$experience->start_date && $experience->end_date)
-                                Until {{ $experience->end_date }}
+                                Until {{ \Carbon\Carbon::parse($experience->end_date)->format('M Y') }}
                             @endif
                         </div>
                     @endif
@@ -377,11 +377,11 @@
                     @if ($education->start_date || $education->end_date)
                         <div class="muted">
                             @if ($education->start_date && $education->end_date)
-                                {{ $education->start_date }} - {{ $education->end_date }}
+                                {{ \Carbon\Carbon::parse($education->start_date)->format('M Y') }} - {{ \Carbon\Carbon::parse($education->end_date)->format('M Y') }}
                             @elseif ($education->start_date && !$education->end_date)
-                                {{ $education->start_date }} - Present
+                                {{ \Carbon\Carbon::parse($education->start_date)->format('M Y') }} - Present
                             @elseif (!$education->start_date && $education->end_date)
-                                Until {{ $education->end_date }}
+                                Until {{ \Carbon\Carbon::parse($education->end_date)->format('M Y') }}
                             @endif
                         </div>
                     @endif
@@ -419,7 +419,7 @@
 
                     @if ($certificate->issue_date)
                         <div class="muted">
-                            Issued: {{ $certificate->issue_date }}
+                            Issued: {{ \Carbon\Carbon::parse($certificate->issue_date)->format('M Y') }}
                         </div>
                     @endif
 
