@@ -2,13 +2,13 @@
 <div class="space-y-5">
 
     <!-- Section Header -->
-    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-slate-50 border-2 border-slate-200 rounded-lg p-4">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 bg-surface-soft border border-line rounded-xl p-4">
         <div>
-            <h3 class="text-lg font-extrabold text-slate-900">
+            <h3 class="text-lg font-bold text-ink">
                 Skills
             </h3>
 
-            <p class="text-sm text-slate-500 mt-1">
+            <p class="text-sm text-muted mt-1">
                 Add your skills by category, name, and proficiency level.
             </p>
         </div>
@@ -29,15 +29,15 @@
                 : (isset($resume) ? $resume->skills : collect([(object) []]));
         @endphp
         @foreach ($skills as $index => $skill)
-                <div class="skill-item bg-slate-50 border-2 border-slate-200 rounded-lg p-4">
+                <div class="skill-item bg-surface-soft border border-line rounded-xl p-4">
 
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
                         <div>
-                            <p class="font-bold text-slate-900">
+                            <p class="font-bold text-ink">
                                 Skill Item #{{ $index + 1 }}
                             </p>
 
-                            <p class="text-sm text-slate-500">
+                            <p class="text-sm text-muted">
                                 Category, skill name, and level.
                             </p>
                         </div>
@@ -53,40 +53,40 @@
 
                         <!-- Skill Category -->
                         <div>
-                            <label class="block mb-2 font-bold text-slate-800">
+                            <label class="block mb-2 font-bold text-ink">
                                 Skill Category
                             </label>
 
                             <input type="text"
                                    name="skills[{{ $index }}][skill_category]"
                                    value="{{ old('skills.' . $index . '.skill_category', ($skill->skill_category ?? null)) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Programming">
                         </div>
 
                         <!-- Skill Name -->
                         <div>
-                            <label class="block mb-2 font-bold text-slate-800">
+                            <label class="block mb-2 font-bold text-ink">
                                 Skill Name
                             </label>
 
                             <input type="text"
                                    name="skills[{{ $index }}][skill_name]"
                                    value="{{ old('skills.' . $index . '.skill_name', ($skill->skill_name ?? null)) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Python">
                         </div>
 
                         <!-- Skill Level -->
                         <div>
-                            <label class="block mb-2 font-bold text-slate-800">
+                            <label class="block mb-2 font-bold text-ink">
                                 Skill Level
                             </label>
 
                             <input type="text"
                                    name="skills[{{ $index }}][skill_level]"
                                    value="{{ old('skills.' . $index . '.skill_level', ($skill->skill_level ?? null)) }}"
-                                   class="w-full border-2 border-slate-300 rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
                                    placeholder="Example: Intermediate">
                         </div>
 
