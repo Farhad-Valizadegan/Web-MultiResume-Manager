@@ -35,7 +35,9 @@
                     <nav class="rf-form-navigation" aria-label="Resume sections"><span>Jump to section</span><div data-section-links></div></nav>
 
                     <!-- Basic Information -->
-                    <section class="border border-line rounded-xl p-4 sm:p-5 bg-surface shadow-xs">
+                    <details data-editor-section id="resume-section-basic" class="rf-editor-section" @if($errors->any()) open @endif>
+                        <summary><span data-section-title>Basic Information</span><span class="rf-section-chevron" aria-hidden="true">⌄</span></summary>
+                        <div class="rf-editor-section-content">
                         <div class="mb-4 bg-surface-soft border border-line rounded-md p-4">
                             <h4 class="text-base font-bold text-ink">
                                 Basic Information
@@ -49,10 +51,13 @@
                         <div class="bg-surface border border-line rounded-md p-4">
                             @include('user.resumes.partials.basic-info')
                         </div>
-                    </section>
+                    </div>
+                    </details>
 
                     <!-- Resume Display Settings -->
-                    <section class="border border-line rounded-xl p-4 sm:p-5 bg-surface shadow-xs">
+                    <details data-editor-section id="resume-section-settings" class="rf-editor-section" @if($errors->has('theme') || $errors->has('skill_display_style')) open @endif>
+                        <summary><span data-section-title>Resume Display Settings</span><span class="rf-section-chevron" aria-hidden="true">⌄</span></summary>
+                        <div class="rf-editor-section-content">
                         <div class="mb-4 bg-surface-soft border border-line rounded-md p-4">
                             <h4 class="text-base font-bold text-ink">
                                 Resume Display Settings
@@ -215,70 +220,92 @@
                             </div>
 
                         </div>
-                    </section>
+                    </div>
+                    </details>
 
                     <!-- Skills -->
-                    <section class="border border-line rounded-xl p-4 sm:p-5 bg-surface shadow-xs">
+                    <details data-editor-section id="resume-section-skills" class="rf-editor-section" @if($errors->has('skills') || $errors->has('skills.*')) open @endif>
+                        <summary><span data-section-title>Skills</span><span class="rf-section-chevron" aria-hidden="true">⌄</span></summary>
+                        <div class="rf-editor-section-content">
 
 
                         <div>
                             @include('user.resumes.partials.skills')
                         </div>
-                    </section>
+                    </div>
+                    </details>
 
                     <!-- Languages -->
-                    <section class="border border-line rounded-xl p-4 sm:p-5 bg-surface shadow-xs">
+                    <details data-editor-section id="resume-section-languages" class="rf-editor-section" @if($errors->has('languages') || $errors->has('languages.*')) open @endif>
+                        <summary><span data-section-title>Languages</span><span class="rf-section-chevron" aria-hidden="true">⌄</span></summary>
+                        <div class="rf-editor-section-content">
 
 
                         <div>
                             @include('user.resumes.partials.languages')
                         </div>
-                    </section>
+                    </div>
+                    </details>
 
                     <!-- Hobbies and Interests -->
-                    <section class="border border-line rounded-xl p-4 sm:p-5 bg-surface shadow-xs">
+                    <details data-editor-section id="resume-section-hobbies" class="rf-editor-section" @if($errors->has('hobbies') || $errors->has('hobbies.*')) open @endif>
+                        <summary><span data-section-title>Hobbies and Interests</span><span class="rf-section-chevron" aria-hidden="true">⌄</span></summary>
+                        <div class="rf-editor-section-content">
 
 
                         <div>
                             @include('user.resumes.partials.interests')
                         </div>
-                    </section>
+                    </div>
+                    </details>
 
                     <!-- Education -->
-                    <section class="border border-line rounded-xl p-4 sm:p-5 bg-surface shadow-xs">
+                    <details data-editor-section id="resume-section-educations" class="rf-editor-section" @if($errors->has('educations') || $errors->has('educations.*')) open @endif>
+                        <summary><span data-section-title>Education</span><span class="rf-section-chevron" aria-hidden="true">⌄</span></summary>
+                        <div class="rf-editor-section-content">
 
 
                         <div>
                             @include('user.resumes.partials.educations')
                         </div>
-                    </section>
+                    </div>
+                    </details>
 
                     <!-- Experience -->
-                    <section class="border border-line rounded-xl p-4 sm:p-5 bg-surface shadow-xs">
+                    <details data-editor-section id="resume-section-experiences" class="rf-editor-section" @if($errors->has('experiences') || $errors->has('experiences.*')) open @endif>
+                        <summary><span data-section-title>Experience</span><span class="rf-section-chevron" aria-hidden="true">⌄</span></summary>
+                        <div class="rf-editor-section-content">
 
 
                         <div>
                             @include('user.resumes.partials.experiences')
                         </div>
-                    </section>
+                    </div>
+                    </details>
 
                     <!-- Projects -->
-                    <section class="border border-line rounded-xl p-4 sm:p-5 bg-surface shadow-xs">
+                    <details data-editor-section id="resume-section-projects" class="rf-editor-section" @if($errors->has('projects') || $errors->has('projects.*')) open @endif>
+                        <summary><span data-section-title>Projects</span><span class="rf-section-chevron" aria-hidden="true">⌄</span></summary>
+                        <div class="rf-editor-section-content">
 
 
                         <div>
                             @include('user.resumes.partials.projects')
                         </div>
-                    </section>
+                    </div>
+                    </details>
 
                     <!-- Certificates -->
-                    <section class="border border-line rounded-xl p-4 sm:p-5 bg-surface shadow-xs">
+                    <details data-editor-section id="resume-section-certificates" class="rf-editor-section" @if($errors->has('certificates') || $errors->has('certificates.*')) open @endif>
+                        <summary><span data-section-title>Certificates</span><span class="rf-section-chevron" aria-hidden="true">⌄</span></summary>
+                        <div class="rf-editor-section-content">
 
 
                         <div>
                             @include('user.resumes.partials.certificates')
                         </div>
-                    </section>
+                    </div>
+                    </details>
 
                     <!-- Actions -->
                     <div class="flex flex-col sm:flex-row sm:justify-between gap-3 pt-6 border-t border-line">

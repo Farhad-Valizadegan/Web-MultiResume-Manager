@@ -222,14 +222,14 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block mb-2 font-bold text-ink">Start Date</label>
-                            <input type="date"
+                            <input type="month"
                                    name="educations[${educationIndex}][start_date]"
                                    class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block mb-2 font-bold text-ink">End Date</label>
-                            <input type="date"
+                            <input type="month"
                                    name="educations[${educationIndex}][end_date]"
                                    class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
@@ -293,15 +293,15 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block mb-2 font-bold text-ink">Start Date</label>
-                            <input type="date"
-                                   name="experiences[${experienceIndex}][start_date]"
+                            <input type="month"
+                                   name="experiences[${experienceIndex}][start_date]" max="{{ now()->format('Y-m') }}"
                                    class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block mb-2 font-bold text-ink">End Date</label>
-                            <input type="date"
-                                   name="experiences[${experienceIndex}][end_date]"
+                            <input type="month"
+                                   name="experiences[${experienceIndex}][end_date]" max="{{ now()->format('Y-m') }}"
                                    class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
                         </div>
                     </div>

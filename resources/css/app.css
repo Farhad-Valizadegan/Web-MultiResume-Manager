@@ -133,3 +133,14 @@ button:not([type=button][class*=absolute]), a.inline-flex[class*=bg-] { min-heig
 [hidden] { display:none !important; }
 @media(max-width:900px) { .rf-resume-grid { grid-template-columns:1fr; } }
 @media(max-width:640px) { .rf-resume-card { padding:1.1rem; } .rf-list-toolbar { padding:1rem; } .rf-list-toolbar > label { width:100%; } }
+
+/* Native disclosure sections keep editor fields mounted and keyboard accessible. */
+.rf-editor-section { border:1px solid var(--rf-line); border-radius:1rem; background:var(--rf-surface); scroll-margin-top:6rem; }
+.rf-editor-section > summary { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.25rem; min-height:3rem; cursor:pointer; color:var(--rf-ink); font-weight:700; list-style:none; }
+.rf-editor-section > summary::-webkit-details-marker { display:none; }
+.rf-editor-section > summary:focus-visible { outline:2px solid var(--rf-focus); outline-offset:3px; border-radius:1rem; }
+.rf-section-chevron { font-size:1.4rem; line-height:1; }
+.rf-editor-section[open] > summary .rf-section-chevron { transform:rotate(180deg); }
+.rf-editor-section[open] > summary { border-bottom:1px solid var(--rf-line); }
+.rf-editor-section-content { padding:1rem; }
+@media (min-width:640px) { .rf-editor-section-content { padding:1.25rem; } }

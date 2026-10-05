@@ -82,24 +82,26 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block mb-2 font-bold text-ink">
-                                    Start Date
+                                    Start month
                                 </label>
 
-                                <input type="date"
-                                       name="experiences[{{ $index }}][start_date]"
-                                       value="{{ old('experiences.' . $index . '.start_date', ($experience->start_date ?? null)) }}"
+                                <input type="month"
+                                       name="experiences[{{ $index }}][start_date]" max="{{ now()->format('Y-m') }}"
+                                       value="{{ substr((string) old('experiences.' . $index . '.start_date', ($experience->start_date ?? '')), 0, 7) }}"
                                        class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                            @error('experiences.' . $index . '.start_date')<p class="mt-2 text-sm text-red-600" role="alert">{{ $message }}</p>@enderror
                             </div>
 
                             <div>
                                 <label class="block mb-2 font-bold text-ink">
-                                    End Date
+                                    End month (leave blank if ongoing)
                                 </label>
 
-                                <input type="date"
-                                       name="experiences[{{ $index }}][end_date]"
-                                       value="{{ old('experiences.' . $index . '.end_date', ($experience->end_date ?? null)) }}"
+                                <input type="month"
+                                       name="experiences[{{ $index }}][end_date]" max="{{ now()->format('Y-m') }}"
+                                       value="{{ substr((string) old('experiences.' . $index . '.end_date', ($experience->end_date ?? '')), 0, 7) }}"
                                        class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                            @error('experiences.' . $index . '.end_date')<p class="mt-2 text-sm text-red-600" role="alert">{{ $message }}</p>@enderror
                             </div>
                         </div>
 
