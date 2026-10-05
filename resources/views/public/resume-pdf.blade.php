@@ -272,6 +272,7 @@
                             @if ($skill->skill_level)
                                 - {{ $skill->skill_level }}
                             @endif
+                            @if($skill->evidence_url)<a href="{{ $skill->evidence_url }}">{{ $skill->evidence_label ?: 'View evidence' }}</a>@endif
                         </span>
                     @endforeach
                 </div>
@@ -480,8 +481,11 @@
 
                     @if ($project->project_link)
                         <p class="link">
-                            {{ $project->project_link }}
+                            <a href="{{ $project->project_link }}">{{ $project->project_link_label ?: 'View Project' }}</a>
                         </p>
+                    @endif
+                    @if ($project->demo_url)
+                        <p class="link"><a href="{{ $project->demo_url }}">{{ $project->demo_label ?: 'Watch demo' }}</a></p>
                     @endif
                 </div>
             @endforeach

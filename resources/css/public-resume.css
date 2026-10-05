@@ -9,8 +9,8 @@
 .pr-brand span { display:block; color:var(--rf-muted); font-size:.7rem; font-weight:400; letter-spacing:0; }
 .pr-document { max-width:72rem; margin:0 auto 3rem; background:var(--rf-surface); border:1px solid var(--rf-line); border-radius:1.25rem; overflow:clip; box-shadow:0 8px 32px rgb(0 0 0 / .04); }
 .pr-header { padding:clamp(1.5rem,5vw,3.5rem); border-top:4px solid var(--pr-accent); }
-.pr-identity { display:flex; align-items:center; gap:1.75rem; }
-.pr-photo { width:112px; height:112px; object-fit:cover; border-radius:1.1rem; flex-shrink:0; border:1px solid var(--rf-line); }
+.pr-identity { display:flex; align-items:center; gap:2rem; }
+.pr-photo { width:240px; height:240px; object-position:center; object-fit:cover; border-radius:1.1rem; flex-shrink:0; border:1px solid var(--rf-line); }
 .pr-initial { display:flex; align-items:center; justify-content:center; background:var(--rf-soft); color:var(--pr-accent); font-size:2.5rem; font-weight:650; }
 .pr-eyebrow { color:var(--pr-accent); font-size:.7rem; font-weight:650; letter-spacing:.13em; text-transform:uppercase; margin-bottom:.65rem; }
 .pr-identity h1 { font-size:clamp(2rem,4vw,3rem); font-weight:700; overflow-wrap:anywhere; }
@@ -34,5 +34,53 @@
 .pr-section article { border-radius:.75rem; box-shadow:none; }
 .pr-footer { padding:1.5rem 2rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; border-top:1px solid var(--rf-line); color:var(--rf-muted); font-size:.75rem; }
 .pr-footer a { color:var(--pr-accent); }
-@media(max-width:640px) { .pr-document { margin-inline:.75rem; border-radius:1rem; } .pr-toolbar { padding-inline:1rem; } .pr-identity { gap:1rem; align-items:flex-start; } .pr-photo { width:72px; height:72px; border-radius:.75rem; } .pr-initial { font-size:1.75rem; } .pr-identity h1 { font-size:1.7rem; } .pr-role { font-size:1rem; } .pr-content { padding:1.25rem !important; } .pr-header-actions { align-items:stretch; } .pr-downloads { width:100%; } .pr-downloads a { flex:1; } .pr-contact { flex-direction:column; } .pr-section-nav { padding-inline:.65rem; } }
+@media(max-width:640px) { .pr-document { margin-inline:.75rem; border-radius:1rem; } .pr-toolbar { padding-inline:1rem; } .pr-identity { gap:1rem; align-items:flex-start; } .pr-photo { width:128px; height:128px; border-radius:.75rem; } .pr-initial { font-size:1.75rem; } .pr-identity h1 { font-size:1.7rem; } .pr-role { font-size:1rem; } .pr-content { padding:1.25rem !important; } .pr-header-actions { align-items:stretch; } .pr-downloads { width:100%; } .pr-downloads a { flex:1; } .pr-contact { flex-direction:column; } .pr-section-nav { padding-inline:.65rem; } }
 @media print { .pr-toolbar,.pr-section-nav,.pr-downloads,.pr-footer a { display:none !important; } .pr-document { border:0; box-shadow:none; margin:0; max-width:none; } .pr-page { --pr-accent:#172235; } .pr-section { break-inside:avoid; } }
+
+/* Public resume portrait layout */
+@media screen and (min-width:768px) {
+    .pr-header {
+        display:grid;
+        grid-template-columns:minmax(240px,34%) minmax(0,1fr);
+        grid-template-rows:auto auto auto;
+        column-gap:2.5rem;
+        align-items:center;
+    }
+    .pr-identity { display:contents; }
+    .pr-header .pr-photo {
+        grid-column:1;
+        grid-row:1 / 4;
+        width:100%;
+        height:100%;
+        min-height:360px;
+        object-fit:cover;
+        object-position:center;
+        align-self:stretch;
+        border-radius:1.25rem;
+    }
+    .pr-identity > .min-w-0 { grid-column:2; grid-row:1; }
+    .pr-header .pr-contact { grid-column:2; grid-row:2; }
+    .pr-header .pr-header-actions {
+        grid-column:2;
+        grid-row:3;
+        justify-content:flex-start;
+    }
+    .pr-header .pr-downloads { width:100%; }
+}
+@media screen and (max-width:767px) {
+    .pr-header .pr-identity {
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        gap:1.5rem;
+    }
+    .pr-header .pr-photo {
+        width:100%;
+        max-width:340px;
+        height:auto;
+        aspect-ratio:4 / 5;
+        object-fit:cover;
+        align-self:center;
+    }
+}
+/* End public resume portrait layout */

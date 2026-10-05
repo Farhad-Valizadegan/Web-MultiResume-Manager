@@ -99,6 +99,8 @@ class ResumeController extends Controller
                 'string',
                 'max:255',
             ],
+            'skills.*.evidence_label' => ['nullable', 'string', 'max:100'],
+            'skills.*.evidence_url' => ['nullable', 'url:http,https', 'max:2048'],
             'skills.*.skill_level' => [
                 'nullable',
                 'string',
@@ -191,9 +193,12 @@ class ResumeController extends Controller
                 'nullable',
                 'string',
             ],
+            'projects.*.project_link_label' => ['nullable', 'string', 'max:100'],
+            'projects.*.demo_label' => ['nullable', 'string', 'max:100'],
+            'projects.*.demo_url' => ['nullable', 'url:http,https', 'max:2048'],
             'projects.*.project_link' => [
                 'nullable',
-                'url',
+                'url:http,https',
                 'max:255',
             ],
 
@@ -393,6 +398,8 @@ class ResumeController extends Controller
                 'string',
                 'max:255',
             ],
+            'skills.*.evidence_label' => ['nullable', 'string', 'max:100'],
+            'skills.*.evidence_url' => ['nullable', 'url:http,https', 'max:2048'],
             'skills.*.skill_level' => [
                 'nullable',
                 'string',
@@ -485,9 +492,12 @@ class ResumeController extends Controller
                 'nullable',
                 'string',
             ],
+            'projects.*.project_link_label' => ['nullable', 'string', 'max:100'],
+            'projects.*.demo_label' => ['nullable', 'string', 'max:100'],
+            'projects.*.demo_url' => ['nullable', 'url:http,https', 'max:2048'],
             'projects.*.project_link' => [
                 'nullable',
-                'url',
+                'url:http,https',
                 'max:255',
             ],
 
@@ -739,6 +749,8 @@ class ResumeController extends Controller
                     'skill_category' =>
                         $skill['skill_category'] ?? null,
                     'skill_name' => $skill['skill_name'],
+                    'evidence_url' => $skill['evidence_url'] ?? null,
+                    'evidence_label' => $skill['evidence_label'] ?? null,
                     'skill_level' =>
                         $skill['skill_level'] ?? null,
                 ]);
@@ -829,6 +841,9 @@ class ResumeController extends Controller
                         $project['project_description'] ?? null,
                     'project_link' =>
                         $project['project_link'] ?? null,
+                    'project_link_label' => $project['project_link_label'] ?? null,
+                    'demo_label' => $project['demo_label'] ?? null,
+                    'demo_url' => $project['demo_url'] ?? null,
                 ]);
             }
         }

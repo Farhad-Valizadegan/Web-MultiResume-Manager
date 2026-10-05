@@ -76,6 +76,14 @@
                                       placeholder="Describe the project, technologies, features, and your role.">{{ old('projects.' . $index . '.project_description', ($project->project_description ?? null)) }}</textarea>
                         </div>
 
+                        <div>
+                            <label for="project-link-text-{{ $index }}" class="block mb-2 font-bold text-ink">Link text (optional)</label>
+                            <input id="project-link-text-{{ $index }}" type="text" name="projects[{{ $index }}][project_link_label]"
+                                   value="{{ old('projects.' . $index . '.project_link_label', $project->project_link_label ?? '') }}"
+                                   maxlength="100" placeholder="Example: Watch the project demo"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                            @error('projects.' . $index . '.project_link_label')<p class="mt-2 text-sm text-red-600" role="alert">{{ $message }}</p>@enderror
+                        </div>
                         <!-- Project Link -->
                         <div>
                             <label class="block mb-2 font-bold text-ink">
@@ -89,6 +97,22 @@
                                    placeholder="https://github.com/username/project">
                         </div>
 
+                        <div>
+                            <label for="project-demo-text-{{ $index }}" class="block mb-2 font-bold text-ink">Demo link text (optional)</label>
+                            <input id="project-demo-text-{{ $index }}" type="text" name="projects[{{ $index }}][demo_label]"
+                                   value="{{ old('projects.' . $index . '.demo_label', $project->demo_label ?? '') }}"
+                                   maxlength="100" placeholder="Example: Watch the video demo"
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                            @error('projects.' . $index . '.demo_label')<p class="mt-2 text-sm text-red-600" role="alert">{{ $message }}</p>@enderror
+                        </div>
+                        <div>
+                            <label for="project-demo-url-{{ $index }}" class="block mb-2 font-bold text-ink">Demo URL (optional)</label>
+                            <input id="project-demo-url-{{ $index }}" type="url" name="projects[{{ $index }}][demo_url]"
+                                   value="{{ old('projects.' . $index . '.demo_url', $project->demo_url ?? '') }}"
+                                   maxlength="2048" placeholder="https://www.youtube.com/watch?v=..."
+                                   class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500">
+                            @error('projects.' . $index . '.demo_url')<p class="mt-2 text-sm text-red-600" role="alert">{{ $message }}</p>@enderror
+                        </div>
                     </div>
                 </div>
             @endforeach

@@ -56,7 +56,13 @@
             <address class="pr-contact">
                 @if($resume->email)<a href="mailto:{{ $resume->email }}">{{ $resume->email }}</a>@endif
                 @if($profile->phone)<a href="tel:{{ preg_replace('/[^0-9+]/', '', $profile->phone) }}">{{ $profile->phone }}</a>@endif
-                @if($profile->address)<span>{{ $profile->address }}</span>@endif
+                @if($profile->address)
+    <a href="https://www.google.com/maps/search/?api=1&amp;query={{ rawurlencode($profile->address) }}" target="_blank" rel="noopener noreferrer">
+        {{ $profile->address }}
+        <span aria-hidden="true">↗</span>
+        <span class="sr-only"> (opens Google Maps in a new tab)</span>
+    </a>
+@endif
             </address>
             <div class="pr-header-actions">
                 <div class="pr-social-links">
@@ -145,7 +151,7 @@
 
                                     </div>
 
-                                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+                                    <div class="grid grid-cols-1 gap-5">
                                         @foreach ($resume->projects as $project)
                                             <article class="flex flex-col rounded-xl border border-line bg-surface-soft p-5 shadow-xs transition hover:shadow-md">
                                                 <h3 class="wrap-break-word text-lg font-semibold {{ $theme['main_heading'] }}">
@@ -164,7 +170,17 @@
                                                            target="_blank"
                                                            rel="noopener noreferrer"
                                                            class="inline-flex rounded-lg bg-rose-600 text-white hover:bg-rose-700 px-4 py-2 text-sm font-semibold transition">
-                                                            View Project
+                                                            {{ $project->project_link_label ?: 'View Project' }}
+                                                            <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span>
+                                                        </a>
+                                                    </p>
+                                                @endif
+                                                @if ($project->demo_url)
+                                                    <p class="mt-4">
+                                                        <a href="{{ $project->demo_url }}" target="_blank" rel="noopener noreferrer"
+                                                           class="rf-button rf-button-secondary">
+                                                            {{ $project->demo_label ?: 'Watch demo' }}
+                                                            <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span>
                                                         </a>
                                                     </p>
                                                 @endif
@@ -313,6 +329,9 @@
                                                                 </span>
                                                             @endif
 
+                                                            @if($skill->evidence_url)
+    <a href="{{ $skill->evidence_url }}" target="_blank" rel="noopener noreferrer" class="pr-accent underline underline-offset-4 inline-flex items-center min-h-11" aria-label="{{ $skill->evidence_label ?: 'View evidence' }} for {{ $skill->skill_name }} (opens in a new tab)">{{ $skill->evidence_label ?: 'View evidence' }} <span aria-hidden="true">↗</span></a>
+@endif
                                                             @if (!$loop->last)
                                                                 ,
                                                             @endif
@@ -341,6 +360,9 @@
                                                                         {{ $skill->skill_level }}
                                                                     </span>
                                                                 @endif
+                                                            @if($skill->evidence_url)
+    <a href="{{ $skill->evidence_url }}" target="_blank" rel="noopener noreferrer" class="pr-accent underline underline-offset-4 inline-flex items-center min-h-11" aria-label="{{ $skill->evidence_label ?: 'View evidence' }} for {{ $skill->skill_name }} (opens in a new tab)">{{ $skill->evidence_label ?: 'View evidence' }} <span aria-hidden="true">↗</span></a>
+@endif
                                                             </span>
                                                         @endforeach
                                                     </div>
