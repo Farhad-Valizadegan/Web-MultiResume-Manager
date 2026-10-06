@@ -21,3 +21,11 @@ flowchart LR
 ```
 
 Editable source: [data-flow-diagram.mmd](diagrams/data-flow-diagram.mmd).
+
+## PlantUML view
+
+This is a PlantUML rendering of the existing documented view. Read the accompanying document for the source references, constraints, and details omitted from this overview.
+
+![Data Flow Diagram](diagrams/data-flow-diagram.svg)
+
+[Editable PlantUML source](diagrams/data-flow-diagram.puml) · [Full-size diagram](diagrams/data-flow-diagram.svg)

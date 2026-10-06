@@ -1,0 +1,25 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Resume editing activity
+start
+:Open create or owned edit page;
+:Expand relevant editor sections;
+:Enter content, month dates and optional links;
+:Submit form;
+:Normalize and validate request;
+if (Valid?) then (yes)
+ :Save resume and related rows through file transaction;
+ :Redirect with success;
+else (no)
+ :Return errors and previous input;
+ :Open sections for validation errors;
+endif
+stop
+@enduml

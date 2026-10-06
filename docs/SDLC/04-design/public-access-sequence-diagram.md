@@ -32,3 +32,11 @@ sequenceDiagram
 ```
 
 Editable source: [public-access-sequence-diagram.mmd](diagrams/public-access-sequence-diagram.mmd).
+
+## PlantUML view
+
+This is a PlantUML rendering of the existing documented view. Read the accompanying document for the source references, constraints, and details omitted from this overview.
+
+![Public Access Sequence Diagram](diagrams/public-access-sequence-diagram.svg)
+
+[Editable PlantUML source](diagrams/public-access-sequence-diagram.puml) · [Full-size diagram](diagrams/public-access-sequence-diagram.svg)

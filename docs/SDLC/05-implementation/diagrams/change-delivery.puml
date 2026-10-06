@@ -1,0 +1,28 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Change delivery
+start
+:Start scoped branch from current main;
+:Inspect affected source and documentation;
+:Implement focused change;
+:Run relevant local verification;
+if (Checks pass?) then (yes)
+ :Push branch and open pull request;
+ :Run GitHub validation;
+ if (Review and CI accepted?) then (yes)
+  :Merge and sync local main;
+ else (no)
+  :Diagnose, repair and recheck;
+ endif
+else (no)
+ :Repair before publishing;
+endif
+stop
+@enduml

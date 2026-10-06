@@ -1,0 +1,32 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Project Context Diagram
+left to right direction
+rectangle "Resume Owner" as Owner
+rectangle "MultiResume Manager" as App
+rectangle "Administrator" as Admin
+rectangle "Employer or Visitor" as Visitor
+rectangle "Application Database" as DB
+rectangle "Private Resume Files" as Files
+rectangle "Configured Mail Service" as Mail
+rectangle "External Links and Maps" as External
+rectangle "Maintainer" as Maintainer
+rectangle "GitHub Repository and CI" as Repo
+Owner --> App
+Admin --> App
+Visitor --> App
+App --> DB
+App --> Files
+App --> Mail
+App --> External
+Maintainer --> Repo
+Repo --> App
+
+@enduml

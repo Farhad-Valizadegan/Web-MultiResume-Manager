@@ -1,0 +1,32 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Domain Model
+User "1" --> "0..1" Profile : account information
+User "1" --> "0..*" Resume : owns
+Resume "1" --> "0..*" ResumeSkill
+Resume "1" --> "0..*" ResumeLanguage
+Resume "1" --> "0..*" ResumeInterest
+Resume "1" --> "0..*" ResumeEducation
+Resume "1" --> "0..*" ResumeExperience
+Resume "1" --> "0..*" ResumeProject
+Resume "1" --> "0..*" ResumeCertificate
+class Resume {
+  public_link
+}
+class Resume {
+  resume_password_hash
+}
+class Resume {
+  status
+}
+class Resume {
+  download_resume_type
+}
+@enduml

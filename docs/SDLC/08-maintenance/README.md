@@ -11,3 +11,5 @@ Maintenance, dependency controls and incident response.
 - [Monitoring and Incident Response](monitoring-and-incident-response.md)
 
 [Return to documentation map](../../README.md).
+
+- [Incident triage](incident-triage.md)

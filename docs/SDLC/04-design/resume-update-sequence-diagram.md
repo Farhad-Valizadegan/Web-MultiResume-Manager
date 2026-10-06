@@ -32,3 +32,11 @@ sequenceDiagram
 ```
 
 Editable source: [resume-update-sequence-diagram.mmd](diagrams/resume-update-sequence-diagram.mmd).
+
+## PlantUML view
+
+This is a PlantUML rendering of the existing documented view. Read the accompanying document for the source references, constraints, and details omitted from this overview.
+
+![Resume Update Sequence Diagram](diagrams/resume-update-sequence-diagram.svg)
+
+[Editable PlantUML source](diagrams/resume-update-sequence-diagram.puml) · [Full-size diagram](diagrams/resume-update-sequence-diagram.svg)

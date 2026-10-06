@@ -24,3 +24,11 @@ flowchart LR
 ```
 
 Editable source: [component-diagram.mmd](diagrams/component-diagram.mmd).
+
+## PlantUML view
+
+This is a PlantUML rendering of the existing documented view. Read the accompanying document for the source references, constraints, and details omitted from this overview.
+
+![Component Diagram](diagrams/component-diagram.svg)
+
+[Editable PlantUML source](diagrams/component-diagram.puml) · [Full-size diagram](diagrams/component-diagram.svg)

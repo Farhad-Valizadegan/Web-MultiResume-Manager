@@ -20,3 +20,11 @@ flowchart LR
 ```
 
 Editable source: [project-context-diagram.mmd](diagrams/project-context-diagram.mmd).
+
+## PlantUML view
+
+This is a PlantUML rendering of the existing documented view. Read the accompanying document for the source references, constraints, and details omitted from this overview.
+
+![Project Context Diagram](diagrams/project-context-diagram.svg)
+
+[Editable PlantUML source](diagrams/project-context-diagram.puml) · [Full-size diagram](diagrams/project-context-diagram.svg)

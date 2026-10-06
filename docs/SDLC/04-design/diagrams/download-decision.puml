@@ -1,0 +1,33 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Public download decision
+start
+:Receive generated or uploaded PDF request;
+:Find active resume by public link;
+if (Found and access permitted?) then (yes)
+ if (Requested download mode enabled?) then (yes)
+  if (Generated PDF?) then (yes)
+   :Render PDF template through DOMPDF;
+  else (uploaded)
+   :Resolve configured private uploaded file;
+   if (File exists?) then (yes)
+    :Stream uploaded PDF;
+   else (no)
+    :Return unavailable response;
+   endif
+  endif
+ else (no)
+  :Deny disabled download;
+ endif
+else (no)
+ :Return denial or password redirect;
+endif
+stop
+@enduml

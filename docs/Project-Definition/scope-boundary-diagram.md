@@ -24,3 +24,11 @@ flowchart TB
 ```
 
 Editable source: [scope-boundary-diagram.mmd](diagrams/scope-boundary-diagram.mmd).
+
+## PlantUML view
+
+This is a PlantUML rendering of the existing documented view. Read the accompanying document for the source references, constraints, and details omitted from this overview.
+
+![Scope Boundary Diagram](diagrams/scope-boundary-diagram.svg)
+
+[Editable PlantUML source](diagrams/scope-boundary-diagram.puml) · [Full-size diagram](diagrams/scope-boundary-diagram.svg)
