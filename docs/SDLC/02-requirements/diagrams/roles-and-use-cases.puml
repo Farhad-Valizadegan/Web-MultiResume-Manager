@@ -1,0 +1,29 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Roles and use cases
+left to right direction
+actor "Resume owner" as Owner
+actor Administrator as Admin
+actor "Employer / visitor" as Visitor
+rectangle "MultiResume Manager" {
+ usecase "Edit owned resumes" as Edit
+ usecase "Manage sharing and password" as Share
+ usecase "View aggregate statistics" as Stats
+ usecase "Manage users and resumes" as Manage
+ usecase "Read permitted public resume" as Read
+ usecase "Download permitted PDF" as Download
+}
+Owner --> Edit
+Owner --> Share
+Owner --> Stats
+Admin --> Manage
+Visitor --> Read
+Visitor --> Download
+@enduml

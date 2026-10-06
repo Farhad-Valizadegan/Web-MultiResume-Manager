@@ -1,0 +1,31 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title System Architecture Diagram
+rectangle "Browser - HTML Forms and Alpine" as Browser
+rectangle "Web Server - public directory" as Server
+rectangle "Laravel Routing Middleware Controllers" as Laravel
+rectangle "Blade Templates" as Views
+rectangle "DOMPDF" as PDF
+rectangle "MySQL Development Database" as DB
+rectangle "Private Uploads" as Uploads
+rectangle "Vite Build" as Vite
+rectangle "public/build Assets" as Assets
+Browser --> Server
+Server --> Laravel
+Laravel --> Views
+Views --> Browser
+Laravel --> PDF
+PDF --> Browser
+Laravel --> DB
+Laravel --> Uploads
+Vite --> Assets
+Assets --> Browser
+
+@enduml

@@ -20,3 +20,11 @@ flowchart LR
 ```
 
 Editable source: [deployment-architecture.mmd](diagrams/deployment-architecture.mmd).
+
+## PlantUML view
+
+This is a PlantUML rendering of the existing documented view. Read the accompanying document for the source references, constraints, and details omitted from this overview.
+
+![Deployment Architecture](diagrams/deployment-architecture.svg)
+
+[Editable PlantUML source](diagrams/deployment-architecture.puml) · [Full-size diagram](diagrams/deployment-architecture.svg)

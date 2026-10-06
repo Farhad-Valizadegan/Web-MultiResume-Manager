@@ -51,3 +51,7 @@ The [SDLC index](SDLC/README.md) explains the relationship between the eight eng
 ## Repository navigation
 
 Documentation is under `docs/`; Laravel source and its local environment/dependencies are under `application/`. Run application commands from that directory. GitHub automation remains under `.github/` at the repository root. Source paths shown without an `application/` prefix in technical descriptions are relative to the application directory; linked source references point to their actual repository locations. Historical release diffs preserve their original paths.
+
+## Visual documentation
+
+[PlantUML diagram guide](diagram-guide.md) provides editable sources and GitHub-visible SVG previews for architecture, relationships, user workflows and operating procedures.

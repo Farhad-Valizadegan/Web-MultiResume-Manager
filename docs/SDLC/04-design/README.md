@@ -22,3 +22,7 @@ Architecture, schema, routes, authorization, storage, presentation and decisions
 - [Interface and Accessibility Design](ui-and-accessibility-design.md)
 
 [Return to documentation map](../../README.md).
+
+- [Repository layout](repository-layout.md)
+
+- [Public download decision](download-decision.md)

@@ -18,3 +18,5 @@ Backlog, roadmap, milestones, decisions, traceability and delivery.
 - [Versioning Strategy](versioning-strategy.md)
 
 [Return to documentation map](../README.md).
+
+- [Documentation traceability](documentation-traceability.md)

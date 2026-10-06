@@ -16,3 +16,5 @@ Rules, domain/data flow, lifecycle, threats and questions.
 - [Threat Model and Risk Register](security-threat-model-and-risk-register.md)
 
 [Return to documentation map](../../README.md).
+
+- [Resume editing activity](resume-editing-activity.md)

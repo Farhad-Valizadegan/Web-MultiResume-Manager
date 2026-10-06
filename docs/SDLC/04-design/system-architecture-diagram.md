@@ -25,3 +25,11 @@ flowchart TB
 ```
 
 Editable source: [system-architecture-diagram.mmd](diagrams/system-architecture-diagram.mmd).
+
+## PlantUML view
+
+This is a PlantUML rendering of the existing documented view. Read the accompanying document for the source references, constraints, and details omitted from this overview.
+
+![System Architecture Diagram](diagrams/system-architecture-diagram.svg)
+
+[Editable PlantUML source](diagrams/system-architecture-diagram.puml) · [Full-size diagram](diagrams/system-architecture-diagram.svg)

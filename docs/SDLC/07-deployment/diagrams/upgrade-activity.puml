@@ -1,0 +1,27 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Upgrade procedure
+start
+:Select reviewed release and inspect upgrade notes;
+:Back up database and uploaded files together;
+:Prepare maintenance and recovery plan;
+:Install locked dependencies inside application/;
+:Configure retained environment and secrets;
+:Run required migrations;
+:Build assets and refresh caches;
+:Point web root to application/public/;
+:Verify authorized pages, files and PDF downloads;
+if (Verification passes?) then (yes)
+ :Complete upgrade and record evidence;
+else (no)
+ :Follow coordinated recovery runbook;
+endif
+stop
+@enduml
