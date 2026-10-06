@@ -1,0 +1,22 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Verification layers
+rectangle "Focused regression checks" as Focus
+rectangle "Laravel feature and unit suite" as Suite
+rectangle "Blade compilation and Vite build" as Build
+rectangle "Composer and npm audits in CI" as Audit
+rectangle "Manual browser and PDF review" as Manual
+rectangle "Evidence and remaining limitations" as Evidence
+Focus --> Suite
+Suite --> Build
+Build --> Audit
+Audit --> Manual
+Manual --> Evidence
+@enduml

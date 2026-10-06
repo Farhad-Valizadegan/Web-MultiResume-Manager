@@ -1,0 +1,32 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Resume Update Sequence Diagram
+actor "Owner" as Owner
+participant "Controller" as Controller
+participant "ResumeFiles" as Files
+participant "DB" as DB
+participant "Disk" as Disk
+Owner -> Controller: Submit owned resume form
+Controller -> Controller: Normalize and validate
+Controller -> Files: transaction(operation)
+Files -> DB: Begin transaction
+Controller -> Files: Store new / queue obsolete files
+Files -> Disk: Write new uploads
+Controller -> DB: Update resume / synchronize rows
+alt Operation succeeds
+Files -> DB: Commit
+Files -> Disk: Delete obsolete files
+Controller --> Owner: Redirect success
+else Operation throws
+Files -> DB: Roll back
+Files -> Disk: Remove newly created files
+Controller --> Owner: Failure response
+end
+@enduml

@@ -14,3 +14,5 @@ Functional/non-functional/security requirements, stories and validation.
 - [Validation and Acceptance Matrix](validation-and-acceptance-matrix.md)
 
 [Return to documentation map](../../README.md).
+
+- [Roles and use cases](roles-and-use-cases.md)

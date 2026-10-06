@@ -22,3 +22,7 @@ Resume::publicAccessToken computes an HMAC using the password hash and applicati
 | Private file route | Ownership permits file | Role permits file | Active resume, grant, uploaded-mode gate as applicable |
 
 File-owner/admin bypass is specific to ResumeFileController, not a universal public-controller bypass. Certificate IDs are queried through the selected resume. Inactive-owner effects on public resumes remain a separate open product question. Deployment cookie flags, proxy handling and session persistence need environment-specific review.
+
+See [Protected management-route authorization](authorization-decision-flow.md) for the corresponding PlantUML view.
+
+See [Resume password change and grant invalidation](password-change-sequence.md) for the corresponding PlantUML view.

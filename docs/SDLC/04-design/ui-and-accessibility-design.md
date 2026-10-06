@@ -11,3 +11,5 @@ All sections normally begin collapsed. Collection server errors open the related
 Browser preference is Light/Dark/System; the current storage key is multiresume-manager.appearance. Theme initialization migrates the legacy key to preserve existing preference. Resume template choice is a separate setting from global appearance. Theme controls must remain readable at narrow widths with the longer display name.
 
 Public layout uses a portrait/information header, section navigation, vertically stacked projects and adjacent repository/demo actions that can wrap on small screens. Address links use Google Maps. Accessible labels, keyboard reachability, focus visibility, contrast and error announcement must be verified on actual output; native disclosure alone does not establish complete accessibility compliance.
+
+See [Editor sections, validation and unsaved changes](editor-interaction-flow.md) for the corresponding PlantUML view.

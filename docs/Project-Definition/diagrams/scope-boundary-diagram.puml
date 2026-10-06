@@ -1,0 +1,24 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Scope Boundary Diagram
+package "Current application scope" {
+rectangle "Admin Provisioning and Authentication" as Accounts
+rectangle "Owned Resume Editing" as Editor
+rectangle "Public Access and Download Controls" as Sharing
+rectangle "HTML and PDF Presentation" as Presentation
+rectangle "Aggregate Views" as Analytics
+}
+package "Outside current baseline" {
+rectangle "Applicant Tracking and Hiring Decisions" as Hiring
+rectangle "Subscriptions and Payments" as Payments
+rectangle "Collaborative Editing" as Collaboration
+rectangle "AI Content Generation" as AI
+}
+@enduml

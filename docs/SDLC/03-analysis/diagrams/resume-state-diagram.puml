@@ -1,0 +1,22 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Resume State Diagram
+[*] --> Active: create
+Active --> Inactive: owner updates status
+Inactive --> Active: owner updates status
+Active --> Deleted: authorized deletion
+Inactive --> Deleted: authorized deletion
+Deleted --> [*]
+state Active {
+[*] --> PasswordFree
+PasswordFree --> Protected: set password
+Protected --> Protected: replace hash and invalidate old grants
+}
+@enduml

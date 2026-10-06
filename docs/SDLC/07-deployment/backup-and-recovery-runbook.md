@@ -22,3 +22,5 @@ Approve frequency, retention, access roles, off-host destination, encryption/key
 6. Record missing/orphaned files, data window, duration, failures and responsible reviewer.
 
 Do not run a destructive restore against production during documentation work. Delete rehearsal copies only under the approved retention process. After real recovery verify access and document incidents; downloaded visitor copies cannot be recalled through restore.
+
+See [Coordinated backup and recovery](backup-recovery-activity.md) for the corresponding PlantUML view.

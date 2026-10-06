@@ -1,0 +1,21 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Incident triage
+start
+:Record symptom, environment and time;
+:Assess access, data and service impact;
+:Collect bounded logs without private content;
+:Distinguish application failure from infrastructure failure;
+:Reproduce safely or identify failing boundary;
+:Apply scoped repair or recovery procedure;
+:Verify behavior and affected data/files;
+:Record cause, evidence and follow-up work;
+stop
+@enduml

@@ -1,0 +1,69 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Data Model And Erd
+hide methods
+hide stereotypes
+entity users {
+bigint id PK
+}
+entity profiles {
+bigint id PK
+bigint user_id FK
+}
+entity resumes {
+bigint id PK
+        bigint user_id FK
+        string public_link UK
+        string resume_password_hash
+        string status
+        string download_resume_type
+}
+entity resume_skills {
+bigint id PK
+bigint resume_id FK
+}
+entity resume_languages {
+bigint id PK
+bigint resume_id FK
+}
+entity resume_interests {
+bigint id PK
+bigint resume_id FK
+}
+entity resume_educations {
+bigint id PK
+bigint resume_id FK
+}
+entity resume_experiences {
+bigint id PK
+bigint resume_id FK
+}
+entity resume_projects {
+bigint id PK
+        bigint resume_id FK
+        string project_link
+        string project_link_label
+        string demo_url
+        string demo_label
+}
+entity resume_certificates {
+bigint id PK
+bigint resume_id FK
+}
+users "1" -- "0..1" profiles : has
+users "1" -- "0..*" resumes : owns
+resumes "1" -- "0..*" resume_skills : contains
+resumes "1" -- "0..*" resume_languages : contains
+resumes "1" -- "0..*" resume_interests : contains
+resumes "1" -- "0..*" resume_educations : contains
+resumes "1" -- "0..*" resume_experiences : contains
+resumes "1" -- "0..*" resume_projects : contains
+resumes "1" -- "0..*" resume_certificates : contains
+@enduml

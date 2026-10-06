@@ -1,0 +1,31 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Deployment Architecture
+left to right direction
+rectangle "HTTPS Browser" as Client
+rectangle "Web Server - public Root" as Web
+rectangle "PHP Runtime - Laravel" as PHP
+rectangle "Configured Database" as DB
+rectangle "Private Upload Volume" as Private
+rectangle "Configured Session Store" as Session
+rectangle "Configured Mail Delivery" as Mail
+rectangle "Operator" as Operator
+rectangle "Protected Coordinated Backups" as Backup
+Client --> Web
+Web --> PHP
+PHP --> DB
+PHP --> Private
+PHP --> Session
+PHP --> Mail
+Operator --> Backup
+DB  ..>  Backup : Backup
+Private  ..>  Backup : Backup
+
+@enduml

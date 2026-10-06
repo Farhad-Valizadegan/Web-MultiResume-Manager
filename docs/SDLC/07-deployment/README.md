@@ -13,3 +13,7 @@ Environment, architecture, upgrade and recovery procedures.
 - [Release and Upgrade Runbook](release-and-upgrade-runbook.md)
 
 [Return to documentation map](../../README.md).
+
+- [Upgrade procedure](upgrade-activity.md)
+
+- [Coordinated backup and recovery](backup-recovery-activity.md)

@@ -1,0 +1,36 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Component Diagram
+left to right direction
+rectangle "Routes and Middleware" as Routes
+rectangle "User Resume Controller" as User
+rectangle "Admin Controllers" as Admin
+rectangle "Public Resume Controller" as Public
+rectangle "Resume File Controller" as File
+rectangle "ResumeFiles Service" as Service
+rectangle "Eloquent Models" as Models
+rectangle "Filesystem" as Storage
+rectangle "Public HTML and PDF Templates" as Templates
+rectangle "Editor Partials and Dynamic Rows" as Forms
+Routes --> User
+Routes --> Admin
+Routes --> Public
+Routes --> File
+User --> Service
+Admin --> Service
+User --> Models
+Public --> Models
+File --> Models
+Service --> Models
+Service --> Storage
+Public --> Templates
+User --> Forms
+
+@enduml

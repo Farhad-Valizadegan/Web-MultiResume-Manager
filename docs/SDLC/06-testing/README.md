@@ -16,3 +16,5 @@ Strategy, inventories, manual/security matrices and evidence records.
 [Return to documentation map](../../README.md).
 
 - [Documentation review — 2026-10-06](documentation-review-2026-10-06.md)
+
+- [Verification layers](verification-layers.md)
