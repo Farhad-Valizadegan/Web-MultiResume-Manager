@@ -8,11 +8,11 @@
 
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-3" aria-label="ResumeFolio home">
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-3" aria-label="{{ config('app.name') }} home">
                         <img src="{{ asset('images/personal-logo.png') }}"
                              alt="Personal Logo"
                              class="block h-10 w-10 object-contain">
-                        <span class="rf-brand">ResumeFolio</span>
+                        <span class="rf-brand">{{ config('app.name') }}</span>
                     </a>
                 </div>
 

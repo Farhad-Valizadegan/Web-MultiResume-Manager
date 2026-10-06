@@ -4,15 +4,15 @@
     @include('layouts.theme-init')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign in · ResumeFolio</title>
+    <title>Sign in · {{ config('app.name') }}</title>
     <link rel="icon" type="image/png" href="{{ asset('images/personal-logo.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-canvas text-ink antialiased">
     <div class="rf-theme-corner">@include('layouts.theme-switch')</div>
     <main class="rf-login">
-        <section class="rf-login-story" aria-label="About ResumeFolio">
-            <a href="{{ route('login') }}" class="rf-login-brand"><img src="{{ asset('images/personal-logo.png') }}" alt="" width="40" height="40">ResumeFolio</a>
+        <section class="rf-login-story" aria-label="About {{ config('app.name') }}">
+            <a href="{{ route('login') }}" class="rf-login-brand"><img src="{{ asset('images/personal-logo.png') }}" alt="" width="40" height="40">{{ config('app.name') }}</a>
             <div><span class="rf-eyebrow">YOUR NEXT CHAPTER</span><h1>A stronger resume.<br>A clearer path forward.</h1><p>Build, share, and manage your professional story in one place.</p></div>
             <div class="rf-story-features"><p><span>01</span> Create a resume for every opportunity</p><p><span>02</span> Share with control over access</p><p><span>03</span> See when your resume gets noticed</p></div>
         </section>

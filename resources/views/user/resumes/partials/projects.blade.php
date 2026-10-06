@@ -61,7 +61,7 @@
                                    name="projects[{{ $index }}][project_title]"
                                    value="{{ old('projects.' . $index . '.project_title', ($project->project_title ?? null)) }}"
                                    class="w-full border border-line rounded-md px-4 py-2.5 shadow-xs focus:border-blue-500 focus:ring-blue-500"
-                                   placeholder="Example: Laravel Resume Management System">
+                                   placeholder="Example: MultiResume Manager">
                         </div>
 
                         <!-- Project Description -->

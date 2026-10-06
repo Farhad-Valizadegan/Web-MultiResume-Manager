@@ -1,8 +1,8 @@
-# ResumeFolio — Web Resume Management System
+# MultiResume Manager
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-ResumeFolio is a full-stack resume management platform built with Laravel. It
+MultiResume Manager is a full-stack resume management platform built with Laravel. It
 allows users to create and manage multiple professional resumes, share them
 through unique public links, protect them with employer passwords, generate PDF
 versions, and track viewing activity.
@@ -87,8 +87,8 @@ Versions verified for v1.0.0:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Farhad-Valizadegan/web-resume-management-system.git
-   cd web-resume-management-system
+   git clone https://github.com/Farhad-Valizadegan/Web-MultiResume-Manager.git
+   cd Web-MultiResume-Manager
    ```
 
 2. Install PHP and JavaScript dependencies:
@@ -117,7 +117,7 @@ Versions verified for v1.0.0:
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=resume_management_system
+   DB_DATABASE=multiresume_manager
    DB_USERNAME=root
    DB_PASSWORD=
    ```
@@ -175,9 +175,9 @@ An Apache virtual host should use the project's `public` directory:
 ```apache
 <VirtualHost *:80>
     ServerName resume.test
-    DocumentRoot "C:/path/to/web-resume-management-system/public"
+    DocumentRoot "C:/path/to/Web-MultiResume-Manager/public"
 
-    <Directory "C:/path/to/web-resume-management-system/public">
+    <Directory "C:/path/to/Web-MultiResume-Manager/public">
         AllowOverride All
         Require all granted
     </Directory>
