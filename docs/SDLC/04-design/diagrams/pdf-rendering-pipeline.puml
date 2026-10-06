@@ -1,0 +1,38 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+left to right direction
+title PDF presentation — generated rendering versus uploaded delivery
+actor Visitor
+rectangle "PublicResumeController\nActive resume, current grant and mode checks" as Gate
+rectangle "Generated path\nResume + profile + section relationships" as Data #DBEAFE
+artifact "public/resume-pdf.blade.php\nPDF-specific HTML/CSS\nStructured content and named links\nMonth/year date presentation" as Template
+rectangle "DOMPDF\nA4 portrait layout\nFonts, wrapping and page breaks" as Engine
+artifact "Generated resume PDF\nIdentity/title-based filename" as Generated #DCFCE7
+rectangle "Uploaded path\nExisting private-storage PDF\nNo template rendering or content regeneration" as Upload #FEF3C7
+artifact "Uploaded resume PDF\nIdentity/title-based filename" as Original #DCFCE7
+Visitor --> Gate : request PDF download
+Gate --> Data : generated/both permitted
+Data --> Template : Blade view data
+Template --> Engine : rendered HTML/CSS
+Engine --> Generated : PDF download response
+Gate --> Upload : uploaded/both permitted
+Upload --> Original : private disk download response
+note bottom of Gate
+ Missing/inactive resume: 404.
+ Missing protected grant: password redirect.
+ Disabled requested mode: 403.
+ Missing uploaded file: 404.
+end note
+note bottom of Engine
+ Public HTML uses a separate Blade template and browser engine.
+ Browser screenshots do not verify PDF layout.
+ Use short/long synthetic fixtures to check page breaks,
+ clipping, fonts, images and links.
+end note
+@enduml

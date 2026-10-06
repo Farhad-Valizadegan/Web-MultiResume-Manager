@@ -35,6 +35,7 @@ SVG previews are committed so GitHub readers can see the diagrams without instal
 | [Roadmap outcomes](Project-Management/roadmap.md) | [Source](Project-Management/diagrams/roadmap-outcomes.puml) | [Diagram](Project-Management/diagrams/roadmap-outcomes.svg) |
 | [Page navigation sitemap](SDLC/04-design/site-map.md) | [Source](SDLC/04-design/diagrams/site-map.puml) | [Diagram](SDLC/04-design/diagrams/site-map.svg) |
 | [Implementation status and evidence](SDLC/05-implementation/implementation-status.md) | [Source](SDLC/05-implementation/diagrams/implementation-evidence-map.puml) | [Diagram](SDLC/05-implementation/diagrams/implementation-evidence-map.svg) |
+| [PDF rendering pipeline](SDLC/04-design/pdf-rendering-design.md) | [Source](SDLC/04-design/diagrams/pdf-rendering-pipeline.puml) | [Diagram](SDLC/04-design/diagrams/pdf-rendering-pipeline.svg) |
 
 ## Regenerate locally
 
