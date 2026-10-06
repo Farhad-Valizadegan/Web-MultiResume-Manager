@@ -1,0 +1,11 @@
+flowchart LR
+    User[Authenticated Owner] -->|Validated form| Controller[Resume Controller]
+    Controller -->|Transaction| DB[(Resume Records)]
+    Controller -->|Upload and cleanup| Files[(Private Files)]
+    Visitor[Visitor] -->|Link and optional password| Gate[Public Access Gate]
+    Gate -->|Authorized read| DB
+    Gate --> View[HTML or PDF]
+    View --> Visitor
+    Visitor --> FileGate[File Authorization]
+    FileGate --> Files
+    DB -->|Aggregate counts| Dashboard[Owner Dashboard]
