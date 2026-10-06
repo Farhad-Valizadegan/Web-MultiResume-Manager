@@ -1,0 +1,36 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+left to right direction
+title Roadmap outcomes — delivered baseline and proposed follow-up
+rectangle "Delivered baseline\nReleases through v1.2.1\nLater merged rename and documentation" as Baseline #E2E8F0
+rectangle "Owner selects next goal\nScope, risk and evidence guide selection\nNo dates or release commitments" as Selection #DBEAFE
+package "Proposed outcomes — independently selectable" {
+ rectangle "DOC-001\nReview and adopt documentation" as Docs
+ rectangle "QA-001\nRecord responsive and keyboard evidence" as QA
+ rectangle "PDF-001\nVerify PDF layout with representative resumes" as PDF
+ rectangle "OPS-001\nRehearse coordinated restore and agree targets" as Ops
+}
+rectangle "Outcome acceptance\nAgreed criteria + relevant evidence\nResidual work recorded in the backlog" as Acceptance #DCFCE7
+rectangle "Release decision\nOnly when release criteria are met" as Release
+Baseline --> Selection : starting point
+Selection --> Docs
+Selection --> QA
+Selection --> PDF
+Selection --> Ops
+Docs --> Acceptance
+QA --> Acceptance
+PDF --> Acceptance
+Ops --> Acceptance
+Acceptance --> Release : when applicable
+note bottom of Selection
+ Arrows show planning and acceptance flow.
+ They do not prescribe chronological order,
+ dependencies between outcomes, or deadlines.
+end note
+@enduml

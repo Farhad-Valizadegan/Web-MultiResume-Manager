@@ -1,0 +1,43 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Editor sections, validation and unsaved changes
+start
+:Open create/edit form;
+:Render collapsible sections and existing/old input;
+:Associate labels with fields;
+repeat
+ :Expand section and edit fields or add/remove rows;
+ :Track input/change and dynamic-row actions as dirty;
+ :Associate labels on newly inserted fields;
+ if (Attempt to leave with dirty form?) then (yes)
+  :Request browser beforeunload confirmation;
+  note right
+   Browser support and user interaction determine
+   whether a confirmation is shown.
+  end note
+ endif
+repeat while (Continue editing?) is (yes)
+:Attempt submit;
+if (Browser constraints valid?) then (no)
+ :Open ancestor sections for invalid field;
+ :Browser identifies invalid control;
+ stop
+endif
+:Clear dirty flag on submit;
+:Send form for server validation;
+if (Server validation passes?) then (yes)
+ :Save through resume update/create workflow;
+ :Redirect with success;
+else (no)
+ :Return errors and old input;
+ :Render sections open for validation errors;
+endif
+stop
+@enduml

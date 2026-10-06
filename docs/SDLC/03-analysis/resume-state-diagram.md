@@ -6,19 +6,10 @@ Source baseline: 0ca188f. This is documentation evidence, not production certifi
 
 The diagram records supported activation and password-setting concepts. It does not promise a dedicated password-removal operation. Visitor grants are session data, not a persistent Resume lifecycle state. Download mode and account status remain independent dimensions.
 
-```mermaid
-stateDiagram-v2
-    [*] --> Active: create
-    Active --> Inactive: owner updates status
-    Inactive --> Active: owner updates status
-    Active --> Deleted: authorized deletion
-    Inactive --> Deleted: authorized deletion
-    Deleted --> [*]
-    state Active {
-        [*] --> PasswordFree
-        PasswordFree --> Protected: set password
-        Protected --> Protected: replace hash and invalidate old grants
-    }
-```
+## PlantUML view
 
-Editable source: [resume-state-diagram.mmd](diagrams/resume-state-diagram.mmd).
+The diagram summarizes the documented view. The explanation above provides its context and limitations.
+
+![Resume State Diagram](diagrams/resume-state-diagram.svg)
+
+[Editable PlantUML source](diagrams/resume-state-diagram.puml) · [Full-size diagram](diagrams/resume-state-diagram.svg)

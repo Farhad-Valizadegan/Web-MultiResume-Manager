@@ -1,0 +1,24 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Documentation traceability
+left to right direction
+rectangle "Product scope" as Scope
+rectangle "Requirements" as Req
+rectangle "Design and source references" as Design
+rectangle "Implementation" as Code
+rectangle "Verification evidence" as Test
+rectangle "Release notes and operations" as Release
+Scope --> Req
+Req --> Design
+Design --> Code
+Code --> Test
+Test --> Release
+Release ..> Scope : feedback and next iteration
+@enduml

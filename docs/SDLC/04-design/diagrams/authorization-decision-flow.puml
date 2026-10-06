@@ -1,0 +1,36 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Protected management-route authorization
+start
+:Request owner/admin management route;
+if (Authenticated?) then (no)
+ :Redirect to login;
+ stop
+else (yes)
+ if (Account active?) then (no)
+  :Log out, invalidate session and regenerate CSRF token;
+  :Redirect to login with inactive-account error;
+  stop
+ endif
+endif
+:Apply route verification middleware;
+if (Required route role matches?) then (no)
+ :Return 403;
+ stop
+endif
+if (Owner route targeting existing resume?) then (yes)
+ if (resume.user_id equals authenticated user ID?) then (no)
+  :Return 403;
+  stop
+ endif
+endif
+:Execute permitted management action;
+stop
+@enduml

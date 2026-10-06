@@ -12,3 +12,5 @@ Source conventions, implementation status and locked dependencies.
 - [Implementation Guide](implementation.md)
 
 [Return to documentation map](../../README.md).
+
+- [Change delivery](change-delivery.md)

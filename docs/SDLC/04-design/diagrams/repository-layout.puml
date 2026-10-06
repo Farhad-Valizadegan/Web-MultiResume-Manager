@@ -1,0 +1,27 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Repository layout
+package "Web-MultiResume-Manager" {
+ folder "application/" as App {
+  folder "app/" as Code
+  folder "resources/" as Resources
+  folder "routes/" as Routes
+  folder "database/" as DB
+  folder "tests/" as Tests
+  folder "public/" as Public
+ }
+ folder "docs/" as Docs
+ folder ".github/" as Github
+ artifact "README.md" as Readme
+}
+Github --> App : CI and dependency updates
+Docs ..> Code : source references
+Readme ..> Docs : engineering guide
+@enduml

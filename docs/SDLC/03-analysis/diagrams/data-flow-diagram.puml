@@ -1,0 +1,32 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Data Flow Diagram
+left to right direction
+rectangle "Authenticated Owner" as User
+rectangle "Resume Controller" as Controller
+rectangle "Resume Records" as DB
+rectangle "Private Files" as Files
+rectangle "Visitor" as Visitor
+rectangle "Public Access Gate" as Gate
+rectangle "HTML or PDF" as View
+rectangle "File Authorization" as FileGate
+rectangle "Owner Dashboard" as Dashboard
+User --> Controller : Validated form
+Controller --> DB : Transaction
+Controller --> Files : Upload and cleanup
+Visitor --> Gate : Link and optional password
+Gate --> DB : Authorized read
+Gate --> View
+View --> Visitor
+Visitor --> FileGate
+FileGate --> Files
+DB --> Dashboard : Aggregate counts
+
+@enduml
