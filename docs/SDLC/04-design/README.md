@@ -36,3 +36,5 @@ Architecture, schema, routes, authorization, storage, presentation and decisions
 - [Resume deletion and file cleanup](resume-deletion-sequence.md)
 
 - [Editor sections, validation and unsaved changes](editor-interaction-flow.md)
+
+- [Page navigation sitemap](site-map.md)

@@ -1,0 +1,79 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+top to bottom direction
+title MultiResume Manager — page navigation sitemap
+rectangle "Home / dashboard redirect\n/ and /dashboard" as Home
+package "Authentication" {
+ rectangle "Login\n/login" as Login
+ rectangle "Forgot password\n/forgot-password" as Forgot
+ rectangle "Reset password\n/reset-password/{token}" as Reset
+ rectangle "Verify email\n/verify-email\nAuthenticated support page" as Verify
+ rectangle "Confirm password\n/confirm-password\nAuthenticated support page" as Confirm
+}
+package "User area — active user login required" {
+ rectangle "User dashboard\n/user/dashboard" as UserDash
+ rectangle "My resumes\n/user/resumes" as Resumes
+ rectangle "Create resume\n/user/resumes/create" as Create
+ rectangle "Edit owned resume\n/user/resumes/{resume}/edit" as Edit
+ rectangle "Set/change resume password\n/user/resumes/{resume}/password" as Password
+}
+package "Admin area — active admin login required" {
+ rectangle "Admin dashboard\n/admin/dashboard" as AdminDash
+ rectangle "Users\n/admin/users" as Users
+ rectangle "Create user\n/admin/users/create" as CreateUser
+ rectangle "Edit user\n/admin/users/{user}/edit" as EditUser
+ rectangle "All resumes\n/admin/resumes" as AdminResumes
+ rectangle "Resume details\n/admin/resumes/{resume}" as Details
+}
+package "Shared authenticated page" {
+ rectangle "Account profile and password\n/profile" as Profile
+}
+package "Public resume — active resume required" {
+ rectangle "Shared resume entry / password form\n/resume/{publicLink}" as Entry
+ rectangle "Public resume view\n/resume/{publicLink}/view" as View
+ artifact "Generated PDF download\nWhen generated/both mode enabled" as Generated
+ artifact "Uploaded PDF download\nWhen uploaded/both mode enabled" as Uploaded
+}
+Home --> Login : guest
+Home --> UserDash : user role
+Home --> AdminDash : admin role
+Login --> Forgot
+Forgot ..> Reset : reset link delivered by mail
+Reset --> Login : after reset
+Login ..> Home : after successful authentication
+UserDash --> Resumes : navigation
+UserDash --> Create : navigation
+Resumes --> Create
+Resumes --> Edit
+Resumes --> Password
+UserDash --> Profile : account menu
+AdminDash --> Users : navigation
+AdminDash --> AdminResumes : navigation
+Users --> CreateUser
+Users --> EditUser
+AdminResumes --> Details
+AdminDash --> Profile : account menu
+Resumes ..> Entry : copied/shared URL
+Entry --> View : no password, valid grant or successful password entry
+View --> Generated
+View --> Uploaded
+note bottom of View
+ Public access grants are checked again on downloads.
+ Inactive/missing resumes are unavailable.
+ External websites and private-file endpoints are
+ documented separately, not represented as pages.
+end note
+legend bottom
+ Solid arrows: navigation or redirects.
+ Dotted arrows: indirect entry or an action-driven transition.
+ Authentication support pages are conditional route inventory;
+ they are not claimed as links in the main navigation.
+ Logout is an action, not a separate page. Public registration is disabled.
+endlegend
+@enduml

@@ -55,3 +55,5 @@ Documentation is under `docs/`; Laravel source and its local environment/depende
 ## Visual documentation
 
 [PlantUML diagram guide](diagram-guide.md) provides editable sources and GitHub-visible SVG previews for architecture, relationships, user workflows and operating procedures.
+
+For an overview of the website pages and navigation, start with the [page sitemap](SDLC/04-design/site-map.md).
