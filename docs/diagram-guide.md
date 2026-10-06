@@ -32,6 +32,7 @@ SVG previews are committed so GitHub readers can see the diagrams without instal
 | [Resume deletion and file cleanup](SDLC/04-design/resume-deletion-sequence.md) | [Source](SDLC/04-design/diagrams/resume-deletion-sequence.puml) | [Diagram](SDLC/04-design/diagrams/resume-deletion-sequence.svg) |
 | [Coordinated backup and recovery](SDLC/07-deployment/backup-recovery-activity.md) | [Source](SDLC/07-deployment/diagrams/backup-recovery-activity.puml) | [Diagram](SDLC/07-deployment/diagrams/backup-recovery-activity.svg) |
 | [Editor sections, validation and unsaved changes](SDLC/04-design/editor-interaction-flow.md) | [Source](SDLC/04-design/diagrams/editor-interaction-flow.puml) | [Diagram](SDLC/04-design/diagrams/editor-interaction-flow.svg) |
+| [Roadmap outcomes](Project-Management/roadmap.md) | [Source](Project-Management/diagrams/roadmap-outcomes.puml) | [Diagram](Project-Management/diagrams/roadmap-outcomes.svg) |
 
 ## Regenerate locally
 
