@@ -6,19 +6,7 @@ Evidence baseline: local commit 0ca188f (merged project rename), with release hi
 
 The application is a server-rendered Laravel monolith using Blade, Tailwind CSS, Alpine.js and browser JavaScript. Vite produces frontend assets. Eloquent persists application data; the documented local database is MySQL. DOMPDF renders a separate Blade PDF template. PHPUnit uses isolated SQLite for automated tests.
 
-```mermaid
-flowchart LR
-    Browser[Owner / Admin / Visitor Browser] --> Routes[Laravel Routes and Middleware]
-    Routes --> Controllers[Controllers and Validation]
-    Controllers --> Models[Eloquent Models]
-    Models --> DB[(Database)]
-    Controllers --> Files[ResumeFiles Service]
-    Files --> Private[(Private Resume Uploads)]
-    Controllers --> Blade[Blade Views]
-    Controllers --> PDF[DOMPDF and PDF Template]
-    Blade --> Browser
-    PDF --> Browser
-```
+See the [system architecture diagram](system-architecture-diagram.md) and [component diagram](component-diagram.md) for the application boundaries.
 
 Users have account profiles and many resumes. Each resume belongs to one user and has many skills, languages, interests, educations, experiences, projects and certificates. Personal resume fields are stored on the resume independently of the account profile. Framework session/cache/job tables are infrastructure, not additional resume sections.
 
