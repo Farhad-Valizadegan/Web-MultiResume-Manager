@@ -1,0 +1,40 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Private-file access sequence
+actor Requester
+participant "ResumeFileController" as Files
+participant Resume
+participant Session
+database "Private filesystem" as Disk
+Requester -> Files : GET resume-files/{resume}/{type}/{certificate?}
+Files -> Files : Determine authenticated owner or admin
+alt Owner or admin
+ note right of Files
+Public status, grant and uploaded-mode
+checks are bypassed for these requesters.
+end note
+else Public requester
+ Files -> Resume : Check active status (otherwise 404)
+ Files -> Resume : allowsPublicAccess(request)
+ Resume -> Session : Compare stored grant with current token
+ note right of Files
+Failed access returns 403.
+Uploaded PDF requires uploaded/both mode.
+end note
+end
+Files -> Resume : Resolve photo, uploaded PDF or scoped certificate
+note right of Resume
+Certificate lookup is through resume.certificates.
+A certificate belonging to another resume is not selected.
+end note
+Files -> Disk : Check path and existence (otherwise 404)
+Files -> Disk : Stream authorized file
+Files --> Requester : Response with X-Content-Type-Options: nosniff
+@enduml

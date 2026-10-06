@@ -1,0 +1,37 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Resume deletion and file cleanup
+actor "Authorized owner / admin" as User
+participant "Resume controller" as Controller
+participant "ResumeFiles service" as Service
+participant "Resume model" as Model
+database Database
+database "Private filesystem" as Disk
+User -> Controller : Delete resume
+Controller -> Controller : Route role checks; owner controller checks ownership
+Controller -> Service : transaction(delete operation)
+Service -> Database : Begin transaction
+Controller -> Model : delete()
+Model -> Service : Queue photo, uploaded PDF and certificate files
+Model -> Database : Delete resume (foreign keys cascade child rows)
+alt Database operation succeeds
+ Service -> Database : Commit
+ Service -> Disk : Delete queued obsolete files
+ note right of Service
+File cleanup errors are reported.
+They do not undo a committed database deletion.
+end note
+ Controller --> User : Redirect with success
+else Database operation throws
+ Service -> Database : Roll back
+ Service -> Service : Discard queued obsolete files
+ Controller --> User : Failure response
+end
+@enduml

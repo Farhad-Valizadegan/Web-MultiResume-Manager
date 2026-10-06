@@ -26,6 +26,12 @@ SVG previews are committed so GitHub readers can see the diagrams without instal
 | [Upgrade procedure](SDLC/07-deployment/upgrade-activity.md) | [Source](SDLC/07-deployment/diagrams/upgrade-activity.puml) | [Diagram](SDLC/07-deployment/diagrams/upgrade-activity.svg) |
 | [Incident triage](SDLC/08-maintenance/incident-triage.md) | [Source](SDLC/08-maintenance/diagrams/incident-triage.puml) | [Diagram](SDLC/08-maintenance/diagrams/incident-triage.svg) |
 | [Documentation traceability](Project-Management/documentation-traceability.md) | [Source](Project-Management/diagrams/documentation-traceability.puml) | [Diagram](Project-Management/diagrams/documentation-traceability.svg) |
+| [Protected management-route authorization](SDLC/04-design/authorization-decision-flow.md) | [Source](SDLC/04-design/diagrams/authorization-decision-flow.puml) | [Diagram](SDLC/04-design/diagrams/authorization-decision-flow.svg) |
+| [Private-file access sequence](SDLC/04-design/private-file-access-sequence.md) | [Source](SDLC/04-design/diagrams/private-file-access-sequence.puml) | [Diagram](SDLC/04-design/diagrams/private-file-access-sequence.svg) |
+| [Resume password change and grant invalidation](SDLC/04-design/password-change-sequence.md) | [Source](SDLC/04-design/diagrams/password-change-sequence.puml) | [Diagram](SDLC/04-design/diagrams/password-change-sequence.svg) |
+| [Resume deletion and file cleanup](SDLC/04-design/resume-deletion-sequence.md) | [Source](SDLC/04-design/diagrams/resume-deletion-sequence.puml) | [Diagram](SDLC/04-design/diagrams/resume-deletion-sequence.svg) |
+| [Coordinated backup and recovery](SDLC/07-deployment/backup-recovery-activity.md) | [Source](SDLC/07-deployment/diagrams/backup-recovery-activity.puml) | [Diagram](SDLC/07-deployment/diagrams/backup-recovery-activity.svg) |
+| [Editor sections, validation and unsaved changes](SDLC/04-design/editor-interaction-flow.md) | [Source](SDLC/04-design/diagrams/editor-interaction-flow.puml) | [Diagram](SDLC/04-design/diagrams/editor-interaction-flow.svg) |
 
 ## Regenerate locally
 
