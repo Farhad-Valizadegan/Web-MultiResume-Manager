@@ -15,3 +15,5 @@ Environment, architecture, upgrade and recovery procedures.
 [Return to documentation map](../../README.md).
 
 - [Upgrade procedure](upgrade-activity.md)
+
+- [Coordinated backup and recovery](backup-recovery-activity.md)

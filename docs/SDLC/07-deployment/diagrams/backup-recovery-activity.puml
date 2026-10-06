@@ -1,0 +1,34 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+skinparam sequenceMessageAlign center
+title Coordinated backup and recovery
+start
+:Choose backup or recovery procedure;
+if (Creating backup?) then (yes)
+ :Coordinate a consistent snapshot window;
+ :Back up database, private uploads and public profile assets;
+ :Securely preserve required environment/key configuration separately;
+ :Record release, schema and file-set identifiers;
+ :Protect backup access and retention;
+ :Verify backup readability and restore prerequisites;
+else (recovery)
+ :Select matching code, database and file recovery point;
+ :Preserve incident evidence and stop conflicting writes;
+ :Restore database and matching uploads/assets;
+ :Restore required secret configuration securely;
+ :Install locked dependencies and refresh assets/caches as required;
+ :Verify ownership, passwords, resume links and private downloads;
+ if (Recovery accepted?) then (yes)
+  :Resume service and record actual recovery evidence;
+ else (no)
+  :Keep service controlled and investigate mismatched state;
+ endif
+endif
+stop
+@enduml

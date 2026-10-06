@@ -26,3 +26,13 @@ Architecture, schema, routes, authorization, storage, presentation and decisions
 - [Repository layout](repository-layout.md)
 
 - [Public download decision](download-decision.md)
+
+- [Protected management-route authorization](authorization-decision-flow.md)
+
+- [Private-file access sequence](private-file-access-sequence.md)
+
+- [Resume password change and grant invalidation](password-change-sequence.md)
+
+- [Resume deletion and file cleanup](resume-deletion-sequence.md)
+
+- [Editor sections, validation and unsaved changes](editor-interaction-flow.md)

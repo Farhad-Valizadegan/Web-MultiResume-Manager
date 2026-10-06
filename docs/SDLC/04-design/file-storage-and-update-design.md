@@ -19,3 +19,7 @@ Deletion failure reports an exception and does not recreate rolled-back state. T
 ## Related-record update semantics
 
 Most replaceable resume detail collections are deleted/recreated from validated submitted rows. Certificates use identity-aware synchronization to preserve retained files and respect explicitly removed rows. Sparse array indexes and submitted IDs require regression coverage. Private migration uses resumes:protect-files to preserve contents while moving legacy public files; it is an upgrade operation with backup requirements.
+
+See [Private-file access sequence](private-file-access-sequence.md) for the corresponding PlantUML view.
+
+See [Resume deletion and file cleanup](resume-deletion-sequence.md) for the corresponding PlantUML view.
