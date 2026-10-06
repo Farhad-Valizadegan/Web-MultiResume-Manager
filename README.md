@@ -87,8 +87,8 @@ Versions verified for v1.0.0:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Farhad-Valizadegan/multiresume-manager.git
-   cd multiresume-manager
+   git clone https://github.com/Farhad-Valizadegan/Web-MultiResume-Manager.git
+   cd Web-MultiResume-Manager
    ```
 
 2. Install PHP and JavaScript dependencies:
@@ -175,9 +175,9 @@ An Apache virtual host should use the project's `public` directory:
 ```apache
 <VirtualHost *:80>
     ServerName resume.test
-    DocumentRoot "C:/path/to/multiresume-manager/public"
+    DocumentRoot "C:/path/to/Web-MultiResume-Manager/public"
 
-    <Directory "C:/path/to/multiresume-manager/public">
+    <Directory "C:/path/to/Web-MultiResume-Manager/public">
         AllowOverride All
         Require all granted
     </Directory>
