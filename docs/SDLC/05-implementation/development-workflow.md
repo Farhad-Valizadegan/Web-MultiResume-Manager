@@ -4,6 +4,15 @@ Status: Documented current implementation
 Reviewed: 2026-10-06 (Europe/Berlin)
 Source baseline: 0ca188f. This is documentation evidence, not production certification.
 
+## Visual workflow
+
+This PlantUML overview summarizes local implementation, verification, pull-request review and integration. Use the numbered steps below for the detailed checks. Review and CI failures require repair and rechecking before acceptance; the diagram is a summary, not an automatic merge policy. Verify the resulting main branch before a release tag is created.
+
+![Development and change-delivery workflow](diagrams/change-delivery.svg)
+
+[Editable PlantUML source](diagrams/change-delivery.puml) · [Full-size diagram](diagrams/change-delivery.svg) · [Change-delivery explanation](change-delivery.md)
+
+## Detailed steps
 1. Start from a known branch/commit, inspect git status, and preserve unrelated changes.
 2. Link the requested outcome to requirements/backlog and agree acceptance boundaries.
 3. Read routes, validation, persistence and templates relevant to the behavior.
