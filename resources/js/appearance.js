@@ -12,11 +12,11 @@ function applyAppearance(value) {
 applyAppearance(preference);
 document.querySelectorAll('[data-appearance]').forEach(select => select.addEventListener('change', () => {
     applyAppearance(select.value);
-    try { localStorage.setItem('resumefolio.appearance', preference); } catch (_) {}
+    try { localStorage.setItem('multiresume-manager.appearance', preference); } catch (_) {}
 }));
 systemTheme.addEventListener('change', () => { if (preference === 'system') applyAppearance('system'); });
 window.addEventListener('storage', event => {
-    if (event.key === 'resumefolio.appearance') applyAppearance(event.newValue || 'system');
+    if (event.key === 'multiresume-manager.appearance') applyAppearance(event.newValue || 'system');
 });
 // Build navigation from real section headings so create and edit stay consistent.
 document.querySelectorAll('[data-section-links]').forEach(container => {

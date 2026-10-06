@@ -4,7 +4,7 @@
     @include('layouts.theme-init')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $resume->full_name ?: $resume->title }} · Resume</title>
+    <title>{{ $resume->full_name ?: $resume->title }} · {{ config('app.name') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 @php
@@ -42,7 +42,7 @@
 @endphp
 <body class="pr-page bg-canvas text-ink antialiased" data-resume-style="{{ $selectedTheme }}">
     <a href="#resume-content" class="rf-skip">Skip to resume content</a>
-    <div class="pr-toolbar"><a href="#resume-top" class="pr-brand">ResumeFolio <span>Professional resume</span></a>@include('layouts.theme-switch')</div>
+    <div class="pr-toolbar"><a href="#resume-top" class="pr-brand">{{ config('app.name') }} <span>Professional resume</span></a>@include('layouts.theme-switch')</div>
     <div class="pr-document" id="resume-top">
         <header class="pr-header">
             <div class="pr-identity">
