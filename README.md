@@ -14,6 +14,15 @@ authorization, secure authentication, and a responsive interface.
 
 **Live application:** [https://resumefolio.de](https://resumefolio.de)
 
+## Visual overview
+
+The browser uses Laravel's server-rendered pages. Laravel reads resume data, controls file access, and renders public HTML or generated PDFs; Vite builds the browser assets. The database shown is the documented MySQL development environment, while automated tests use SQLite.
+
+![MultiResume Manager architecture](docs/SDLC/04-design/diagrams/system-architecture-diagram.svg)
+
+[Architecture explanation](docs/SDLC/04-design/system-architecture-diagram.md) · [Full-size diagram](docs/SDLC/04-design/diagrams/system-architecture-diagram.svg) · [PlantUML source](docs/SDLC/04-design/diagrams/system-architecture-diagram.puml)
+
+Explore the [page sitemap](docs/SDLC/04-design/site-map.md) for navigation, the [roadmap](docs/Project-Management/roadmap.md) for proposed outcomes, or the [diagram guide](docs/diagram-guide.md) for all visual documentation. The preview above reuses the authoritative architecture diagram.
 ## Repository Layout
 
 ```text
