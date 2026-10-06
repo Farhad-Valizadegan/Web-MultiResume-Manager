@@ -34,6 +34,7 @@ SVG previews are committed so GitHub readers can see the diagrams without instal
 | [Editor sections, validation and unsaved changes](SDLC/04-design/editor-interaction-flow.md) | [Source](SDLC/04-design/diagrams/editor-interaction-flow.puml) | [Diagram](SDLC/04-design/diagrams/editor-interaction-flow.svg) |
 | [Roadmap outcomes](Project-Management/roadmap.md) | [Source](Project-Management/diagrams/roadmap-outcomes.puml) | [Diagram](Project-Management/diagrams/roadmap-outcomes.svg) |
 | [Page navigation sitemap](SDLC/04-design/site-map.md) | [Source](SDLC/04-design/diagrams/site-map.puml) | [Diagram](SDLC/04-design/diagrams/site-map.svg) |
+| [Implementation status and evidence](SDLC/05-implementation/implementation-status.md) | [Source](SDLC/05-implementation/diagrams/implementation-evidence-map.puml) | [Diagram](SDLC/05-implementation/diagrams/implementation-evidence-map.svg) |
 
 ## Regenerate locally
 

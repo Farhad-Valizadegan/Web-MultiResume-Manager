@@ -1,0 +1,26 @@
+@startuml
+!pragma layout smetana
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #334155
+skinparam roundcorner 12
+left to right direction
+title Implementation status — distinguish source, availability and evidence
+rectangle "Implemented source baseline\nAdmin/user workspaces and owned resumes\nPrivate files and public access gates\nPDFs, statistics, appearance and editor features\nProject rename" as Implemented #DCFCE7
+rectangle "Declared automated checks\nEvidence for tested cases and checked commits\nNot proof of every behavior or environment" as Checks #DBEAFE
+rectangle "Source present, availability conditional\nRegistration code: public routes disabled\nMail/queue configuration: operation not established" as Conditional #FEF3C7
+rectangle "Evidence not established by documentation\nProduction restore drill or load benchmark\nComplete accessibility audit\nMalware scanning or monitoring integration\nPrivacy compliance certification" as Pending #FEE2E2
+rectangle "Implementation guide\nEntry points and source references" as Guide
+rectangle "Backlog and owner decisions\nDefine scope, criteria and required evidence" as Backlog
+Implemented --> Guide : locate source
+Implemented ..> Checks : tested subset
+Conditional --> Backlog : decide availability and verify operation
+Pending --> Backlog : plan relevant verification
+note bottom of Checks
+ Source existence, enabled behavior and verified operation
+ are separate questions. These groups are not progress
+ percentages or a blanket production-readiness score.
+end note
+@enduml
