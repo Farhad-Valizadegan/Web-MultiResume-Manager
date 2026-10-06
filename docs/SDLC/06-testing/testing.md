@@ -8,7 +8,7 @@ Evidence baseline: local commit 0ca188f (merged project rename), with release hi
 
 The [CI workflow](../../../.github/workflows/tests.yml) runs on main pushes, ci/** pushes, and pull requests targeting main. It installs locked Composer/npm dependencies, audits them, builds assets and runs Laravel tests with PHP 8.2 / Node.js 22. The PHPUnit configuration uses SQLite :memory:, array-backed cache/session/mail and synchronous queues.
 
-From the repository root on Windows:
+From the application directory on Windows:
 
 ```powershell
 C:\xampp\php\php.exe -d extension=gd vendor\phpunit\phpunit\phpunit

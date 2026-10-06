@@ -8,7 +8,7 @@ Migration operations below are source evidence, not a database introspection dum
 
 ## 0001_01_01_000000_create_users_table.php
 
-[Source](../../../database/migrations/0001_01_01_000000_create_users_table.php)
+[Source](../../../application/database/migrations/0001_01_01_000000_create_users_table.php)
 
 ```php
 Schema::create('users', function (Blueprint $table) {
@@ -34,7 +34,7 @@ $table->integer('last_activity')->index();
 
 ## 0001_01_01_000001_create_cache_table.php
 
-[Source](../../../database/migrations/0001_01_01_000001_create_cache_table.php)
+[Source](../../../application/database/migrations/0001_01_01_000001_create_cache_table.php)
 
 ```php
 Schema::create('cache', function (Blueprint $table) {
@@ -49,7 +49,7 @@ $table->integer('expiration');
 
 ## 0001_01_01_000002_create_jobs_table.php
 
-[Source](../../../database/migrations/0001_01_01_000002_create_jobs_table.php)
+[Source](../../../application/database/migrations/0001_01_01_000002_create_jobs_table.php)
 
 ```php
 Schema::create('jobs', function (Blueprint $table) {
@@ -83,7 +83,7 @@ $table->timestamp('failed_at')->useCurrent();
 
 ## 2026_06_04_184920_add_role_and_status_to_users_table.php
 
-[Source](../../../database/migrations/2026_06_04_184920_add_role_and_status_to_users_table.php)
+[Source](../../../application/database/migrations/2026_06_04_184920_add_role_and_status_to_users_table.php)
 
 ```php
 Schema::table('users', function (Blueprint $table) {
@@ -93,7 +93,7 @@ $table->string('status')->default('active')->after('role');
 
 ## 2026_06_04_203810_create_profiles_table.php
 
-[Source](../../../database/migrations/2026_06_04_203810_create_profiles_table.php)
+[Source](../../../application/database/migrations/2026_06_04_203810_create_profiles_table.php)
 
 ```php
 Schema::create('profiles', function (Blueprint $table) {
@@ -108,7 +108,7 @@ $table->timestamps();
 
 ## 2026_06_04_203811_create_resumes_table.php
 
-[Source](../../../database/migrations/2026_06_04_203811_create_resumes_table.php)
+[Source](../../../application/database/migrations/2026_06_04_203811_create_resumes_table.php)
 
 ```php
 Schema::create('resumes', function (Blueprint $table) {
@@ -124,7 +124,7 @@ $table->timestamps();
 
 ## 2026_06_04_203812_create_resume_skills_table.php
 
-[Source](../../../database/migrations/2026_06_04_203812_create_resume_skills_table.php)
+[Source](../../../application/database/migrations/2026_06_04_203812_create_resume_skills_table.php)
 
 ```php
 Schema::create('resume_skills', function (Blueprint $table) {
@@ -137,7 +137,7 @@ $table->timestamps();
 
 ## 2026_06_04_203813_create_resume_experiences_table.php
 
-[Source](../../../database/migrations/2026_06_04_203813_create_resume_experiences_table.php)
+[Source](../../../application/database/migrations/2026_06_04_203813_create_resume_experiences_table.php)
 
 ```php
 Schema::create('resume_experiences', function (Blueprint $table) {
@@ -153,7 +153,7 @@ $table->timestamps();
 
 ## 2026_06_04_203814_create_resume_educations_table.php
 
-[Source](../../../database/migrations/2026_06_04_203814_create_resume_educations_table.php)
+[Source](../../../application/database/migrations/2026_06_04_203814_create_resume_educations_table.php)
 
 ```php
 Schema::create('resume_educations', function (Blueprint $table) {
@@ -169,7 +169,7 @@ $table->timestamps();
 
 ## 2026_06_04_203815_create_resume_projects_table.php
 
-[Source](../../../database/migrations/2026_06_04_203815_create_resume_projects_table.php)
+[Source](../../../application/database/migrations/2026_06_04_203815_create_resume_projects_table.php)
 
 ```php
 Schema::create('resume_projects', function (Blueprint $table) {
@@ -183,7 +183,7 @@ $table->timestamps();
 
 ## 2026_06_04_222046_add_resume_password_to_resumes_table.php
 
-[Source](../../../database/migrations/2026_06_04_222046_add_resume_password_to_resumes_table.php)
+[Source](../../../application/database/migrations/2026_06_04_222046_add_resume_password_to_resumes_table.php)
 
 ```php
 Schema::table('resumes', function (Blueprint $table) {
@@ -192,7 +192,7 @@ $table->string('resume_password')->nullable()->after('public_link');
 
 ## 2026_06_05_111947_create_resume_certificates_table.php
 
-[Source](../../../database/migrations/2026_06_05_111947_create_resume_certificates_table.php)
+[Source](../../../application/database/migrations/2026_06_05_111947_create_resume_certificates_table.php)
 
 ```php
 Schema::create('resume_certificates', function (Blueprint $table) {
@@ -211,7 +211,7 @@ $table->timestamps();
 
 ## 2026_06_05_114211_add_certificate_file_to_resume_certificates_table.php
 
-[Source](../../../database/migrations/2026_06_05_114211_add_certificate_file_to_resume_certificates_table.php)
+[Source](../../../application/database/migrations/2026_06_05_114211_add_certificate_file_to_resume_certificates_table.php)
 
 ```php
 Schema::table('resume_certificates', function (Blueprint $table) {
@@ -220,7 +220,7 @@ $table->string('certificate_file')->nullable()->after('credential_url');
 
 ## 2026_06_05_132955_add_skill_category_to_resume_skills_table.php
 
-[Source](../../../database/migrations/2026_06_05_132955_add_skill_category_to_resume_skills_table.php)
+[Source](../../../application/database/migrations/2026_06_05_132955_add_skill_category_to_resume_skills_table.php)
 
 ```php
 Schema::table('resume_skills', function (Blueprint $table) {
@@ -229,7 +229,7 @@ $table->string('skill_category')->nullable()->after('resume_id');
 
 ## 2026_06_05_135026_create_resume_languages_table.php
 
-[Source](../../../database/migrations/2026_06_05_135026_create_resume_languages_table.php)
+[Source](../../../application/database/migrations/2026_06_05_135026_create_resume_languages_table.php)
 
 ```php
 Schema::create('resume_languages', function (Blueprint $table) {
@@ -242,7 +242,7 @@ $table->timestamps();
 
 ## 2026_06_05_142617_create_resume_interests_table.php
 
-[Source](../../../database/migrations/2026_06_05_142617_create_resume_interests_table.php)
+[Source](../../../application/database/migrations/2026_06_05_142617_create_resume_interests_table.php)
 
 ```php
 Schema::create('resume_interests', function (Blueprint $table) {
@@ -255,7 +255,7 @@ $table->timestamps();
 
 ## 2026_06_06_063730_add_description_to_resume_educations_table.php
 
-[Source](../../../database/migrations/2026_06_06_063730_add_description_to_resume_educations_table.php)
+[Source](../../../application/database/migrations/2026_06_06_063730_add_description_to_resume_educations_table.php)
 
 ```php
 Schema::table('resume_educations', function (Blueprint $table) {
@@ -264,7 +264,7 @@ $table->text('description')->nullable()->after('end_date');
 
 ## 2026_06_06_094442_add_profile_photo_to_profiles_table.php
 
-[Source](../../../database/migrations/2026_06_06_094442_add_profile_photo_to_profiles_table.php)
+[Source](../../../application/database/migrations/2026_06_06_094442_add_profile_photo_to_profiles_table.php)
 
 ```php
 Schema::table('profiles', function (Blueprint $table) {
@@ -273,7 +273,7 @@ $table->string('profile_photo')->nullable()->after('website');
 
 ## 2026_06_06_112447_add_social_links_to_profiles_table.php
 
-[Source](../../../database/migrations/2026_06_06_112447_add_social_links_to_profiles_table.php)
+[Source](../../../application/database/migrations/2026_06_06_112447_add_social_links_to_profiles_table.php)
 
 ```php
 Schema::table('profiles', function (Blueprint $table) {
@@ -285,7 +285,7 @@ $table->string('xing')->nullable()->after('portfolio');
 
 ## 2026_06_06_124823_add_download_options_to_resumes_table.php
 
-[Source](../../../database/migrations/2026_06_06_124823_add_download_options_to_resumes_table.php)
+[Source](../../../application/database/migrations/2026_06_06_124823_add_download_options_to_resumes_table.php)
 
 ```php
 Schema::table('resumes', function (Blueprint $table) {
@@ -295,7 +295,7 @@ $table->enum('download_resume_type', [
 
 ## 2026_06_06_132633_add_view_tracking_to_resumes_table.php
 
-[Source](../../../database/migrations/2026_06_06_132633_add_view_tracking_to_resumes_table.php)
+[Source](../../../application/database/migrations/2026_06_06_132633_add_view_tracking_to_resumes_table.php)
 
 ```php
 Schema::table('resumes', function (Blueprint $table) {
@@ -305,7 +305,7 @@ $table->timestamp('last_viewed_at')->nullable()->after('view_count');
 
 ## 2026_07_03_183545_remove_resume_password_from_resumes_table.php
 
-[Source](../../../database/migrations/2026_07_03_183545_remove_resume_password_from_resumes_table.php)
+[Source](../../../application/database/migrations/2026_07_03_183545_remove_resume_password_from_resumes_table.php)
 
 ```php
 Schema::table('resumes', function (Blueprint $table) {
@@ -314,7 +314,7 @@ $table->dropColumn('resume_password');
 
 ## 2026_07_04_121948_add_skill_display_style_to_resumes_table.php
 
-[Source](../../../database/migrations/2026_07_04_121948_add_skill_display_style_to_resumes_table.php)
+[Source](../../../application/database/migrations/2026_07_04_121948_add_skill_display_style_to_resumes_table.php)
 
 ```php
 Schema::table('resumes', function (Blueprint $table) {
@@ -323,7 +323,7 @@ $table->string('skill_display_style')
 
 ## 2026_07_06_153015_add_theme_to_resumes_table.php
 
-[Source](../../../database/migrations/2026_07_06_153015_add_theme_to_resumes_table.php)
+[Source](../../../application/database/migrations/2026_07_06_153015_add_theme_to_resumes_table.php)
 
 ```php
 Schema::table('resumes', function (Blueprint $table) {
@@ -332,7 +332,7 @@ $table->string('theme')
 
 ## 2026_07_25_193808_add_personal_information_to_resumes_table.php
 
-[Source](../../../database/migrations/2026_07_25_193808_add_personal_information_to_resumes_table.php)
+[Source](../../../application/database/migrations/2026_07_25_193808_add_personal_information_to_resumes_table.php)
 
 ```php
 Schema::table('resumes', function (Blueprint $table) {
@@ -352,7 +352,7 @@ $table->text('professional_summary')->nullable()->after('profile_photo');
 
 ## 2026_10_06_000001_add_evidence_url_to_resume_skills_table.php
 
-[Source](../../../database/migrations/2026_10_06_000001_add_evidence_url_to_resume_skills_table.php)
+[Source](../../../application/database/migrations/2026_10_06_000001_add_evidence_url_to_resume_skills_table.php)
 
 ```php
 Schema::table('resume_skills', function (Blueprint $table) {
@@ -361,7 +361,7 @@ $table->string('evidence_url', 2048)->nullable();
 
 ## 2026_10_06_000002_add_evidence_label_to_resume_skills_table.php
 
-[Source](../../../database/migrations/2026_10_06_000002_add_evidence_label_to_resume_skills_table.php)
+[Source](../../../application/database/migrations/2026_10_06_000002_add_evidence_label_to_resume_skills_table.php)
 
 ```php
 Schema::table('resume_skills', function (Blueprint $table) {
@@ -370,7 +370,7 @@ $table->string('evidence_label', 100)->nullable();
 
 ## 2026_10_06_000003_add_project_link_label_to_resume_projects_table.php
 
-[Source](../../../database/migrations/2026_10_06_000003_add_project_link_label_to_resume_projects_table.php)
+[Source](../../../application/database/migrations/2026_10_06_000003_add_project_link_label_to_resume_projects_table.php)
 
 ```php
 Schema::table('resume_projects', function (Blueprint $table) {
@@ -379,7 +379,7 @@ $table->string('project_link_label', 100)->nullable();
 
 ## 2026_10_06_000004_add_demo_link_to_resume_projects_table.php
 
-[Source](../../../database/migrations/2026_10_06_000004_add_demo_link_to_resume_projects_table.php)
+[Source](../../../application/database/migrations/2026_10_06_000004_add_demo_link_to_resume_projects_table.php)
 
 ```php
 Schema::table('resume_projects', function (Blueprint $table) {

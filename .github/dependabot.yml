@@ -2,7 +2,7 @@ version: 2
 
 updates:
   - package-ecosystem: composer
-    directory: /
+    directory: /application
     schedule:
       interval: weekly
       day: monday
@@ -14,7 +14,7 @@ updates:
       - php
 
   - package-ecosystem: npm
-    directory: /
+    directory: /application
     schedule:
       interval: weekly
       day: monday

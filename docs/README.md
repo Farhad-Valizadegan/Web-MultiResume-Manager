@@ -47,3 +47,7 @@ The root [README](../README.md) remains the quick-start guide. This map is the e
 The detailed set covers product definition, requirements, analysis, architecture/design, implementation, testing, deployment, maintenance, management and release history. Diagram sources are editable Mermaid (.mmd) next to their explanatory documents. Migration, test and dependency inventories come from the inspected repository. Runbooks/checklists are complete procedures, not claims that a production drill or full accessibility review was executed. Historical releases retain their original scope; future sprint records remain prospective.
 
 The [SDLC index](SDLC/README.md) explains the relationship between the eight engineering areas.
+
+## Repository navigation
+
+Documentation is under `docs/`; Laravel source and its local environment/dependencies are under `application/`. Run application commands from that directory. GitHub automation remains under `.github/` at the repository root. Source paths shown without an `application/` prefix in technical descriptions are relative to the application directory; linked source references point to their actual repository locations. Historical release diffs preserve their original paths.

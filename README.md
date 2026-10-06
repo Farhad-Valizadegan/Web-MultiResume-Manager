@@ -14,6 +14,19 @@ authorization, secure authentication, and a responsive interface.
 
 **Live application:** [https://resumefolio.de](https://resumefolio.de)
 
+## Repository Layout
+
+```text
+Web-MultiResume-Manager/
+├── README.md
+├── LICENSE
+├── .github/       # CI and dependency updates
+├── docs/          # Product and engineering documentation
+└── application/   # Complete Laravel application
+```
+
+Run PHP, Composer, npm and application-test commands from `application/`. Run Git commands from either the repository root or a directory inside it. Configure the web-server document root as `application/public/`.
+
 ## Features
 
 ### User features
@@ -90,7 +103,7 @@ Versions verified for v1.0.0:
 
    ```bash
    git clone https://github.com/Farhad-Valizadegan/Web-MultiResume-Manager.git
-   cd Web-MultiResume-Manager
+   cd Web-MultiResume-Manager/application
    ```
 
 2. Install PHP and JavaScript dependencies:
@@ -155,6 +168,10 @@ tasks under an appropriate process manager when required.
 
 ## Windows and XAMPP
 
+```powershell
+cd C:\xampp\htdocs\projects\web\Web-MultiResume-Manager\application
+```
+
 If another PHP installation is selected in the terminal, call XAMPP PHP
 directly:
 
@@ -177,9 +194,9 @@ An Apache virtual host should use the project's `public` directory:
 ```apache
 <VirtualHost *:80>
     ServerName resume.test
-    DocumentRoot "C:/path/to/Web-MultiResume-Manager/public"
+    DocumentRoot "C:/path/to/Web-MultiResume-Manager/application/public"
 
-    <Directory "C:/path/to/Web-MultiResume-Manager/public">
+    <Directory "C:/path/to/Web-MultiResume-Manager/application/public">
         AllowOverride All
         Require all granted
     </Directory>

@@ -4,7 +4,7 @@ Status: Documented baseline
 Reviewed: 2026-10-06
 Evidence baseline: local commit 0ca188f (merged project rename), with release history through v1.2.1.
 
-The evidence below is code/test mapping from the inspected baseline, not a fresh execution report. Paths are relative to the repository root. The automated baseline is recorded in the [testing guide](../SDLC/06-testing/testing.md).
+The evidence below is code/test mapping from the inspected baseline, not a fresh execution report. Paths are relative to the application directory. The automated baseline is recorded in the [testing guide](../SDLC/06-testing/testing.md).
 
 | Requirement | Implementation | Evidence / limits |
 | --- | --- | --- |
