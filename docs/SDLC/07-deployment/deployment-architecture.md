@@ -6,24 +6,9 @@ Source baseline: 0ca188f. This is documentation evidence, not production certifi
 
 This is a deployment design boundary, not an assertion that a particular production machine has these controls configured. TLS, runtime/storage permissions, session persistence, mail and protected recovery must be verified in the chosen environment.
 
-```mermaid
-flowchart LR
-    Client[HTTPS Browser] --> Web[Web Server - public Root]
-    Web --> PHP[PHP Runtime - Laravel]
-    PHP --> DB[(Configured Database)]
-    PHP --> Private[(Private Upload Volume)]
-    PHP --> Session[Configured Session Store]
-    PHP --> Mail[Configured Mail Delivery]
-    Operator[Operator] --> Backup[(Protected Coordinated Backups)]
-    DB -. Backup .-> Backup
-    Private -. Backup .-> Backup
-```
-
-Editable source: [deployment-architecture.mmd](diagrams/deployment-architecture.mmd).
-
 ## PlantUML view
 
-This is a PlantUML rendering of the existing documented view. Read the accompanying document for the source references, constraints, and details omitted from this overview.
+The diagram summarizes the documented view. The explanation above provides its context and limitations.
 
 ![Deployment Architecture](diagrams/deployment-architecture.svg)
 

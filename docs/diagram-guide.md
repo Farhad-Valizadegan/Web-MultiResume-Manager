@@ -2,7 +2,7 @@
 
 Start with project context, then system architecture, domain model and public access. Use the workflow diagrams for editing, upgrades and incident investigation. Arrows show direction or relationships; labels explain the operation; cardinalities show how many related records can exist.
 
-SVG previews are committed so GitHub readers can see the diagrams without installing a renderer. Each preview has an editable .puml source. Existing Mermaid views remain available beside the original explanations.
+SVG previews are committed so GitHub readers can see the diagrams without installing a renderer. Each preview has an editable .puml source. PlantUML is the single diagram format; each concept has one source and its rendered preview.
 
 | View | Editable source | Rendered preview |
 | --- | --- | --- |

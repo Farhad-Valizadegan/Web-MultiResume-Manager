@@ -44,7 +44,7 @@ The root [README](../README.md) remains the quick-start guide. This map is the e
 
 ## Evidence and completion boundary
 
-The detailed set covers product definition, requirements, analysis, architecture/design, implementation, testing, deployment, maintenance, management and release history. Diagram sources are editable Mermaid (.mmd) next to their explanatory documents. Migration, test and dependency inventories come from the inspected repository. Runbooks/checklists are complete procedures, not claims that a production drill or full accessibility review was executed. Historical releases retain their original scope; future sprint records remain prospective.
+The detailed set covers product definition, requirements, analysis, architecture/design, implementation, testing, deployment, maintenance, management and release history. Diagram sources are editable PlantUML (.puml), with rendered SVG previews next to their explanatory documents. Migration, test and dependency inventories come from the inspected repository. Runbooks/checklists are complete procedures, not claims that a production drill or full accessibility review was executed. Historical releases retain their original scope; future sprint records remain prospective.
 
 The [SDLC index](SDLC/README.md) explains the relationship between the eight engineering areas.
 
