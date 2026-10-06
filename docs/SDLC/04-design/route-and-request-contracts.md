@@ -4,7 +4,7 @@ Status: Documented current implementation
 Reviewed: 2026-10-06 (Europe/Berlin)
 Source baseline: 0ca188f. This is documentation evidence, not production certification.
 
-This application exposes browser-oriented Laravel routes, not a separately versioned public JSON API. [routes/web.php](../../../routes/web.php) and [routes/auth.php](../../../routes/auth.php) are authoritative.
+This application exposes browser-oriented Laravel routes, not a separately versioned public JSON API. [routes/web.php](../../../application/routes/web.php) and [routes/auth.php](../../../application/routes/auth.php) are authoritative.
 
 | Route family | Contract | Gate / result |
 | --- | --- | --- |

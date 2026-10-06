@@ -22,6 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
+    defaults:
+      run:
+        working-directory: application
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
@@ -37,8 +41,8 @@ jobs:
       - name: Cache Composer packages
         uses: actions/cache@v6
         with:
-          path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('composer.lock') }}
+          path: application/vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('application/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
 
@@ -58,6 +62,7 @@ jobs:
         with:
           node-version: "22"
           cache: npm
+          cache-dependency-path: application/package-lock.json
 
       - name: Install frontend dependencies
         run: npm ci
