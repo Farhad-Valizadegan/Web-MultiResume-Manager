@@ -1,0 +1,15 @@
+flowchart TB
+    Browser[Browser - HTML Forms and Alpine]
+    Server[Web Server - public directory]
+    Laravel[Laravel Routing Middleware Controllers]
+    Views[Blade Templates]
+    PDF[DOMPDF]
+    DB[(MySQL Development Database)]
+    Uploads[(Private Uploads)]
+    Browser --> Server --> Laravel
+    Laravel --> Views --> Browser
+    Laravel --> PDF --> Browser
+    Laravel --> DB
+    Laravel --> Uploads
+    Vite[Vite Build] --> Assets[public/build Assets]
+    Assets --> Browser

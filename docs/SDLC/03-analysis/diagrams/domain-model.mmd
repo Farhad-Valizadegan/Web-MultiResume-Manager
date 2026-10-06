@@ -1,0 +1,14 @@
+classDiagram
+    User "1" --> "0..1" Profile : account information
+    User "1" --> "0..*" Resume : owns
+    Resume "1" --> "0..*" ResumeSkill
+    Resume "1" --> "0..*" ResumeLanguage
+    Resume "1" --> "0..*" ResumeInterest
+    Resume "1" --> "0..*" ResumeEducation
+    Resume "1" --> "0..*" ResumeExperience
+    Resume "1" --> "0..*" ResumeProject
+    Resume "1" --> "0..*" ResumeCertificate
+    Resume : public_link
+    Resume : resume_password_hash
+    Resume : status
+    Resume : download_resume_type

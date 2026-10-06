@@ -1,5 +1,7 @@
 # MultiResume Manager
 
+[Engineering documentation](docs/README.md): scope, requirements, design, testing, operations, planning and releases.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 MultiResume Manager is a full-stack resume management platform built with Laravel. It
