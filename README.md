@@ -2,7 +2,7 @@
 
 [Engineering documentation](docs/README.md): scope, requirements, design, testing, operations, planning and releases.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 
 MultiResume Manager is a full-stack resume management platform built with Laravel. It
 allows users to create and manage multiple professional resumes, share them
@@ -373,4 +373,4 @@ Known minor presentation items may be refined after v1.0.0:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This software and its documentation, to the extent owned by Farhad Valizadegan, are covered by the [Proprietary Software Notice](LICENSE). Prior written authorization is required except where applicable law permits. Third-party material remains subject to its own licenses. This notice applies prospectively and does not revoke permissions previously granted for copies distributed under the MIT License or another license.
